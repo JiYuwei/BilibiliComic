@@ -1,0 +1,20 @@
+platform :ios,'11.0'
+
+target 'BilibiliComic' do
+	pod 'AMTagListView','~> 1.5.0'
+	pod 'Base64','~> 1.1.2'
+	pod 'CocoaAsyncSocket','~> 7.6.1'
+	pod 'DAPagesContainer','~> 1.0.1'
+	pod 'FileMD5Hash','~> 2.0.0'
+	pod 'AFNetworking','~> 3.1.0'
+	pod 'SDWebImage','~> 4.0.0'
+	pod 'JSONKit','~> 1.5pre'
+	pod 'Mantle','~> 2.1.0'
+	pod 'Masonry','~> 1.0.2'
+	pod 'Minizip','~> 1.0.0'
+	pod 'NSObject-ObjectMap','~> 2.3.1'
+	pod 'NullSafe','~> 1.2.2'
+	pod 'PSCollectionView','~> 0.0.1'
+	pod 'Reachability','~> 3.2'
+	pod 'SVProgressHUD','~> 2.1.2'
+end

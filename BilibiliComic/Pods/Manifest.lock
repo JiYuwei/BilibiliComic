@@ -1,0 +1,94 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - AMTagListView (1.5.0)
+  - Base64 (1.1.2)
+  - CocoaAsyncSocket (7.6.1)
+  - DAPagesContainer (1.0.1)
+  - FileMD5Hash (2.0.0)
+  - JSONKit (1.5pre)
+  - Mantle (2.1.0):
+    - Mantle/extobjc (= 2.1.0)
+  - Mantle/extobjc (2.1.0)
+  - Masonry (1.0.2)
+  - Minizip (1.0.0)
+  - NSObject-ObjectMap (2.3.1)
+  - NullSafe (1.2.2)
+  - PSCollectionView (0.0.1)
+  - Reachability (3.2)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SVProgressHUD (2.1.2)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
+  - AMTagListView (~> 1.5.0)
+  - Base64 (~> 1.1.2)
+  - CocoaAsyncSocket (~> 7.6.1)
+  - DAPagesContainer (~> 1.0.1)
+  - FileMD5Hash (~> 2.0.0)
+  - JSONKit (~> 1.5pre)
+  - Mantle (~> 2.1.0)
+  - Masonry (~> 1.0.2)
+  - Minizip (~> 1.0.0)
+  - NSObject-ObjectMap (~> 2.3.1)
+  - NullSafe (~> 1.2.2)
+  - PSCollectionView (~> 0.0.1)
+  - Reachability (~> 3.2)
+  - SDWebImage (~> 4.0.0)
+  - SVProgressHUD (~> 2.1.2)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - AMTagListView
+    - Base64
+    - CocoaAsyncSocket
+    - DAPagesContainer
+    - FileMD5Hash
+    - JSONKit
+    - Mantle
+    - Masonry
+    - Minizip
+    - NSObject-ObjectMap
+    - NullSafe
+    - PSCollectionView
+    - Reachability
+    - SDWebImage
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMTagListView: 08ab67466c67152f6299bc29a13a907783b0046f
+  Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
+  CocoaAsyncSocket: 7eadd3f59e1a6c84e2aefc93e9ff7b55156fe174
+  DAPagesContainer: 96a668c1452aa2b628619e0b1a1c116f187551fd
+  FileMD5Hash: 3ed69cc19a21ff4d30ae8833fc104275ad2c7de0
+  JSONKit: bae313ce6a6c444f40489a6c0b023f399888871f
+  Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  Minizip: 188cb3e39a1195c283ae03bf673d182596fefd0b
+  NSObject-ObjectMap: 3223c0c994a8e3de44ccb74ddf3e63c86821c015
+  NullSafe: cbf1f77a24558e49bc76e2673f31250d3087c792
+  PSCollectionView: 34b33818bfb5c00a2f7afdae6252baa99b46f814
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+
+PODFILE CHECKSUM: 2cafc20228c7f25f0d0718b75e55772eaec3e3ef
+
+COCOAPODS: 1.6.0
