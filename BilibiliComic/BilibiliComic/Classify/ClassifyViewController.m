@@ -1,24 +1,22 @@
 //
-//  BaseViewController.m
+//  ClassifyViewController.m
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/2/16.
 //  Copyright © 2019 jyw. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "ClassifyViewController.h"
 
-@interface BaseViewController ()
+@interface ClassifyViewController ()
 
 @end
 
-@implementation BaseViewController
+@implementation ClassifyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-
-//    NSLog(@"%lld",self.view.safeAreaInsets.top);
+    self.view.backgroundColor = [UIColor greenColor];
 }
 
 /*

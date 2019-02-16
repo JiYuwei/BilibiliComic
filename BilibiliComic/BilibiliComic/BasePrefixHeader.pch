@@ -1,0 +1,28 @@
+//
+//  BasePrefixHeader.pch
+//  BilibiliComic
+//
+//  Created by 纪宇伟 on 2019/2/16.
+//  Copyright © 2019 jyw. All rights reserved.
+//
+
+#ifndef BasePrefixHeader_pch
+#define BasePrefixHeader_pch
+
+#define HOME_TITLE       @"首页"
+#define HOME_N_ICON      @"comic_tab_home_n_ico_28x28_"
+#define HOME_S_ICON      @"comic_tab_home_s_ico_28x28_"
+
+#define CLASSIFY_TITLE   @"分类"
+#define CLASSIFY_N_ICON  @"comic_tab_kind_n_ico_28x28_"
+#define CLASSIFY_S_ICON  @"comic_tab_kind_s_ico_28x28_"
+
+#define BOOKLIST_TITLE   @"书架"
+#define BOOKLIST_N_ICON  @"comic_tab_bookshelf_n_ico_28x28_"
+#define BOOKLIST_S_ICON  @"comic_tab_bookshelf_s_ico_28x28_"
+
+#define ME_TITLE         @"我"
+#define ME_N_ICON        @"comic_tab_mine_n_ico_28x28_"
+#define ME_S_ICON        @"comic_tab_mine_s_ico_28x28_"
+
+#endif /* BasePrefixHeader_pch */

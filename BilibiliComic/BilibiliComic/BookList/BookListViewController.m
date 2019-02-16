@@ -1,24 +1,22 @@
 //
-//  BaseViewController.m
+//  BookListViewController.m
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/2/16.
 //  Copyright © 2019 jyw. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "BookListViewController.h"
 
-@interface BaseViewController ()
+@interface BookListViewController ()
 
 @end
 
-@implementation BaseViewController
+@implementation BookListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-
-//    NSLog(@"%lld",self.view.safeAreaInsets.top);
+    self.view.backgroundColor = [UIColor blueColor];
 }
 
 /*

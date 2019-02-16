@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		096D0283221818970067651A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0282221818970067651A /* BaseViewController.m */; };
+		096D0287221835420067651A /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0286221835420067651A /* BaseTabbarController.m */; };
+		096D028E221836210067651A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D028D221836210067651A /* HomeViewController.m */; };
+		096D0291221836350067651A /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0290221836350067651A /* ClassifyViewController.m */; };
+		096D02942218364B0067651A /* BookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D02932218364B0067651A /* BookListViewController.m */; };
+		096D0297221836580067651A /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0296221836580067651A /* MeViewController.m */; };
 		09982B772217EBE4006CB358 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B762217EBE4006CB358 /* AppDelegate.m */; };
 		09982B7F2217EBE5006CB358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09982B7E2217EBE5006CB358 /* Assets.xcassets */; };
 		09982B852217EBE5006CB358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B842217EBE5006CB358 /* main.m */; };
@@ -1383,6 +1388,17 @@
 /* Begin PBXFileReference section */
 		096D0281221818970067651A /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		096D0282221818970067651A /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		096D028422182FF10067651A /* BasePrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasePrefixHeader.pch; sourceTree = "<group>"; };
+		096D0285221835420067651A /* BaseTabbarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTabbarController.h; sourceTree = "<group>"; };
+		096D0286221835420067651A /* BaseTabbarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTabbarController.m; sourceTree = "<group>"; };
+		096D028C221836210067651A /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		096D028D221836210067651A /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		096D028F221836350067651A /* ClassifyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassifyViewController.h; sourceTree = "<group>"; };
+		096D0290221836350067651A /* ClassifyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassifyViewController.m; sourceTree = "<group>"; };
+		096D02922218364B0067651A /* BookListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookListViewController.h; sourceTree = "<group>"; };
+		096D02932218364B0067651A /* BookListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookListViewController.m; sourceTree = "<group>"; };
+		096D0295221836580067651A /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		096D0296221836580067651A /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
 		09982B722217EBE4006CB358 /* BilibiliComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilibiliComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09982B752217EBE4006CB358 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09982B762217EBE4006CB358 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -2778,8 +2794,46 @@
 			children = (
 				096D0281221818970067651A /* BaseViewController.h */,
 				096D0282221818970067651A /* BaseViewController.m */,
+				096D0285221835420067651A /* BaseTabbarController.h */,
+				096D0286221835420067651A /* BaseTabbarController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		096D02882218356C0067651A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				096D028C221836210067651A /* HomeViewController.h */,
+				096D028D221836210067651A /* HomeViewController.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		096D0289221835710067651A /* Classify */ = {
+			isa = PBXGroup;
+			children = (
+				096D028F221836350067651A /* ClassifyViewController.h */,
+				096D0290221836350067651A /* ClassifyViewController.m */,
+			);
+			path = Classify;
+			sourceTree = "<group>";
+		};
+		096D028A221835BC0067651A /* BookList */ = {
+			isa = PBXGroup;
+			children = (
+				096D02922218364B0067651A /* BookListViewController.h */,
+				096D02932218364B0067651A /* BookListViewController.m */,
+			);
+			path = BookList;
+			sourceTree = "<group>";
+		};
+		096D028B221835DC0067651A /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				096D0295221836580067651A /* MeViewController.h */,
+				096D0296221836580067651A /* MeViewController.m */,
+			);
+			path = Me;
 			sourceTree = "<group>";
 		};
 		09982B692217EBE4006CB358 = {
@@ -2807,6 +2861,10 @@
 		09982B742217EBE4006CB358 /* BilibiliComic */ = {
 			isa = PBXGroup;
 			children = (
+				096D02882218356C0067651A /* Home */,
+				096D0289221835710067651A /* Classify */,
+				096D028A221835BC0067651A /* BookList */,
+				096D028B221835DC0067651A /* Me */,
 				096D0280221818610067651A /* Base */,
 				09982BA72217EE93006CB358 /* PngSrc */,
 				09982B752217EBE4006CB358 /* AppDelegate.h */,
@@ -2814,6 +2872,7 @@
 				09982B7E2217EBE5006CB358 /* Assets.xcassets */,
 				09982B832217EBE5006CB358 /* Info.plist */,
 				09982B842217EBE5006CB358 /* main.m */,
+				096D028422182FF10067651A /* BasePrefixHeader.pch */,
 			);
 			path = BilibiliComic;
 			sourceTree = "<group>";
@@ -5739,8 +5798,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
+				096D0287221835420067651A /* BaseTabbarController.m in Sources */,
 				096D0283221818970067651A /* BaseViewController.m in Sources */,
 				09982B852217EBE5006CB358 /* main.m in Sources */,
+				096D02942218364B0067651A /* BookListViewController.m in Sources */,
+				096D028E221836210067651A /* HomeViewController.m in Sources */,
+				096D0297221836580067651A /* MeViewController.m in Sources */,
 				09982B772217EBE4006CB358 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5897,6 +5961,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 368DWFGUA5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/BilibiliComic/BasePrefixHeader.pch";
 				INFOPLIST_FILE = BilibiliComic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5917,6 +5983,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 368DWFGUA5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/BilibiliComic/BasePrefixHeader.pch";
 				INFOPLIST_FILE = BilibiliComic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

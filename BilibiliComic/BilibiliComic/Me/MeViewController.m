@@ -1,24 +1,22 @@
 //
-//  BaseViewController.m
+//  MeViewController.m
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/2/16.
 //  Copyright © 2019 jyw. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "MeViewController.h"
 
-@interface BaseViewController ()
+@interface MeViewController ()
 
 @end
 
-@implementation BaseViewController
+@implementation MeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-
-//    NSLog(@"%lld",self.view.safeAreaInsets.top);
+    self.view.backgroundColor = [UIColor grayColor];
 }
 
 /*
