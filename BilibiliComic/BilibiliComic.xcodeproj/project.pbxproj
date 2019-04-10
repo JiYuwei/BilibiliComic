@@ -8,6 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		09591287225D860200142DF7 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09591286225D860200142DF7 /* BaseNavigationController.m */; };
+		095912A0225D8FCA00142DF7 /* AppIcon29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591288225D8FC600142DF7 /* AppIcon29x29@2x.png */; };
+		095912A1225D8FCA00142DF7 /* AppIcon83.5x83.5@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591289225D8FC600142DF7 /* AppIcon83.5x83.5@2x~ipad.png */; };
+		095912A2225D8FCA00142DF7 /* AppIcon20x20~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959128A225D8FC700142DF7 /* AppIcon20x20~ipad.png */; };
+		095912A3225D8FCA00142DF7 /* AppIcon29x29~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959128B225D8FC700142DF7 /* AppIcon29x29~ipad.png */; };
+		095912A4225D8FCA00142DF7 /* LaunchImage-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959128C225D8FC700142DF7 /* LaunchImage-736h@3x.png */; };
+		095912A5225D8FCA00142DF7 /* AppIcon40x40@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959128D225D8FC700142DF7 /* AppIcon40x40@2x~ipad.png */; };
+		095912A6225D8FCA00142DF7 /* AppIcon40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959128E225D8FC700142DF7 /* AppIcon40x40@2x.png */; };
+		095912A7225D8FCA00142DF7 /* LaunchImage-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959128F225D8FC700142DF7 /* LaunchImage-568h@2x.png */; };
+		095912A8225D8FCA00142DF7 /* AppIcon40x40~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591290225D8FC800142DF7 /* AppIcon40x40~ipad.png */; };
+		095912A9225D8FCA00142DF7 /* LaunchImage-896h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591291225D8FC800142DF7 /* LaunchImage-896h@3x.png */; };
+		095912AA225D8FCA00142DF7 /* AppIcon76x76~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591292225D8FC800142DF7 /* AppIcon76x76~ipad.png */; };
+		095912AB225D8FCA00142DF7 /* AppIcon29x29@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591293225D8FC800142DF7 /* AppIcon29x29@2x~ipad.png */; };
+		095912AC225D8FCA00142DF7 /* AppIcon60x60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591294225D8FC800142DF7 /* AppIcon60x60@2x.png */; };
+		095912AD225D8FCA00142DF7 /* LaunchImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591295225D8FC800142DF7 /* LaunchImage@2x.png */; };
+		095912AE225D8FCA00142DF7 /* AppIcon20x20@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591296225D8FC900142DF7 /* AppIcon20x20@3x.png */; };
+		095912AF225D8FCA00142DF7 /* AppIcon60x60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591297225D8FC900142DF7 /* AppIcon60x60@3x.png */; };
+		095912B0225D8FCA00142DF7 /* AppIcon76x76@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591298225D8FC900142DF7 /* AppIcon76x76@2x~ipad.png */; };
+		095912B1225D8FCA00142DF7 /* LaunchImage-896h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09591299225D8FC900142DF7 /* LaunchImage-896h@2x.png */; };
+		095912B2225D8FCA00142DF7 /* AppIcon40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959129A225D8FC900142DF7 /* AppIcon40x40@3x.png */; };
+		095912B3225D8FCA00142DF7 /* LaunchImage-812h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959129B225D8FC900142DF7 /* LaunchImage-812h@3x.png */; };
+		095912B4225D8FCA00142DF7 /* AppIcon29x29@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959129C225D8FC900142DF7 /* AppIcon29x29@3x.png */; };
+		095912B5225D8FCA00142DF7 /* AppIcon20x20@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959129D225D8FCA00142DF7 /* AppIcon20x20@2x.png */; };
+		095912B6225D8FCA00142DF7 /* AppIcon20x20@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959129E225D8FCA00142DF7 /* AppIcon20x20@2x~ipad.png */; };
+		095912B7225D8FCA00142DF7 /* LaunchImage-667h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0959129F225D8FCA00142DF7 /* LaunchImage-667h@2x.png */; };
 		096D0283221818970067651A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0282221818970067651A /* BaseViewController.m */; };
 		096D0287221835420067651A /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0286221835420067651A /* BaseTabbarController.m */; };
 		096D028E221836210067651A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D028D221836210067651A /* HomeViewController.m */; };
@@ -1365,6 +1389,30 @@
 /* Begin PBXFileReference section */
 		09591285225D860200142DF7 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		09591286225D860200142DF7 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		09591288225D8FC600142DF7 /* AppIcon29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x.png"; sourceTree = "<group>"; };
+		09591289225D8FC600142DF7 /* AppIcon83.5x83.5@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon83.5x83.5@2x~ipad.png"; sourceTree = "<group>"; };
+		0959128A225D8FC700142DF7 /* AppIcon20x20~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon20x20~ipad.png"; sourceTree = "<group>"; };
+		0959128B225D8FC700142DF7 /* AppIcon29x29~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29~ipad.png"; sourceTree = "<group>"; };
+		0959128C225D8FC700142DF7 /* LaunchImage-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-736h@3x.png"; sourceTree = "<group>"; };
+		0959128D225D8FC700142DF7 /* AppIcon40x40@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x~ipad.png"; sourceTree = "<group>"; };
+		0959128E225D8FC700142DF7 /* AppIcon40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@2x.png"; sourceTree = "<group>"; };
+		0959128F225D8FC700142DF7 /* LaunchImage-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-568h@2x.png"; sourceTree = "<group>"; };
+		09591290225D8FC800142DF7 /* AppIcon40x40~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40~ipad.png"; sourceTree = "<group>"; };
+		09591291225D8FC800142DF7 /* LaunchImage-896h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-896h@3x.png"; sourceTree = "<group>"; };
+		09591292225D8FC800142DF7 /* AppIcon76x76~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76~ipad.png"; sourceTree = "<group>"; };
+		09591293225D8FC800142DF7 /* AppIcon29x29@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@2x~ipad.png"; sourceTree = "<group>"; };
+		09591294225D8FC800142DF7 /* AppIcon60x60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@2x.png"; sourceTree = "<group>"; };
+		09591295225D8FC800142DF7 /* LaunchImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage@2x.png"; sourceTree = "<group>"; };
+		09591296225D8FC900142DF7 /* AppIcon20x20@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon20x20@3x.png"; sourceTree = "<group>"; };
+		09591297225D8FC900142DF7 /* AppIcon60x60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon60x60@3x.png"; sourceTree = "<group>"; };
+		09591298225D8FC900142DF7 /* AppIcon76x76@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon76x76@2x~ipad.png"; sourceTree = "<group>"; };
+		09591299225D8FC900142DF7 /* LaunchImage-896h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-896h@2x.png"; sourceTree = "<group>"; };
+		0959129A225D8FC900142DF7 /* AppIcon40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon40x40@3x.png"; sourceTree = "<group>"; };
+		0959129B225D8FC900142DF7 /* LaunchImage-812h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-812h@3x.png"; sourceTree = "<group>"; };
+		0959129C225D8FC900142DF7 /* AppIcon29x29@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon29x29@3x.png"; sourceTree = "<group>"; };
+		0959129D225D8FCA00142DF7 /* AppIcon20x20@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon20x20@2x.png"; sourceTree = "<group>"; };
+		0959129E225D8FCA00142DF7 /* AppIcon20x20@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon20x20@2x~ipad.png"; sourceTree = "<group>"; };
+		0959129F225D8FCA00142DF7 /* LaunchImage-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-667h@2x.png"; sourceTree = "<group>"; };
 		096D0281221818970067651A /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		096D0282221818970067651A /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		096D028422182FF10067651A /* BasePrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasePrefixHeader.pch; sourceTree = "<group>"; };
@@ -2855,6 +2903,30 @@
 		09982BA72217EE93006CB358 /* PngSrc */ = {
 			isa = PBXGroup;
 			children = (
+				0959129D225D8FCA00142DF7 /* AppIcon20x20@2x.png */,
+				0959129E225D8FCA00142DF7 /* AppIcon20x20@2x~ipad.png */,
+				09591296225D8FC900142DF7 /* AppIcon20x20@3x.png */,
+				0959128A225D8FC700142DF7 /* AppIcon20x20~ipad.png */,
+				09591288225D8FC600142DF7 /* AppIcon29x29@2x.png */,
+				09591293225D8FC800142DF7 /* AppIcon29x29@2x~ipad.png */,
+				0959129C225D8FC900142DF7 /* AppIcon29x29@3x.png */,
+				0959128B225D8FC700142DF7 /* AppIcon29x29~ipad.png */,
+				0959128E225D8FC700142DF7 /* AppIcon40x40@2x.png */,
+				0959128D225D8FC700142DF7 /* AppIcon40x40@2x~ipad.png */,
+				0959129A225D8FC900142DF7 /* AppIcon40x40@3x.png */,
+				09591290225D8FC800142DF7 /* AppIcon40x40~ipad.png */,
+				09591294225D8FC800142DF7 /* AppIcon60x60@2x.png */,
+				09591297225D8FC900142DF7 /* AppIcon60x60@3x.png */,
+				09591298225D8FC900142DF7 /* AppIcon76x76@2x~ipad.png */,
+				09591292225D8FC800142DF7 /* AppIcon76x76~ipad.png */,
+				09591289225D8FC600142DF7 /* AppIcon83.5x83.5@2x~ipad.png */,
+				0959128F225D8FC700142DF7 /* LaunchImage-568h@2x.png */,
+				0959129F225D8FCA00142DF7 /* LaunchImage-667h@2x.png */,
+				0959128C225D8FC700142DF7 /* LaunchImage-736h@3x.png */,
+				0959129B225D8FC900142DF7 /* LaunchImage-812h@3x.png */,
+				09591299225D8FC900142DF7 /* LaunchImage-896h@2x.png */,
+				09591291225D8FC800142DF7 /* LaunchImage-896h@3x.png */,
+				09591295225D8FC800142DF7 /* LaunchImage@2x.png */,
 				099832D02217EFD2006CB358 /* 0_2x.png */,
 				099832FB2217EFDA006CB358 /* 0_3x.png */,
 				09982E982217EFC3006CB358 /* 1_2x.png */,
@@ -4372,6 +4444,7 @@
 				099837972217EFEA006CB358 /* season_contractFail_bg_273x364_@2x.png in Resources */,
 				099834D82217EFE9006CB358 /* player_lock_commt_72x72_@3x.png in Resources */,
 				099835B22217EFE9006CB358 /* icmpv_thumb_light_15x15_@2x.png in Resources */,
+				095912A3225D8FCA00142DF7 /* AppIcon29x29~ipad.png in Resources */,
 				099836212217EFE9006CB358 /* common_hint_view_close_button_15x15_@2x.png in Resources */,
 				099837EC2217EFEA006CB358 /* reader_option_screen_horizontal_n_ico_24x24_@2x.png in Resources */,
 				099835C72217EFE9006CB358 /* loading_00002_160x160_@1x.png in Resources */,
@@ -4508,6 +4581,7 @@
 				099835082217EFE9006CB358 /* ani_loading_4_90x90_@2x.png in Resources */,
 				0998374A2217EFEA006CB358 /* share_dynamic_44x44_@2x.png in Resources */,
 				0998346A2217EFE9006CB358 /* list_back_arrow_bg_70x60_@2x.png in Resources */,
+				095912A0225D8FCA00142DF7 /* AppIcon29x29@2x.png in Resources */,
 				0998350A2217EFE9006CB358 /* ico_more_16x16_@2x.png in Resources */,
 				0998373A2217EFEA006CB358 /* kind_arrow_up_ico_12x13_@2x.png in Resources */,
 				0998358A2217EFE9006CB358 /* bookself_not_login_312x176_@3x.png in Resources */,
@@ -4643,6 +4717,7 @@
 				0998371B2217EFEA006CB358 /* common_lock_alpha_ico_16x16_@2x.png in Resources */,
 				099835A92217EFE9006CB358 /* share_QQ_44x44_@2x.png in Resources */,
 				099835AD2217EFE9006CB358 /* misc_avatarDefault_50x50_@3x.png in Resources */,
+				095912A9225D8FCA00142DF7 /* LaunchImage-896h@3x.png in Resources */,
 				099834EF2217EFE9006CB358 /* common_ticket_background.ico_343x80_@3x.png in Resources */,
 				099834FA2217EFE9006CB358 /* season_downloading_nightmare_18x18_@2x.png in Resources */,
 				099834732217EFE9006CB358 /* season_contractSuccess_bg_273x363_@2x.png in Resources */,
@@ -4751,6 +4826,7 @@
 				0998360F2217EFE9006CB358 /* other_videos_more_icon_3x13_@3x.png in Resources */,
 				099835D32217EFE9006CB358 /* season_downloading_nightmare_18x18_@3x.png in Resources */,
 				099835942217EFE9006CB358 /* comic_tab_home_n_ico_28x28_@2x.png in Resources */,
+				095912B7225D8FCA00142DF7 /* LaunchImage-667h@2x.png in Resources */,
 				0998353E2217EFE9006CB358 /* hd_icmpv_back_light_21x20_@2x.png in Resources */,
 				0998365F2217EFE9006CB358 /* phone_common_pull_loading_2_60x60_@3x.png in Resources */,
 				0998384D2217EFEA006CB358 /* ZCIcon_voice_normal@3x.png in Resources */,
@@ -4791,6 +4867,7 @@
 				099838662217EFEA006CB358 /* ZCPop_voice_receive_anime_5@2x.png in Resources */,
 				0998364D2217EFE9006CB358 /* player_lightness_max_15x15_@2x.png in Resources */,
 				099837002217EFEA006CB358 /* full_146x162_@1x.png in Resources */,
+				095912A4225D8FCA00142DF7 /* LaunchImage-736h@3x.png in Resources */,
 				0998384E2217EFEA006CB358 /* ZCicon_web_next@2x.png in Resources */,
 				099833E62217EFE9006CB358 /* common_button_white@2x.png in Resources */,
 				099838A12217EFEA006CB358 /* ZCIcon_share_press@2x.png in Resources */,
@@ -4940,6 +5017,8 @@
 				099838822217EFEA006CB358 /* ZCIcon_manualWork_nol@2x.png in Resources */,
 				099835882217EFE9006CB358 /* share_action_setting_44x44_@3x.png in Resources */,
 				099833D82217EFE9006CB358 /* zcicon_zan_icon@3x.png in Resources */,
+				095912B5225D8FCA00142DF7 /* AppIcon20x20@2x.png in Resources */,
+				095912B1225D8FCA00142DF7 /* LaunchImage-896h@2x.png in Resources */,
 				0998342F2217EFE9006CB358 /* player_play_bottom_window_13x15_@1x.png in Resources */,
 				099834E52217EFE9006CB358 /* player_window_black_23x23_@3x.png in Resources */,
 				099838C72217EFEA006CB358 /* ZCStar_satisfied@2x.png in Resources */,
@@ -5110,6 +5189,7 @@
 				099837DD2217EFEA006CB358 /* ico_like_16x16_@3x.png in Resources */,
 				099834E92217EFE9006CB358 /* phone_common_pull_loading_4_165x50_@2x.png in Resources */,
 				099834A62217EFE9006CB358 /* detail_back_light_ico_24x24_@2x.png in Resources */,
+				095912B3225D8FCA00142DF7 /* LaunchImage-812h@3x.png in Resources */,
 				099838A62217EFEA006CB358 /* ZCicon_send_sel@2x.png in Resources */,
 				099837452217EFEA006CB358 /* loading_00001_160x160_@1x.png in Resources */,
 				099837322217EFEA006CB358 /* player_share_wechat_44x44_@2x.png in Resources */,
@@ -5182,10 +5262,12 @@
 				0998358B2217EFE9006CB358 /* lock_20x20_@2x.png in Resources */,
 				099835072217EFE9006CB358 /* common_reward_ico_60x16_@2x.png in Resources */,
 				099836D12217EFEA006CB358 /* season_autumn_icon_21x22_@2x.png in Resources */,
+				095912A1225D8FCA00142DF7 /* AppIcon83.5x83.5@2x~ipad.png in Resources */,
 				099834762217EFE9006CB358 /* detail_back_light_ico_24x24_@3x.png in Resources */,
 				0998359E2217EFE9006CB358 /* share_action_attention_44x44_@2x.png in Resources */,
 				099836AC2217EFEA006CB358 /* icon_close-dark_48x48_@3x.png in Resources */,
 				099837802217EFEA006CB358 /* comic_tab_mine_s_ico_28x28_@3x.png in Resources */,
+				095912B6225D8FCA00142DF7 /* AppIcon20x20@2x~ipad.png in Resources */,
 				0998371E2217EFEA006CB358 /* collection_plus_ico_32x32_@3x.png in Resources */,
 				099834052217EFE9006CB358 /* ZCIcon_sf_zan_sel@3x.png in Resources */,
 				099834D52217EFE9006CB358 /* default_img_33x31_@2x.png in Resources */,
@@ -5273,6 +5355,7 @@
 				0998345D2217EFE9006CB358 /* reader_chapter_ico_24x24_@2x.png in Resources */,
 				099838352217EFEA006CB358 /* quantou.png in Resources */,
 				099836332217EFE9006CB358 /* reader_option_screen_vertical_h_ico_24x24_@2x.png in Resources */,
+				095912B0225D8FCA00142DF7 /* AppIcon76x76@2x~ipad.png in Resources */,
 				099838732217EFEA006CB358 /* ZCIconSatisfaction@3x.png in Resources */,
 				099838962217EFEA006CB358 /* 3_3x.png in Resources */,
 				0998354B2217EFE9006CB358 /* player_share_discover_44x44_@2x.png in Resources */,
@@ -5305,6 +5388,7 @@
 				0998362D2217EFE9006CB358 /* icon-status-check_280x150_@3x.png in Resources */,
 				0998348C2217EFE9006CB358 /* common_lock_ico_16x16_@3x.png in Resources */,
 				0998342E2217EFE9006CB358 /* share_action_report_44x44_@2x.png in Resources */,
+				095912A5225D8FCA00142DF7 /* AppIcon40x40@2x~ipad.png in Resources */,
 				0998345C2217EFE9006CB358 /* mine_sign_book_cover_h_410x310_@2x.png in Resources */,
 				099836522217EFE9006CB358 /* reader_finish_share_44x44_@1x.png in Resources */,
 				0998351A2217EFE9006CB358 /* videofeedback_forward_n_16x16_@3x.png in Resources */,
@@ -5331,6 +5415,7 @@
 				099837362217EFEA006CB358 /* reader_share_bt_qzone_44x44_@2x.png in Resources */,
 				099836872217EFEA006CB358 /* icon-ios-mark_26x16_@2x.png in Resources */,
 				099835C42217EFE9006CB358 /* ico_more_16x16_@3x.png in Resources */,
+				095912AC225D8FCA00142DF7 /* AppIcon60x60@2x.png in Resources */,
 				099835EA2217EFE9006CB358 /* coin_lighting1_375x324_@2x.png in Resources */,
 				099836C32217EFEA006CB358 /* reader_finish_followed_44x44_@2x.png in Resources */,
 				099838382217EFEA006CB358 /* ZCIcon_web_Copy_press.png in Resources */,
@@ -5341,6 +5426,8 @@
 				099834A42217EFE9006CB358 /* player_share_qq_44x44_@3x.png in Resources */,
 				099833F42217EFE9006CB358 /* yinxian.png in Resources */,
 				099835342217EFE9006CB358 /* AppIcon_83x83_@2x.png in Resources */,
+				095912B4225D8FCA00142DF7 /* AppIcon29x29@3x.png in Resources */,
+				095912B2225D8FCA00142DF7 /* AppIcon40x40@3x.png in Resources */,
 				099837D12217EFEA006CB358 /* home_bg_header_1200x800_@1x.png in Resources */,
 				099838882217EFEA006CB358 /* zhuanquan.png in Resources */,
 				099836B42217EFEA006CB358 /* comic_pull_loading_9_180x60_@2x.png in Resources */,
@@ -5371,10 +5458,12 @@
 				0998379B2217EFEA006CB358 /* reader_option_read_nomal_h_ico_24x24_@2x.png in Resources */,
 				099838A92217EFEA006CB358 /* ZCIconTakingPictures@2x.png in Resources */,
 				099833BA2217EFE9006CB358 /* cell-content-line-vertical@3x.png in Resources */,
+				095912AB225D8FCA00142DF7 /* AppIcon29x29@2x~ipad.png in Resources */,
 				099834B32217EFE9006CB358 /* comic_thumb_placeholder1_ico_343x192_@2x.png in Resources */,
 				099837122217EFEA006CB358 /* comic_pull_loading_10_180x72_@2x.png in Resources */,
 				099833EA2217EFE9006CB358 /* icon_ordertype_sel@3x.png in Resources */,
 				099836962217EFEA006CB358 /* card_wallet_corner_34x35_@2x.png in Resources */,
+				095912A2225D8FCA00142DF7 /* AppIcon20x20~ipad.png in Resources */,
 				099835182217EFE9006CB358 /* AppIcon_40x40_@1x.png in Resources */,
 				099836022217EFE9006CB358 /* reader_inverse_tips_280x224_@3x.png in Resources */,
 				099838932217EFEA006CB358 /* xigua.png in Resources */,
@@ -5406,6 +5495,7 @@
 				0998389E2217EFEA006CB358 /* aixin.png in Resources */,
 				099838142217EFEA006CB358 /* ZCIcon_sf_no_gray_sel@2x.png in Resources */,
 				099838BE2217EFEA006CB358 /* baoquan.png in Resources */,
+				095912AF225D8FCA00142DF7 /* AppIcon60x60@3x.png in Resources */,
 				099836662217EFEA006CB358 /* empty_280x158_@3x.png in Resources */,
 				099837E52217EFEA006CB358 /* misc_level_whiteLv2_28x14_@2x.png in Resources */,
 				099837C62217EFEA006CB358 /* fail_280x158_@1x.png in Resources */,
@@ -5450,12 +5540,14 @@
 				099836032217EFE9006CB358 /* reader_option_read_manga_h_ico_24x24_@2x.png in Resources */,
 				0998351C2217EFE9006CB358 /* reader_tips_manga_308x667_@2x.png in Resources */,
 				099837572217EFEA006CB358 /* season_newFlag_32x14_@3x.png in Resources */,
+				095912AD225D8FCA00142DF7 /* LaunchImage@2x.png in Resources */,
 				099838392217EFEA006CB358 /* ZCWebNext.png in Resources */,
 				099836222217EFE9006CB358 /* common_rabbitBar_face2_30x30_@3x.png in Resources */,
 				0998347F2217EFE9006CB358 /* misc_share_dynamic_44x44_@2x.png in Resources */,
 				099836682217EFEA006CB358 /* ic_report_night_22x22_@3x.png in Resources */,
 				099838DF2217EFEA006CB358 /* ZCicon_emoji_del@3x.png in Resources */,
 				099835502217EFE9006CB358 /* ic_blacklist_22x22_@2x.png in Resources */,
+				095912A7225D8FCA00142DF7 /* LaunchImage-568h@2x.png in Resources */,
 				099838542217EFEA006CB358 /* empty@3x.png in Resources */,
 				099837762217EFEA006CB358 /* user_customservice_ico_24x24_@2x.png in Resources */,
 				0998348A2217EFE9006CB358 /* ico_unlike_s_16x16_@2x.png in Resources */,
@@ -5474,6 +5566,7 @@
 				0998348E2217EFE9006CB358 /* ico_comment_16x16_@2x.png in Resources */,
 				099838472217EFEA006CB358 /* back@3x.png in Resources */,
 				099836E02217EFEA006CB358 /* misc_level_whiteLv8_28x14_@3x.png in Resources */,
+				095912AA225D8FCA00142DF7 /* AppIcon76x76~ipad.png in Resources */,
 				099834542217EFE9006CB358 /* phone_common_pull_loading_2_165x50_@2x.png in Resources */,
 				0998361A2217EFE9006CB358 /* success_280x158_@1x.png in Resources */,
 				099835B72217EFE9006CB358 /* reader_option_follow_24x24_@2x.png in Resources */,
@@ -5594,6 +5687,8 @@
 				099834432217EFE9006CB358 /* play_retreat_icon_60x37_@1x.png in Resources */,
 				0998380E2217EFEA006CB358 /* ZCIcon_keyboard_pressed@3x.png in Resources */,
 				0998377F2217EFEA006CB358 /* player_airplay_45x45_@1x.png in Resources */,
+				095912A6225D8FCA00142DF7 /* AppIcon40x40@2x.png in Resources */,
+				095912AE225D8FCA00142DF7 /* AppIcon20x20@3x.png in Resources */,
 				099837FD2217EFEA006CB358 /* common_help_ico_16x16_@2x.png in Resources */,
 				099835A12217EFE9006CB358 /* hd_btn_edit_clear_30x30_@1x.png in Resources */,
 				099833B12217EFE9006CB358 /* empty@2x.png in Resources */,
@@ -5630,6 +5725,7 @@
 				099835C92217EFE9006CB358 /* player_back_cellular_ico_25x25_@2x.png in Resources */,
 				099833E72217EFE9006CB358 /* search@3x.png in Resources */,
 				099838032217EFEA006CB358 /* user_integral_ico_24x24_@2x.png in Resources */,
+				095912A8225D8FCA00142DF7 /* AppIcon40x40~ipad.png in Resources */,
 				0998345A2217EFE9006CB358 /* icon40_40x40_@1x.png in Resources */,
 				099835BA2217EFE9006CB358 /* phone_common_pull_loading_4_60x60_@2x.png in Resources */,
 				099835292217EFE9006CB358 /* ico_emoji_night_22x22_@2x.png in Resources */,
