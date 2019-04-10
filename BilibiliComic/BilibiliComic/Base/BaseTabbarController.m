@@ -29,7 +29,7 @@
     homeNav.tabBarItem.title = HOME_TITLE;
     homeNav.tabBarItem.image = [[UIImage imageNamed:HOME_N_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     homeNav.tabBarItem.selectedImage = [[UIImage imageNamed:HOME_S_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    homeNav.navigationBar.translucent = NO;
+    homeNav.navigationBar.translucent = YES;
     
     ClassifyViewController *classifyVC = [[ClassifyViewController alloc] init];
     UINavigationController *classifyNav = [[UINavigationController alloc] initWithRootViewController:classifyVC];
