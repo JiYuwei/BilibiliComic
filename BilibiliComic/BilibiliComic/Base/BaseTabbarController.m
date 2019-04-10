@@ -7,6 +7,7 @@
 //
 
 #import "BaseTabbarController.h"
+#import "BaseNavigationController.h"
 #import "HomeViewController.h"
 #import "ClassifyViewController.h"
 #import "BookListViewController.h"
@@ -25,28 +26,28 @@
     [itm setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor]} forState:UIControlStateSelected];
     
     HomeViewController *homeVC = [[HomeViewController alloc] init];
-    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:homeVC];
+    BaseNavigationController *homeNav = [[BaseNavigationController alloc] initWithRootViewController:homeVC];
     homeNav.tabBarItem.title = HOME_TITLE;
     homeNav.tabBarItem.image = [[UIImage imageNamed:HOME_N_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     homeNav.tabBarItem.selectedImage = [[UIImage imageNamed:HOME_S_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     homeNav.navigationBar.translucent = YES;
     
     ClassifyViewController *classifyVC = [[ClassifyViewController alloc] init];
-    UINavigationController *classifyNav = [[UINavigationController alloc] initWithRootViewController:classifyVC];
+    BaseNavigationController *classifyNav = [[BaseNavigationController alloc] initWithRootViewController:classifyVC];
     classifyNav.tabBarItem.title = CLASSIFY_TITLE;
     classifyNav.tabBarItem.image = [[UIImage imageNamed:CLASSIFY_N_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     classifyNav.tabBarItem.selectedImage = [[UIImage imageNamed:CLASSIFY_S_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     classifyNav.navigationBar.translucent = NO;
     
     BookListViewController *bookListVC = [[BookListViewController alloc] init];
-    UINavigationController *bookListNav = [[UINavigationController alloc] initWithRootViewController:bookListVC];
+    BaseNavigationController *bookListNav = [[BaseNavigationController alloc] initWithRootViewController:bookListVC];
     bookListNav.tabBarItem.title = BOOKLIST_TITLE;
     bookListNav.tabBarItem.image = [[UIImage imageNamed:BOOKLIST_N_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     bookListNav.tabBarItem.selectedImage = [[UIImage imageNamed:BOOKLIST_S_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     bookListNav.navigationBar.translucent = NO;
     
     MeViewController *meVC = [[MeViewController alloc] init];
-    UINavigationController *meNav = [[UINavigationController alloc] initWithRootViewController:meVC];
+    BaseNavigationController *meNav = [[BaseNavigationController alloc] initWithRootViewController:meVC];
     meNav.tabBarItem.title = ME_TITLE;
     meNav.tabBarItem.image = [[UIImage imageNamed:ME_N_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     meNav.tabBarItem.selectedImage = [[UIImage imageNamed:ME_S_ICON] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
