@@ -1343,6 +1343,7 @@
 		099838E72217EFEA006CB358 /* ZCPop_voice_send_anime_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 099833A42217EFE8006CB358 /* ZCPop_voice_send_anime_5@2x.png */; };
 		099838E82217EFEA006CB358 /* ZCicon_pop_satisfaction@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 099833A52217EFE9006CB358 /* ZCicon_pop_satisfaction@3x.png */; };
 		09E298F822606D04009F0D4E /* UINavigationController+StatusBarStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E298F722606D04009F0D4E /* UINavigationController+StatusBarStyle.m */; };
+		09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E298FD2260A646009F0D4E /* HomeNavigationBar.m */; };
 		7B22D8E921D218EB6F3DEE46 /* libPods-BilibiliComic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */; };
 /* End PBXBuildFile section */
 
@@ -2717,6 +2718,8 @@
 		09E298F222606297009F0D4E /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		09E298F622606D04009F0D4E /* UINavigationController+StatusBarStyle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+StatusBarStyle.h"; sourceTree = "<group>"; };
 		09E298F722606D04009F0D4E /* UINavigationController+StatusBarStyle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+StatusBarStyle.m"; sourceTree = "<group>"; };
+		09E298FC2260A646009F0D4E /* HomeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBar.h; sourceTree = "<group>"; };
+		09E298FD2260A646009F0D4E /* HomeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationBar.m; sourceTree = "<group>"; };
 		2A5F7987A831C9957FFA7597 /* Pods-BilibiliComic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.release.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.release.xcconfig"; sourceTree = "<group>"; };
 		71289A0C19E253DB6D1F84CB /* Pods-BilibiliComic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.debug.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.debug.xcconfig"; sourceTree = "<group>"; };
 		DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BilibiliComic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2766,6 +2769,7 @@
 			children = (
 				096D028C221836210067651A /* HomeViewController.h */,
 				096D028D221836210067651A /* HomeViewController.m */,
+				09E298FB2260A614009F0D4E /* HomeNavigationBar */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -4203,6 +4207,15 @@
 				09E298F722606D04009F0D4E /* UINavigationController+StatusBarStyle.m */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		09E298FB2260A614009F0D4E /* HomeNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				09E298FC2260A646009F0D4E /* HomeNavigationBar.h */,
+				09E298FD2260A646009F0D4E /* HomeNavigationBar.m */,
+			);
+			path = HomeNavigationBar;
 			sourceTree = "<group>";
 		};
 		981D807FFEA87CEDB4133B99 /* Pods */ = {
@@ -5727,6 +5740,7 @@
 				096D0283221818970067651A /* BaseViewController.m in Sources */,
 				09982B852217EBE5006CB358 /* main.m in Sources */,
 				096D02942218364B0067651A /* BookListViewController.m in Sources */,
+				09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */,
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
 				096D0297221836580067651A /* MeViewController.m in Sources */,

@@ -7,8 +7,11 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeNavigationBar.h"
 
 @interface HomeViewController ()
+
+@property (nonatomic,strong) HomeNavigationBar *homeNavBar;
 
 @end
 
@@ -22,28 +25,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor redColor];
-    //设置导航栏背景图片为一个空的image，这样就透明了
-    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    //去掉透明后导航栏下边的黑边
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    self.navigationController.navigationBar.hidden = YES;
     
-    [self testRAC];
+    [self initNavigationBar];
 }
 
--(void)testRAC
+-(void)initNavigationBar
 {
-    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
-        NSLog(@"OK");
-        return nil;
-    }];
-    
-    [signal subscribeNext:^(id  _Nullable x) {
-        NSLog(@"X = %@",x);
-    }];
-    
-    
+    self.homeNavBar.backgroundColor = [UIColor whiteColor];
 }
 
+#pragma mark - LazyLoad
 
+-(HomeNavigationBar *)homeNavBar
+{
+    if (!_homeNavBar) {
+        _homeNavBar = [[HomeNavigationBar alloc] initWithFrame:CGRectMake(0, 0, BCSCREEN_WIDTH, BC_NAV_HEIGHT)];
+        [self.view addSubview:_homeNavBar];
+    }
+    return _homeNavBar;
+}
 
 @end
