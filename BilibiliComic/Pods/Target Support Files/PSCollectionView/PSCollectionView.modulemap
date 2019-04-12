@@ -1,0 +1,6 @@
+framework module PSCollectionView {
+  umbrella header "PSCollectionView-umbrella.h"
+
+  export *
+  module * { export * }
+}

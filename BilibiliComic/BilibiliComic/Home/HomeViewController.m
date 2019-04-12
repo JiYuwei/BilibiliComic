@@ -14,6 +14,11 @@
 
 @implementation HomeViewController
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor redColor];
@@ -21,26 +26,24 @@
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     //去掉透明后导航栏下边的黑边
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
+    [self testRAC];
 }
 
--(void)viewWillAppear:(BOOL)animated
+-(void)testRAC
 {
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    RACSignal *signal = [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSLog(@"OK");
+        return nil;
+    }];
+    
+    [signal subscribeNext:^(id  _Nullable x) {
+        NSLog(@"X = %@",x);
+    }];
+    
+    
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -1,0 +1,6 @@
+framework module Pods_BilibiliComic {
+  umbrella header "Pods-BilibiliComic-umbrella.h"
+
+  export *
+  module * { export * }
+}

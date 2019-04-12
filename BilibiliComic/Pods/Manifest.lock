@@ -29,6 +29,7 @@ PODS:
   - NullSafe (1.2.2)
   - PSCollectionView (0.0.1)
   - Reachability (3.2)
+  - ReactiveObjC (3.1.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - NullSafe (~> 1.2.2)
   - PSCollectionView (~> 0.0.1)
   - Reachability (~> 3.2)
+  - ReactiveObjC (~> 3.1.0)
   - SDWebImage (~> 4.0.0)
   - SVProgressHUD (~> 2.1.2)
 
@@ -68,6 +70,7 @@ SPEC REPOS:
     - NullSafe
     - PSCollectionView
     - Reachability
+    - ReactiveObjC
     - SDWebImage
     - SVProgressHUD
 
@@ -86,9 +89,10 @@ SPEC CHECKSUMS:
   NullSafe: cbf1f77a24558e49bc76e2673f31250d3087c792
   PSCollectionView: 34b33818bfb5c00a2f7afdae6252baa99b46f814
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  ReactiveObjC: 2a38ea15335de4119d8b17caf1db1484f61db902
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 2cafc20228c7f25f0d0718b75e55772eaec3e3ef
+PODFILE CHECKSUM: 510043cc219de983706e8ee65887432d0773af29
 
 COCOAPODS: 1.6.0

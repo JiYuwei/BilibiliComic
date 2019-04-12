@@ -1,0 +1,6 @@
+framework module AMTagListView {
+  umbrella header "AMTagListView-umbrella.h"
+
+  export *
+  module * { export * }
+}
