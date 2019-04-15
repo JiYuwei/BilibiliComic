@@ -27,6 +27,16 @@
     [super pushViewController:viewController animated:animated];
 }
 
+-(UIViewController *)childViewControllerForStatusBarStyle
+{
+    return self.visibleViewController;
+}
+
+-(UIViewController *)childViewControllerForStatusBarHidden
+{
+    return self.visibleViewController;
+}
+
 /*
 #pragma mark - Navigation
 
