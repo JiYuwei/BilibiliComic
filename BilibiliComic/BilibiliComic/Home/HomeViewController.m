@@ -32,7 +32,7 @@
 
 -(void)initNavigationBar
 {
-    self.homeNavBar.backgroundColor = [UIColor whiteColor];
+    self.homeNavBar.backgroundColor = [UIColor clearColor];
 }
 
 #pragma mark - LazyLoad

@@ -1343,6 +1343,8 @@
 		099838E72217EFEA006CB358 /* ZCPop_voice_send_anime_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 099833A42217EFE8006CB358 /* ZCPop_voice_send_anime_5@2x.png */; };
 		099838E82217EFEA006CB358 /* ZCicon_pop_satisfaction@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 099833A52217EFE9006CB358 /* ZCicon_pop_satisfaction@3x.png */; };
 		09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E298FD2260A646009F0D4E /* HomeNavigationBar.m */; };
+		09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1022643BE400FCAAE4 /* HomePagesTopBar.m */; };
+		09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */; };
 		7B22D8E921D218EB6F3DEE46 /* libPods-BilibiliComic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */; };
 /* End PBXBuildFile section */
 
@@ -2717,6 +2719,10 @@
 		09E298F222606297009F0D4E /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		09E298FC2260A646009F0D4E /* HomeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBar.h; sourceTree = "<group>"; };
 		09E298FD2260A646009F0D4E /* HomeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationBar.m; sourceTree = "<group>"; };
+		09EB8B0F22643BE400FCAAE4 /* HomePagesTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePagesTopBar.h; sourceTree = "<group>"; };
+		09EB8B1022643BE400FCAAE4 /* HomePagesTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePagesTopBar.m; sourceTree = "<group>"; };
+		09EB8B122264482800FCAAE4 /* NSArray+Sudoku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sudoku.h"; sourceTree = "<group>"; };
+		09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sudoku.m"; sourceTree = "<group>"; };
 		2A5F7987A831C9957FFA7597 /* Pods-BilibiliComic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.release.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.release.xcconfig"; sourceTree = "<group>"; };
 		71289A0C19E253DB6D1F84CB /* Pods-BilibiliComic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.debug.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.debug.xcconfig"; sourceTree = "<group>"; };
 		DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BilibiliComic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -4200,6 +4206,8 @@
 		09E298F522606CBE009F0D4E /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				09EB8B122264482800FCAAE4 /* NSArray+Sudoku.h */,
+				09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -4209,6 +4217,8 @@
 			children = (
 				09E298FC2260A646009F0D4E /* HomeNavigationBar.h */,
 				09E298FD2260A646009F0D4E /* HomeNavigationBar.m */,
+				09EB8B0F22643BE400FCAAE4 /* HomePagesTopBar.h */,
+				09EB8B1022643BE400FCAAE4 /* HomePagesTopBar.m */,
 			);
 			path = HomeNavigationBar;
 			sourceTree = "<group>";
@@ -5731,9 +5741,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
+				09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */,
 				096D0287221835420067651A /* BaseTabbarController.m in Sources */,
 				096D0283221818970067651A /* BaseViewController.m in Sources */,
 				09982B852217EBE5006CB358 /* main.m in Sources */,
+				09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */,
 				096D02942218364B0067651A /* BookListViewController.m in Sources */,
 				09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */,
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,

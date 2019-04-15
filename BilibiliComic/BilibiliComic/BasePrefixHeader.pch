@@ -10,7 +10,7 @@
 #define BasePrefixHeader_pch
 
 //Custom
-
+#import "NSArray+Sudoku.h"
 
 //Define
 #import "Defines.h"
