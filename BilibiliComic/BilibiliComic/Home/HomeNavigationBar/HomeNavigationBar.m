@@ -8,11 +8,14 @@
 
 #import "HomeNavigationBar.h"
 #import "HomePagesTopBar.h"
+#import "HomeSearchBar.h"
 
 @interface HomeNavigationBar ()
 
 @property (nonatomic,strong) UIView           *contentView;
 @property (nonatomic,strong) HomePagesTopBar  *topBar;
+@property (nonatomic,strong) HomeSearchBar    *searchBar;
+@property (nonatomic,strong) UIButton         *timeLineBtn;
 
 @end
 
@@ -37,6 +40,26 @@
         make.top.bottom.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(10);
     }];
+    
+    [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.timeLineBtn.mas_left).offset(-10);
+        make.top.equalTo(self.contentView).offset(10);
+        make.bottom.equalTo(self.contentView).offset(-10);
+        make.left.greaterThanOrEqualTo(self.topBar.mas_right).offset(10);
+        make.width.mas_equalTo(120);
+    }];
+    
+    [self.timeLineBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.contentView).offset(-5);
+        make.top.bottom.equalTo(self.contentView);
+        make.width.equalTo(self.timeLineBtn.mas_height);
+    }];
+    
+    [self layoutIfNeeded];
+    
+    self.searchBar.layer.cornerRadius = self.searchBar.bounds.size.height / 2;
+    self.searchBar.layer.masksToBounds = YES;
+    [self.searchBar openScrollMode];
 }
 
 #pragma mark - LazyLoad
@@ -61,6 +84,26 @@
         [self.contentView addSubview:_topBar];
     }
     return _topBar;
+}
+
+-(HomeSearchBar *)searchBar
+{
+    if (!_searchBar) {
+        _searchBar = [[HomeSearchBar alloc] init];
+        [self.contentView addSubview:_searchBar];
+    }
+    return _searchBar;
+}
+
+-(UIButton *)timeLineBtn
+{
+    if (!_timeLineBtn) {
+        _timeLineBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_timeLineBtn setImage:UIImage(@"home_gray_calendar_24x24_") forState:UIControlStateNormal];
+//        [_timeLineBtn setImage:UIImage(@"home_whiter_calendar_24x24_") forState:UIControlStateHighlighted];
+        [self.contentView addSubview:_timeLineBtn];
+    }
+    return _timeLineBtn;
 }
 
 @end

@@ -47,6 +47,13 @@
 //设置RGB颜色/设置RGBA颜色
 #define RGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 #define RGBAColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(r)/255.0 blue:(r)/255.0 alpha:a]
+
+#define DefaultViewBackgroundColor  RGBColor(245, 245, 245)
+#define DefaultBorderColor          RGBColor(229, 229, 229)
+#define DefaultContentColor         RGBColor(44, 45, 46)
+#define DefaultContentLightColor    RGBColor(138, 138, 138)
+#define DefaultContentBackColor     RGBColor(175, 175, 175)
+
 // clear背景颜色
 #define GClearColor [UIColor clearColor]
 
