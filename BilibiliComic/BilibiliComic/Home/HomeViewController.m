@@ -36,6 +36,11 @@
 -(void)initNavigationBar
 {
     self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
+    @weakify(self)
+    [[RACObserve(self.homeNavBar, navBarStyle) distinctUntilChanged] subscribeNext:^(id  _Nullable x) {
+        @strongify(self)
+        [self setNeedsStatusBarAppearanceUpdate];
+    }];
 }
 
 #pragma mark - LazyLoad
