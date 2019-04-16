@@ -19,7 +19,10 @@
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    if (self.homeNavBar.navBarStyle == HomeNavigationBarStyleLightContent) {
+        return UIStatusBarStyleLightContent;
+    }
+    return UIStatusBarStyleDefault;
 }
 
 - (void)viewDidLoad {
@@ -32,7 +35,7 @@
 
 -(void)initNavigationBar
 {
-    self.homeNavBar.backgroundColor = [UIColor clearColor];
+    self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
 }
 
 #pragma mark - LazyLoad

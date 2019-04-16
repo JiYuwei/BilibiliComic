@@ -10,6 +10,7 @@
 #define BasePrefixHeader_pch
 
 //Custom
+#import "PlistManager.h"
 #import "NSArray+Sudoku.h"
 
 //Define

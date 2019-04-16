@@ -1347,6 +1347,8 @@
 		09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */; };
 		09EB8B1722648CA200FCAAE4 /* HomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1622648CA200FCAAE4 /* HomeSearchBar.m */; };
 		09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B192264990700FCAAE4 /* SearchCycleScrollView.m */; };
+		09EB8B1C2265AFE200FCAAE4 /* UIWidthList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09EB8B1B2265AFE200FCAAE4 /* UIWidthList.plist */; };
+		09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1F2265B1FC00FCAAE4 /* PlistManager.m */; };
 		7B22D8E921D218EB6F3DEE46 /* libPods-BilibiliComic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */; };
 /* End PBXBuildFile section */
 
@@ -2729,6 +2731,10 @@
 		09EB8B1622648CA200FCAAE4 /* HomeSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchBar.m; sourceTree = "<group>"; };
 		09EB8B182264990700FCAAE4 /* SearchCycleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchCycleScrollView.h; sourceTree = "<group>"; };
 		09EB8B192264990700FCAAE4 /* SearchCycleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchCycleScrollView.m; sourceTree = "<group>"; };
+		09EB8B1B2265AFE200FCAAE4 /* UIWidthList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = UIWidthList.plist; sourceTree = "<group>"; };
+		09EB8B1E2265B1FC00FCAAE4 /* PlistManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlistManager.h; sourceTree = "<group>"; };
+		09EB8B1F2265B1FC00FCAAE4 /* PlistManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlistManager.m; sourceTree = "<group>"; };
+		09EB8B212265BE8F00FCAAE4 /* HomeNavigationBarProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBarProtocol.h; sourceTree = "<group>"; };
 		2A5F7987A831C9957FFA7597 /* Pods-BilibiliComic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.release.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.release.xcconfig"; sourceTree = "<group>"; };
 		71289A0C19E253DB6D1F84CB /* Pods-BilibiliComic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.debug.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.debug.xcconfig"; sourceTree = "<group>"; };
 		DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BilibiliComic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2842,6 +2848,7 @@
 				096D028B221835DC0067651A /* Me */,
 				09982BA72217EE93006CB358 /* PngSrc */,
 				09E298F522606CBE009F0D4E /* Category */,
+				09EB8B1D2265B19B00FCAAE4 /* Plist */,
 				09982B752217EBE4006CB358 /* AppDelegate.h */,
 				09982B762217EBE4006CB358 /* AppDelegate.m */,
 				09982B7E2217EBE5006CB358 /* Assets.xcassets */,
@@ -4221,6 +4228,7 @@
 		09E298FB2260A614009F0D4E /* HomeNavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				09EB8B212265BE8F00FCAAE4 /* HomeNavigationBarProtocol.h */,
 				09E298FC2260A646009F0D4E /* HomeNavigationBar.h */,
 				09E298FD2260A646009F0D4E /* HomeNavigationBar.m */,
 				09EB8B0F22643BE400FCAAE4 /* HomePagesTopBar.h */,
@@ -4231,6 +4239,16 @@
 				09EB8B192264990700FCAAE4 /* SearchCycleScrollView.m */,
 			);
 			path = HomeNavigationBar;
+			sourceTree = "<group>";
+		};
+		09EB8B1D2265B19B00FCAAE4 /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				09EB8B1E2265B1FC00FCAAE4 /* PlistManager.h */,
+				09EB8B1F2265B1FC00FCAAE4 /* PlistManager.m */,
+				09EB8B1B2265AFE200FCAAE4 /* UIWidthList.plist */,
+			);
+			path = Plist;
 			sourceTree = "<group>";
 		};
 		981D807FFEA87CEDB4133B99 /* Pods */ = {
@@ -4484,6 +4502,7 @@
 				099835402217EFE9006CB358 /* common_back_15x14_@2x.png in Resources */,
 				0998372F2217EFEA006CB358 /* player_share_qzone_44x44_@3x.png in Resources */,
 				099836262217EFE9006CB358 /* user_feedback_ico_24x24_@2x.png in Resources */,
+				09EB8B1C2265AFE200FCAAE4 /* UIWidthList.plist in Resources */,
 				099836392217EFE9006CB358 /* season_downloaded_16x16_@1x.png in Resources */,
 				099837B32217EFEA006CB358 /* comic_pull_loading_8_180x72_@2x.png in Resources */,
 				099837AD2217EFEA006CB358 /* mine_sign_book_cover_310x410_@2x.png in Resources */,
@@ -5761,6 +5780,7 @@
 				096D02942218364B0067651A /* BookListViewController.m in Sources */,
 				09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */,
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,
+				09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */,
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
 				096D0297221836580067651A /* MeViewController.m in Sources */,
 				09982B772217EBE4006CB358 /* AppDelegate.m in Sources */,

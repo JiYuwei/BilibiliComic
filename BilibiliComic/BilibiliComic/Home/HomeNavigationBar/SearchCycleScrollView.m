@@ -8,7 +8,7 @@
 
 #import "SearchCycleScrollView.h"
 
-@interface SearchCycleScrollView ()
+@interface SearchCycleScrollView () <HomeNavigationBarProtocol>
 
 //定时器，让label动起来
 @property (nonatomic,strong) NSTimer *timer;
@@ -41,8 +41,6 @@
     if (self) {
         self.firstLabel = [[UILabel alloc] init];
         self.secondLabel = [[UILabel alloc] init];
-        self.firstLabel.textColor = DefaultContentLightColor;
-        self.secondLabel.textColor = DefaultContentLightColor;
         self.firstLabel.font = [UIFont systemFontOfSize:14];
         self.secondLabel.font = [UIFont systemFontOfSize:14];
         
@@ -86,5 +84,38 @@ static NSInteger i=1;
     
 }
 
+#pragma mark - HomeNavigationBarProtocol
+
+-(void)showNavigationBarStyle:(HomeNavigationBarStyle)style
+{
+    switch (style) {
+        case HomeNavigationBarStyleDefault:
+        {
+            self.firstLabel.textColor = DefaultContentLightColor;
+            self.secondLabel.textColor = DefaultContentLightColor;
+        }
+            break;
+        case HomeNavigationBarStyleLightContent:
+        {
+            self.firstLabel.textColor = [UIColor whiteColor];
+            self.secondLabel.textColor = [UIColor whiteColor];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - Setter
+
+-(void)setCycleStyle:(HomeNavigationBarStyle)cycleStyle
+{
+    if (_cycleStyle != cycleStyle) {
+        _cycleStyle = cycleStyle;
+        
+        [self showNavigationBarStyle:_cycleStyle];
+    }
+}
 
 @end

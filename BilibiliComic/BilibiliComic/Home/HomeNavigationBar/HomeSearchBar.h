@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeNavigationBarProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeSearchBar : UIView
+
+@property (nonatomic,assign) HomeNavigationBarStyle searchBarStyle;
 
 -(void)openScrollMode;
 

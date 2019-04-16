@@ -52,14 +52,10 @@
 #define DefaultBorderColor          RGBColor(229, 229, 229)
 #define DefaultContentColor         RGBColor(44, 45, 46)
 #define DefaultContentLightColor    RGBColor(138, 138, 138)
-#define DefaultContentBackColor     RGBColor(175, 175, 175)
+#define DefaultContentBackColor     RGBAColor(240, 240, 240, 0.3)
 
 // clear背景颜色
 #define GClearColor [UIColor clearColor]
-
-//弱引用/强引用
-#define LRWeakSelf(type)  __weak typeof(type) weak##type = type;
-#define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
 
 //获取UIImage
 #define UIImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]

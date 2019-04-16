@@ -10,7 +10,7 @@
 #import "HomePagesTopBar.h"
 #import "HomeSearchBar.h"
 
-@interface HomeNavigationBar ()
+@interface HomeNavigationBar () <HomeNavigationBarProtocol>
 
 @property (nonatomic,strong) UIView           *contentView;
 @property (nonatomic,strong) HomePagesTopBar  *topBar;
@@ -24,6 +24,8 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
+        self.navBarStyle = HomeNavigationBarStylePrepared;
+        self.navBarStyle = HomeNavigationBarStyleDefault;
         [self cusLayoutAllSubViews];
     }
     return self;
@@ -60,6 +62,55 @@
     self.searchBar.layer.cornerRadius = self.searchBar.bounds.size.height / 2;
     self.searchBar.layer.masksToBounds = YES;
     [self.searchBar openScrollMode];
+    
+    
+    [[self.timeLineBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            if (self.navBarStyle == HomeNavigationBarStyleDefault) {
+                self.navBarStyle = HomeNavigationBarStyleLightContent;
+            }
+            else{
+                self.navBarStyle = HomeNavigationBarStyleDefault;
+            }
+        }];
+    }];
+}
+
+#pragma mark - HomeNavigationBarProtocol
+
+-(void)showNavigationBarStyle:(HomeNavigationBarStyle)style
+{
+    switch (style) {
+        case HomeNavigationBarStyleDefault:
+        {
+            self.backgroundColor = [UIColor whiteColor];
+            [self.timeLineBtn setImage:UIImage(@"home_gray_calendar_24x24_") forState:UIControlStateNormal];
+        }
+            break;
+        case HomeNavigationBarStyleLightContent:
+        {
+            self.backgroundColor = [UIColor clearColor];
+            [self.timeLineBtn setImage:UIImage(@"home_whiter_calendar_24x24_") forState:UIControlStateNormal];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - Setter
+
+-(void)setNavBarStyle:(HomeNavigationBarStyle)navBarStyle
+{
+    if (_navBarStyle != navBarStyle) {
+        _navBarStyle = navBarStyle;
+        
+        self.topBar.topBarStyle = _navBarStyle;
+        self.searchBar.searchBarStyle = _navBarStyle;
+        [self showNavigationBarStyle:_navBarStyle];
+    }
 }
 
 #pragma mark - LazyLoad
@@ -80,7 +131,6 @@
         _topBar = [[HomePagesTopBar alloc] init];
 //        _topBar.backgroundColor = [UIColor cyanColor];
         _topBar.itemTitles = @[@"推荐",@"排行",@"新作"];
-        _topBar.topBarStyle = HomePagesTopBarStyleLightContent;
         [self.contentView addSubview:_topBar];
     }
     return _topBar;

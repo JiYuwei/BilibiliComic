@@ -7,19 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HomeNavigationBarProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSUInteger, HomePagesTopBarStyle) {
-    HomePagesTopBarStyleDefault,
-    HomePagesTopBarStyleLightContent
-};
-
 @interface HomePagesTopBar : UIView
 
-@property (nonatomic,copy)   NSArray               *itemTitles;
-@property (nonatomic,assign) HomePagesTopBarStyle  topBarStyle;
-@property (nonatomic,assign) NSUInteger            currentIndex;
+@property (nonatomic,copy)   NSArray                 *itemTitles;
+@property (nonatomic,assign) HomeNavigationBarStyle  topBarStyle;
+@property (nonatomic,assign) NSUInteger              currentIndex;
 
 @end
 

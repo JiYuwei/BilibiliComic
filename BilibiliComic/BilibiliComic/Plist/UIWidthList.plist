@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PagesTopBarItem</key>
+	<dict>
+		<key>320</key>
+		<integer>40</integer>
+		<key>375</key>
+		<integer>50</integer>
+		<key>414</key>
+		<integer>60</integer>
+	</dict>
+	<key>PagesTopBarItemFont</key>
+	<dict>
+		<key>320</key>
+		<integer>15</integer>
+		<key>375</key>
+		<integer>17</integer>
+		<key>414</key>
+		<integer>17</integer>
+	</dict>
+</dict>
+</plist>

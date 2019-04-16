@@ -8,12 +8,13 @@
 
 #import "HomePagesTopBar.h"
 
-static const CGFloat ItemWidth     = 50;
-static const CGFloat ItemFont      = 17;
+#define WidthKey @"PagesTopBarItem"
+#define WidthFontKey @"PagesTopBarItemFont"
+
 static const CGFloat ItemScale     = 1.2;
 static const CGFloat AnimDuration  = 0.3;
 
-@interface HomePagesTopBar ()
+@interface HomePagesTopBar () <HomeNavigationBarProtocol>
 
 @property (nonatomic,strong) NSMutableArray <UILabel *> *itemLabels;
 @property (nonatomic,strong) UIView *silder;
@@ -21,11 +22,16 @@ static const CGFloat AnimDuration  = 0.3;
 @end
 
 @implementation HomePagesTopBar
+{
+    CGFloat _itemWidth;
+    CGFloat _itemFont;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-
+        _itemWidth = [PlistManager widthWithKey:WidthKey];
+        _itemFont = [PlistManager widthWithKey:WidthFontKey];
     }
     return self;
 }
@@ -52,7 +58,7 @@ static const CGFloat AnimDuration  = 0.3;
         [self.itemLabels addObject:titleLabel];
     }];
     
-    [self.itemLabels mas_distributeSudokuViewsWithFixedItemWidth:ItemWidth
+    [self.itemLabels mas_distributeSudokuViewsWithFixedItemWidth:_itemWidth
                                                  fixedItemHeight:0
                                                 fixedLineSpacing:0
                                            fixedInteritemSpacing:0
@@ -70,7 +76,7 @@ static const CGFloat AnimDuration  = 0.3;
     
     [self layoutIfNeeded];
     
-    [self showPagesTopBarStyle:HomePagesTopBarStyleDefault];
+    [self showNavigationBarStyle:HomeNavigationBarStyleDefault];
     [self showSelectedLabel:self.itemLabels.firstObject];
 }
 
@@ -80,36 +86,39 @@ static const CGFloat AnimDuration  = 0.3;
     [self.itemLabels enumerateObjectsUsingBlock:^(UILabel * _Nonnull titleLabel, NSUInteger idx, BOOL * _Nonnull stop) {
         
         [UIView animateWithDuration:AnimDuration animations:^{
+            
             if (titleLabel == label) {
                 titleLabel.transform = CGAffineTransformMakeScale(ItemScale, ItemScale);
                 titleLabel.textColor = defaultStyle?[UIColor blackColor]:[UIColor whiteColor];
-                titleLabel.font = [UIFont boldSystemFontOfSize:ItemFont];
+                titleLabel.font = [UIFont boldSystemFontOfSize:self->_itemFont];
             }
             else {
                 titleLabel.transform = CGAffineTransformMakeScale(1, 1);
                 titleLabel.textColor = defaultStyle?[UIColor grayColor]:[UIColor whiteColor];
-                titleLabel.font = [UIFont systemFontOfSize:ItemFont];
+                titleLabel.font = [UIFont systemFontOfSize:self->_itemFont];
             }
         }];
     }];
     
     [UIView animateWithDuration:AnimDuration animations:^{
-        CGFloat x = self.currentIndex * self.bounds.size.width / self.itemLabels.count + ItemWidth / 2;
+        CGFloat x = self.currentIndex * self.bounds.size.width / self.itemLabels.count + self->_itemWidth / 2;
         CGFloat y = self.silder.center.y;
         self.silder.center = CGPointMake(x, y);
     }];
 }
 
--(void)showPagesTopBarStyle:(HomePagesTopBarStyle)style
+#pragma mark - HomeNavigationBarProtocol
+
+-(void)showNavigationBarStyle:(HomeNavigationBarStyle)style
 {
     switch (style) {
-        case HomePagesTopBarStyleDefault: {
+        case HomeNavigationBarStyleDefault: {
             self.silder.backgroundColor = [UIColor blueColor];
             [self.itemLabels makeObjectsPerformSelector:@selector(setTextColor:) withObject:[UIColor grayColor]];
             self.itemLabels[self.currentIndex].textColor = [UIColor blackColor];
         }
             break;
-        case HomePagesTopBarStyleLightContent: {
+        case HomeNavigationBarStyleLightContent: {
             self.silder.backgroundColor = [UIColor whiteColor];
             [self.itemLabels makeObjectsPerformSelector:@selector(setTextColor:) withObject:[UIColor whiteColor]];
         }
@@ -130,11 +139,11 @@ static const CGFloat AnimDuration  = 0.3;
     }
 }
 
--(void)setTopBarStyle:(HomePagesTopBarStyle)topBarStyle
+-(void)setTopBarStyle:(HomeNavigationBarStyle)topBarStyle
 {
     if (_topBarStyle != topBarStyle) {
         _topBarStyle = topBarStyle;
-        [self showPagesTopBarStyle:_topBarStyle];
+        [self showNavigationBarStyle:_topBarStyle];
     }
 }
 

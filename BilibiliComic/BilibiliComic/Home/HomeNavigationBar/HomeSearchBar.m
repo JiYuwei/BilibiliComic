@@ -9,8 +9,9 @@
 #import "HomeSearchBar.h"
 #import "SearchCycleScrollView.h"
 
-@interface HomeSearchBar ()
+@interface HomeSearchBar () <HomeNavigationBarProtocol>
 
+@property (nonatomic,strong) UIView                 *shadowView;
 @property (nonatomic,strong) UIImageView            *searchImageView;
 @property (nonatomic,strong) SearchCycleScrollView  *searchCycleView;
 
@@ -34,6 +35,10 @@
 
 -(void)cusLayoutAllSubViews
 {
+    [self.shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
     [self.searchImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(8);
         make.top.equalTo(self).offset(5);
@@ -48,7 +53,52 @@
     }];
 }
 
+#pragma mark - HomeNavigationBarProtocol
+
+-(void)showNavigationBarStyle:(HomeNavigationBarStyle)style
+{
+    switch (style) {
+        case HomeNavigationBarStyleDefault:
+        {
+            self.backgroundColor = DefaultBorderColor;
+            self.searchImageView.image = UIImage(@"nav_search_s_ico");
+        }
+            break;
+        case HomeNavigationBarStyleLightContent:
+        {
+            self.backgroundColor = DefaultContentBackColor;
+            self.searchImageView.image = UIImage(@"home_whiteSearch_bar_16x16_");
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - Setter
+
+-(void)setSearchBarStyle:(HomeNavigationBarStyle)searchBarStyle
+{
+    if (_searchBarStyle != searchBarStyle) {
+        _searchBarStyle = searchBarStyle;
+        
+        self.searchCycleView.cycleStyle = _searchBarStyle;
+        [self showNavigationBarStyle:_searchBarStyle];
+    }
+}
+
 #pragma mark - LazyLoad
+
+-(UIView *)shadowView
+{
+    if (!_shadowView) {
+        _shadowView = [[UIView alloc] init];
+        _shadowView.backgroundColor = DefaultContentBackColor;
+        [self addSubview:_shadowView];
+    }
+    return _shadowView;
+}
 
 -(UIImageView *)searchImageView
 {
