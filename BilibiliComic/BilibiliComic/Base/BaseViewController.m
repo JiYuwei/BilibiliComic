@@ -10,6 +10,8 @@
 
 @interface BaseViewController ()
 
+@property (nonatomic,strong) UITableView *tableView;
+
 @end
 
 @implementation BaseViewController
@@ -18,6 +20,10 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.extendedLayoutIncludesOpaqueBars = NO;
+    self.modalPresentationCapturesStatusBarAppearance = NO;
+    self.automaticallyAdjustsScrollViewInsets=NO;
 }
 
 @end

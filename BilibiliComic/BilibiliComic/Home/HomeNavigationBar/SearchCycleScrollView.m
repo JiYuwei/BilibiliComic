@@ -32,7 +32,8 @@
         self.firstLabel.text = self.placeHolders[0];
         self.secondLabel.text = self.placeHolders[1];
     }
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:self.interval target:self selector:@selector(scroll) userInfo:nil repeats:YES];
+    self.timer = [NSTimer timerWithTimeInterval:self.interval target:self selector:@selector(scroll) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
 -(instancetype)initWithFrame:(CGRect)frame
