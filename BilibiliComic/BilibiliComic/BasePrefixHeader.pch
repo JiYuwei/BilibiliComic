@@ -10,6 +10,7 @@
 #define BasePrefixHeader_pch
 
 //Custom
+#import "RequestAPI.h"
 #import "PlistManager.h"
 #import "NSArray+Sudoku.h"
 

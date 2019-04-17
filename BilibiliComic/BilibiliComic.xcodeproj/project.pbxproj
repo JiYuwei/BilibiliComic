@@ -2729,6 +2729,7 @@
 		09D5422822672F80007681E4 /* BCNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCNetworkRequest.m; sourceTree = "<group>"; };
 		09D5422922672F80007681E4 /* BCRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCRequestCache.m; sourceTree = "<group>"; };
 		09D5422A22672F81007681E4 /* BCRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCRequestCache.h; sourceTree = "<group>"; };
+		09D5422D22673299007681E4 /* RequestAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestAPI.h; sourceTree = "<group>"; };
 		09E298F222606297009F0D4E /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		09E298FC2260A646009F0D4E /* HomeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBar.h; sourceTree = "<group>"; };
 		09E298FD2260A646009F0D4E /* HomeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationBar.m; sourceTree = "<group>"; };
@@ -2869,6 +2870,7 @@
 				09982B832217EBE5006CB358 /* Info.plist */,
 				09982B842217EBE5006CB358 /* main.m */,
 				09E298F222606297009F0D4E /* Defines.h */,
+				09D5422D22673299007681E4 /* RequestAPI.h */,
 				096D028422182FF10067651A /* BasePrefixHeader.pch */,
 			);
 			path = BilibiliComic;
