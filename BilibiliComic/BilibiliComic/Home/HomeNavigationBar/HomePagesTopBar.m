@@ -17,7 +17,6 @@ static const CGFloat AnimDuration  = 0.3;
 @interface HomePagesTopBar () <HomeNavigationBarProtocol>
 
 @property (nonatomic,strong) NSMutableArray <UILabel *> *itemLabels;
-@property (nonatomic,strong) UIView *silder;
 
 @end
 
@@ -49,8 +48,7 @@ static const CGFloat AnimDuration  = 0.3;
         [[tap rac_gestureSignal] subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x){
             @strongify(self)
             self.currentIndex = idx;
-            UILabel *label = (UILabel *)x.view;
-            [self showSelectedLabel:label];
+            [self showSelectedIndex:idx];
         }];
         [titleLabel addGestureRecognizer:tap];
         
@@ -77,11 +75,16 @@ static const CGFloat AnimDuration  = 0.3;
     [self layoutIfNeeded];
     
     [self showNavigationBarStyle:HomeNavigationBarStyleDefault];
-    [self showSelectedLabel:self.itemLabels.firstObject];
+    [self showSelectedIndex:0];
 }
 
--(void)showSelectedLabel:(UILabel *)label
+-(void)showSelectedIndex:(NSUInteger)index
 {
+    if (index >= self.itemLabels.count) {
+        return;
+    }
+    
+    UILabel *label = self.itemLabels[index];
     BOOL defaultStyle = !self.topBarStyle;
     [self.itemLabels enumerateObjectsUsingBlock:^(UILabel * _Nonnull titleLabel, NSUInteger idx, BOOL * _Nonnull stop) {
         
@@ -98,12 +101,6 @@ static const CGFloat AnimDuration  = 0.3;
                 titleLabel.font = [UIFont systemFontOfSize:self->_itemFont];
             }
         }];
-    }];
-    
-    [UIView animateWithDuration:AnimDuration animations:^{
-        CGFloat x = self.currentIndex * self.bounds.size.width / self.itemLabels.count + self->_itemWidth / 2;
-        CGFloat y = self.silder.center.y;
-        self.silder.center = CGPointMake(x, y);
     }];
 }
 

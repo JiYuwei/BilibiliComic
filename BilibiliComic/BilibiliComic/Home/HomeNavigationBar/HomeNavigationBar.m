@@ -7,15 +7,10 @@
 //
 
 #import "HomeNavigationBar.h"
-#import "HomePagesTopBar.h"
-#import "HomeSearchBar.h"
 
 @interface HomeNavigationBar () <HomeNavigationBarProtocol>
 
 @property (nonatomic,strong) UIView           *contentView;
-@property (nonatomic,strong) HomePagesTopBar  *topBar;
-@property (nonatomic,strong) HomeSearchBar    *searchBar;
-@property (nonatomic,strong) UIButton         *timeLineBtn;
 
 @end
 
@@ -38,7 +33,7 @@
         make.top.equalTo(self).offset(BC_STATUS_HEIGHT);
     }];
     
-    [self.topBar mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.pagesTopBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.equalTo(self.contentView);
         make.left.equalTo(self.contentView).offset(10);
     }];
@@ -47,7 +42,7 @@
         make.right.equalTo(self.timeLineBtn.mas_left).offset(-10);
         make.top.equalTo(self.contentView).offset(10);
         make.bottom.equalTo(self.contentView).offset(-10);
-        make.left.greaterThanOrEqualTo(self.topBar.mas_right).offset(10);
+        make.left.greaterThanOrEqualTo(self.pagesTopBar.mas_right).offset(10);
         make.width.mas_equalTo(120);
     }];
     
@@ -65,15 +60,7 @@
     
     
     [[self.timeLineBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        
-        [UIView animateWithDuration:0.3 animations:^{
-            if (self.navBarStyle == HomeNavigationBarStyleDefault) {
-                self.navBarStyle = HomeNavigationBarStyleLightContent;
-            }
-            else{
-                self.navBarStyle = HomeNavigationBarStyleDefault;
-            }
-        }];
+        NSLog(@"\nClick:%@",x);
     }];
 }
 
@@ -107,7 +94,7 @@
     if (_navBarStyle != navBarStyle) {
         _navBarStyle = navBarStyle;
         
-        self.topBar.topBarStyle = _navBarStyle;
+        self.pagesTopBar.topBarStyle = _navBarStyle;
         self.searchBar.searchBarStyle = _navBarStyle;
         [self showNavigationBarStyle:_navBarStyle];
     }
@@ -125,15 +112,15 @@
     return _contentView;
 }
 
--(HomePagesTopBar *)topBar
+-(HomePagesTopBar *)pagesTopBar
 {
-    if (!_topBar) {
-        _topBar = [[HomePagesTopBar alloc] init];
-//        _topBar.backgroundColor = [UIColor cyanColor];
-        _topBar.itemTitles = @[@"推荐",@"排行",@"新作"];
-        [self.contentView addSubview:_topBar];
+    if (!_pagesTopBar) {
+        _pagesTopBar = [[HomePagesTopBar alloc] init];
+//        _pagesTopBar.backgroundColor = [UIColor cyanColor];
+        _pagesTopBar.itemTitles = @[@"推荐",@"排行",@"新作"];
+        [self.contentView addSubview:_pagesTopBar];
     }
-    return _topBar;
+    return _pagesTopBar;
 }
 
 -(HomeSearchBar *)searchBar

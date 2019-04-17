@@ -13,9 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePagesTopBar : UIView
 
-@property (nonatomic,copy)   NSArray                 *itemTitles;
 @property (nonatomic,assign) HomeNavigationBarStyle  topBarStyle;
 @property (nonatomic,assign) NSUInteger              currentIndex;
+
+@property (nonatomic,copy)   NSArray                 *itemTitles;
+
+@property (nonatomic,strong) UIView                  *silder;
+
+-(void)showSelectedIndex:(NSUInteger)index;
 
 @end
 

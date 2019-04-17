@@ -12,16 +12,19 @@
 #import "RankViewController.h"
 #import "NewViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UIScrollViewDelegate>
 
 @property (nonatomic,strong) HomeNavigationBar *homeNavBar;
 @property (nonatomic,strong) UIScrollView *mainScrollView;
 
-@property (nonatomic,copy) NSArray *childVCArray;
+@property (nonatomic,copy,readonly) NSArray *childVCArray;
 
 @end
 
 @implementation HomeViewController
+{
+    NSArray *_childVCArray;
+}
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -42,10 +45,18 @@
 -(void)initNavigationBar
 {
     self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
+    
     @weakify(self)
     [[RACObserve(self.homeNavBar, navBarStyle) distinctUntilChanged] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
         [self setNeedsStatusBarAppearanceUpdate];
+    }];
+    
+    [[self.homeNavBar.pagesTopBar rac_signalForSelector:@selector(showSelectedIndex:)] subscribeNext:^(RACTuple * _Nullable x) {
+        @strongify(self)
+        NSUInteger index = [x.first unsignedIntegerValue];
+        CGFloat width = self.mainScrollView.bounds.size.width;
+        [self.mainScrollView setContentOffset:CGPointMake(width * index, 0) animated:YES];
     }];
 }
 
@@ -63,6 +74,39 @@
         [self.mainScrollView addSubview:childVC.view];
         [childVC didMoveToParentViewController:self];
     }];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offsetX = scrollView.contentOffset.x;
+    CGFloat alpha   = (offsetX / BCSCREEN_WIDTH) < 1 ? (offsetX / BCSCREEN_WIDTH) : 1;
+//    NSLog(@"%.f",alpha);
+    
+    HomePagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
+    UIView *silder = pagesTopBar.silder;
+    CGFloat place = pagesTopBar.bounds.size.width / pagesTopBar.itemTitles.count / 2;
+    CGFloat percent = offsetX / BCSCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);
+    CGFloat x = place + place * percent;
+    CGFloat y = silder.center.y;
+    silder.center = CGPointMake(x, y);
+    
+    BOOL defaultMode = alpha > 0.05;
+    if (defaultMode) {
+        self.homeNavBar.navBarStyle = (alpha < 0.1) ? HomeNavigationBarStyleLightContent : HomeNavigationBarStyleDefault;
+        self.homeNavBar.alpha = alpha;
+    }
+    else {
+        self.homeNavBar.alpha = 1;
+    }
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat offsetX = scrollView.contentOffset.x;
+    NSUInteger index = (NSUInteger)(offsetX / scrollView.bounds.size.width);
+    [self.homeNavBar.pagesTopBar showSelectedIndex:index];
 }
 
 #pragma mark - LazyLoad
@@ -84,6 +128,7 @@
         _mainScrollView.showsHorizontalScrollIndicator = NO;
         _mainScrollView.bounces = NO;
         _mainScrollView.pagingEnabled = YES;
+        _mainScrollView.delegate = self;
         [self.view addSubview:_mainScrollView];
     }
     return _mainScrollView;

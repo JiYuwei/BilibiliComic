@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeNavigationBarProtocol.h"
+#import "HomePagesTopBar.h"
+#import "HomeSearchBar.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeNavigationBar : UIView
 
 @property (nonatomic,assign) HomeNavigationBarStyle navBarStyle;
+
+@property (nonatomic,strong) HomePagesTopBar  *pagesTopBar;
+@property (nonatomic,strong) HomeSearchBar    *searchBar;
+@property (nonatomic,strong) UIButton         *timeLineBtn;
 
 @end
 
