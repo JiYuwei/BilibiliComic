@@ -28,6 +28,7 @@ PODS:
   - Mantle/extobjc (2.1.0)
   - Masonry (1.0.2)
   - Minizip (1.0.0)
+  - MJRefresh (3.1.16)
   - NSObject-ObjectMap (2.3.1)
   - NullSafe (1.2.2)
   - PSCollectionView (0.0.1)
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - Mantle (~> 2.1.0)
   - Masonry (~> 1.0.2)
   - Minizip (~> 1.0.0)
+  - MJRefresh (~> 3.1.16)
   - NSObject-ObjectMap (~> 2.3.1)
   - NullSafe (~> 1.2.2)
   - PSCollectionView (~> 0.0.1)
@@ -71,6 +73,7 @@ SPEC REPOS:
     - Mantle
     - Masonry
     - Minizip
+    - MJRefresh
     - NSObject-ObjectMap
     - NullSafe
     - PSCollectionView
@@ -91,6 +94,7 @@ SPEC CHECKSUMS:
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   Minizip: 188cb3e39a1195c283ae03bf673d182596fefd0b
+  MJRefresh: 7798e16e53a5ef7f332dd05b27664db4e29530fd
   NSObject-ObjectMap: 3223c0c994a8e3de44ccb74ddf3e63c86821c015
   NullSafe: cbf1f77a24558e49bc76e2673f31250d3087c792
   PSCollectionView: 34b33818bfb5c00a2f7afdae6252baa99b46f814
@@ -99,6 +103,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 75fd94cc84b87b5c795ee9961391e7313fc74357
+PODFILE CHECKSUM: d808c111619e57d34e037d8521d42d1969edfa3b
 
 COCOAPODS: 1.6.0

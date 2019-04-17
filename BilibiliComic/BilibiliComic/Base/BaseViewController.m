@@ -25,14 +25,19 @@
     self.modalPresentationCapturesStatusBarAppearance = NO;
     self.automaticallyAdjustsScrollViewInsets=NO;
     
-    [self initMainTableView];
+    if (self.mainTableViewEnabled) {
+        [self initMainTableView];
+    }
 }
 
 -(void)initMainTableView
 {
-    if (self.mainTableViewEnabled) {
-         [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
-    }
+    [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
+}
+
+-(void)initMJRefresh
+{
+    
 }
 
 #pragma mark - UITableViewDataSource & Delegate

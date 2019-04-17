@@ -10,6 +10,7 @@ target 'BilibiliComic' do
 	pod 'AFNetworking', '~> 3.1.0'
 	pod 'SDWebImage', '~> 4.0.0'
 	pod 'JSONKit', '~> 1.5pre'
+	pod 'MJRefresh', '~> 3.1.16'
 	pod 'Mantle', '~> 2.1.0'
 	pod 'Masonry', '~> 1.0.2'
 	pod 'Minizip', '~> 1.0.0'
