@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "BCRefreshHeader.h"
 
 @interface BaseViewController ()
 
@@ -27,6 +28,7 @@
     
     if (self.mainTableViewEnabled) {
         [self initMainTableView];
+        [self initMJRefresh];
     }
 }
 
@@ -37,7 +39,28 @@
 
 -(void)initMJRefresh
 {
+    self.mainTableView.mj_header = [BCRefreshHeader headerWithRefreshingBlock:^{
+        [self retrieveData];
+    }];
     
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self loadMoreData];
+    }];
+    footer.triggerAutomaticallyRefreshPercent = 0.5;
+    [footer setTitle:@"加载中" forState:MJRefreshStateRefreshing];
+    [footer setTitle:@"～已经到底了～" forState:MJRefreshStateNoMoreData];
+    self.mainTableView.mj_footer = footer;
+}
+
+
+-(void)retrieveData
+{
+    [self.mainTableView.mj_header performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
+}
+
+-(void)loadMoreData
+{
+    [self.mainTableView.mj_footer performSelector:@selector(endRefreshingWithNoMoreData) withObject:nil afterDelay:2];
 }
 
 #pragma mark - UITableViewDataSource & Delegate
@@ -51,7 +74,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class]) forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"Main:%lu",indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"MainLine:%lu",indexPath.row+1];
     
     return cell;
 }
@@ -77,6 +100,8 @@
 {
     if (!_mainTableView) {
         _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_TABBAR_HEIGHT) style:UITableViewStyleGrouped];
+        _mainTableView.backgroundColor = [UIColor whiteColor];
+        _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _mainTableView.dataSource = self;
         _mainTableView.delegate = self;
         if (@available(iOS 11.0, *)) {

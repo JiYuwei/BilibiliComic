@@ -23,7 +23,7 @@
 - (UIImageView *)gifView
 {
     if (!_gifView) { 
-        UIImageView *gifView = [[UIImageView alloc] init]; 
+        UIImageView *gifView = [[UIImageView alloc] init];
         [self addSubview:_gifView = gifView]; 
     } 
     return _gifView; 
@@ -95,7 +95,7 @@
     
     self.gifView.frame = self.bounds;
     if (self.stateLabel.hidden && self.lastUpdatedTimeLabel.hidden) {
-        self.gifView.contentMode = UIViewContentModeCenter;
+        self.gifView.contentMode = UIViewContentModeBottom;
     } else {
         self.gifView.contentMode = UIViewContentModeRight;
         
