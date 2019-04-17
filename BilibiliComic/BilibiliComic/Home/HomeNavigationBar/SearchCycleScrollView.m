@@ -58,7 +58,7 @@ static NSInteger i=1;
     i=i>self.placeHolders.count-1?0:i;
     CGFloat height=self.frame.size.height;
     CGFloat width=self.frame.size.width;
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         NSArray *labelArray=self.subviews;
         //让label滚动起来
         for (UIView *view in labelArray) {
@@ -82,7 +82,6 @@ static NSInteger i=1;
             
         }
     }];
-    
 }
 
 #pragma mark - HomeNavigationBarProtocol

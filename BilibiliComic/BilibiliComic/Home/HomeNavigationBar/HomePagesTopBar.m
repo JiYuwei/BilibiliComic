@@ -8,8 +8,9 @@
 
 #import "HomePagesTopBar.h"
 
-#define WidthKey @"PagesTopBarItem"
-#define WidthFontKey @"PagesTopBarItemFont"
+#define WidthKey      @"PagesTopBarItem"
+#define WidthFontKey  @"PagesTopBarItemFont"
+#define SliderColor   RGBColor(58, 173, 254)
 
 static const CGFloat ItemScale     = 1.2;
 static const CGFloat AnimDuration  = 0.3;
@@ -66,14 +67,16 @@ static const CGFloat AnimDuration  = 0.3;
                                                      leadSpacing:0
                                                      tailSpacing:0];
     
-    [self.silder mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self).offset(-3);
+    [self.slider mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self).offset(-4);
         make.size.mas_equalTo(CGSizeMake(18, 3));
         make.centerX.equalTo(self.itemLabels.firstObject);
     }];
     
     [self layoutIfNeeded];
     
+    self.slider.layer.cornerRadius = self.slider.bounds.size.height / 2;
+    self.slider.layer.masksToBounds = YES;
     [self showNavigationBarStyle:HomeNavigationBarStyleDefault];
     [self showSelectedIndex:0];
 }
@@ -110,13 +113,13 @@ static const CGFloat AnimDuration  = 0.3;
 {
     switch (style) {
         case HomeNavigationBarStyleDefault: {
-            self.silder.backgroundColor = [UIColor blueColor];
+            self.slider.backgroundColor = SliderColor;
             [self.itemLabels makeObjectsPerformSelector:@selector(setTextColor:) withObject:[UIColor grayColor]];
             self.itemLabels[self.currentIndex].textColor = [UIColor blackColor];
         }
             break;
         case HomeNavigationBarStyleLightContent: {
-            self.silder.backgroundColor = [UIColor whiteColor];
+            self.slider.backgroundColor = [UIColor whiteColor];
             [self.itemLabels makeObjectsPerformSelector:@selector(setTextColor:) withObject:[UIColor whiteColor]];
         }
             break;
@@ -154,13 +157,13 @@ static const CGFloat AnimDuration  = 0.3;
     return _itemLabels;
 }
 
--(UIView *)silder
+-(UIView *)slider
 {
-    if (!_silder) {
-        _silder = [[UIView alloc] init];
-        [self addSubview:_silder];
+    if (!_slider) {
+        _slider = [[UIView alloc] init];
+        [self addSubview:_slider];
     }
-    return _silder;
+    return _slider;
 }
 
 @end

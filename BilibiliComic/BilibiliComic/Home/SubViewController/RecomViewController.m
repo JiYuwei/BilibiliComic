@@ -16,16 +16,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.mainTableView.showsVerticalScrollIndicator = NO;
     [self initTableHeaderview];
 }
 
 -(void)initTableHeaderview
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, 0.6 * BC_SCREEN_WIDTH)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, HeaderViewHeight)];
     headerView.backgroundColor = GRandomColor;
     self.mainTableView.tableHeaderView = headerView;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //Empty, RACSignalForSelecter -> HomeViewController;
+}
 
 @end

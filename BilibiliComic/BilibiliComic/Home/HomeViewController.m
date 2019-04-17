@@ -24,6 +24,8 @@
 @implementation HomeViewController
 {
     NSArray *_childVCArray;
+    CGFloat _currentAlpha;
+    HomeNavigationBarStyle _currentStyle;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle
@@ -75,9 +77,37 @@
         [self.mainScrollView addSubview:childVC.view];
         [childVC didMoveToParentViewController:self];
     }];
+    
+    _currentAlpha = 1;
+    _currentStyle = HomeNavigationBarStyleLightContent;
+    
+    RecomViewController *recomVC = (RecomViewController *)self.childViewControllers.firstObject;
+    [[recomVC rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable x) {
+        UIScrollView *scrollView = (UIScrollView *)x.first;
+        [self recomTableViewDidScroll:scrollView];
+    }];
 }
 
 #pragma mark - UIScrollViewDelegate
+
+//RecomViewController, UITableView
+-(void)recomTableViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat alpha   = (offsetY / BC_NAV_HEIGHT) < 1 ? (offsetY / BC_NAV_HEIGHT) : 1;
+    
+    if (alpha > 0.05) {
+        self.homeNavBar.navBarStyle = (alpha < 0.1) ? HomeNavigationBarStyleLightContent : HomeNavigationBarStyleDefault;
+        self.homeNavBar.alpha = alpha;
+    }
+    else {
+        self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
+        self.homeNavBar.alpha = 1;
+    }
+    
+    _currentAlpha = self.homeNavBar.alpha;
+    _currentStyle = self.homeNavBar.navBarStyle;
+}
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
@@ -86,20 +116,24 @@
 //    NSLog(@"%.f",alpha);
     
     HomePagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
-    UIView *silder = pagesTopBar.silder;
+    UIView *slider = pagesTopBar.slider;
     CGFloat place = pagesTopBar.bounds.size.width / pagesTopBar.itemTitles.count / 2;
     CGFloat percent = offsetX / BC_SCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);
     CGFloat x = place + place * percent;
-    CGFloat y = silder.center.y;
-    silder.center = CGPointMake(x, y);
+    CGFloat y = slider.center.y;
+    slider.center = CGPointMake(x, y);
     
-    BOOL defaultMode = alpha > 0.05;
-    if (defaultMode) {
-        self.homeNavBar.navBarStyle = (alpha < 0.1) ? HomeNavigationBarStyleLightContent : HomeNavigationBarStyleDefault;
+    if (_currentStyle == HomeNavigationBarStyleDefault && _currentAlpha == 1) {
+        return;
+    }
+    
+    if (alpha > 0.05) {
+        self.homeNavBar.navBarStyle = (alpha < 0.1) ? _currentStyle : HomeNavigationBarStyleDefault;
         self.homeNavBar.alpha = alpha;
     }
     else {
-        self.homeNavBar.alpha = 1;
+        self.homeNavBar.navBarStyle = _currentStyle;
+        self.homeNavBar.alpha = _currentAlpha;
     }
 }
 

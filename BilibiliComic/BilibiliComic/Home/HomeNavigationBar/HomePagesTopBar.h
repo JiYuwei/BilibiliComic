@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy)   NSArray                 *itemTitles;
 
-@property (nonatomic,strong) UIView                  *silder;
+@property (nonatomic,strong) UIView                  *slider;
 
 -(void)showSelectedIndex:(NSUInteger)index;
 

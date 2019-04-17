@@ -10,7 +10,8 @@
 
 @interface HomeNavigationBar () <HomeNavigationBarProtocol>
 
-@property (nonatomic,strong) UIView           *contentView;
+@property (nonatomic,strong) UIView *contentView;
+@property (nonatomic,strong) UIView *lineView;
 
 @end
 
@@ -52,6 +53,11 @@
         make.width.equalTo(self.timeLineBtn.mas_height);
     }];
     
+    [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.bottom.right.equalTo(self);
+        make.height.mas_equalTo(0.5);
+    }];
+    
     [self layoutIfNeeded];
     
     self.searchBar.layer.cornerRadius = self.searchBar.bounds.size.height / 2;
@@ -72,12 +78,14 @@
         case HomeNavigationBarStyleDefault:
         {
             self.backgroundColor = [UIColor whiteColor];
+            self.lineView.backgroundColor = DefaultBorderColor;
             [self.timeLineBtn setImage:UIImage(@"home_gray_calendar_24x24_") forState:UIControlStateNormal];
         }
             break;
         case HomeNavigationBarStyleLightContent:
         {
             self.backgroundColor = [UIColor clearColor];
+            self.lineView.backgroundColor = [UIColor clearColor];
             [self.timeLineBtn setImage:UIImage(@"home_whiter_calendar_24x24_") forState:UIControlStateNormal];
         }
             break;
@@ -106,7 +114,6 @@
 {
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
-//        _contentView.backgroundColor = [UIColor blueColor];
         [self addSubview:_contentView];
     }
     return _contentView;
@@ -116,7 +123,6 @@
 {
     if (!_pagesTopBar) {
         _pagesTopBar = [[HomePagesTopBar alloc] init];
-//        _pagesTopBar.backgroundColor = [UIColor cyanColor];
         _pagesTopBar.itemTitles = @[@"推荐",@"排行",@"新作"];
         [self.contentView addSubview:_pagesTopBar];
     }
@@ -136,11 +142,19 @@
 {
     if (!_timeLineBtn) {
         _timeLineBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_timeLineBtn setImage:UIImage(@"home_gray_calendar_24x24_") forState:UIControlStateNormal];
-//        [_timeLineBtn setImage:UIImage(@"home_whiter_calendar_24x24_") forState:UIControlStateHighlighted];
         [self.contentView addSubview:_timeLineBtn];
     }
     return _timeLineBtn;
+}
+
+-(UIView *)lineView
+{
+    if (!_lineView) {
+        _lineView = [[UIView alloc] init];
+        _lineView.backgroundColor = DefaultBorderColor;
+        [self addSubview:_lineView];
+    }
+    return _lineView;
 }
 
 @end
