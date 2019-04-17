@@ -27,15 +27,15 @@
 
 
 //获取主屏幕和屏幕宽度与高度
-#define BCSCREEN_WIDTH         [UIScreen mainScreen].bounds.size.width
-#define BCSCREEN_HEIGHT        [UIScreen mainScreen].bounds.size.height
+#define BC_SCREEN_WIDTH         [UIScreen mainScreen].bounds.size.width
+#define BC_SCREEN_HEIGHT        [UIScreen mainScreen].bounds.size.height
 
 //安全区域
-#define BC_NAV_HEIGHT          (BCSCREEN_HEIGHT >= 812 ? 88 : 64)
-#define BC_STATUS_HEIGHT       (BCSCREEN_HEIGHT >= 812 ? 44 : 20)
+#define BC_NAV_HEIGHT          (BC_SCREEN_HEIGHT >= 812 ? 88 : 64)
+#define BC_STATUS_HEIGHT       (BC_SCREEN_HEIGHT >= 812 ? 44 : 20)
 #define BC_NAV_REALHEIGHT      44
-#define BC_TABBAR_HEIGHT       (BCSCREEN_HEIGHT >= 812 ? 83 : 49)
-#define BC_TABBAR_SAFEHEIGHT   (BCSCREEN_HEIGHT >= 812 ? 34 : 0)
+#define BC_TABBAR_HEIGHT       (BC_SCREEN_HEIGHT >= 812 ? 83 : 49)
+#define BC_TABBAR_SAFEHEIGHT   (BC_SCREEN_HEIGHT >= 812 ? 34 : 0)
 
 //获取通知中心和UserDefaults
 #define BCNotificationCenter   [NSNotificationCenter defaultCenter]

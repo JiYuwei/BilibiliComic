@@ -37,7 +37,7 @@
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"UIWidthList" ofType:@"plist"];
     NSDictionary *widthDic = [NSDictionary dictionaryWithContentsOfFile:path];
-    NSString *width = [NSString stringWithFormat:@"%lu",(unsigned long)BCSCREEN_WIDTH];
+    NSString *width = [NSString stringWithFormat:@"%lu",(unsigned long)BC_SCREEN_WIDTH];
     NSNumber *widthNum = widthDic[key][width];
     
     return [widthNum floatValue];

@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BaseViewController : UIViewController
+@interface BaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+
+@property (nonatomic,strong) UITableView *mainTableView;
+@property (nonatomic,assign) BOOL mainTableViewEnabled;
 
 @end
 

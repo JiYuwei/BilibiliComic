@@ -1349,7 +1349,7 @@
 		09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B192264990700FCAAE4 /* SearchCycleScrollView.m */; };
 		09EB8B1C2265AFE200FCAAE4 /* UIWidthList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09EB8B1B2265AFE200FCAAE4 /* UIWidthList.plist */; };
 		09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1F2265B1FC00FCAAE4 /* PlistManager.m */; };
-		09EB8B252265F1FC00FCAAE4 /* RecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B242265F1FC00FCAAE4 /* RecommendViewController.m */; };
+		09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */; };
 		09EB8B282265F22900FCAAE4 /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B272265F22900FCAAE4 /* RankViewController.m */; };
 		09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */; };
 		7B22D8E921D218EB6F3DEE46 /* libPods-BilibiliComic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */; };
@@ -2738,8 +2738,8 @@
 		09EB8B1E2265B1FC00FCAAE4 /* PlistManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlistManager.h; sourceTree = "<group>"; };
 		09EB8B1F2265B1FC00FCAAE4 /* PlistManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlistManager.m; sourceTree = "<group>"; };
 		09EB8B212265BE8F00FCAAE4 /* HomeNavigationBarProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBarProtocol.h; sourceTree = "<group>"; };
-		09EB8B232265F1FC00FCAAE4 /* RecommendViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendViewController.h; sourceTree = "<group>"; };
-		09EB8B242265F1FC00FCAAE4 /* RecommendViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendViewController.m; sourceTree = "<group>"; };
+		09EB8B232265F1FC00FCAAE4 /* RecomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecomViewController.h; sourceTree = "<group>"; };
+		09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecomViewController.m; sourceTree = "<group>"; };
 		09EB8B262265F22900FCAAE4 /* RankViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankViewController.h; sourceTree = "<group>"; };
 		09EB8B272265F22900FCAAE4 /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		09EB8B292265F24F00FCAAE4 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
@@ -4264,8 +4264,8 @@
 		09EB8B222265F16A00FCAAE4 /* SubViewController */ = {
 			isa = PBXGroup;
 			children = (
-				09EB8B232265F1FC00FCAAE4 /* RecommendViewController.h */,
-				09EB8B242265F1FC00FCAAE4 /* RecommendViewController.m */,
+				09EB8B232265F1FC00FCAAE4 /* RecomViewController.h */,
+				09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */,
 				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
 				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
 				09EB8B292265F24F00FCAAE4 /* NewViewController.h */,
@@ -5806,7 +5806,7 @@
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,
 				09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */,
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
-				09EB8B252265F1FC00FCAAE4 /* RecommendViewController.m in Sources */,
+				09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */,
 				09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */,
 				096D0297221836580067651A /* MeViewController.m in Sources */,
 				09982B772217EBE4006CB358 /* AppDelegate.m in Sources */,

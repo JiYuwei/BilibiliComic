@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "HomeNavigationBar.h"
-#import "RecommendViewController.h"
+#import "RecomViewController.h"
 #import "RankViewController.h"
 #import "NewViewController.h"
 
@@ -69,6 +69,7 @@
     
     [self.childVCArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         BaseViewController *childVC = [[[obj class] alloc] init];
+        childVC.mainTableViewEnabled = YES;
         [self addChildViewController:childVC];
         childVC.view.frame = CGRectMake(viewWidth * idx, 0, viewWidth, viewHeight);
         [self.mainScrollView addSubview:childVC.view];
@@ -81,13 +82,13 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offsetX = scrollView.contentOffset.x;
-    CGFloat alpha   = (offsetX / BCSCREEN_WIDTH) < 1 ? (offsetX / BCSCREEN_WIDTH) : 1;
+    CGFloat alpha   = (offsetX / BC_SCREEN_WIDTH) < 1 ? (offsetX / BC_SCREEN_WIDTH) : 1;
 //    NSLog(@"%.f",alpha);
     
     HomePagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
     UIView *silder = pagesTopBar.silder;
     CGFloat place = pagesTopBar.bounds.size.width / pagesTopBar.itemTitles.count / 2;
-    CGFloat percent = offsetX / BCSCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);
+    CGFloat percent = offsetX / BC_SCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);
     CGFloat x = place + place * percent;
     CGFloat y = silder.center.y;
     silder.center = CGPointMake(x, y);
@@ -114,7 +115,7 @@
 -(HomeNavigationBar *)homeNavBar
 {
     if (!_homeNavBar) {
-        _homeNavBar = [[HomeNavigationBar alloc] initWithFrame:CGRectMake(0, 0, BCSCREEN_WIDTH, BC_NAV_HEIGHT)];
+        _homeNavBar = [[HomeNavigationBar alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_NAV_HEIGHT)];
         [self.view addSubview:_homeNavBar];
     }
     return _homeNavBar;
@@ -123,7 +124,7 @@
 -(UIScrollView *)mainScrollView
 {
     if (!_mainScrollView) {
-        _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, BCSCREEN_WIDTH, BCSCREEN_HEIGHT - BC_TABBAR_HEIGHT)];
+        _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_TABBAR_HEIGHT)];
         _mainScrollView.showsVerticalScrollIndicator = NO;
         _mainScrollView.showsHorizontalScrollIndicator = NO;
         _mainScrollView.bounces = NO;
@@ -137,7 +138,7 @@
 -(NSArray *)childVCArray
 {
     if (!_childVCArray) {
-        _childVCArray = @[[RecommendViewController class],
+        _childVCArray = @[[RecomViewController class],
                           [RankViewController class],
                           [NewViewController class]];
     }

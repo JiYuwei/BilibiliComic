@@ -1,5 +1,5 @@
 //
-//  RecommendViewController.h
+//  RecomViewController.h
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/4/16.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RecommendViewController : BaseViewController
+@interface RecomViewController : BaseViewController
 
 @end
 
