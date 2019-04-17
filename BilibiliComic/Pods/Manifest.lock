@@ -19,6 +19,9 @@ PODS:
   - CocoaAsyncSocket (7.6.1)
   - DAPagesContainer (1.0.1)
   - FileMD5Hash (2.0.0)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - JSONKit (1.5pre)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
@@ -42,6 +45,7 @@ DEPENDENCIES:
   - CocoaAsyncSocket (~> 7.6.1)
   - DAPagesContainer (~> 1.0.1)
   - FileMD5Hash (~> 2.0.0)
+  - FMDB (~> 2.7.5)
   - JSONKit (~> 1.5pre)
   - Mantle (~> 2.1.0)
   - Masonry (~> 1.0.2)
@@ -62,6 +66,7 @@ SPEC REPOS:
     - CocoaAsyncSocket
     - DAPagesContainer
     - FileMD5Hash
+    - FMDB
     - JSONKit
     - Mantle
     - Masonry
@@ -81,6 +86,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 7eadd3f59e1a6c84e2aefc93e9ff7b55156fe174
   DAPagesContainer: 96a668c1452aa2b628619e0b1a1c116f187551fd
   FileMD5Hash: 3ed69cc19a21ff4d30ae8833fc104275ad2c7de0
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   JSONKit: bae313ce6a6c444f40489a6c0b023f399888871f
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -93,6 +99,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 510043cc219de983706e8ee65887432d0773af29
+PODFILE CHECKSUM: 75fd94cc84b87b5c795ee9961391e7313fc74357
 
 COCOAPODS: 1.6.0

@@ -1342,6 +1342,8 @@
 		099838E62217EFEA006CB358 /* ZCicon_emoji_del_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 099833A32217EFE8006CB358 /* ZCicon_emoji_del_press@2x.png */; };
 		099838E72217EFEA006CB358 /* ZCPop_voice_send_anime_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 099833A42217EFE8006CB358 /* ZCPop_voice_send_anime_5@2x.png */; };
 		099838E82217EFEA006CB358 /* ZCicon_pop_satisfaction@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 099833A52217EFE9006CB358 /* ZCicon_pop_satisfaction@3x.png */; };
+		09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5422822672F80007681E4 /* BCNetworkRequest.m */; };
+		09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5422922672F80007681E4 /* BCRequestCache.m */; };
 		09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E298FD2260A646009F0D4E /* HomeNavigationBar.m */; };
 		09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1022643BE400FCAAE4 /* HomePagesTopBar.m */; };
 		09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */; };
@@ -2723,6 +2725,10 @@
 		099833A32217EFE8006CB358 /* ZCicon_emoji_del_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZCicon_emoji_del_press@2x.png"; sourceTree = "<group>"; };
 		099833A42217EFE8006CB358 /* ZCPop_voice_send_anime_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZCPop_voice_send_anime_5@2x.png"; sourceTree = "<group>"; };
 		099833A52217EFE9006CB358 /* ZCicon_pop_satisfaction@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ZCicon_pop_satisfaction@3x.png"; sourceTree = "<group>"; };
+		09D5422722672F80007681E4 /* BCNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCNetworkRequest.h; sourceTree = "<group>"; };
+		09D5422822672F80007681E4 /* BCNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCNetworkRequest.m; sourceTree = "<group>"; };
+		09D5422922672F80007681E4 /* BCRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCRequestCache.m; sourceTree = "<group>"; };
+		09D5422A22672F81007681E4 /* BCRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCRequestCache.h; sourceTree = "<group>"; };
 		09E298F222606297009F0D4E /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		09E298FC2260A646009F0D4E /* HomeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBar.h; sourceTree = "<group>"; };
 		09E298FD2260A646009F0D4E /* HomeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationBar.m; sourceTree = "<group>"; };
@@ -2852,10 +2858,8 @@
 			isa = PBXGroup;
 			children = (
 				096D0280221818610067651A /* Base */,
-				096D02882218356C0067651A /* Home */,
-				096D0289221835710067651A /* Classify */,
-				096D028A221835BC0067651A /* BookList */,
-				096D028B221835DC0067651A /* Me */,
+				09D5422622672EDB007681E4 /* Class */,
+				09D5422522672EA0007681E4 /* Network */,
 				09982BA72217EE93006CB358 /* PngSrc */,
 				09E298F522606CBE009F0D4E /* Category */,
 				09EB8B1D2265B19B00FCAAE4 /* Plist */,
@@ -4226,6 +4230,55 @@
 			path = car_images;
 			sourceTree = "<group>";
 		};
+		09D5422222672E14007681E4 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				09EB8B292265F24F00FCAAE4 /* NewViewController.h */,
+				09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */,
+			);
+			path = New;
+			sourceTree = "<group>";
+		};
+		09D5422322672E18007681E4 /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
+				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
+			);
+			path = Rank;
+			sourceTree = "<group>";
+		};
+		09D5422422672E1B007681E4 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				09EB8B232265F1FC00FCAAE4 /* RecomViewController.h */,
+				09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */,
+			);
+			path = Recommend;
+			sourceTree = "<group>";
+		};
+		09D5422522672EA0007681E4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				09D5422722672F80007681E4 /* BCNetworkRequest.h */,
+				09D5422822672F80007681E4 /* BCNetworkRequest.m */,
+				09D5422A22672F81007681E4 /* BCRequestCache.h */,
+				09D5422922672F80007681E4 /* BCRequestCache.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		09D5422622672EDB007681E4 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				096D02882218356C0067651A /* Home */,
+				096D0289221835710067651A /* Classify */,
+				096D028A221835BC0067651A /* BookList */,
+				096D028B221835DC0067651A /* Me */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		09E298F522606CBE009F0D4E /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -4264,12 +4317,9 @@
 		09EB8B222265F16A00FCAAE4 /* SubViewController */ = {
 			isa = PBXGroup;
 			children = (
-				09EB8B232265F1FC00FCAAE4 /* RecomViewController.h */,
-				09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */,
-				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
-				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
-				09EB8B292265F24F00FCAAE4 /* NewViewController.h */,
-				09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */,
+				09D5422422672E1B007681E4 /* Recommend */,
+				09D5422322672E18007681E4 /* Rank */,
+				09D5422222672E14007681E4 /* New */,
 			);
 			path = SubViewController;
 			sourceTree = "<group>";
@@ -5794,6 +5844,7 @@
 			files = (
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */,
+				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,
 				09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */,
 				096D0287221835420067651A /* BaseTabbarController.m in Sources */,
 				096D0283221818970067651A /* BaseViewController.m in Sources */,
@@ -5806,6 +5857,7 @@
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,
 				09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */,
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
+				09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */,
 				09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */,
 				09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */,
 				096D0297221836580067651A /* MeViewController.m in Sources */,
@@ -5963,6 +6015,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 368DWFGUA5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5985,6 +6038,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_STRICT_PROTOTYPES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 368DWFGUA5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
