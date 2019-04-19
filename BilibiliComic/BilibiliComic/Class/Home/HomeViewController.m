@@ -93,12 +93,19 @@
 //RecomViewController, UITableView
 -(void)recomTableViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat offsetY = scrollView.contentOffset.y;
-    CGFloat alpha   = (offsetY / BC_NAV_HEIGHT) < 1 ? (offsetY / BC_NAV_HEIGHT) : 1;
+    CGFloat offsetY  = scrollView.contentOffset.y;
+    CGFloat interval = 0.3;
+    CGFloat alpha    = offsetY / BC_NAV_HEIGHT;
+    if (alpha > interval + 1)    alpha = interval + 1;
+    if (alpha < -(interval + 1)) alpha = -(interval + 1);
     
-    if (alpha > 0.05) {
-        self.homeNavBar.navBarStyle = (alpha < 0.1) ? HomeNavigationBarStyleLightContent : HomeNavigationBarStyleDefault;
-        self.homeNavBar.alpha = alpha;
+    if (alpha < -interval) {
+        self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
+        self.homeNavBar.alpha = alpha + interval + 1;
+    }
+    else if (alpha > interval) {
+        self.homeNavBar.navBarStyle = HomeNavigationBarStyleDefault;
+        self.homeNavBar.alpha = alpha - interval;
     }
     else {
         self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
