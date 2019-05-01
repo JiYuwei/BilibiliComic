@@ -75,14 +75,11 @@ static NSString *subviewClassName;
 }
 
 - (void)startTimer {
-    
     if (self.orginPageCount > 1 && self.isOpenAutoScroll && self.isCarousel) {
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:self.autoTime target:self selector:@selector(autoNextPage) userInfo:nil repeats:YES];
         self.timer = timer;
         [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-        
     }
-    
 }
 
 - (void)stopTimer {
@@ -104,12 +101,12 @@ static NSString *subviewClassName;
     self.page ++;
     
     switch (self.orientation) {
-        case HQFlowViewOrientationHorizontal:{
+        case BCFlowViewOrientationHorizontal:{
             
             [_scrollView setContentOffset:CGPointMake(self.page * _pageSize.width, 0) animated:YES];
             break;
         }
-        case HQFlowViewOrientationVertical:{
+        case BCFlowViewOrientationVertical:{
             
             [_scrollView setContentOffset:CGPointMake(0, self.page * _pageSize.height) animated:YES];
             
@@ -145,7 +142,7 @@ static NSString *subviewClassName;
         return;//无需更新
     }
     switch (self.orientation) {
-        case HQFlowViewOrientationHorizontal:{
+        case BCFlowViewOrientationHorizontal:{
             CGFloat offset = _scrollView.contentOffset.x;
             
             for (NSInteger i = self.visibleRange.location; i < self.visibleRange.location + _visibleRange.length; i++) {
@@ -173,7 +170,7 @@ static NSString *subviewClassName;
             }
             break;
         }
-        case HQFlowViewOrientationVertical:{
+        case BCFlowViewOrientationVertical:{
             CGFloat offset = _scrollView.contentOffset.y;
             
             for (NSInteger i = self.visibleRange.location; i < self.visibleRange.location + _visibleRange.length; i++) {
@@ -224,10 +221,10 @@ static NSString *subviewClassName;
         };
         
         switch (self.orientation) {
-            case HQFlowViewOrientationHorizontal:
+            case BCFlowViewOrientationHorizontal:
                 cell.frame = CGRectMake(_pageSize.width * pageIndex, 0, _pageSize.width, _pageSize.height);
                 break;
-            case HQFlowViewOrientationVertical:
+            case BCFlowViewOrientationVertical:
                 cell.frame = CGRectMake(0, _pageSize.height * pageIndex, _pageSize.width, _pageSize.height);
                 break;
             default:
@@ -246,7 +243,7 @@ static NSString *subviewClassName;
     CGPoint endPoint = CGPointMake(startPoint.x + self.vWidth, startPoint.y + self.vHeight);
     
     switch (self.orientation) {
-        case HQFlowViewOrientationHorizontal:{
+        case BCFlowViewOrientationHorizontal:{
             NSInteger startIndex = 0;
             for (int i =0; i < [_cells count]; i++) {
                 if (_pageSize.width * (i +1) > startPoint.x) {
@@ -282,7 +279,7 @@ static NSString *subviewClassName;
             }
             break;
         }
-        case HQFlowViewOrientationVertical:{
+        case BCFlowViewOrientationVertical:{
             NSInteger startIndex = 0;
             for (int i =0; i < [_cells count]; i++) {
                 if (_pageSize.height * (i +1) > startPoint.y) {
@@ -408,7 +405,7 @@ static NSString *subviewClassName;
         
         // 重置_scrollView的contentSize
         switch (self.orientation) {
-            case HQFlowViewOrientationHorizontal://横向
+            case BCFlowViewOrientationHorizontal://横向
                 _scrollView.frame = CGRectMake(0, 0, _pageSize.width, _pageSize.height);
                 _scrollView.contentSize = CGSizeMake(_pageSize.width * _pageCount,0);
                 CGPoint theCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
@@ -428,7 +425,7 @@ static NSString *subviewClassName;
                     }
                 }
                 break;
-            case HQFlowViewOrientationVertical:{
+            case BCFlowViewOrientationVertical:{
                 _scrollView.frame = CGRectMake(0, 0, _pageSize.width, _pageSize.height);
                 _scrollView.contentSize = CGSizeMake(0 ,_pageSize.height * _pageCount);
                 CGPoint theCenter = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
@@ -488,10 +485,10 @@ static NSString *subviewClassName;
         }
         
         switch (self.orientation) {
-            case HQFlowViewOrientationHorizontal:
+            case BCFlowViewOrientationHorizontal:
                 [_scrollView setContentOffset:CGPointMake(_pageSize.width * self.page, 0) animated:YES];
                 break;
-            case HQFlowViewOrientationVertical:
+            case BCFlowViewOrientationVertical:
                 [_scrollView setContentOffset:CGPointMake(0, _pageSize.height * self.page) animated:YES];
                 break;
         }
@@ -529,10 +526,10 @@ static NSString *subviewClassName;
     NSInteger pageIndex;
     
     switch (self.orientation) {
-        case HQFlowViewOrientationHorizontal:
+        case BCFlowViewOrientationHorizontal:
             pageIndex = (int)round(_scrollView.contentOffset.x / _pageSize.width) % self.orginPageCount;
             break;
-        case HQFlowViewOrientationVertical:
+        case BCFlowViewOrientationVertical:
             pageIndex = (int)round(_scrollView.contentOffset.y / _pageSize.height) % self.orginPageCount;
             break;
         default:
@@ -542,7 +539,7 @@ static NSString *subviewClassName;
     if (self.isCarousel) {
         if (self.orginPageCount > 1) {
             switch (self.orientation) {
-                case HQFlowViewOrientationHorizontal:
+                case BCFlowViewOrientationHorizontal:
                 {
                     if (scrollView.contentOffset.x / _pageSize.width >= 2 * self.orginPageCount) {
                         [scrollView setContentOffset:CGPointMake(_pageSize.width * self.orginPageCount, 0) animated:NO];
@@ -555,7 +552,7 @@ static NSString *subviewClassName;
                     }
                 }
                     break;
-                case HQFlowViewOrientationVertical:
+                case BCFlowViewOrientationVertical:
                 {
                     if (scrollView.contentOffset.y / _pageSize.height >= 2 * self.orginPageCount) {
                         [scrollView setContentOffset:CGPointMake(0, _pageSize.height * self.orginPageCount) animated:NO];
@@ -609,7 +606,7 @@ static NSString *subviewClassName;
     if (self.orginPageCount > 1 && self.isOpenAutoScroll && self.isCarousel) {
         
         switch (self.orientation) {
-            case HQFlowViewOrientationHorizontal:
+            case BCFlowViewOrientationHorizontal:
             {
                 if (self.page == floor(_scrollView.contentOffset.x / _pageSize.width)) {
                     
@@ -621,7 +618,7 @@ static NSString *subviewClassName;
                 }
             }
                 break;
-            case HQFlowViewOrientationVertical:
+            case BCFlowViewOrientationVertical:
             {
                 if (self.page == floor(_scrollView.contentOffset.y / _pageSize.height)) {
                     
@@ -644,11 +641,8 @@ static NSString *subviewClassName;
 //点击了cell
 - (void)singleCellTapAction:(NSInteger)selectTag withCell:(BCIndexBannerSubview *)cell
 {
-    
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCell:withSubViewIndex:)]) {
-        
         [self.delegate didSelectCell:cell withSubViewIndex:selectTag];
-        
     }
 }
 

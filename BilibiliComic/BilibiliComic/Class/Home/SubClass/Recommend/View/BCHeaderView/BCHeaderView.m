@@ -67,7 +67,7 @@
         _pageFlowView.orginPageCount = _advArray.count;
         _pageFlowView.isOpenAutoScroll = YES;
         _pageFlowView.autoTime = 3.0;
-        _pageFlowView.orientation = HQFlowViewOrientationHorizontal;
+        _pageFlowView.orientation = BCFlowViewOrientationHorizontal;
         [self addSubview:_pageFlowView];
     }
     return _pageFlowView;

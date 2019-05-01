@@ -24,9 +24,9 @@
  
  ******************************/
 
-typedef NS_ENUM(NSUInteger, HQFlowViewOrientation) {
-    HQFlowViewOrientationHorizontal = 0,
-    HQFlowViewOrientationVertical
+typedef NS_ENUM(NSUInteger, BCFlowViewOrientation) {
+    BCFlowViewOrientationHorizontal = 0,
+    BCFlowViewOrientationVertical
 };
 
 @interface BCFlowView : UIView
@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, HQFlowViewOrientation) {
 /**
  *  默认为横向
  */
-@property (nonatomic,assign) HQFlowViewOrientation orientation;
+@property (nonatomic,assign) BCFlowViewOrientation orientation;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
