@@ -7,6 +7,7 @@
 //
 
 #import "RecomViewController.h"
+#import "BCHeaderView.h"
 
 @interface RecomViewController ()
 
@@ -23,7 +24,7 @@
 
 -(void)initTableHeaderview
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, HeaderViewHeight)];
+    BCHeaderView *headerView = [[BCHeaderView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, HeaderViewHeight)];
     headerView.backgroundColor = GRandomColor;
     self.mainTableView.tableHeaderView = headerView;
 }

@@ -14,6 +14,9 @@
 		096D0291221836350067651A /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0290221836350067651A /* ClassifyViewController.m */; };
 		096D02942218364B0067651A /* BookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D02932218364B0067651A /* BookListViewController.m */; };
 		096D0297221836580067651A /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0296221836580067651A /* MeViewController.m */; };
+		097918F6227066B800C243B7 /* BCFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F5227066B800C243B7 /* BCFlowView.m */; };
+		097918F92270687700C243B7 /* BCIndexBannerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F82270687700C243B7 /* BCIndexBannerSubview.m */; };
+		097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918FB22706B1500C243B7 /* BCHeaderView.m */; };
 		09982B772217EBE4006CB358 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B762217EBE4006CB358 /* AppDelegate.m */; };
 		09982B7F2217EBE5006CB358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09982B7E2217EBE5006CB358 /* Assets.xcassets */; };
 		09982B852217EBE5006CB358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B842217EBE5006CB358 /* main.m */; };
@@ -1391,6 +1394,12 @@
 		096D02932218364B0067651A /* BookListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookListViewController.m; sourceTree = "<group>"; };
 		096D0295221836580067651A /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		096D0296221836580067651A /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		097918F4227066B800C243B7 /* BCFlowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCFlowView.h; sourceTree = "<group>"; };
+		097918F5227066B800C243B7 /* BCFlowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCFlowView.m; sourceTree = "<group>"; };
+		097918F72270687700C243B7 /* BCIndexBannerSubview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCIndexBannerSubview.h; sourceTree = "<group>"; };
+		097918F82270687700C243B7 /* BCIndexBannerSubview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCIndexBannerSubview.m; sourceTree = "<group>"; };
+		097918FA22706B1500C243B7 /* BCHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCHeaderView.h; sourceTree = "<group>"; };
+		097918FB22706B1500C243B7 /* BCHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCHeaderView.m; sourceTree = "<group>"; };
 		09982B722217EBE4006CB358 /* BilibiliComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilibiliComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09982B752217EBE4006CB358 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09982B762217EBE4006CB358 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -2788,13 +2797,9 @@
 		096D0280221818610067651A /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				09D5422E22673AFC007681E4 /* BCRefreshHeader */,
-				096D0285221835420067651A /* BaseTabbarController.h */,
-				096D0286221835420067651A /* BaseTabbarController.m */,
-				09591285225D860200142DF7 /* BaseNavigationController.h */,
-				09591286225D860200142DF7 /* BaseNavigationController.m */,
-				096D0281221818970067651A /* BaseViewController.h */,
-				096D0282221818970067651A /* BaseViewController.m */,
+				097918EB2270649700C243B7 /* Model */,
+				097918EC2270649F00C243B7 /* View */,
+				097918ED227064A800C243B7 /* Controller */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2802,10 +2807,10 @@
 		096D02882218356C0067651A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				096D028C221836210067651A /* HomeViewController.h */,
-				096D028D221836210067651A /* HomeViewController.m */,
-				09E298FB2260A614009F0D4E /* HomeNavigationBar */,
-				09EB8B222265F16A00FCAAE4 /* SubViewController */,
+				09EB8B222265F16A00FCAAE4 /* SubClass */,
+				097918F12270660A00C243B7 /* Model */,
+				097918EF2270654300C243B7 /* View */,
+				097918F02270654900C243B7 /* Controller */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2835,6 +2840,88 @@
 				096D0296221836580067651A /* MeViewController.m */,
 			);
 			path = Me;
+			sourceTree = "<group>";
+		};
+		097918EA227063D500C243B7 /* BCHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				097918FA22706B1500C243B7 /* BCHeaderView.h */,
+				097918FB22706B1500C243B7 /* BCHeaderView.m */,
+				097918F4227066B800C243B7 /* BCFlowView.h */,
+				097918F5227066B800C243B7 /* BCFlowView.m */,
+				097918F72270687700C243B7 /* BCIndexBannerSubview.h */,
+				097918F82270687700C243B7 /* BCIndexBannerSubview.m */,
+			);
+			path = BCHeaderView;
+			sourceTree = "<group>";
+		};
+		097918EB2270649700C243B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		097918EC2270649F00C243B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09D5422E22673AFC007681E4 /* BCRefreshHeader */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		097918ED227064A800C243B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				096D0285221835420067651A /* BaseTabbarController.h */,
+				096D0286221835420067651A /* BaseTabbarController.m */,
+				09591285225D860200142DF7 /* BaseNavigationController.h */,
+				09591286225D860200142DF7 /* BaseNavigationController.m */,
+				096D0281221818970067651A /* BaseViewController.h */,
+				096D0282221818970067651A /* BaseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		097918EF2270654300C243B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				09E298FB2260A614009F0D4E /* HomeNavigationBar */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		097918F02270654900C243B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				096D028C221836210067651A /* HomeViewController.h */,
+				096D028D221836210067651A /* HomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		097918F12270660A00C243B7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		097918F22270663E00C243B7 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				09EB8B232265F1FC00FCAAE4 /* RecomViewController.h */,
+				09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		097918F32270664B00C243B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				097918EA227063D500C243B7 /* BCHeaderView */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		09982B692217EBE4006CB358 = {
@@ -4257,8 +4344,8 @@
 		09D5422422672E1B007681E4 /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
-				09EB8B232265F1FC00FCAAE4 /* RecomViewController.h */,
-				09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */,
+				097918F32270664B00C243B7 /* View */,
+				097918F22270663E00C243B7 /* Controller */,
 			);
 			path = Recommend;
 			sourceTree = "<group>";
@@ -4329,14 +4416,14 @@
 			path = Plist;
 			sourceTree = "<group>";
 		};
-		09EB8B222265F16A00FCAAE4 /* SubViewController */ = {
+		09EB8B222265F16A00FCAAE4 /* SubClass */ = {
 			isa = PBXGroup;
 			children = (
 				09D5422422672E1B007681E4 /* Recommend */,
 				09D5422322672E18007681E4 /* Rank */,
 				09D5422222672E14007681E4 /* New */,
 			);
-			path = SubViewController;
+			path = SubClass;
 			sourceTree = "<group>";
 		};
 		981D807FFEA87CEDB4133B99 /* Pods */ = {
@@ -5869,12 +5956,15 @@
 				09EB8B282265F22900FCAAE4 /* RankViewController.m in Sources */,
 				09EB8B1722648CA200FCAAE4 /* HomeSearchBar.m in Sources */,
 				09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */,
+				097918F92270687700C243B7 /* BCIndexBannerSubview.m in Sources */,
 				096D02942218364B0067651A /* BookListViewController.m in Sources */,
+				097918F6227066B800C243B7 /* BCFlowView.m in Sources */,
 				09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */,
 				09D5423122673B25007681E4 /* BCRefreshHeader.m in Sources */,
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,
 				09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */,
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
+				097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */,
 				09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */,
 				09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */,
 				09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */,
