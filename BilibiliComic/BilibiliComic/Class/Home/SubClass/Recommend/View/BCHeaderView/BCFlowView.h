@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BCIndexBannerSubview.h"
 
-@protocol HQFlowViewDataSource;
-@protocol HQFlowViewDelegate;
+@protocol BCFlowViewDataSource;
+@protocol BCFlowViewDelegate;
 
 /******************************
  
@@ -51,8 +51,8 @@ typedef NS_ENUM(NSUInteger, HQFlowViewOrientation) {
  */
 @property (nonatomic,strong) NSMutableArray *reusableCells;
 
-@property (nonatomic,assign) id <HQFlowViewDataSource> dataSource;
-@property (nonatomic,assign) id <HQFlowViewDelegate>   delegate;
+@property (nonatomic,assign) id <BCFlowViewDataSource> dataSource;
+@property (nonatomic,assign) id <BCFlowViewDelegate>   delegate;
 
 /**
  *  指示器
@@ -141,7 +141,7 @@ typedef NS_ENUM(NSUInteger, HQFlowViewOrientation) {
 @end
 
 
-@protocol  HQFlowViewDelegate<NSObject>
+@protocol BCFlowViewDelegate <NSObject>
 
 @optional
 /**
@@ -164,15 +164,15 @@ typedef NS_ENUM(NSUInteger, HQFlowViewOrientation) {
 /**
  *  点击了第几个cell
  *
- *  @param subView 点击的控件
- *  @param subIndex    点击控件的index
+ *  @param subView  点击的控件
+ *  @param subIndex 点击控件的index
  */
 - (void)didSelectCell:(BCIndexBannerSubview *)subView withSubViewIndex:(NSInteger)subIndex;
 
 @end
 
 
-@protocol HQFlowViewDataSource <NSObject>
+@protocol BCFlowViewDataSource <NSObject>
 
 /**
  *  返回显示View的个数

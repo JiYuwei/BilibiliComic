@@ -13,6 +13,7 @@
 #import "RequestAPI.h"
 #import "PlistManager.h"
 #import "NSArray+Sudoku.h"
+#import "UIView+FrameGeometry.h"
 
 //Define
 #import "Defines.h"

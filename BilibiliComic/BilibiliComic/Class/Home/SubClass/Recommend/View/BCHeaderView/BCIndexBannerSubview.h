@@ -36,7 +36,7 @@
 /**
  设置子控件frame,继承后要重写
  
- @param superViewBounds <#superViewBounds description#>
+ @param superViewBounds 父视图大小
  */
 - (void)setSubviewsWithSuperViewBounds:(CGRect)superViewBounds;
 

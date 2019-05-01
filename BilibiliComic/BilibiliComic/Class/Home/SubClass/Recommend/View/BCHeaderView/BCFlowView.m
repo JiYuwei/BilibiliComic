@@ -8,7 +8,7 @@
 
 #import "BCFlowView.h"
 
-@interface BCFlowView ()
+@interface BCFlowView () <UIScrollViewDelegate>
 
 @property (nonatomic, assign, readwrite) NSInteger currentPageIndex;
 
@@ -30,8 +30,7 @@ static NSString *subviewClassName;
 @implementation BCFlowView
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark Private Methods
+#pragma mark - Private Methods
 
 - (void)initialize {
     self.clipsToBounds = YES;
@@ -87,7 +86,6 @@ static NSString *subviewClassName;
 }
 
 - (void)stopTimer {
-    
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
@@ -100,12 +98,10 @@ static NSString *subviewClassName;
     }
 }
 
-#pragma mark --自动轮播
+#pragma mark - 自动轮播
 - (void)autoNextPage {
     
     self.page ++;
-    
-    
     
     switch (self.orientation) {
         case HQFlowViewOrientationHorizontal:{
@@ -123,7 +119,6 @@ static NSString *subviewClassName;
             break;
     }
 }
-
 
 - (void)queueReusableCell:(BCIndexBannerSubview *)cell{
     [_reusableCells addObject:cell];
@@ -156,13 +151,12 @@ static NSString *subviewClassName;
             for (NSInteger i = self.visibleRange.location; i < self.visibleRange.location + _visibleRange.length; i++) {
                 BCIndexBannerSubview *cell = [_cells objectAtIndex:i];
                 subviewClassName = NSStringFromClass([cell class]);
-                CGFloat origin = cell.frame.origin.x;
+                CGFloat origin = cell.vOrigin.x;
                 CGFloat delta = fabs(origin - offset);
                 
                 CGRect originCellFrame = CGRectMake(_pageSize.width * i, 0, _pageSize.width, _pageSize.height);//如果没有缩小效果的情况下的本该的Frame
                 
                 if (delta < _pageSize.width) {
-                    
                     cell.coverView.alpha = (delta / _pageSize.width) * _minimumPageAlpha;
                     
                     CGFloat leftRightInset = self.leftRightMargin * delta / _pageSize.width;
@@ -170,16 +164,12 @@ static NSString *subviewClassName;
                     
                     cell.layer.transform = CATransform3DMakeScale((_pageSize.width-leftRightInset*2)/_pageSize.width,(_pageSize.height-topBottomInset*2)/_pageSize.height, 1.0);
                     cell.frame = UIEdgeInsetsInsetRect(originCellFrame, UIEdgeInsetsMake(topBottomInset, leftRightInset, topBottomInset, leftRightInset));
-                    
-                    
-                } else {
+                }
+                else {
                     cell.coverView.alpha = _minimumPageAlpha;
                     cell.layer.transform = CATransform3DMakeScale((_pageSize.width-self.leftRightMargin*2)/_pageSize.width,(_pageSize.height-self.topBottomMargin*2)/_pageSize.height, 1.0);
                     cell.frame = UIEdgeInsetsInsetRect(originCellFrame, UIEdgeInsetsMake(self.topBottomMargin, self.leftRightMargin, self.topBottomMargin, self.leftRightMargin));
-                    
-                    
                 }
-                
             }
             break;
         }
@@ -189,7 +179,7 @@ static NSString *subviewClassName;
             for (NSInteger i = self.visibleRange.location; i < self.visibleRange.location + _visibleRange.length; i++) {
                 BCIndexBannerSubview *cell = [_cells objectAtIndex:i];
                 subviewClassName = NSStringFromClass([cell class]);
-                CGFloat origin = cell.frame.origin.y;
+                CGFloat origin = cell.vOrigin.y;
                 CGFloat delta = fabs(origin - offset);
                 
                 CGRect originCellFrame = CGRectMake(0, _pageSize.height * i, _pageSize.width, _pageSize.height);//如果没有缩小效果的情况下的本该的Frame
@@ -208,13 +198,11 @@ static NSString *subviewClassName;
                     cell.frame = UIEdgeInsetsInsetRect(originCellFrame, UIEdgeInsetsMake(self.topBottomMargin, self.leftRightMargin, self.topBottomMargin, self.leftRightMargin));
                     cell.mainImageView.frame = cell.bounds;
                 }
-                
             }
         }
         default:
             break;
     }
-    
 }
 
 - (void)setPageAtIndex:(NSInteger)pageIndex{
@@ -252,12 +240,10 @@ static NSString *subviewClassName;
     }
 }
 
-
 - (void)setPagesAtContentOffset:(CGPoint)offset{
     //计算_visibleRange
-    CGPoint startPoint = CGPointMake(offset.x - _scrollView.frame.origin.x, offset.y - _scrollView.frame.origin.y);
-    CGPoint endPoint = CGPointMake(startPoint.x + self.bounds.size.width, startPoint.y + self.bounds.size.height);
-    
+    CGPoint startPoint = CGPointMake(offset.x - _scrollView.vOrigin.x, offset.y - _scrollView.vOrigin.y);
+    CGPoint endPoint = CGPointMake(startPoint.x + self.vWidth, startPoint.y + self.vHeight);
     
     switch (self.orientation) {
         case HQFlowViewOrientationHorizontal:{
@@ -282,8 +268,6 @@ static NSString *subviewClassName;
             startIndex = MAX(startIndex - 1, 0);
             endIndex = MIN(endIndex + 1, [_cells count] - 1);
             
-            //            self.visibleRange.location = startIndex;
-            //            self.visibleRange.length = endIndex - startIndex + 1;
             self.visibleRange = NSMakeRange(startIndex, endIndex - startIndex + 1);
             for (NSInteger i = startIndex; i <= endIndex; i++) {
                 [self setPageAtIndex:i];
@@ -339,17 +323,10 @@ static NSString *subviewClassName;
         default:
             break;
     }
-    
-    
-    
 }
 
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark Override Methods
+#pragma mark - Override Methods
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -373,8 +350,8 @@ static NSString *subviewClassName;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark JQFlowView API
+
+#pragma mark - JQFlowView API
 
 - (void)reloadData {
     _needsReload = YES;
@@ -390,8 +367,6 @@ static NSString *subviewClassName;
     
     if (_needsReload) {
         //如果需要重新加载数据，则需要清空相关数据全部重新加载
-        
-        
         //重置pageCount
         if (_dataSource && [_dataSource respondsToSelector:@selector(numberOfPagesInFlowView:)]) {
             
@@ -407,7 +382,6 @@ static NSString *subviewClassName;
             
             //如果总页数为0，return
             if (_pageCount == 0) {
-                
                 return;
             }
             
@@ -417,7 +391,7 @@ static NSString *subviewClassName;
         }
         
         //重置pageWidth
-        _pageSize = CGSizeMake(self.bounds.size.width - 4 * self.leftRightMargin,(self.bounds.size.width - 4 * self.leftRightMargin) * 9 /16);
+        _pageSize = CGSizeMake(self.vWidth - 4 * self.leftRightMargin,(self.vWidth - 4 * self.leftRightMargin) * 9 /16);
         if (self.delegate && self.delegate && [self.delegate respondsToSelector:@selector(sizeForPageInFlowView:)]) {
             _pageSize = [self.delegate sizeForPageInFlowView:self];
         }
@@ -441,27 +415,18 @@ static NSString *subviewClassName;
                 _scrollView.center = theCenter;
                 
                 if (self.orginPageCount > 1) {
-                    
                     if (self.isCarousel) {
-                        
                         //滚到第二组
                         [_scrollView setContentOffset:CGPointMake(_pageSize.width * self.orginPageCount, 0) animated:NO];
-                        
                         self.page = self.orginPageCount;
-                        
                         //启动自动轮播
                         [self startTimer];
-                        
                     }else {
                         //滚到开始
                         [_scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                        
                         self.page = self.orginPageCount;
-                        
                     }
-                    
                 }
-                
                 break;
             case HQFlowViewOrientationVertical:{
                 _scrollView.frame = CGRectMake(0, 0, _pageSize.width, _pageSize.height);
@@ -470,34 +435,25 @@ static NSString *subviewClassName;
                 _scrollView.center = theCenter;
                 
                 if (self.orginPageCount > 1) {
-                    
                     if (self.isCarousel) {
                         //滚到第二组
                         [_scrollView setContentOffset:CGPointMake(0, _pageSize.height * self.orginPageCount) animated:NO];
-                        
                         self.page = self.orginPageCount;
-                        
                         //启动自动轮播
                         [self startTimer];
                     }else {
                         //滚到第二组
                         [_scrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                        
                         self.page = self.orginPageCount;
-                        
                     }
-                    
                 }
-                
                 break;
             }
             default:
                 break;
         }
-        
         _needsReload = NO;
     }
-    
     
     [self setPagesAtContentOffset:_scrollView.contentOffset];//根据当前scrollView的offset设置cell
     
@@ -545,27 +501,24 @@ static NSString *subviewClassName;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark hitTest
+
+#pragma mark - hitTest
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     if ([self pointInside:point withEvent:event]) {
         CGPoint newPoint = CGPointZero;
-        newPoint.x = point.x - _scrollView.frame.origin.x + _scrollView.contentOffset.x;
-        newPoint.y = point.y - _scrollView.frame.origin.y + _scrollView.contentOffset.y;
+        newPoint.x = point.x - _scrollView.vOrigin.x + _scrollView.contentOffset.x;
+        newPoint.y = point.y - _scrollView.vOrigin.y + _scrollView.contentOffset.y;
         if ([_scrollView pointInside:newPoint withEvent:event]) {
             return [_scrollView hitTest:newPoint withEvent:event];
         }
-        
         return _scrollView;
     }
-    
     return nil;
 }
 
 
-#pragma mark -
-#pragma mark UIScrollView Delegate
+#pragma mark - UIScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
@@ -587,63 +540,46 @@ static NSString *subviewClassName;
     }
     
     if (self.isCarousel) {
-        
         if (self.orginPageCount > 1) {
             switch (self.orientation) {
                 case HQFlowViewOrientationHorizontal:
                 {
                     if (scrollView.contentOffset.x / _pageSize.width >= 2 * self.orginPageCount) {
-                        
                         [scrollView setContentOffset:CGPointMake(_pageSize.width * self.orginPageCount, 0) animated:NO];
-                        
                         self.page = self.orginPageCount;
-                        
                     }
                     
                     if (scrollView.contentOffset.x / _pageSize.width <= self.orginPageCount - 1) {
                         [scrollView setContentOffset:CGPointMake((2 * self.orginPageCount - 1) * _pageSize.width, 0) animated:NO];
-                        
                         self.page = 2 * self.orginPageCount;
                     }
-                    
                 }
                     break;
                 case HQFlowViewOrientationVertical:
                 {
                     if (scrollView.contentOffset.y / _pageSize.height >= 2 * self.orginPageCount) {
-                        
                         [scrollView setContentOffset:CGPointMake(0, _pageSize.height * self.orginPageCount) animated:NO];
-                        
                         self.page = self.orginPageCount;
-                        
                     }
                     
                     if (scrollView.contentOffset.y / _pageSize.height <= self.orginPageCount - 1) {
                         [scrollView setContentOffset:CGPointMake(0, (2 * self.orginPageCount - 1) * _pageSize.height) animated:NO];
                         self.page = 2 * self.orginPageCount;
                     }
-                    
                 }
                     break;
                 default:
                     break;
             }
-            
-            
         }else {
-            
             pageIndex = 0;
-            
-            
         }
     }
-    
     
     [self setPagesAtContentOffset:scrollView.contentOffset];
     [self refreshVisibleCellAppearance];
     
     if (self.pageControl && [self.pageControl respondsToSelector:@selector(setCurrentPage:)]) {
-        
         [self.pageControl setCurrentPage:pageIndex];
     }
     
@@ -655,17 +591,20 @@ static NSString *subviewClassName;
 }
 
 #pragma mark --将要开始拖拽
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
     [self stopTimer];
 }
 
 #pragma mark --结束拖拽
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
     [self startTimer];
 }
 
 #pragma mark --将要结束拖拽
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
     
     if (self.orginPageCount > 1 && self.isOpenAutoScroll && self.isCarousel) {
         
@@ -701,8 +640,10 @@ static NSString *subviewClassName;
     }
 }
 
+#pragma mark -
 //点击了cell
-- (void)singleCellTapAction:(NSInteger)selectTag withCell:(BCIndexBannerSubview *)cell {
+- (void)singleCellTapAction:(NSInteger)selectTag withCell:(BCIndexBannerSubview *)cell
+{
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectCell:withSubViewIndex:)]) {
         
@@ -712,14 +653,16 @@ static NSString *subviewClassName;
 }
 
 //解决当父View释放时，当前视图因为被Timer强引用而不能释放的问题
-- (void)willMoveToSuperview:(UIView *)newSuperview {
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
     if (!newSuperview) {
         [self stopTimer];
     }
 }
 
 //解决当timer释放后 回调scrollViewDidScroll时访问野指针导致崩溃
-- (void)dealloc {
+- (void)dealloc
+{
     _scrollView.delegate = nil;
 }
 

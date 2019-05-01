@@ -75,7 +75,7 @@ static const CGFloat AnimDuration  = 0.3;
     
     [self layoutIfNeeded];
     
-    self.slider.layer.cornerRadius = self.slider.bounds.size.height / 2;
+    self.slider.layer.cornerRadius = self.slider.vHeight / 2;
     self.slider.layer.masksToBounds = YES;
     [self showNavigationBarStyle:HomeNavigationBarStyleDefault];
     [self showSelectedIndex:0];

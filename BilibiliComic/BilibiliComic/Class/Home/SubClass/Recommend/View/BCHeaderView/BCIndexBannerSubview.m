@@ -55,7 +55,7 @@
 - (UIImageView *)iconImage {
     
     if (!_iconImage) {
-        _iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        _iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.vWidth, self.vHeight)];
         _iconImage.contentMode = UIViewContentModeScaleAspectFit;
     }
     return _iconImage;

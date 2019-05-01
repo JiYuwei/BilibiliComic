@@ -60,7 +60,7 @@
     
     [self layoutIfNeeded];
     
-    self.searchBar.layer.cornerRadius = self.searchBar.bounds.size.height / 2;
+    self.searchBar.layer.cornerRadius = self.searchBar.vHeight / 2;
     self.searchBar.layer.masksToBounds = YES;
     [self.searchBar openScrollMode];
     

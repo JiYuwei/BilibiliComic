@@ -1358,6 +1358,7 @@
 		09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */; };
 		09EB8B282265F22900FCAAE4 /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B272265F22900FCAAE4 /* RankViewController.m */; };
 		09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */; };
+		09F629242279424300F4638B /* UIView+FrameGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F629232279424300F4638B /* UIView+FrameGeometry.m */; };
 		7B22D8E921D218EB6F3DEE46 /* libPods-BilibiliComic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */; };
 /* End PBXBuildFile section */
 
@@ -2763,6 +2764,8 @@
 		09EB8B272265F22900FCAAE4 /* RankViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankViewController.m; sourceTree = "<group>"; };
 		09EB8B292265F24F00FCAAE4 /* NewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewViewController.h; sourceTree = "<group>"; };
 		09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
+		09F629222279424300F4638B /* UIView+FrameGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameGeometry.h"; sourceTree = "<group>"; };
+		09F629232279424300F4638B /* UIView+FrameGeometry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameGeometry.m"; sourceTree = "<group>"; };
 		2A5F7987A831C9957FFA7597 /* Pods-BilibiliComic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.release.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.release.xcconfig"; sourceTree = "<group>"; };
 		71289A0C19E253DB6D1F84CB /* Pods-BilibiliComic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.debug.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.debug.xcconfig"; sourceTree = "<group>"; };
 		DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BilibiliComic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -4386,6 +4389,8 @@
 			children = (
 				09EB8B122264482800FCAAE4 /* NSArray+Sudoku.h */,
 				09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */,
+				09F629222279424300F4638B /* UIView+FrameGeometry.h */,
+				09F629232279424300F4638B /* UIView+FrameGeometry.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -5963,6 +5968,7 @@
 				09D5423122673B25007681E4 /* BCRefreshHeader.m in Sources */,
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,
 				09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */,
+				09F629242279424300F4638B /* UIView+FrameGeometry.m in Sources */,
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
 				097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */,
 				09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */,

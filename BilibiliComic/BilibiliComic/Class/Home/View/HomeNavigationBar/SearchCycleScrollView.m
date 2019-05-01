@@ -23,8 +23,8 @@
 
 -(void)openScrollMode
 {
-    CGFloat width = self.frame.size.width;
-    CGFloat height = self.frame.size.height;
+    CGFloat width = self.vWidth;
+    CGFloat height = self.vHeight;
     self.firstLabel.frame = CGRectMake(0, 0, width, height);
     self.secondLabel.frame = CGRectMake(0, height, width, height);
     
@@ -56,8 +56,8 @@ static NSInteger i=1;
 {
     i++;
     i=i>self.placeHolders.count-1?0:i;
-    CGFloat height=self.frame.size.height;
-    CGFloat width=self.frame.size.width;
+    CGFloat height=self.vHeight;
+    CGFloat width=self.vWidth;
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         NSArray *labelArray=self.subviews;
         //让label滚动起来
@@ -72,13 +72,13 @@ static NSInteger i=1;
         
     } completion:^(BOOL finished) {
         //重新定位label的位置
-        if (self.firstLabel.frame.origin.y<=-height) {
-            self.firstLabel.frame=CGRectMake(0, height, width, height);
-            self.firstLabel.text=self.placeHolders[i];
+        if (self.firstLabel.vOrigin.y <= -height) {
+            self.firstLabel.frame = CGRectMake(0, height, width, height);
+            self.firstLabel.text = self.placeHolders[i];
         }
-        if (self.secondLabel.frame.origin.y<=-height) {
-            self.secondLabel.frame=CGRectMake(0, height, width, height);
-            self.secondLabel.text=self.placeHolders[i];
+        if (self.secondLabel.frame.origin.y <= -height) {
+            self.secondLabel.frame = CGRectMake(0, height, width, height);
+            self.secondLabel.text = self.placeHolders[i];
             
         }
     }];

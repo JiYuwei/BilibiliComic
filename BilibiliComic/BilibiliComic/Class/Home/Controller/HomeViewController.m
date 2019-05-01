@@ -57,7 +57,7 @@
     [[self.homeNavBar.pagesTopBar rac_signalForSelector:@selector(showSelectedIndex:)] subscribeNext:^(RACTuple * _Nullable x) {
         @strongify(self)
         NSUInteger index = [x.first unsignedIntegerValue];
-        CGFloat width = self.mainScrollView.bounds.size.width;
+        CGFloat width = self.mainScrollView.vWidth;
         [self.mainScrollView setContentOffset:CGPointMake(width * index, 0) animated:YES];
     }];
 }
@@ -65,8 +65,8 @@
 -(void)initMainScrollView
 {
     NSUInteger vCount  = self.childVCArray.count;
-    CGFloat viewWidth  = self.mainScrollView.bounds.size.width;
-    CGFloat viewHeight = self.mainScrollView.bounds.size.height;
+    CGFloat viewWidth  = self.mainScrollView.vWidth;
+    CGFloat viewHeight = self.mainScrollView.vHeight;
     self.mainScrollView.contentSize = CGSizeMake(viewWidth * vCount, 0);
     
     [self.childVCArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -124,7 +124,7 @@
     
     HomePagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
     UIView *slider = pagesTopBar.slider;
-    CGFloat place = pagesTopBar.bounds.size.width / pagesTopBar.itemTitles.count / 2;
+    CGFloat place = pagesTopBar.vWidth / pagesTopBar.itemTitles.count / 2;
     CGFloat percent = offsetX / BC_SCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);
     CGFloat x = place + place * percent;
     CGFloat y = slider.center.y;
@@ -147,7 +147,7 @@
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     CGFloat offsetX = scrollView.contentOffset.x;
-    NSUInteger index = (NSUInteger)(offsetX / scrollView.bounds.size.width);
+    NSUInteger index = (NSUInteger)(offsetX / scrollView.vWidth);
     [self.homeNavBar.pagesTopBar showSelectedIndex:index];
 }
 

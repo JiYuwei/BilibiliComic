@@ -9,7 +9,7 @@
 #import "BCHeaderView.h"
 #import "BCFlowView.h"
 
-@interface BCHeaderView () <HQFlowViewDataSource,HQFlowViewDelegate>
+@interface BCHeaderView () <BCFlowViewDataSource,BCFlowViewDelegate>
 
 @property (nonatomic,strong) BCFlowView *pageFlowView;
 @property (nonatomic,copy)   NSArray    *advArray;
@@ -22,21 +22,11 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        _advArray = @[@"home_update_img_264x160_",@"icon-status-error_210x154_",@"icon-status-check_280x150_"];
+        self.advArray = @[@"home_update_img_264x160_",
+                          @"icon-status-error_210x154_",
+                          @"icon-status-check_280x150_"];
         
-        _pageFlowView = [[BCFlowView alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT + 20, BC_SCREEN_WIDTH, frame.size.height - BC_NAV_HEIGHT - 20)];
-        _pageFlowView.delegate = self;
-        _pageFlowView.dataSource = self;
-        _pageFlowView.minimumPageAlpha = 0;
-        _pageFlowView.leftRightMargin = 20;
-        _pageFlowView.topBottomMargin = 60;
-        _pageFlowView.orginPageCount = _advArray.count;
-        _pageFlowView.isOpenAutoScroll = YES;
-        _pageFlowView.autoTime = 3.0;
-        _pageFlowView.orientation = HQFlowViewOrientationHorizontal;
-        
-        [self addSubview:_pageFlowView];
-        [_pageFlowView reloadData];
+        [self.pageFlowView reloadData];
     }
     return self;
 }
@@ -50,7 +40,7 @@
 {
     BCIndexBannerSubview *bannerView = (BCIndexBannerSubview *)[flowView dequeueReusableCell];
     if (!bannerView) {
-        bannerView = [[BCIndexBannerSubview alloc] initWithFrame:CGRectMake(0, 0, self.pageFlowView.frame.size.width, self.pageFlowView.frame.size.height)];
+        bannerView = [[BCIndexBannerSubview alloc] initWithFrame:CGRectMake(0, 0, self.pageFlowView.vWidth, self.pageFlowView.vHeight)];
         bannerView.layer.cornerRadius = 5;
         bannerView.layer.masksToBounds = YES;
         bannerView.coverView.backgroundColor = [UIColor darkGrayColor];
@@ -61,6 +51,26 @@
 //    bannerView.mainImageView.image = [UIImage imageNamed:self.advArray[index]];
     bannerView.mainImageView.backgroundColor = GRandomColor;
     return bannerView;
+}
+
+#pragma mark - LazyLoad
+
+-(BCFlowView *)pageFlowView
+{
+    if (!_pageFlowView) {
+        _pageFlowView = [[BCFlowView alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT + 20, BC_SCREEN_WIDTH, self.vHeight - BC_NAV_HEIGHT - 20)];
+        _pageFlowView.delegate = self;
+        _pageFlowView.dataSource = self;
+        _pageFlowView.minimumPageAlpha = 0;
+        _pageFlowView.leftRightMargin = 20;
+        _pageFlowView.topBottomMargin = 60;
+        _pageFlowView.orginPageCount = _advArray.count;
+        _pageFlowView.isOpenAutoScroll = YES;
+        _pageFlowView.autoTime = 3.0;
+        _pageFlowView.orientation = HQFlowViewOrientationHorizontal;
+        [self addSubview:_pageFlowView];
+    }
+    return _pageFlowView;
 }
 
 @end
