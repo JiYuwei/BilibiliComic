@@ -31,7 +31,7 @@
     return self;
 }
 
-#pragma mark JQFlowViewDatasource
+#pragma mark - BCFlowViewDatasource
 - (NSInteger)numberOfPagesInFlowView:(BCFlowView *)flowView
 {
     return self.advArray.count;
@@ -51,6 +51,18 @@
 //    bannerView.mainImageView.image = [UIImage imageNamed:self.advArray[index]];
     bannerView.mainImageView.backgroundColor = GRandomColor;
     return bannerView;
+}
+
+#pragma mark BCFlowViewDelegate
+
+-(void)didScrollToPage:(NSInteger)pageNumber inFlowView:(BCFlowView *)flowView
+{
+    
+}
+
+-(void)didSelectCell:(BCIndexBannerSubview *)subView withSubViewIndex:(NSInteger)subIndex
+{
+    
 }
 
 #pragma mark - LazyLoad
