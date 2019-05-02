@@ -37,24 +37,24 @@ static BCNetworkRequest *request;
 -(instancetype)init
 {
     if (self = [super init]) {
-        _manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        _manager = [AFHTTPSessionManager manager];
         _manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        _manager.responseSerializer.stringEncoding = NSUTF8StringEncoding;
+        _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         _manager.requestSerializer.timeoutInterval = 20;
         
-//        [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//        [_manager.requestSerializer setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+/******************
+        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"*.bilibili.com" ofType:@"cer"];
+        NSData * certData =[NSData dataWithContentsOfFile:cerPath];
+        NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
+
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:certSet];
+        securityPolicy.validatesDomainName = NO;
+        securityPolicy.allowInvalidCertificates = YES;
+ 
+        _manager.securityPolicy = securityPolicy;
+*****************/
         
-//        NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"bilibili" ofType:@"cer"];
-//        NSData * certData =[NSData dataWithContentsOfFile:cerPath];
-//        NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
-//        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:certSet];
-//        securityPolicy.validatesDomainName = NO;
-//        securityPolicy.allowInvalidCertificates = YES;
-//        
-//        _manager.securityPolicy = securityPolicy;
     }
-    
     return self;
 }
 
@@ -117,6 +117,29 @@ static BCNetworkRequest *request;
 
 #pragma mark - Private
 
+- (NSString *)componentFullURL:(NSString *)url
+{
+    return [HOSTURL stringByAppendingString:url];
+}
+
+- (NSDictionary *)componentFullParameters:(NSDictionary *)parameters
+{
+    NSMutableDictionary *defParameters = [NSMutableDictionary dictionaryWithDictionary:@{@"actionKey":ACTION_KEY,
+                                   @"appkey":APP_KEY,
+                                   @"version":APP_VERSION,
+                                   @"build":APP_BUILD,
+                                   @"device":APP_DEVICE,
+                                   @"mobi_app":APP_MOBI,
+                                   @"platform":APP_PLATFORM,
+                                   @"sign":APP_SIGN,
+                                   @"ts":APP_TS}];
+    if (parameters) {
+        [defParameters addEntriesFromDictionary:parameters];
+    }
+    
+    return [defParameters copy];
+}
+
 - (void)retrieveJsonWithPrepare:(prepareBlock)prepare finish:(finishBlock)finish needCache:(BOOL)needCache requestType:(HTTPRequestType)type fromURL:(NSString *)url parameters:(NSDictionary *)parameters success:(requestSuccessBlock)success failure:(requestFailureBlock)failure
 {
     if (!url) {
@@ -126,13 +149,16 @@ static BCNetworkRequest *request;
         prepare();
     }
     
+    url        = [self componentFullURL:url];
+    parameters = [self componentFullParameters:parameters];
+    
     switch (type) {
         case HTTPRequestTypeGET:
         {
             [_manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
-//                NSDictionary *json = [BCRequestCache jsonData2NSDictionary:responseObject];
-                NSDictionary *json = (NSDictionary *)responseObject;
+                NSDictionary *json = [BCRequestCache jsonData2NSDictionary:responseObject];
+//                NSDictionary *json = (NSDictionary *)responseObject;
                 
                 if (json && needCache) {
                     NSString *requestKey = [self generateRequestKey:url parameters:parameters];
@@ -174,13 +200,13 @@ static BCNetworkRequest *request;
         {
             [_manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
-//                NSDictionary *json = [BCRequestCache jsonData2NSDictionary:responseObject];
-                NSDictionary *json = (NSDictionary *)responseObject;
+                NSDictionary *json = [BCRequestCache jsonData2NSDictionary:responseObject];
+//                NSDictionary *json = (NSDictionary *)responseObject;
                 
-//                if (json && needCache) {
-//                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
-//                    [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonData:responseObject];
-//                }
+                if (json && needCache) {
+                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
+                    [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonData:responseObject];
+                }
                 
                 if (success) {
                     success(json);
@@ -199,10 +225,10 @@ static BCNetworkRequest *request;
                 }
                 
                 NSDictionary *json = nil;
-//                if (needCache) {
-//                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
-//                    json = [[BCRequestCache sharedRequestCache] getFromCache:requestKey];
-//                }
+                if (needCache) {
+                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
+                    json = [[BCRequestCache sharedRequestCache] getFromCache:requestKey];
+                }
                 
                 if (failure) {
                     failure(error,needCache,json);
@@ -336,22 +362,6 @@ static BCNetworkRequest *request;
             return;
         }
     }
-    
-//    [_manager.session getAllTasksWithCompletionHandler:^(NSArray<__kindof NSURLSessionTask *> * _Nonnull tasks) {
-//        if (tasks.count == 0) {
-//            return;
-//        }
-//        
-//        for (NSURLSessionTask *task in tasks) {
-//            if (!url) {
-//                [task cancel];
-//            }
-//            else if ([task.currentRequest.URL.absoluteString isEqualToString:url]) {
-//                [task cancel];
-//                return;
-//            }
-//        }
-//    }];
 }
 
 -(void)cancelAllRequest

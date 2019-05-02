@@ -9,6 +9,14 @@
 #ifndef Defines_h
 #define Defines_h
 
+
+#ifdef DEBUG
+#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#else
+#define NSLog(format, ...)
+#endif
+
+
 #define HOME_TITLE       @"首页"
 #define HOME_N_ICON      @"comic_tab_home_n_ico_28x28_"
 #define HOME_S_ICON      @"comic_tab_home_s_ico_28x28_"

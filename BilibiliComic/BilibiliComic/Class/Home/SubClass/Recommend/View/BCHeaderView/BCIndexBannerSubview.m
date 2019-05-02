@@ -33,7 +33,7 @@
 
 - (void)setSubviewsWithSuperViewBounds:(CGRect)superViewBounds {
     
-    NSLog(@"cell.coverView.alpha---%f",self.coverView.alpha);
+//    NSLog(@"cell.coverView.alpha---%f",self.coverView.alpha);
     
     if (CGRectEqualToRect(self.mainImageView.frame, superViewBounds)) {
         return;

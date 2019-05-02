@@ -76,9 +76,6 @@
     self.comicView.layer.masksToBounds = YES;
     
     self.tagLabel.layer.cornerRadius = self.tagLabel.vHeight / 8;
-    
-    self.titleLabel.text = @"欢迎来到实力至上主义的教室";
-    self.subTitleLabel.text = @"最新上架";
 }
 
 #pragma mark - LazyLoad
@@ -131,6 +128,7 @@
     if (!_tagLabel) {
         _tagLabel = [[UILabel alloc] init];
         _tagLabel.layer.backgroundColor = GRandomColor.CGColor;
+        _tagLabel.hidden = YES;
         [self.contentView addSubview:_tagLabel];
     }
     return _tagLabel;

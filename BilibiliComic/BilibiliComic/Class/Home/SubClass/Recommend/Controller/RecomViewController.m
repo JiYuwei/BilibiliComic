@@ -12,6 +12,7 @@
 
 @interface RecomViewController ()
 
+
 @end
 
 @implementation RecomViewController
@@ -20,10 +21,35 @@
     [super viewDidLoad];
     self.mainTableView.showsVerticalScrollIndicator = NO;
     self.mainTableView.mj_header.frame = CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_NAV_HEIGHT);
+    [self retrieveData];
     [self initTableHeaderview];
     [self initRecomListCell];
 }
 
+#pragma mark - OverWriteRetrieveData
+
+-(void)retrieveData
+{
+    NSString *url = HOME_STOCK_URL;
+    NSDictionary *parameters = @{@"omitCards":@2,
+                                 @"page_num":@1,
+                                 @"seed":@0,
+                                 };
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
+        [self.mainTableView.mj_header endRefreshing];
+    } needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        NSLog(@"json:%@",json);
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        NSLog(@"%@",error);
+    }];
+}
+
+-(void)loadMoreData
+{
+    
+}
+
+#pragma mark - UI
 -(void)initTableHeaderview
 {
     BCHeaderView *headerView = [[BCHeaderView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, DefaultViewHeight)];
