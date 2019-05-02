@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define HeaderViewHeight   0.7 * BC_SCREEN_WIDTH
+#define DefaultViewHeight   0.7 * BC_SCREEN_WIDTH
 
 @interface RecomViewController : BaseViewController
 

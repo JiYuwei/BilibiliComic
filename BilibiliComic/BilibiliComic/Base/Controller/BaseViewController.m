@@ -102,6 +102,7 @@
         _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_TABBAR_HEIGHT) style:UITableViewStyleGrouped];
         _mainTableView.backgroundColor = [UIColor whiteColor];
         _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _mainTableView.showsHorizontalScrollIndicator = NO;
         _mainTableView.dataSource = self;
         _mainTableView.delegate = self;
         if (@available(iOS 11.0, *)) {

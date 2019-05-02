@@ -20,5 +20,23 @@
 		<key>414</key>
 		<integer>17</integer>
 	</dict>
+	<key>RecomListDefTitleFont</key>
+	<dict>
+		<key>320</key>
+		<integer>18</integer>
+		<key>375</key>
+		<integer>20</integer>
+		<key>414</key>
+		<integer>22</integer>
+	</dict>
+	<key>RecomListSubTitleFont</key>
+	<dict>
+		<key>320</key>
+		<integer>13</integer>
+		<key>375</key>
+		<integer>15</integer>
+		<key>414</key>
+		<integer>17</integer>
+	</dict>
 </dict>
 </plist>

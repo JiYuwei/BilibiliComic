@@ -41,8 +41,6 @@
     BCIndexBannerSubview *bannerView = (BCIndexBannerSubview *)[flowView dequeueReusableCell];
     if (!bannerView) {
         bannerView = [[BCIndexBannerSubview alloc] initWithFrame:CGRectMake(0, 0, self.pageFlowView.vWidth, self.pageFlowView.vHeight)];
-        bannerView.layer.cornerRadius = 5;
-        bannerView.layer.masksToBounds = YES;
         bannerView.coverView.backgroundColor = [UIColor darkGrayColor];
     }
     //在这里下载网络图片
