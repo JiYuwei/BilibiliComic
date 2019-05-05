@@ -41,8 +41,8 @@
     
     [self.searchImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(8);
-        make.top.equalTo(self).offset(5);
-        make.bottom.equalTo(self).offset(-5);
+        make.top.equalTo(self).offset(7);
+        make.bottom.equalTo(self).offset(-7);
         make.width.equalTo(self.searchImageView.mas_height);
     }];
     

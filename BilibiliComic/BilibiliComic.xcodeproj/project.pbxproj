@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
+		0958897F227EF3C900A41D02 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897E227EF3C900A41D02 /* BaseViewModel.m */; };
 		09591287225D860200142DF7 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09591286225D860200142DF7 /* BaseNavigationController.m */; };
 		096D0283221818970067651A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0282221818970067651A /* BaseViewController.m */; };
 		096D0287221835420067651A /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0286221835420067651A /* BaseTabbarController.m */; };
@@ -1381,6 +1383,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09588979227EF39700A41D02 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		0958897A227EF39700A41D02 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		0958897D227EF3C900A41D02 /* BaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
+		0958897E227EF3C900A41D02 /* BaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		09591285225D860200142DF7 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		09591286225D860200142DF7 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		096D0281221818970067651A /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -2800,10 +2806,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0958897C227EF3B300A41D02 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0958897D227EF3C900A41D02 /* BaseViewModel.h */,
+				0958897E227EF3C900A41D02 /* BaseViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		096D0280221818610067651A /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				097918EB2270649700C243B7 /* Model */,
+				0958897C227EF3B300A41D02 /* ViewModel */,
 				097918EC2270649F00C243B7 /* View */,
 				097918ED227064A800C243B7 /* Controller */,
 			);
@@ -2864,6 +2880,8 @@
 		097918EB2270649700C243B7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09588979227EF39700A41D02 /* BaseModel.h */,
+				0958897A227EF39700A41D02 /* BaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -5956,6 +5974,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0958897B227EF39700A41D02 /* BaseModel.m in Sources */,
+				0958897F227EF3C900A41D02 /* BaseViewModel.m in Sources */,
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,

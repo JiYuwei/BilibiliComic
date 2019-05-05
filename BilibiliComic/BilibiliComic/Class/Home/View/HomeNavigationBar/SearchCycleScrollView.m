@@ -42,8 +42,8 @@
     if (self) {
         self.firstLabel = [[UILabel alloc] init];
         self.secondLabel = [[UILabel alloc] init];
-        self.firstLabel.font = [UIFont systemFontOfSize:14];
-        self.secondLabel.font = [UIFont systemFontOfSize:14];
+        self.firstLabel.font = [UIFont systemFontOfSize:12];
+        self.secondLabel.font = [UIFont systemFontOfSize:12];
         
         [self addSubview:self.firstLabel];
         [self addSubview:self.secondLabel];

@@ -41,8 +41,8 @@
     
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.timeLineBtn.mas_left).offset(-10);
-        make.top.equalTo(self.contentView).offset(10);
-        make.bottom.equalTo(self.contentView).offset(-10);
+        make.top.equalTo(self.contentView).offset(8);
+        make.bottom.equalTo(self.contentView).offset(-8);
         make.left.greaterThanOrEqualTo(self.pagesTopBar.mas_right).offset(10);
         make.width.mas_equalTo(120);
     }];

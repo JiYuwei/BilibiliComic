@@ -69,7 +69,7 @@
     //Empty, RACSignalForSelecter -> HomeViewController;
 }
 
-#pragma mark - UITableViewDataSource & Delegate
+#pragma mark - UITableViewDataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -82,6 +82,8 @@
     
     return cell;
 }
+
+#pragma mark UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
