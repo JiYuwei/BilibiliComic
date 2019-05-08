@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
 		0958897F227EF3C900A41D02 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897E227EF3C900A41D02 /* BaseViewModel.m */; };
+		095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889832282BFBD00A41D02 /* HomeStockModel.m */; };
+		095889882282E05F00A41D02 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889872282E05F00A41D02 /* AppConfig.m */; };
+		0958898B2282F04100A41D02 /* HomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958898A2282F04100A41D02 /* HomeBannerModel.m */; };
 		09591287225D860200142DF7 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09591286225D860200142DF7 /* BaseNavigationController.m */; };
 		096D0283221818970067651A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0282221818970067651A /* BaseViewController.m */; };
 		096D0287221835420067651A /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0286221835420067651A /* BaseTabbarController.m */; };
@@ -1361,7 +1364,7 @@
 		09EB8B282265F22900FCAAE4 /* RankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B272265F22900FCAAE4 /* RankViewController.m */; };
 		09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */; };
 		09F629242279424300F4638B /* UIView+FrameGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F629232279424300F4638B /* UIView+FrameGeometry.m */; };
-		09F62927227AB73000F4638B /* RecomListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F62926227AB73000F4638B /* RecomListCell.m */; };
+		09F62927227AB73000F4638B /* HomeStockListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F62926227AB73000F4638B /* HomeStockListCell.m */; };
 		7B22D8E921D218EB6F3DEE46 /* libPods-BilibiliComic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */; };
 /* End PBXBuildFile section */
 
@@ -1387,6 +1390,12 @@
 		0958897A227EF39700A41D02 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		0958897D227EF3C900A41D02 /* BaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
 		0958897E227EF3C900A41D02 /* BaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
+		095889822282BFBD00A41D02 /* HomeStockModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeStockModel.h; sourceTree = "<group>"; };
+		095889832282BFBD00A41D02 /* HomeStockModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeStockModel.m; sourceTree = "<group>"; };
+		095889862282E05F00A41D02 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
+		095889872282E05F00A41D02 /* AppConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
+		095889892282F04100A41D02 /* HomeBannerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBannerModel.h; sourceTree = "<group>"; };
+		0958898A2282F04100A41D02 /* HomeBannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBannerModel.m; sourceTree = "<group>"; };
 		09591285225D860200142DF7 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		09591286225D860200142DF7 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		096D0281221818970067651A /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -2773,8 +2782,8 @@
 		09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewViewController.m; sourceTree = "<group>"; };
 		09F629222279424300F4638B /* UIView+FrameGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+FrameGeometry.h"; sourceTree = "<group>"; };
 		09F629232279424300F4638B /* UIView+FrameGeometry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+FrameGeometry.m"; sourceTree = "<group>"; };
-		09F62925227AB73000F4638B /* RecomListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecomListCell.h; sourceTree = "<group>"; };
-		09F62926227AB73000F4638B /* RecomListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecomListCell.m; sourceTree = "<group>"; };
+		09F62925227AB73000F4638B /* HomeStockListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeStockListCell.h; sourceTree = "<group>"; };
+		09F62926227AB73000F4638B /* HomeStockListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeStockListCell.m; sourceTree = "<group>"; };
 		2A5F7987A831C9957FFA7597 /* Pods-BilibiliComic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.release.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.release.xcconfig"; sourceTree = "<group>"; };
 		71289A0C19E253DB6D1F84CB /* Pods-BilibiliComic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BilibiliComic.debug.xcconfig"; path = "Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic.debug.xcconfig"; sourceTree = "<group>"; };
 		DAA693F2FF53BD1AF3D91427 /* libPods-BilibiliComic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BilibiliComic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2815,6 +2824,26 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		095889812282BFA800A41D02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				095889892282F04100A41D02 /* HomeBannerModel.h */,
+				0958898A2282F04100A41D02 /* HomeBannerModel.m */,
+				095889822282BFBD00A41D02 /* HomeStockModel.h */,
+				095889832282BFBD00A41D02 /* HomeStockModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		095889852282E03C00A41D02 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				095889862282E05F00A41D02 /* AppConfig.h */,
+				095889872282E05F00A41D02 /* AppConfig.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		096D0280221818610067651A /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -2829,10 +2858,9 @@
 		096D02882218356C0067651A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				09EB8B222265F16A00FCAAE4 /* SubClass */,
-				097918F12270660A00C243B7 /* Model */,
 				097918EF2270654300C243B7 /* View */,
 				097918F02270654900C243B7 /* Controller */,
+				09EB8B222265F16A00FCAAE4 /* SubClass */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2924,13 +2952,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		097918F12270660A00C243B7 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		097918F22270663E00C243B7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2944,8 +2965,8 @@
 			isa = PBXGroup;
 			children = (
 				097918EA227063D500C243B7 /* BCHeaderView */,
-				09F62925227AB73000F4638B /* RecomListCell.h */,
-				09F62926227AB73000F4638B /* RecomListCell.m */,
+				09F62925227AB73000F4638B /* HomeStockListCell.h */,
+				09F62926227AB73000F4638B /* HomeStockListCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2978,6 +2999,7 @@
 				096D0280221818610067651A /* Base */,
 				09D5422622672EDB007681E4 /* Class */,
 				09D5422522672EA0007681E4 /* Network */,
+				095889852282E03C00A41D02 /* Config */,
 				09982BA72217EE93006CB358 /* PngSrc */,
 				09E298F522606CBE009F0D4E /* Category */,
 				09EB8B1D2265B19B00FCAAE4 /* Plist */,
@@ -4370,6 +4392,7 @@
 		09D5422422672E1B007681E4 /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
+				095889812282BFA800A41D02 /* Model */,
 				097918F32270664B00C243B7 /* View */,
 				097918F22270663E00C243B7 /* Controller */,
 			);
@@ -4556,8 +4579,8 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 09982B692217EBE4006CB358;
 			productRefGroup = 09982B732217EBE4006CB358 /* Products */;
@@ -5979,6 +6002,7 @@
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,
+				0958898B2282F04100A41D02 /* HomeBannerModel.m in Sources */,
 				09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */,
 				096D0287221835420067651A /* BaseTabbarController.m in Sources */,
 				096D0283221818970067651A /* BaseViewController.m in Sources */,
@@ -5994,11 +6018,13 @@
 				09591287225D860200142DF7 /* BaseNavigationController.m in Sources */,
 				09EB8B202265B1FC00FCAAE4 /* PlistManager.m in Sources */,
 				09F629242279424300F4638B /* UIView+FrameGeometry.m in Sources */,
+				095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */,
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
 				097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */,
+				095889882282E05F00A41D02 /* AppConfig.m in Sources */,
 				09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */,
 				09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */,
-				09F62927227AB73000F4638B /* RecomListCell.m in Sources */,
+				09F62927227AB73000F4638B /* HomeStockListCell.m in Sources */,
 				09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */,
 				096D0297221836580067651A /* MeViewController.m in Sources */,
 				09982B772217EBE4006CB358 /* AppDelegate.m in Sources */,

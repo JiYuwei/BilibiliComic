@@ -1,5 +1,5 @@
 //
-//  RecomListCell.h
+//  HomeStockListCell.h
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/5/2.
@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RecomListCell : UITableViewCell
+@class List;
+
+@interface HomeStockListCell : UITableViewCell
+
+@property (nonatomic,strong) List *homeStockList;
 
 @end
 

@@ -1,27 +1,28 @@
 //
-//  RecomListCell.m
+//  HomeStockListCell.m
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/5/2.
 //  Copyright © 2019 jyw. All rights reserved.
 //
 
-#import "RecomListCell.h"
+#import "HomeStockListCell.h"
+#import "HomeStockModel.h"
 
 #define DefTitleFont  @"RecomListDefTitleFont"
 #define SubTitleFont  @"RecomListSubTitleFont"
 
-@interface RecomListCell ()
+@interface HomeStockListCell ()
 
 @property (nonatomic,strong) UIImageView *comicView;
-@property (nonatomic,strong) UIImageView *statusView;
+//@property (nonatomic,strong) UIImageView *statusView;
 @property (nonatomic,strong) UILabel     *titleLabel;
 @property (nonatomic,strong) UILabel     *subTitleLabel;
 @property (nonatomic,strong) UILabel     *tagLabel;
 
 @end
 
-@implementation RecomListCell
+@implementation HomeStockListCell
 {
     CGFloat _defTitleFont;
     CGFloat _subTitleFont;
@@ -49,14 +50,15 @@
         make.height.equalTo(self.comicView.mas_width).multipliedBy(0.55);
     }];
     
-    [self.statusView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(self.comicView);
-        make.size.mas_equalTo(CGSizeMake(80, 40));
-    }];
+//    [self.statusView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.left.equalTo(self.comicView);
+//        make.size.mas_equalTo(CGSizeMake(80, 40));
+//    }];
 
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(18);
         make.top.equalTo(self.comicView.mas_bottom).offset(6);
+        make.width.mas_lessThanOrEqualTo(BC_SCREEN_WIDTH - 36);
     }];
 
     [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -75,7 +77,24 @@
     self.comicView.layer.cornerRadius = self.comicView.vHeight / 20;
     self.comicView.layer.masksToBounds = YES;
     
-    self.tagLabel.layer.cornerRadius = self.tagLabel.vHeight / 8;
+    self.tagLabel.layer.cornerRadius = self.tagLabel.vHeight / 6;
+}
+
+#pragma mark - Setter
+
+-(void)setHomeStockList:(List *)homeStockList
+{
+    if (homeStockList && _homeStockList != homeStockList) {
+        _homeStockList = homeStockList;
+        
+        [self.comicView sd_setImageWithURL:[NSURL URLWithString:_homeStockList.img] placeholderImage:PlaceHolderIMG];
+        self.titleLabel.text = _homeStockList.title;
+        self.subTitleLabel.text = _homeStockList.sub_title;
+        
+        BOOL style = _homeStockList.styles.count > 0;
+        self.tagLabel.hidden = !style;
+        self.tagLabel.text = style ? _homeStockList.styles.firstObject.name : nil;
+    }
 }
 
 #pragma mark - LazyLoad
@@ -90,15 +109,15 @@
     return _comicView;
 }
 
--(UIImageView *)statusView
-{
-    if (!_statusView) {
-        _statusView = [[UIImageView alloc] init];
-        _statusView.backgroundColor = GRandomColor;
-        [self.comicView addSubview:_statusView];
-    }
-    return _statusView;
-}
+//-(UIImageView *)statusView
+//{
+//    if (!_statusView) {
+//        _statusView = [[UIImageView alloc] init];
+//        _statusView.backgroundColor = GRandomColor;
+//        [self.comicView addSubview:_statusView];
+//    }
+//    return _statusView;
+//}
 
 - (UILabel *)titleLabel
 {
@@ -128,6 +147,9 @@
     if (!_tagLabel) {
         _tagLabel = [[UILabel alloc] init];
         _tagLabel.layer.backgroundColor = GRandomColor.CGColor;
+        _tagLabel.textAlignment = NSTextAlignmentCenter;
+        _tagLabel.textColor = [UIColor whiteColor];
+        _tagLabel.font = [UIFont systemFontOfSize:13];
         _tagLabel.hidden = YES;
         [self.contentView addSubview:_tagLabel];
     }

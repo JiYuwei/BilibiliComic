@@ -48,12 +48,13 @@ static BCNetworkRequest *request;
         NSSet * certSet = [[NSSet alloc] initWithObjects:certData, nil];
 
         AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:certSet];
+ *****************/
+        
+        AFSecurityPolicy *securityPolicy = [AFSecurityPolicy defaultPolicy];
         securityPolicy.validatesDomainName = NO;
         securityPolicy.allowInvalidCertificates = YES;
  
         _manager.securityPolicy = securityPolicy;
-*****************/
-        
     }
     return self;
 }
@@ -119,7 +120,7 @@ static BCNetworkRequest *request;
 
 - (NSString *)componentFullURL:(NSString *)url
 {
-    return [HOSTURL stringByAppendingString:url];
+    return [HOME_HOSTURL stringByAppendingString:url];
 }
 
 - (NSDictionary *)componentFullParameters:(NSDictionary *)parameters

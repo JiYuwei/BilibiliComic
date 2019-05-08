@@ -8,11 +8,11 @@
 
 #import "BCHeaderView.h"
 #import "BCFlowView.h"
+#import "HomeBannerModel.h"
 
 @interface BCHeaderView () <BCFlowViewDataSource,BCFlowViewDelegate>
 
 @property (nonatomic,strong) BCFlowView *pageFlowView;
-@property (nonatomic,copy)   NSArray    *advArray;
 
 @end
 
@@ -22,19 +22,24 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        self.advArray = @[@"home_update_img_264x160_",
-                          @"icon-status-error_210x154_",
-                          @"icon-status-check_280x150_"];
-        
-        [self.pageFlowView reloadData];
     }
     return self;
+}
+
+#pragma mark - Setter
+
+-(void)setHomeBannerModel:(HomeBannerModel *)homeBannerModel
+{
+    if (homeBannerModel && _homeBannerModel != homeBannerModel) {
+        _homeBannerModel = homeBannerModel;
+        [self.pageFlowView reloadData];
+    }
 }
 
 #pragma mark - BCFlowViewDatasource
 - (NSInteger)numberOfPagesInFlowView:(BCFlowView *)flowView
 {
-    return self.advArray.count;
+    return self.homeBannerModel.data.count;
 }
 - (BCIndexBannerSubview *)flowView:(BCFlowView *)flowView cellForPageAtIndex:(NSInteger)index
 {
@@ -44,10 +49,11 @@
         bannerView.coverView.backgroundColor = [UIColor darkGrayColor];
     }
     //在这里下载网络图片
-    //    [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:self.advArray[index]] placeholderImage:nil];
+    NSString *imgURL = self.homeBannerModel.data[index].img;
+        [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:PlaceHolderIMG];
     //加载本地图片
 //    bannerView.mainImageView.image = [UIImage imageNamed:self.advArray[index]];
-    bannerView.mainImageView.backgroundColor = GRandomColor;
+//    bannerView.mainImageView.backgroundColor = GRandomColor;
     return bannerView;
 }
 
@@ -74,7 +80,7 @@
         _pageFlowView.minimumPageAlpha = 0;
         _pageFlowView.leftRightMargin = 20;
         _pageFlowView.topBottomMargin = 60;
-        _pageFlowView.orginPageCount = _advArray.count;
+        _pageFlowView.orginPageCount = 0;
         _pageFlowView.isOpenAutoScroll = YES;
         _pageFlowView.autoTime = 3.0;
         _pageFlowView.orientation = BCFlowViewOrientationHorizontal;

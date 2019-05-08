@@ -10,12 +10,13 @@
 #define Defines_h
 
 
-#ifdef DEBUG
-#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#ifdef DEBUG
+#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 #else
-#define NSLog(format, ...)
+#define NSLog(format, ...)
 #endif
 
+#define PlaceHolderIMG   UIImage(@"comic_thumb_placeholder1_ico_343x192_")
 
 #define HOME_TITLE       @"首页"
 #define HOME_N_ICON      @"comic_tab_home_n_ico_28x28_"

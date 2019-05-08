@@ -16,12 +16,14 @@
 #define APP_DEVICE          @"phone"
 #define APP_MOBI            @"iphone_comic"
 #define APP_PLATFORM        @"ios"
-#define APP_SIGN            @"8b0557572b23caf9394c8006e655e968"
-#define APP_TS              @"1556785571"
+#define APP_SIGN            [AppConfig getAppSign]
+#define APP_TS              [AppConfig getCurrentTimestamp]
 
 
-#define HOSTURL @"https://manga.bilibili.com"
+#define HOME_HOSTURL @"https://manga.bilibili.com/twirp/comic.v1.Comic/"
 
-#define HOME_STOCK_URL @"/twirp/comic.v1.Comic/HomeStock"
+#define HOME_BANNER     @"Banner"
+#define HOME_PAGE       @"HomePage"
+#define HOME_STOCK_URL  @"HomeStock"
 
 #endif /* RequestAPI_h */
