@@ -35,8 +35,10 @@
 - (void)changeBgColorWithContentOffSet:(CGFloat)offset
 {
     NSArray <UIColor *> *box = [self.colorBox copy];
-    const CGFloat pWidth = BC_SCREEN_WIDTH - LRPadding * 2;
-    const NSUInteger count = box.count;
+    
+    const CGFloat pWidth     = BC_SCREEN_WIDTH - LRPadding * 2;
+    const NSUInteger count   = box.count;
+    
     CGFloat x = (offset - pWidth * count) / pWidth;
     
     if (count > 0) {
@@ -47,9 +49,9 @@
         const CGFloat *CComp = CGColorGetComponents(box[currentIndex].CGColor);
         const CGFloat *NComp = CGColorGetComponents(box[nextIndex].CGColor);
         
-        CGFloat R =CComp[0] + (NComp[0] - CComp[0]) * (x - currentIndex);
-        CGFloat G =CComp[1] + (NComp[1] - CComp[1]) * (x - currentIndex);
-        CGFloat B =CComp[2] + (NComp[2] - CComp[2]) * (x - currentIndex);
+        CGFloat R = CComp[0] + (NComp[0] - CComp[0]) * (x - currentIndex);
+        CGFloat G = CComp[1] + (NComp[1] - CComp[1]) * (x - currentIndex);
+        CGFloat B = CComp[2] + (NComp[2] - CComp[2]) * (x - currentIndex);
        
 //        NSLog(@"%f,%f,%f",R,G,B);
         self.backgroundColor = [UIColor colorWithRed:R green:G blue:B alpha:1];
