@@ -12,6 +12,11 @@
 #define DefTitleFont  @"RecomListDefTitleFont"
 #define SubTitleFont  @"RecomListSubTitleFont"
 
+static const CGFloat Padding   = 18;
+
+static const CGFloat TAGWidth  = 35;
+static const CGFloat TAGHeight = 20;
+
 @interface HomeStockListCell ()
 
 @property (nonatomic,strong) UIImageView *comicView;
@@ -45,8 +50,8 @@
     }];
     
     [self.comicView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(self.contentView).offset(18);
-        make.right.equalTo(self.contentView).offset(-18);
+        make.top.left.equalTo(self.contentView).offset(Padding);
+        make.right.equalTo(self.contentView).offset(-Padding);
         make.height.equalTo(self.comicView.mas_width).multipliedBy(0.55);
     }];
     
@@ -56,28 +61,28 @@
 //    }];
 
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(18);
-        make.top.equalTo(self.comicView.mas_bottom).offset(6);
-        make.width.mas_lessThanOrEqualTo(BC_SCREEN_WIDTH - 36);
+        make.left.equalTo(self.contentView).offset(Padding);
+        make.top.equalTo(self.comicView.mas_bottom).offset(Padding / 3);
+        make.width.mas_lessThanOrEqualTo(BC_SCREEN_WIDTH - Padding * 2.8 - TAGWidth);
     }];
 
     [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView).offset(18);
-        make.top.equalTo(self.titleLabel.mas_bottom).offset(6);
+        make.left.equalTo(self.contentView).offset(Padding);
+        make.top.equalTo(self.titleLabel.mas_bottom).offset(Padding / 3);
     }];
 
     [self.tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLabel.mas_right).offset(18);
+        make.left.equalTo(self.titleLabel.mas_right).offset(Padding * 0.8);
         make.centerY.equalTo(self.titleLabel);
-        make.size.mas_equalTo(CGSizeMake(35, 20));
+        make.size.mas_equalTo(CGSizeMake(TAGWidth, TAGHeight));
     }];
     
     [self layoutIfNeeded];
     
-    self.comicView.layer.cornerRadius = self.comicView.vHeight / 20;
+    self.comicView.layer.cornerRadius = Padding / 2;
     self.comicView.layer.masksToBounds = YES;
     
-    self.tagLabel.layer.cornerRadius = self.tagLabel.vHeight / 6;
+    self.tagLabel.layer.cornerRadius = Padding / 6;
 }
 
 #pragma mark - Setter
@@ -103,7 +108,8 @@
 {
     if (!_comicView) {
         _comicView = [[UIImageView alloc] init];
-        _comicView.backgroundColor = GRandomColor;
+        _comicView.layer.borderColor = DefaultBorderColor.CGColor;
+        _comicView.layer.borderWidth = 0.5f;
         [self.contentView addSubview:_comicView];
     }
     return _comicView;
@@ -124,7 +130,6 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont boldSystemFontOfSize:_defTitleFont];
-//        _titleLabel.backgroundColor = GRandomColor;
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
@@ -136,7 +141,6 @@
         _subTitleLabel = [[UILabel alloc] init];
         _subTitleLabel.font = [UIFont systemFontOfSize:_subTitleFont];
         _subTitleLabel.textColor = [UIColor grayColor];
-//        _subTitleLabel.backgroundColor = GRandomColor;
         [self.contentView addSubview:_subTitleLabel];
     }
     return _subTitleLabel;

@@ -127,13 +127,13 @@ static BCNetworkRequest *request;
 {
     NSMutableDictionary *defParameters = [NSMutableDictionary dictionaryWithDictionary:@{@"actionKey":ACTION_KEY,
                                    @"appkey":APP_KEY,
-                                   @"version":APP_VERSION,
                                    @"build":APP_BUILD,
                                    @"device":APP_DEVICE,
                                    @"mobi_app":APP_MOBI,
                                    @"platform":APP_PLATFORM,
                                    @"sign":APP_SIGN,
-                                   @"ts":APP_TS}];
+                                   @"ts":APP_TS,
+                                   @"version":APP_VERSION}];
     if (parameters) {
         [defParameters addEntriesFromDictionary:parameters];
     }

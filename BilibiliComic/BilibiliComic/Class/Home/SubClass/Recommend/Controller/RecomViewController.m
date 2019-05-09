@@ -39,7 +39,7 @@ static const NSUInteger PageCount = 10;
 -(void)retrieveBanner
 {
     NSString *url = HOME_BANNER;
-    NSDictionary *parameters = @{};
+    NSDictionary *parameters = @{@"platform":APP_DEVICE};
     [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
         if (json && [json[@"code"] integerValue] == 0) {
             self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:json];
@@ -172,7 +172,7 @@ static const NSUInteger PageCount = 10;
 -(BCHeaderView *)bannerView
 {
     if (!_bannerView) {
-        _bannerView = [[BCHeaderView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, DefaultViewHeight)];
+        _bannerView = [[BCHeaderView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, HeaderViewHeight)];
         _bannerView.backgroundColor = GRandomColor;
     }
     return _bannerView;

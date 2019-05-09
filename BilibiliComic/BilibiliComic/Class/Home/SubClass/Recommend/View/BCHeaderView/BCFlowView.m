@@ -518,7 +518,7 @@ static NSString *subviewClassName;
 #pragma mark - UIScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
+    NSLog(@"(%.1f,%.1f)",scrollView.contentOffset.x,scrollView.contentOffset.y);
     if (self.orginPageCount == 0) {
         return;
     }
