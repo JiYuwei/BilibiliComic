@@ -39,7 +39,9 @@
     const CGFloat pWidth     = BC_SCREEN_WIDTH - LRPadding * 2;
     const NSUInteger count   = box.count;
     
-    CGFloat x = (offset - pWidth * count) / pWidth;
+    CGFloat x = offset - pWidth * count;
+    if (x < 0) x = x + pWidth * count;
+    x = x / pWidth;
     
     if (count > 0) {
         NSInteger currentIndex = (NSInteger)floorf(x);
