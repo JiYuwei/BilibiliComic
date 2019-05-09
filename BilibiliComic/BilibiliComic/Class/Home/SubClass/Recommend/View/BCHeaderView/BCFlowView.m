@@ -29,7 +29,6 @@ static NSString *subviewClassName;
 
 @implementation BCFlowView
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Private Methods
 
 - (void)initialize {
@@ -514,11 +513,10 @@ static NSString *subviewClassName;
     return nil;
 }
 
-
 #pragma mark - UIScrollView Delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"(%.1f,%.1f)",scrollView.contentOffset.x,scrollView.contentOffset.y);
+    
     if (self.orginPageCount == 0) {
         return;
     }

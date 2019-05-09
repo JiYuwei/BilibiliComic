@@ -94,12 +94,22 @@ static const CGFloat TAGHeight = 20;
         
         [self.comicView sd_setImageWithURL:[NSURL URLWithString:_homeStockList.img] placeholderImage:PlaceHolderIMG];
         self.titleLabel.text = _homeStockList.title;
-        self.subTitleLabel.text = _homeStockList.sub_title;
+        
+        NSString *subTitle = _homeStockList.sub_title;
+        BOOL pureNum = [self isPureInteger:subTitle];
+        self.subTitleLabel.text = pureNum ? [NSString stringWithFormat:@"第%@话",subTitle] : subTitle;
         
         BOOL style = _homeStockList.styles.count > 0;
         self.tagLabel.hidden = !style;
         self.tagLabel.text = style ? _homeStockList.styles.firstObject.name : nil;
     }
+}
+
+- (BOOL)isPureInteger:(NSString *)string
+{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    NSInteger val;
+    return[scan scanInteger:&val] && [scan isAtEnd];
 }
 
 #pragma mark - LazyLoad

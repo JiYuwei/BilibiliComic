@@ -15,6 +15,7 @@
 #import "PlistManager.h"
 #import "NSArray+Sudoku.h"
 #import "UIView+FrameGeometry.h"
+#import "UIColor+HexColor.h"
 #import "BCNetworkRequest.h"
 
 //Define

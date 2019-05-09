@@ -13,6 +13,7 @@
 @interface BCHeaderView () <BCFlowViewDataSource,BCFlowViewDelegate>
 
 @property (nonatomic,strong) BCFlowView *pageFlowView;
+@property (nonatomic,copy) NSMutableArray <UIColor *> *colorBox;
 
 @end
 
@@ -21,9 +22,47 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        
+        [self setupGradientView];
+        [[self.pageFlowView rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable x) {
+            UIScrollView *scrollView = (UIScrollView *)x.first;
+            [self changeBgColorWithContentOffSet:scrollView.contentOffset.x];
+        }];
     }
     return self;
+}
+
+//轮播图背景色渐变
+- (void)changeBgColorWithContentOffSet:(CGFloat)offset
+{
+    NSArray <UIColor *> *box = [self.colorBox copy];
+    const CGFloat pWidth = BC_SCREEN_WIDTH - LRPadding * 2;
+    const NSUInteger count = box.count;
+    CGFloat x = (offset - pWidth * count) / pWidth;
+    
+    if (count > 0) {
+        NSInteger currentIndex = (NSInteger)floorf(x);
+        NSInteger nextIndex    = currentIndex + 1;
+        if (nextIndex >= count) nextIndex = 0;
+        
+        const CGFloat *CComp = CGColorGetComponents(box[currentIndex].CGColor);
+        const CGFloat *NComp = CGColorGetComponents(box[nextIndex].CGColor);
+        
+        CGFloat R =CComp[0] + (NComp[0] - CComp[0]) * (x - currentIndex);
+        CGFloat G =CComp[1] + (NComp[1] - CComp[1]) * (x - currentIndex);
+        CGFloat B =CComp[2] + (NComp[2] - CComp[2]) * (x - currentIndex);
+       
+//        NSLog(@"%f,%f,%f",R,G,B);
+        self.backgroundColor = [UIColor colorWithRed:R green:G blue:B alpha:1];
+    }
+}
+
+#pragma mark - UI
+
+-(void)setupGradientView
+{
+    UIImageView *gradientView = [[UIImageView alloc] initWithFrame:self.frame];
+    gradientView.image = UIImage(@"home_bg_header_1200x800_");
+    [self addSubview:gradientView];
 }
 
 #pragma mark - Setter
@@ -32,6 +71,12 @@
 {
     if (homeBannerModel && _homeBannerModel != homeBannerModel) {
         _homeBannerModel = homeBannerModel;
+        
+        [self.colorBox removeAllObjects];
+        for (BannerData *item in _homeBannerModel.data) {
+            [self.colorBox addObject:[UIColor colorWithHexString:item.bg]];
+        }
+        
         [self.pageFlowView reloadData];
     }
 }
@@ -67,10 +112,10 @@
     return CGSizeMake(pageWidth, pageWidth / 2);
 }
 
--(void)didScrollToPage:(NSInteger)pageNumber inFlowView:(BCFlowView *)flowView
-{
-
-}
+//-(void)didScrollToPage:(NSInteger)pageNumber inFlowView:(BCFlowView *)flowView
+//{
+//
+//}
 
 -(void)didSelectCell:(BCIndexBannerSubview *)subView withSubViewIndex:(NSInteger)subIndex
 {
@@ -90,11 +135,19 @@
         _pageFlowView.topBottomMargin = LRPadding * 1.5;
         _pageFlowView.orginPageCount = 0;
         _pageFlowView.isOpenAutoScroll = YES;
-        _pageFlowView.autoTime = 3.0;
+        _pageFlowView.autoTime = DefaultTimeInterval;
         _pageFlowView.orientation = BCFlowViewOrientationHorizontal;
         [self addSubview:_pageFlowView];
     }
     return _pageFlowView;
+}
+
+-(NSMutableArray<UIColor *> *)colorBox
+{
+    if (!_colorBox) {
+        _colorBox = [NSMutableArray array];
+    }
+    return _colorBox;
 }
 
 @end

@@ -126,7 +126,7 @@
 {
     if (!_searchCycleView) {
         _searchCycleView = [[SearchCycleScrollView alloc] init];
-        _searchCycleView.interval = 3.0f;
+        _searchCycleView.interval = DefaultTimeInterval;
         [self addSubview:_searchCycleView];
     }
     return _searchCycleView;
