@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BaseModel : NSObject
 
+@property (nonatomic, copy)   NSString * msg;
+@property (nonatomic, assign) NSInteger  code;
+
 @end
 
 NS_ASSUME_NONNULL_END

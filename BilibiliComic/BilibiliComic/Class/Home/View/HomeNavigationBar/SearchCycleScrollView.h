@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 //滚动的时间间隔
 @property (nonatomic,assign) NSTimeInterval interval;
 //数据源
-@property (nonatomic,strong) NSArray *placeHolders;
+@property (nonatomic,copy) NSArray *placeHolders;
 
 @property (nonatomic,assign) HomeNavigationBarStyle cycleStyle;
 

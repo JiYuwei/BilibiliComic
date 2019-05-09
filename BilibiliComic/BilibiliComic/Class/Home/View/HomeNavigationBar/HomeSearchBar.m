@@ -8,6 +8,7 @@
 
 #import "HomeSearchBar.h"
 #import "SearchCycleScrollView.h"
+#import "HomeSearchModel.h"
 
 @interface HomeSearchBar () <HomeNavigationBarProtocol>
 
@@ -88,6 +89,18 @@
     }
 }
 
+-(void)setData:(NSArray<SearchData *> *)data
+{
+    if (data && ![_data isEqualToArray:data]) {
+        _data = data;
+        NSMutableArray *titleArray = [NSMutableArray array];
+        for (SearchData *item in _data) {
+            [titleArray addObject:item.title];
+        }
+        self.searchCycleView.placeHolders = titleArray;
+    }
+}
+
 #pragma mark - LazyLoad
 
 -(UIView *)shadowView
@@ -114,7 +127,6 @@
     if (!_searchCycleView) {
         _searchCycleView = [[SearchCycleScrollView alloc] init];
         _searchCycleView.interval = 3.0f;
-        _searchCycleView.placeHolders = @[@"搜索示例1",@"搜索示例2",@"搜索示例3333333333"];
         [self addSubview:_searchCycleView];
     }
     return _searchCycleView;

@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
-		0958897F227EF3C900A41D02 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897E227EF3C900A41D02 /* BaseViewModel.m */; };
 		095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889832282BFBD00A41D02 /* HomeStockModel.m */; };
 		095889882282E05F00A41D02 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889872282E05F00A41D02 /* AppConfig.m */; };
 		0958898B2282F04100A41D02 /* HomeBannerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958898A2282F04100A41D02 /* HomeBannerModel.m */; };
+		0958898F2284092300A41D02 /* HomeSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958898E2284092300A41D02 /* HomeSearchModel.m */; };
 		09591287225D860200142DF7 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09591286225D860200142DF7 /* BaseNavigationController.m */; };
 		096D0283221818970067651A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0282221818970067651A /* BaseViewController.m */; };
 		096D0287221835420067651A /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0286221835420067651A /* BaseTabbarController.m */; };
@@ -1388,14 +1388,14 @@
 /* Begin PBXFileReference section */
 		09588979227EF39700A41D02 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		0958897A227EF39700A41D02 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
-		0958897D227EF3C900A41D02 /* BaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
-		0958897E227EF3C900A41D02 /* BaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
 		095889822282BFBD00A41D02 /* HomeStockModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeStockModel.h; sourceTree = "<group>"; };
 		095889832282BFBD00A41D02 /* HomeStockModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeStockModel.m; sourceTree = "<group>"; };
 		095889862282E05F00A41D02 /* AppConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppConfig.h; sourceTree = "<group>"; };
 		095889872282E05F00A41D02 /* AppConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppConfig.m; sourceTree = "<group>"; };
 		095889892282F04100A41D02 /* HomeBannerModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeBannerModel.h; sourceTree = "<group>"; };
 		0958898A2282F04100A41D02 /* HomeBannerModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeBannerModel.m; sourceTree = "<group>"; };
+		0958898D2284092300A41D02 /* HomeSearchModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchModel.h; sourceTree = "<group>"; };
+		0958898E2284092300A41D02 /* HomeSearchModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchModel.m; sourceTree = "<group>"; };
 		09591285225D860200142DF7 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		09591286225D860200142DF7 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		096D0281221818970067651A /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -2815,15 +2815,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0958897C227EF3B300A41D02 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				0958897D227EF3C900A41D02 /* BaseViewModel.h */,
-				0958897E227EF3C900A41D02 /* BaseViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		095889812282BFA800A41D02 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2844,11 +2835,19 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
+		0958898C228408EE00A41D02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0958898D2284092300A41D02 /* HomeSearchModel.h */,
+				0958898E2284092300A41D02 /* HomeSearchModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		096D0280221818610067651A /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				097918EB2270649700C243B7 /* Model */,
-				0958897C227EF3B300A41D02 /* ViewModel */,
 				097918EC2270649F00C243B7 /* View */,
 				097918ED227064A800C243B7 /* Controller */,
 			);
@@ -2858,6 +2857,7 @@
 		096D02882218356C0067651A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				0958898C228408EE00A41D02 /* Model */,
 				097918EF2270654300C243B7 /* View */,
 				097918F02270654900C243B7 /* Controller */,
 				09EB8B222265F16A00FCAAE4 /* SubClass */,
@@ -4579,6 +4579,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				Base,
 				"zh-Hans",
 			);
@@ -5998,7 +5999,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0958897B227EF39700A41D02 /* BaseModel.m in Sources */,
-				0958897F227EF3C900A41D02 /* BaseViewModel.m in Sources */,
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,
@@ -6025,6 +6025,7 @@
 				09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */,
 				09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */,
 				09F62927227AB73000F4638B /* HomeStockListCell.m in Sources */,
+				0958898F2284092300A41D02 /* HomeSearchModel.m in Sources */,
 				09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */,
 				096D0297221836580067651A /* MeViewController.m in Sources */,
 				09982B772217EBE4006CB358 /* AppDelegate.m in Sources */,

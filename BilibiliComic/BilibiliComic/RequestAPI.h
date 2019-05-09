@@ -22,8 +22,11 @@
 
 #define HOME_HOSTURL @"https://manga.bilibili.com/twirp/comic.v1.Comic/"
 
+#define HOME_RECOMMEND  @"Recommend"
 #define HOME_BANNER     @"Banner"
 #define HOME_PAGE       @"HomePage"
 #define HOME_STOCK_URL  @"HomeStock"
+#define HOME_HOT        @"HomeHot"
+#define HOME_NEWORDER   @"NewOrder"
 
 #endif /* RequestAPI_h */

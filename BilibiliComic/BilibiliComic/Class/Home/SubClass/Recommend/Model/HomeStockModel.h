@@ -15,8 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface HomeStockModel : BaseModel
 
 @property (nonatomic, strong) StockData * data;
-@property (nonatomic, copy)   NSString * msg;
-@property (nonatomic, assign) NSInteger code;
 
 @end
 
@@ -33,14 +31,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray <Styles *> * styles;
 @property (nonatomic, copy)   NSString * sub_title;
 @property (nonatomic, copy)   NSString * jump_value;
-@property (nonatomic, assign) NSInteger comic_id;
+@property (nonatomic, assign) NSInteger  comic_id;
 @property (nonatomic, copy)   NSString * title;
 
 @end
 
 @interface Styles : NSObject
 
-@property (nonatomic, assign) NSInteger idField;
+@property (nonatomic, assign) NSInteger  idField;
 @property (nonatomic, copy)   NSString * name;
 
 @end
