@@ -20,8 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,assign) HomeNavigationBarStyle cycleStyle;
 
--(void)openScrollMode;
-
 @end
 
 NS_ASSUME_NONNULL_END

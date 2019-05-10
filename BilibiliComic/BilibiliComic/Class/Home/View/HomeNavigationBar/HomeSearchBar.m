@@ -20,11 +20,6 @@
 
 @implementation HomeSearchBar
 
--(void)openScrollMode
-{
-    [self.searchCycleView openScrollMode];
-}
-
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {

@@ -62,8 +62,6 @@
     
     self.searchBar.layer.cornerRadius = self.searchBar.vHeight / 2;
     self.searchBar.layer.masksToBounds = YES;
-    [self.searchBar openScrollMode];
-    
     
     [[self.timeLineBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
         NSLog(@"\nClick:%@",x);

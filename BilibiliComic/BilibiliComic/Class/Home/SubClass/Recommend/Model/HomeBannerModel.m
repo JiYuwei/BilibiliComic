@@ -14,6 +14,30 @@
     return @{@"data" : [BannerData class]};
 }
 
+-(BOOL)isEqualToHomeBannerModel:(HomeBannerModel *)model
+{
+    BOOL equalData = [self.data isEqualToArray:model.data];
+    
+    return equalData;
+}
+
+#pragma mark - NSObject
+
+-(BOOL)isEqual:(id)object
+{
+    if ([self class] == [object class]) {
+        return [self isEqualToHomeBannerModel:(HomeBannerModel *)object];
+    }
+    else{
+        return [super isEqual:object];
+    }
+}
+
+-(NSUInteger)hash
+{
+    return self.msg.hash ^ self.data.hash;
+}
+
 @end
 
 
@@ -21,6 +45,14 @@
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"idField":@"id",};
+}
+
+-(BOOL)isEqual:(id)object
+{
+    if ([self class] == [object class]) {
+        return self.idField == ((BannerData *)object).idField;
+    }
+    return NO;
 }
 
 @end

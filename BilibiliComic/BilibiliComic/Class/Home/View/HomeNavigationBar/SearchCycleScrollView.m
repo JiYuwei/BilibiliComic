@@ -23,14 +23,9 @@
 
 -(void)openScrollMode
 {
-    CGFloat width = self.vWidth;
-    CGFloat height = self.vHeight;
-    self.firstLabel.frame = CGRectMake(0, 0, width, height);
-    self.secondLabel.frame = CGRectMake(0, height, width, height);
-    
-    if (self.placeHolders.count >= 2) {
-        self.firstLabel.text = self.placeHolders[0];
-        self.secondLabel.text = self.placeHolders[1];
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
     }
     self.timer = [NSTimer timerWithTimeInterval:self.interval target:self selector:@selector(scroll) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
@@ -38,8 +33,8 @@
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
-    self=[super initWithFrame:frame];
-    if (self) {
+    if (self = [super initWithFrame:frame]) {
+        
         self.firstLabel = [[UILabel alloc] init];
         self.secondLabel = [[UILabel alloc] init];
         self.firstLabel.font = [UIFont systemFontOfSize:12];
@@ -51,11 +46,11 @@
     return self;
 }
 
-static NSInteger i=1;
+static NSInteger i = 1;
 -(void)scroll
 {
     i++;
-    i=i>self.placeHolders.count-1?0:i;
+    i = (i >= self.placeHolders.count) ? 0 : i;
     CGFloat height=self.vHeight;
     CGFloat width=self.vWidth;
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -64,12 +59,9 @@ static NSInteger i=1;
         for (UIView *view in labelArray) {
             if ([view isKindOfClass:[UILabel class]]) {
                 UILabel *label=(UILabel *)view;
-                CGRect rect=label.frame;
-                rect.origin.y-=height;
-                label.frame=rect;
+                label.vTop -= height;
             }
         }
-        
     } completion:^(BOOL finished) {
         //重新定位label的位置
         if (self.firstLabel.vOrigin.y <= -height) {
@@ -115,6 +107,21 @@ static NSInteger i=1;
         _cycleStyle = cycleStyle;
         
         [self showNavigationBarStyle:_cycleStyle];
+    }
+}
+
+-(void)setPlaceHolders:(NSArray *)placeHolders
+{
+    if (placeHolders && ![_placeHolders isEqualToArray:placeHolders]) {
+        _placeHolders = placeHolders;
+        
+        if (self.placeHolders.count >= 2) {
+            self.firstLabel.text = self.placeHolders[0];
+            self.secondLabel.text = self.placeHolders[1];
+            self.firstLabel.frame = CGRectMake(0, 0, self.vWidth, self.vHeight);
+            self.secondLabel.frame = CGRectMake(0, self.vHeight, self.vWidth, self.vHeight);
+            [self openScrollMode];
+        }
     }
 }
 

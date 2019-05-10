@@ -62,6 +62,8 @@ static const NSUInteger PageCount = 10;
 
 -(void)retrieveData
 {
+    [self retrieveBanner];
+    
     NSString *url = HOME_STOCK_URL;
     NSDictionary *parameters = @{@"omitCards":@2,
                                  @"page_num":@1,

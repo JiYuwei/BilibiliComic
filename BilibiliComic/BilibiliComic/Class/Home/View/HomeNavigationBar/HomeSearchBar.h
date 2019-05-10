@@ -18,8 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) HomeNavigationBarStyle searchBarStyle;
 @property (nonatomic,copy) NSArray <SearchData *> *data;
 
--(void)openScrollMode;
-
 @end
 
 NS_ASSUME_NONNULL_END

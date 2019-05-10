@@ -73,7 +73,7 @@
 
 -(void)setHomeBannerModel:(HomeBannerModel *)homeBannerModel
 {
-    if (homeBannerModel && _homeBannerModel != homeBannerModel) {
+    if (homeBannerModel && ![_homeBannerModel isEqualToHomeBannerModel:homeBannerModel]) {
         _homeBannerModel = homeBannerModel;
         
         [self.colorBox removeAllObjects];

@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSArray <BannerData *> * data;
 
+-(BOOL)isEqualToHomeBannerModel:(HomeBannerModel *)model;
+
 @end
 
 

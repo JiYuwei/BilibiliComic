@@ -53,7 +53,7 @@
 {
     NSString *url = HOME_RECOMMEND;
     NSDictionary *parameters = @{@"BanID":@0,
-                                 @"JsonData":@"[{\"pool_id\":100006,\"num\":5}]"};
+                                 @"JsonData":@"[{\"pool_id\":100006,\"num\":3}]"};
     [BCNetworkRequest retrieveJsonUsePOSTfromURL:url parameters:parameters success:^(NSDictionary *json) {
         if (json && [json[@"code"] integerValue] == 0) {
             HomeSearchModel *homeSearchModel = [HomeSearchModel mj_objectWithKeyValues:json];

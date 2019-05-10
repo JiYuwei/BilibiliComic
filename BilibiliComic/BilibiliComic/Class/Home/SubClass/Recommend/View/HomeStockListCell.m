@@ -14,8 +14,8 @@
 
 static const CGFloat Padding   = 18;
 
-static const CGFloat TAGWidth  = 35;
-static const CGFloat TAGHeight = 20;
+static const CGFloat TAGWidth  = 32;
+static const CGFloat TAGHeight = 18;
 
 @interface HomeStockListCell ()
 
@@ -63,7 +63,7 @@ static const CGFloat TAGHeight = 20;
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView).offset(Padding);
         make.top.equalTo(self.comicView.mas_bottom).offset(Padding / 3);
-        make.width.mas_lessThanOrEqualTo(BC_SCREEN_WIDTH - Padding * 2.8 - TAGWidth);
+        make.width.mas_lessThanOrEqualTo(BC_SCREEN_WIDTH - Padding * 2.6 - TAGWidth);
     }];
 
     [self.subTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -72,7 +72,7 @@ static const CGFloat TAGHeight = 20;
     }];
 
     [self.tagLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLabel.mas_right).offset(Padding * 0.8);
+        make.left.equalTo(self.titleLabel.mas_right).offset(Padding * 0.6);
         make.centerY.equalTo(self.titleLabel);
         make.size.mas_equalTo(CGSizeMake(TAGWidth, TAGHeight));
     }];
@@ -163,7 +163,7 @@ static const CGFloat TAGHeight = 20;
         _tagLabel.layer.backgroundColor = GRandomColor.CGColor;
         _tagLabel.textAlignment = NSTextAlignmentCenter;
         _tagLabel.textColor = [UIColor whiteColor];
-        _tagLabel.font = [UIFont systemFontOfSize:13];
+        _tagLabel.font = [UIFont systemFontOfSize:11];
         _tagLabel.hidden = YES;
         [self.contentView addSubview:_tagLabel];
     }
