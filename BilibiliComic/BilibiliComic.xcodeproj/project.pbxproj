@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0941DAC72285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */; };
 		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
 		095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889832282BFBD00A41D02 /* HomeStockModel.m */; };
 		095889882282E05F00A41D02 /* AppConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889872282E05F00A41D02 /* AppConfig.m */; };
@@ -1387,6 +1388,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0941DAC52285D18D00A4F6E6 /* UIImageView+SDFadeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDFadeTransition.h"; sourceTree = "<group>"; };
+		0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDFadeTransition.m"; sourceTree = "<group>"; };
 		09588979227EF39700A41D02 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		0958897A227EF39700A41D02 /* BaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		095889822282BFBD00A41D02 /* HomeStockModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeStockModel.h; sourceTree = "<group>"; };
@@ -4442,6 +4445,8 @@
 				09F629232279424300F4638B /* UIView+FrameGeometry.m */,
 				0958899022841FB900A41D02 /* UIColor+HexColor.h */,
 				0958899122841FB900A41D02 /* UIColor+HexColor.m */,
+				0941DAC52285D18D00A4F6E6 /* UIImageView+SDFadeTransition.h */,
+				0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -6013,6 +6018,7 @@
 				096D0283221818970067651A /* BaseViewController.m in Sources */,
 				09982B852217EBE5006CB358 /* main.m in Sources */,
 				09EB8B282265F22900FCAAE4 /* RankViewController.m in Sources */,
+				0941DAC72285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m in Sources */,
 				09EB8B1722648CA200FCAAE4 /* HomeSearchBar.m in Sources */,
 				09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */,
 				097918F92270687700C243B7 /* BCIndexBannerSubview.m in Sources */,

@@ -101,7 +101,8 @@
     }
     //在这里下载网络图片
     NSString *imgURL = self.homeBannerModel.data[index].img2;
-        [bannerView.mainImageView sd_setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:PlaceHolderIMG];
+    [bannerView.mainImageView sd_setFadeImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:PlaceHolderIMG];
+
     //加载本地图片
 //    bannerView.mainImageView.image = [UIImage imageNamed:self.advArray[index]];
 //    bannerView.mainImageView.backgroundColor = GRandomColor;

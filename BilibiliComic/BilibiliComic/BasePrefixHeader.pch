@@ -17,6 +17,7 @@
 #import "UIView+FrameGeometry.h"
 #import "UIColor+HexColor.h"
 #import "BCNetworkRequest.h"
+#import "UIImageView+SDFadeTransition.h"
 
 //Define
 #import "Defines.h"

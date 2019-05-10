@@ -107,7 +107,9 @@ static const NSUInteger PageCount = 10;
 
 -(void)retrieveDataWithURL:(NSString *)url parameters:(NSDictionary *)parameters
 {
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
+    [BCNetworkRequest retrieveJsonWithPrepare:^{
+        [self.mainTableView.mj_footer resetNoMoreData];
+    } finish:^{
         [self.mainTableView.mj_header endRefreshing];
         [self.mainTableView reloadData];
     } needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {

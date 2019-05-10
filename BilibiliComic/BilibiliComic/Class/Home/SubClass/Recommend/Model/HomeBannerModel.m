@@ -16,9 +16,7 @@
 
 -(BOOL)isEqualToHomeBannerModel:(HomeBannerModel *)model
 {
-    BOOL equalData = [self.data isEqualToArray:model.data];
-    
-    return equalData;
+    return [self.data isEqualToArray:model.data];
 }
 
 #pragma mark - NSObject
@@ -35,7 +33,7 @@
 
 -(NSUInteger)hash
 {
-    return self.msg.hash ^ self.data.hash;
+    return self.data.hash;
 }
 
 @end
