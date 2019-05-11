@@ -165,7 +165,7 @@ static BCNetworkRequest *request;
                 BOOL valid = (model.code == 0 && [model.msg isEqualToString:@""]);
                 
                 if (valid && needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
+                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonDict:json];
                 }
                 
@@ -190,7 +190,7 @@ static BCNetworkRequest *request;
                 
                 NSDictionary *json = nil;
                 if (needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
+                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     json = [[BCRequestCache sharedRequestCache] getFromCache:requestKey];
                 }
                 
@@ -213,7 +213,7 @@ static BCNetworkRequest *request;
                 BOOL valid = (model.code == 0 && [model.msg isEqualToString:@""]);
                 
                 if (valid && needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
+                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonData:responseObject];
                 }
                 
@@ -238,7 +238,7 @@ static BCNetworkRequest *request;
                 
                 NSDictionary *json = nil;
                 if (needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
+                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     json = [[BCRequestCache sharedRequestCache] getFromCache:requestKey];
                 }
                 
@@ -347,18 +347,17 @@ static BCNetworkRequest *request;
 
 -(NSString *)generateRequestKey:(NSString *)requestUrl parameters:(NSDictionary *)parameters
 {
-    NSArray *paramNames = [parameters allKeys];
-    NSArray *sortedParamNames = [paramNames sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2)
-                                 {
-                                     return [obj1 compare:obj2 options:NSCaseInsensitiveSearch];
-                                 }];
-    
-    requestUrl = [requestUrl stringByAppendingString:@"?"];
-    for (NSString *paramName in sortedParamNames)
-    {
-        requestUrl = [requestUrl stringByAppendingFormat:@"%@=%@", paramName, [parameters objectForKey:paramName]];
+    if (parameters) {
+        NSArray *paramNames = [parameters allKeys];
+        NSArray *sortedParamNames = [paramNames sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2)
+                                     {
+                                         return [obj1 compare:obj2 options:NSCaseInsensitiveSearch];
+                                     }];
+        for (NSString *paramName in sortedParamNames)
+        {
+            requestUrl = [requestUrl stringByAppendingFormat:@"&%@=%@", paramName, [parameters objectForKey:paramName]];
+        }
     }
-    
     return [requestUrl md5];
 }
 

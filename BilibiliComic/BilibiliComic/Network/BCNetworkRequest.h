@@ -154,26 +154,3 @@ typedef void(^failureBlock) (NSError *error);
 +(void)cancelAllRequest;
 
 @end
-
-
-@interface NSString (md5)
-- (NSString *) md5;
-@end
-
-#import<CommonCrypto/CommonDigest.h>
-
-@implementation NSString (md5)
-
-- (NSString *)md5
-{
-    const char *cStr = [self UTF8String];
-    unsigned char result[16];
-    CC_MD5(cStr, (CC_LONG)strlen(cStr),result);
-    NSMutableString *md5Str =[NSMutableString string];
-    for (int i = 0; i < 16; i++)
-        [md5Str appendFormat:@"%02X", result[i]];
-    
-    return [md5Str uppercaseString];
-}
-
-@end

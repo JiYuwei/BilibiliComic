@@ -29,48 +29,64 @@ static const NSUInteger PageCount = 10;
     self.mainTableView.showsVerticalScrollIndicator = NO;
     self.mainTableView.mj_header.frame = CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_NAV_HEIGHT);
     
-    [self retrieveBanner];
-    [self retrieveHomePage];
+    [self retrieveBannerAllowCache:YES];
+    [self retrieveHomeStockDataAllowCache:YES];
+    
     [self initTableHeaderview];
     [self initRecomListCell];
-}
-
-//首次获取轮播图
--(void)retrieveBanner
-{
-    NSString *url = HOME_BANNER;
-    NSDictionary *parameters = @{@"platform":APP_DEVICE};
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:json];
-    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:cachedJson];
-    }];
-}
-
-//首次获取列表数据
-- (void)retrieveHomePage
-{
-//    NSString *url = HOME_PAGE;
-//    NSDictionary *parameters = @{@"page_num":@1};
-//    [self retrieveDataWithURL:url parameters:parameters];
-    [self retrieveData];
 }
 
 #pragma mark - OverWriteRetrieveData
 
 -(void)retrieveData
 {
-    [self retrieveBanner];
-    
+    [self retrieveBannerAllowCache:NO];
+    [self retrieveHomeStockDataAllowCache:NO];
+}
+
+-(void)loadMoreData
+{
+    [self loadMoreHomeStockDataAllowCache:NO];
+}
+
+#pragma mark Private
+
+//轮播图
+-(void)retrieveBannerAllowCache:(BOOL)cache
+{
+    NSString *url = HOME_BANNER;
+    NSDictionary *parameters = @{@"platform":APP_DEVICE};
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:json];
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:cachedJson];
+    }];
+}
+
+//下拉刷新
+-(void)retrieveHomeStockDataAllowCache:(BOOL)cache
+{
     NSString *url = HOME_STOCK_URL;
     NSDictionary *parameters = @{@"omitCards":@2,
                                  @"page_num":@1,
                                  @"seed":@0,
                                  };
-    [self retrieveDataWithURL:url parameters:parameters];
+    [BCNetworkRequest retrieveJsonWithPrepare:^{
+        [self.mainTableView.mj_footer resetNoMoreData];
+    } finish:^{
+        [self.mainTableView.mj_header endRefreshing];
+        [self.mainTableView reloadData];
+    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        if (needCache) {
+            self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:cachedJson];
+        }
+    }];
 }
 
--(void)loadMoreData
+//上拉加载
+-(void)loadMoreHomeStockDataAllowCache:(BOOL)cache
 {
     NSString *url = HOME_STOCK_URL;
     StockData *data = self.homeStockModel.data;
@@ -88,31 +104,13 @@ static const NSUInteger PageCount = 10;
             [self.mainTableView.mj_footer endRefreshing];
         }
         [self.mainTableView reloadData];
-    } needCache:NO requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
         HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
         [self addMoreEntriesWithModel:homeStockModel];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         if (needCache) {
             HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:cachedJson];
             [self addMoreEntriesWithModel:homeStockModel];
-        }
-    }];
-}
-
-#pragma mark Private
-
--(void)retrieveDataWithURL:(NSString *)url parameters:(NSDictionary *)parameters
-{
-    [BCNetworkRequest retrieveJsonWithPrepare:^{
-        [self.mainTableView.mj_footer resetNoMoreData];
-    } finish:^{
-        [self.mainTableView.mj_header endRefreshing];
-        [self.mainTableView reloadData];
-    } needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
-    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        if (needCache) {
-            self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:cachedJson];
         }
     }];
 }

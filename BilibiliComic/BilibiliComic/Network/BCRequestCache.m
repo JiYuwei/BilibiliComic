@@ -15,7 +15,6 @@
 
 static BCRequestCache *requestCache;
 
-
 @interface BCRequestCache ()
 
 @property(nonatomic,strong)FMDatabase *requestCacheDB;
