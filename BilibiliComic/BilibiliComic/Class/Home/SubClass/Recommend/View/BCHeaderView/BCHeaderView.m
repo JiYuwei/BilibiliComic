@@ -13,7 +13,7 @@
 @interface BCHeaderView () <BCFlowViewDataSource,BCFlowViewDelegate>
 
 @property (nonatomic,strong) BCFlowView *pageFlowView;
-@property (nonatomic,copy) NSMutableArray <UIColor *> *colorBox;
+@property (nonatomic,strong) NSMutableArray <UIColor *> *colorBox;
 
 @end
 

@@ -21,14 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface StockData : NSObject
 
 @property (nonatomic, copy)   NSString * seed;
-@property (nonatomic, strong) NSArray <List *> * list;
+@property (nonatomic, copy)   NSArray <List *> * list;
 
 @end
 
 @interface List : NSObject
 
 @property (nonatomic, copy)   NSString * img;
-@property (nonatomic, strong) NSArray <Styles *> * styles;
+@property (nonatomic, copy)   NSArray <Styles *> * styles;
 @property (nonatomic, copy)   NSString * sub_title;
 @property (nonatomic, copy)   NSString * jump_value;
 @property (nonatomic, assign) NSInteger  comic_id;

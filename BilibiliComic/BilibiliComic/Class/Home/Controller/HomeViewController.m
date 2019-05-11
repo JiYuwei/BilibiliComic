@@ -54,12 +54,19 @@
     NSString *url = HOME_RECOMMEND;
     NSDictionary *parameters = @{@"BanID":@0,
                                  @"JsonData":@"[{\"pool_id\":100006,\"num\":3}]"};
-    [BCNetworkRequest retrieveJsonUsePOSTfromURL:url parameters:parameters success:^(NSDictionary *json) {
-        if (json && [json[@"code"] integerValue] == 0) {
-            HomeSearchModel *homeSearchModel = [HomeSearchModel mj_objectWithKeyValues:json];
-            self.homeNavBar.searchBar.data = homeSearchModel.data;
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        [self buildSearchDataWithJson:json];
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        if (needCache) {
+            [self buildSearchDataWithJson:cachedJson];
         }
-    } failure:nil];
+    }];
+}
+
+-(void)buildSearchDataWithJson:(NSDictionary *)json
+{
+    HomeSearchModel *homeSearchModel = [HomeSearchModel mj_objectWithKeyValues:json];
+    self.homeNavBar.searchBar.data = homeSearchModel.data;
 }
 
 #pragma mark - UI

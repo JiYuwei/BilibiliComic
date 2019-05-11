@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeSearchModel : BaseModel
 
-@property (nonatomic, strong) NSArray <SearchData *> * data;
+@property (nonatomic, copy) NSArray <SearchData *> * data;
 
 @end
 

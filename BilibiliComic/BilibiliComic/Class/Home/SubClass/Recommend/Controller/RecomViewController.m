@@ -41,11 +41,9 @@ static const NSUInteger PageCount = 10;
     NSString *url = HOME_BANNER;
     NSDictionary *parameters = @{@"platform":APP_DEVICE};
     [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        if (json && [json[@"code"] integerValue] == 0) {
-            self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:json];
-        }
+        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:json];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        
+        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:cachedJson];
     }];
 }
 
@@ -90,11 +88,9 @@ static const NSUInteger PageCount = 10;
             [self.mainTableView.mj_footer endRefreshing];
         }
         [self.mainTableView reloadData];
-    } needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        if (json && [json[@"code"] integerValue] == 0) {
-            HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
-            [self addMoreEntriesWithModel:homeStockModel];
-        }
+    } needCache:NO requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
+        [self addMoreEntriesWithModel:homeStockModel];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         if (needCache) {
             HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:cachedJson];
@@ -113,9 +109,7 @@ static const NSUInteger PageCount = 10;
         [self.mainTableView.mj_header endRefreshing];
         [self.mainTableView reloadData];
     } needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        if (json && [json[@"code"] integerValue] == 0 ){
-            self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
-        }
+        self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         if (needCache) {
             self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:cachedJson];
@@ -127,7 +121,7 @@ static const NSUInteger PageCount = 10;
 {
     NSMutableArray <List *> *list = [NSMutableArray arrayWithArray:self.homeStockModel.data.list];
     [list addObjectsFromArray:homeStockModel.data.list];
-    self.homeStockModel.data.list = [list copy];
+    self.homeStockModel.data.list = list;
     self.homeStockModel.data.seed = homeStockModel.data.seed;
 }
 
