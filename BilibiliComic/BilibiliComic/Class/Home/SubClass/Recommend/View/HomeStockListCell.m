@@ -76,13 +76,6 @@ static const CGFloat TAGHeight = 18;
         make.centerY.equalTo(self.titleLabel);
         make.size.mas_equalTo(CGSizeMake(TAGWidth, TAGHeight));
     }];
-    
-    [self layoutIfNeeded];
-    
-    self.comicView.layer.cornerRadius = Padding / 2;
-    self.comicView.layer.masksToBounds = YES;
-    
-    self.tagLabel.layer.cornerRadius = Padding / 6;
 }
 
 #pragma mark - Setter
@@ -120,6 +113,8 @@ static const CGFloat TAGHeight = 18;
         _comicView = [[UIImageView alloc] init];
         _comicView.layer.borderColor = DefaultBorderColor.CGColor;
         _comicView.layer.borderWidth = 0.5f;
+        _comicView.layer.cornerRadius = Padding / 2;
+        _comicView.layer.masksToBounds = YES;
         [self.contentView addSubview:_comicView];
     }
     return _comicView;
@@ -164,6 +159,7 @@ static const CGFloat TAGHeight = 18;
         _tagLabel.textAlignment = NSTextAlignmentCenter;
         _tagLabel.textColor = [UIColor whiteColor];
         _tagLabel.font = [UIFont systemFontOfSize:11];
+        _tagLabel.layer.cornerRadius = Padding / 6;
         _tagLabel.hidden = YES;
         [self.contentView addSubview:_tagLabel];
     }

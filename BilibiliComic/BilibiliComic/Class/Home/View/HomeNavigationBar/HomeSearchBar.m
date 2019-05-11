@@ -23,7 +23,6 @@
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = DefaultBorderColor;
         [self cusLayoutAllSubViews];
     }
     return self;
