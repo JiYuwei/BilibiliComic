@@ -40,13 +40,8 @@
 
 -(void)initMJRefresh
 {
-    self.mainTableView.mj_header = [BCRefreshHeader headerWithRefreshingBlock:^{
-        [self retrieveData];
-    }];
-    
-    self.mainTableView.mj_footer = [BCRefreshFooter footerWithRefreshingBlock:^{
-        [self loadMoreData];
-    }];
+    self.mainTableView.mj_header = [BCRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(retrieveData)];
+    self.mainTableView.mj_footer = [BCRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
 }
 
 
