@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09036C0E2286AD520093C18B /* BCRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C0D2286AD520093C18B /* BCRefreshFooter.m */; };
 		0941DAC72285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */; };
 		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
 		095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889832282BFBD00A41D02 /* HomeStockModel.m */; };
@@ -1388,6 +1389,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09036C0C2286AD520093C18B /* BCRefreshFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCRefreshFooter.h; sourceTree = "<group>"; };
+		09036C0D2286AD520093C18B /* BCRefreshFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCRefreshFooter.m; sourceTree = "<group>"; };
 		0941DAC52285D18D00A4F6E6 /* UIImageView+SDFadeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDFadeTransition.h"; sourceTree = "<group>"; };
 		0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDFadeTransition.m"; sourceTree = "<group>"; };
 		09588979227EF39700A41D02 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -4432,6 +4435,8 @@
 			children = (
 				09D5422F22673B25007681E4 /* BCRefreshHeader.h */,
 				09D5423022673B25007681E4 /* BCRefreshHeader.m */,
+				09036C0C2286AD520093C18B /* BCRefreshFooter.h */,
+				09036C0D2286AD520093C18B /* BCRefreshFooter.m */,
 			);
 			path = BCRefreshHeader;
 			sourceTree = "<group>";
@@ -6009,6 +6014,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0958897B227EF39700A41D02 /* BaseModel.m in Sources */,
+				09036C0E2286AD520093C18B /* BCRefreshFooter.m in Sources */,
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,

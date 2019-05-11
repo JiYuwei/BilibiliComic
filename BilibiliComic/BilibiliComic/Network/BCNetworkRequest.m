@@ -9,6 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "BCNetworkRequest.h"
 #import "BCRequestCache.h"
+#import "BaseModel.h"
 
 static BCNetworkRequest *request;
 
@@ -159,15 +160,20 @@ static BCNetworkRequest *request;
             [_manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 NSDictionary *json = [BCRequestCache jsonData2NSDictionary:responseObject];
-//                NSDictionary *json = (NSDictionary *)responseObject;
                 
-                if (json && needCache) {
+                BaseModel *model = [BaseModel mj_objectWithKeyValues:json];
+                BOOL valid = (model.code == 0 && [model.msg isEqualToString:@""]);
+                
+                if (valid && needCache) {
                     NSString *requestKey = [self generateRequestKey:url parameters:parameters];
                     [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonDict:json];
                 }
                 
-                if (success) {
+                if (valid && success) {
                     success(json);
+                }
+                else{
+                    NSLog(@"%@",json);
                 }
                 if (finish) {
                     finish();
@@ -202,15 +208,20 @@ static BCNetworkRequest *request;
             [_manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 NSDictionary *json = [BCRequestCache jsonData2NSDictionary:responseObject];
-//                NSDictionary *json = (NSDictionary *)responseObject;
                 
-                if (json && needCache) {
+                BaseModel *model = [BaseModel mj_objectWithKeyValues:json];
+                BOOL valid = (model.code == 0 && [model.msg isEqualToString:@""]);
+                
+                if (valid && needCache) {
                     NSString *requestKey = [self generateRequestKey:url parameters:parameters];
                     [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonData:responseObject];
                 }
                 
-                if (success) {
+                if (valid && success) {
                     success(json);
+                }
+                else{
+                    NSLog(@"%@",json);
                 }
                 if (finish) {
                     finish();

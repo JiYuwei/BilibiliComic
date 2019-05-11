@@ -10,4 +10,13 @@
 
 @implementation BaseModel
 
+-(instancetype)init
+{
+    if (self = [super init]) {
+        self.msg = @"initialized";
+        self.code = -1;
+    }
+    return self;
+}
+
 @end

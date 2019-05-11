@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "BCRefreshHeader.h"
+#import "BCRefreshFooter.h"
 
 @interface BaseViewController ()
 
@@ -43,13 +44,9 @@
         [self retrieveData];
     }];
     
-    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.mainTableView.mj_footer = [BCRefreshFooter footerWithRefreshingBlock:^{
         [self loadMoreData];
     }];
-    footer.triggerAutomaticallyRefreshPercent = 0.5;
-    [footer setTitle:@"加载中" forState:MJRefreshStateRefreshing];
-    [footer setTitle:@"～已经到底了～" forState:MJRefreshStateNoMoreData];
-    self.mainTableView.mj_footer = footer;
 }
 
 
