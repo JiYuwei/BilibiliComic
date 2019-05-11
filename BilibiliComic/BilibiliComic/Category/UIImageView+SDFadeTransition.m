@@ -45,17 +45,14 @@
     __weak typeof(self)wself = self;
     [self sd_setImageWithURL:url placeholderImage:placeholder options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         if (image && cacheType != SDImageCacheTypeMemory) {
-            CATransition *animation = [CATransition animation];
-            [animation setDuration:0.25f];
-            [animation setType:kCATransitionFade];
-            animation.removedOnCompletion = YES;
-            [wself.layer addAnimation:animation forKey:@"transition"];
+            [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                wself.image = image;
+            } completion:nil];
         }
         if (completedBlock) {
             completedBlock(image, error, cacheType, url);
         }
     }];
-    [self.layer removeAnimationForKey:@"transition"];
 }
 
 @end

@@ -102,7 +102,7 @@ static const CGFloat TAGHeight = 18;
 {
     NSScanner* scan = [NSScanner scannerWithString:string];
     NSInteger val;
-    return[scan scanInteger:&val] && [scan isAtEnd];
+    return [scan scanInteger:&val] && [scan isAtEnd];
 }
 
 #pragma mark - LazyLoad
