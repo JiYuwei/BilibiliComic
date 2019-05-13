@@ -17,6 +17,7 @@
 #define APP_MOBI            @"iphone_comic"
 #define APP_PLATFORM        @"ios"
 #define APP_SIGN            [AppConfig getAppSign]
+#define APP_STAT            @{@"appId":@0,@"version":@"1.9.0",@"abtest":@"",@"platform":@1}
 #define APP_TS              [AppConfig getCurrentTimestamp]
 
 

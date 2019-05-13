@@ -133,6 +133,7 @@ static BCNetworkRequest *request;
                                    @"mobi_app":APP_MOBI,
                                    @"platform":APP_PLATFORM,
                                    @"sign":APP_SIGN,
+                                   @"statistics":APP_STAT,
                                    @"ts":APP_TS,
                                    @"version":APP_VERSION}];
     if (parameters) {
