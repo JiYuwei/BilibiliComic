@@ -11,6 +11,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+static const CGFloat TBMargin = 8;
+
 @class SearchData;
 
 @interface HomeSearchBar : UIView

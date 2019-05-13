@@ -55,13 +55,13 @@
     switch (style) {
         case HomeNavigationBarStyleDefault:
         {
-            self.backgroundColor = DefaultBorderColor;
+            self.shadowView.layer.backgroundColor = DefaultBorderColor.CGColor;
             self.searchImageView.image = UIImage(@"nav_search_s_ico");
         }
             break;
         case HomeNavigationBarStyleLightContent:
         {
-            self.backgroundColor = DefaultContentBackColor;
+            self.shadowView.layer.backgroundColor = DefaultContentBackColor.CGColor;
             self.searchImageView.image = UIImage(@"home_whiteSearch_bar_16x16_");
         }
             break;
@@ -101,7 +101,8 @@
 {
     if (!_shadowView) {
         _shadowView = [[UIView alloc] init];
-        _shadowView.backgroundColor = DefaultContentBackColor;
+        _shadowView.layer.backgroundColor = DefaultContentBackColor.CGColor;
+        _shadowView.layer.cornerRadius = (BC_NAV_REALHEIGHT - TBMargin * 2) / 2;
         [self addSubview:_shadowView];
     }
     return _shadowView;

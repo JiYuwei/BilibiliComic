@@ -73,10 +73,6 @@ static const CGFloat AnimDuration  = 0.3;
         make.centerX.equalTo(self.itemLabels.firstObject);
     }];
     
-    [self layoutIfNeeded];
-    
-    self.slider.layer.cornerRadius = self.slider.vHeight / 2;
-    self.slider.layer.masksToBounds = YES;
     [self showNavigationBarStyle:HomeNavigationBarStyleDefault];
     [self showSelectedIndex:0];
 }
@@ -113,13 +109,13 @@ static const CGFloat AnimDuration  = 0.3;
 {
     switch (style) {
         case HomeNavigationBarStyleDefault: {
-            self.slider.backgroundColor = SliderColor;
+            self.slider.layer.backgroundColor = SliderColor.CGColor;
             [self.itemLabels makeObjectsPerformSelector:@selector(setTextColor:) withObject:[UIColor grayColor]];
             self.itemLabels[self.currentIndex].textColor = [UIColor blackColor];
         }
             break;
         case HomeNavigationBarStyleLightContent: {
-            self.slider.backgroundColor = [UIColor whiteColor];
+            self.slider.layer.backgroundColor = [UIColor whiteColor].CGColor;
             [self.itemLabels makeObjectsPerformSelector:@selector(setTextColor:) withObject:[UIColor whiteColor]];
         }
             break;
@@ -161,6 +157,7 @@ static const CGFloat AnimDuration  = 0.3;
 {
     if (!_slider) {
         _slider = [[UIView alloc] init];
+        _slider.layer.cornerRadius = 1.5;
         [self addSubview:_slider];
     }
     return _slider;

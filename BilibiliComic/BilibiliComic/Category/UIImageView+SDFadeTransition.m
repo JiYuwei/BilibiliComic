@@ -12,12 +12,12 @@
 
 -(void)sd_setFadeImageWithURL:(NSURL *)url
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:nil options:0 progress:nil completed:nil];
+    [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:nil completed:nil];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:0 progress:nil completed:nil];
+    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:SDWebImageAvoidAutoSetImage progress:nil completed:nil];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options
@@ -27,12 +27,12 @@
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url completed:(SDExternalCompletionBlock)completedBlock
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:nil options:0 progress:nil completed:completedBlock];
+    [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:nil completed:completedBlock];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder completed:(SDExternalCompletionBlock)completedBlock
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:0 progress:nil completed:completedBlock];
+    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:SDWebImageAvoidAutoSetImage progress:nil completed:completedBlock];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options completed:(SDExternalCompletionBlock)completedBlock
@@ -42,12 +42,18 @@
 
 -(void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDExternalCompletionBlock)completedBlock
 {
-    __weak typeof(self)wself = self;
+    @weakify(self)
     [self sd_setImageWithURL:url placeholderImage:placeholder options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        if (image && cacheType != SDImageCacheTypeMemory) {
-            [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                wself.image = image;
-            } completion:nil];
+        @strongify(self)
+        if (image) {
+            if (cacheType == SDImageCacheTypeMemory) {
+                self.image = image;
+            }
+            else {
+                [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                    self.image = image;
+                } completion:nil];
+            }
         }
         if (completedBlock) {
             completedBlock(image, error, cacheType, url);

@@ -41,8 +41,8 @@
     
     [self.searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.timeLineBtn.mas_left).offset(-10);
-        make.top.equalTo(self.contentView).offset(8);
-        make.bottom.equalTo(self.contentView).offset(-8);
+        make.top.equalTo(self.contentView).offset(TBMargin);
+        make.bottom.equalTo(self.contentView).offset(-TBMargin);
         make.left.greaterThanOrEqualTo(self.pagesTopBar.mas_right).offset(10);
         make.width.mas_equalTo(120);
     }];
@@ -56,15 +56,6 @@
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.bottom.right.equalTo(self);
         make.height.mas_equalTo(0.5);
-    }];
-    
-    [self layoutIfNeeded];
-    
-    self.searchBar.layer.cornerRadius = self.searchBar.vHeight / 2;
-    self.searchBar.layer.masksToBounds = YES;
-    
-    [[self.timeLineBtn rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(__kindof UIControl * _Nullable x) {
-        NSLog(@"\nClick:%@",x);
     }];
 }
 
@@ -131,6 +122,7 @@
 {
     if (!_searchBar) {
         _searchBar = [[HomeSearchBar alloc] init];
+        _searchBar.clipsToBounds = YES;
         [self.contentView addSubview:_searchBar];
     }
     return _searchBar;
