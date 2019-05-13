@@ -113,7 +113,7 @@ static const CGFloat TAGHeight = 18;
         _comicView = [[UIImageView alloc] init];
         _comicView.layer.borderColor = DefaultBorderColor.CGColor;
         _comicView.layer.borderWidth = 0.5f;
-        _comicView.layer.cornerRadius = Padding / 2;
+        _comicView.layer.cornerRadius = 3.5f;
         _comicView.layer.masksToBounds = YES;
         [self.contentView addSubview:_comicView];
     }
