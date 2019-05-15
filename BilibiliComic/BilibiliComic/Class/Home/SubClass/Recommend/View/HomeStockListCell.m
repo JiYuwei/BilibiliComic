@@ -95,6 +95,11 @@ static const CGFloat TAGHeight = 18;
         BOOL style = _homeStockList.styles.count > 0;
         self.tagLabel.hidden = !style;
         self.tagLabel.text = style ? _homeStockList.styles.firstObject.name : nil;
+        NSString *colorID = [NSString stringWithFormat:@"%ld",_homeStockList.styles.firstObject.idField];
+        colorID = [[colorID md5] substringWithRange:NSMakeRange(10, 6)];
+        UIColor *tagColor = [UIColor colorWithHexString:[NSString stringWithFormat:@"#%@",colorID]];
+        self.tagLabel.textColor = tagColor;
+        self.tagLabel.layer.backgroundColor = [tagColor lightBackColor].CGColor;
     }
 }
 
@@ -155,7 +160,7 @@ static const CGFloat TAGHeight = 18;
 {
     if (!_tagLabel) {
         _tagLabel = [[UILabel alloc] init];
-        _tagLabel.layer.backgroundColor = GRandomColor.CGColor;
+        _tagLabel.layer.backgroundColor = DefaultContentLightColor.CGColor;
         _tagLabel.textAlignment = NSTextAlignmentCenter;
         _tagLabel.textColor = [UIColor whiteColor];
         _tagLabel.font = [UIFont systemFontOfSize:11];

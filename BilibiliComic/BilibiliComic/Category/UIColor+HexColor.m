@@ -44,4 +44,14 @@
     return [UIColor colorWithRed:((float) r / 255.0f) green:((float) g / 255.0f) blue:((float) b / 255.0f) alpha:1.0f];
 }
 
+-(UIColor *)lightBackColor
+{
+    CGFloat red,green,blue;
+    [self getRed:&red green:&green blue:&blue alpha:nil];
+    CGFloat alpha = 0.2;
+    UIColor *backColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+    
+    return backColor;
+}
+
 @end
