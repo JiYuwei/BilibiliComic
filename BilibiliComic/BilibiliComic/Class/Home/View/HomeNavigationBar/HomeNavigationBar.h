@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeNavigationBarProtocol.h"
-#import "HomePagesTopBar.h"
+#import "PagesTopBar.h"
 #import "HomeSearchBar.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,assign) HomeNavigationBarStyle navBarStyle;
 
-@property (nonatomic,strong) HomePagesTopBar  *pagesTopBar;
+@property (nonatomic,strong) PagesTopBar  *pagesTopBar;
 @property (nonatomic,strong) HomeSearchBar    *searchBar;
 @property (nonatomic,strong) UIButton         *timeLineBtn;
 

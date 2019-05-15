@@ -98,7 +98,7 @@
     
     [self.childVCArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         BaseViewController *childVC = [[[obj class] alloc] init];
-        childVC.mainTableViewEnabled = YES;
+        childVC.mainTableViewEnabled = ![childVC isKindOfClass:[RankViewController class]];
         [self addChildViewController:childVC];
         childVC.view.frame = CGRectMake(viewWidth * idx, 0, viewWidth, viewHeight);
         [self.mainScrollView addSubview:childVC.view];
@@ -149,7 +149,7 @@
     CGFloat alpha   = (offsetX / BC_SCREEN_WIDTH) < 1 ? (offsetX / BC_SCREEN_WIDTH) : 1;
 //    NSLog(@"%.f",alpha);
     
-    HomePagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
+    PagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
     UIView *slider = pagesTopBar.slider;
     CGFloat place = pagesTopBar.vWidth / pagesTopBar.itemTitles.count / 2;
     CGFloat percent = offsetX / BC_SCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);

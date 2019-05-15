@@ -1,27 +1,30 @@
 //
-//  HomePagesTopBar.m
+//  PagesTopBar.m
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/4/15.
 //  Copyright © 2019 jyw. All rights reserved.
 //
 
-#import "HomePagesTopBar.h"
+#import "PagesTopBar.h"
 
-#define WidthKey      @"PagesTopBarItem"
-#define WidthFontKey  @"PagesTopBarItemFont"
+#define WidthKey     @"PagesTopBarItem"
+
+#define HomeFontKey  @"HomePagesTopBarFont"
+#define RankFontKey  @"RankPagesTopBarFont"
+
 #define SliderColor   [UIColor blackColor]
 
 static const CGFloat ItemScale     = 1.2;
 static const CGFloat AnimDuration  = 0.3;
 
-@interface HomePagesTopBar () <HomeNavigationBarProtocol>
+@interface PagesTopBar () <HomeNavigationBarProtocol>
 
 @property (nonatomic,strong) NSMutableArray <UILabel *> *itemLabels;
 
 @end
 
-@implementation HomePagesTopBar
+@implementation PagesTopBar
 {
     CGFloat _itemWidth;
     CGFloat _itemFont;
@@ -30,8 +33,8 @@ static const CGFloat AnimDuration  = 0.3;
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
-        _itemWidth = [PlistManager widthWithKey:WidthKey];
-        _itemFont = [PlistManager widthWithKey:WidthFontKey];
+        self.topBarStyle = HomeNavigationBarStyleDefault;
+        self.topBarType = PagesTopBarTypeHome;
     }
     return self;
 }
@@ -126,6 +129,20 @@ static const CGFloat AnimDuration  = 0.3;
 }
 
 #pragma mark - Setter
+
+-(void)setTopBarType:(PagesTopBarType)topBarType
+{
+    if (_topBarType != topBarType) {
+        _topBarType = topBarType;
+    }
+    _itemWidth = [PlistManager widthWithKey:WidthKey];
+    NSArray *fontStrArr = @[HomeFontKey,RankFontKey];
+    _itemFont = [PlistManager widthWithKey:fontStrArr[_topBarType]];
+    NSArray *sWArr = @[@18,@12];
+    [self.slider mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake([sWArr[self->_topBarType] floatValue], 3));
+    }];
+}
 
 -(void)setItemTitles:(NSArray *)itemTitles
 {

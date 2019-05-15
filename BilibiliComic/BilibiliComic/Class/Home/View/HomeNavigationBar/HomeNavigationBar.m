@@ -108,10 +108,10 @@
     return _contentView;
 }
 
--(HomePagesTopBar *)pagesTopBar
+-(PagesTopBar *)pagesTopBar
 {
     if (!_pagesTopBar) {
-        _pagesTopBar = [[HomePagesTopBar alloc] init];
+        _pagesTopBar = [[PagesTopBar alloc] init];
         _pagesTopBar.itemTitles = @[@"推荐",@"排行",@"新作"];
         [self.contentView addSubview:_pagesTopBar];
     }

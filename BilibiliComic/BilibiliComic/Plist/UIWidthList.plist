@@ -11,14 +11,23 @@
 		<key>414</key>
 		<integer>50</integer>
 	</dict>
-	<key>PagesTopBarItemFont</key>
+	<key>HomePagesTopBarFont</key>
 	<dict>
 		<key>320</key>
 		<integer>15</integer>
 		<key>375</key>
 		<integer>17</integer>
 		<key>414</key>
-		<integer>17</integer>
+		<integer>19</integer>
+	</dict>
+	<key>RankPagesTopBarFont</key>
+	<dict>
+		<key>320</key>
+		<integer>11</integer>
+		<key>375</key>
+		<integer>12</integer>
+		<key>414</key>
+		<integer>13</integer>
 	</dict>
 	<key>RecomListDefTitleFont</key>
 	<dict>

@@ -1358,7 +1358,7 @@
 		09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5422922672F80007681E4 /* BCRequestCache.m */; };
 		09D5423122673B25007681E4 /* BCRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5423022673B25007681E4 /* BCRefreshHeader.m */; };
 		09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E298FD2260A646009F0D4E /* HomeNavigationBar.m */; };
-		09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1022643BE400FCAAE4 /* HomePagesTopBar.m */; };
+		09EB8B1122643BE400FCAAE4 /* PagesTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1022643BE400FCAAE4 /* PagesTopBar.m */; };
 		09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */; };
 		09EB8B1722648CA200FCAAE4 /* HomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1622648CA200FCAAE4 /* HomeSearchBar.m */; };
 		09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B192264990700FCAAE4 /* SearchCycleScrollView.m */; };
@@ -2774,8 +2774,8 @@
 		09E298F222606297009F0D4E /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		09E298FC2260A646009F0D4E /* HomeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBar.h; sourceTree = "<group>"; };
 		09E298FD2260A646009F0D4E /* HomeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationBar.m; sourceTree = "<group>"; };
-		09EB8B0F22643BE400FCAAE4 /* HomePagesTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePagesTopBar.h; sourceTree = "<group>"; };
-		09EB8B1022643BE400FCAAE4 /* HomePagesTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePagesTopBar.m; sourceTree = "<group>"; };
+		09EB8B0F22643BE400FCAAE4 /* PagesTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagesTopBar.h; sourceTree = "<group>"; };
+		09EB8B1022643BE400FCAAE4 /* PagesTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagesTopBar.m; sourceTree = "<group>"; };
 		09EB8B122264482800FCAAE4 /* NSArray+Sudoku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sudoku.h"; sourceTree = "<group>"; };
 		09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sudoku.m"; sourceTree = "<group>"; };
 		09EB8B1522648CA200FCAAE4 /* HomeSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchBar.h; sourceTree = "<group>"; };
@@ -2827,6 +2827,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09036C15228C17180093C18B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
+				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		09036C16228C171E0093C18B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09036C17228C17200093C18B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		095889812282BFA800A41D02 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -2929,7 +2952,12 @@
 		097918EC2270649F00C243B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				09D5422E22673AFC007681E4 /* BCRefreshHeader */,
+				09EB8B0F22643BE400FCAAE4 /* PagesTopBar.h */,
+				09EB8B1022643BE400FCAAE4 /* PagesTopBar.m */,
+				09D5422F22673B25007681E4 /* BCRefreshHeader.h */,
+				09D5423022673B25007681E4 /* BCRefreshHeader.m */,
+				09036C0C2286AD520093C18B /* BCRefreshFooter.h */,
+				09036C0D2286AD520093C18B /* BCRefreshFooter.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4395,8 +4423,9 @@
 		09D5422322672E18007681E4 /* Rank */ = {
 			isa = PBXGroup;
 			children = (
-				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
-				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
+				09036C17228C17200093C18B /* Model */,
+				09036C16228C171E0093C18B /* View */,
+				09036C15228C17180093C18B /* Controller */,
 			);
 			path = Rank;
 			sourceTree = "<group>";
@@ -4433,17 +4462,6 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
-		09D5422E22673AFC007681E4 /* BCRefreshHeader */ = {
-			isa = PBXGroup;
-			children = (
-				09D5422F22673B25007681E4 /* BCRefreshHeader.h */,
-				09D5423022673B25007681E4 /* BCRefreshHeader.m */,
-				09036C0C2286AD520093C18B /* BCRefreshFooter.h */,
-				09036C0D2286AD520093C18B /* BCRefreshFooter.m */,
-			);
-			path = BCRefreshHeader;
-			sourceTree = "<group>";
-		};
 		09E298F522606CBE009F0D4E /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -4467,8 +4485,6 @@
 				09EB8B212265BE8F00FCAAE4 /* HomeNavigationBarProtocol.h */,
 				09E298FC2260A646009F0D4E /* HomeNavigationBar.h */,
 				09E298FD2260A646009F0D4E /* HomeNavigationBar.m */,
-				09EB8B0F22643BE400FCAAE4 /* HomePagesTopBar.h */,
-				09EB8B1022643BE400FCAAE4 /* HomePagesTopBar.m */,
 				09EB8B1522648CA200FCAAE4 /* HomeSearchBar.h */,
 				09EB8B1622648CA200FCAAE4 /* HomeSearchBar.m */,
 				09EB8B182264990700FCAAE4 /* SearchCycleScrollView.h */,
@@ -6021,7 +6037,7 @@
 				0958897B227EF39700A41D02 /* BaseModel.m in Sources */,
 				09036C0E2286AD520093C18B /* BCRefreshFooter.m in Sources */,
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
-				09EB8B1122643BE400FCAAE4 /* HomePagesTopBar.m in Sources */,
+				09EB8B1122643BE400FCAAE4 /* PagesTopBar.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,
 				0958898B2282F04100A41D02 /* HomeBannerModel.m in Sources */,
 				09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */,

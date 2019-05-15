@@ -1,5 +1,5 @@
 //
-//  HomePagesTopBar.h
+//  PagesTopBar.h
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/4/15.
@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "HomeNavigationBarProtocol.h"
 
-NS_ASSUME_NONNULL_BEGIN
+typedef NS_ENUM(NSUInteger, PagesTopBarType) {
+    PagesTopBarTypeHome,
+    PagesTopBarTypeRank
+};
 
-@interface HomePagesTopBar : UIView
+@interface PagesTopBar : UIView
 
+@property (nonatomic,assign) PagesTopBarType         topBarType;
 @property (nonatomic,assign) HomeNavigationBarStyle  topBarStyle;
 @property (nonatomic,assign) NSUInteger              currentIndex;
 
@@ -24,4 +28,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
