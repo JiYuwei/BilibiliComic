@@ -10,7 +10,7 @@
 
 #define WidthKey      @"PagesTopBarItem"
 #define WidthFontKey  @"PagesTopBarItemFont"
-#define SliderColor   RGBColor(58, 173, 254)
+#define SliderColor   [UIColor blackColor]
 
 static const CGFloat ItemScale     = 1.2;
 static const CGFloat AnimDuration  = 0.3;
