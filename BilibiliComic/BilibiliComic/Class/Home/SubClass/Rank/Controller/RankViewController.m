@@ -83,8 +83,8 @@ static const CGFloat    RankTopBarHeight = 40;
 
 -(void)initRankTableViews
 {
-    CGFloat    width    = self.rankScrollView.vWidth;
-    CGFloat    height   = self.rankScrollView.vHeight;
+    CGFloat width  = self.rankScrollView.vWidth;
+    CGFloat height = self.rankScrollView.vHeight;
     
     for (NSUInteger i = 0; i < Capacity; i++) {
         UITableView *rankTableView = [[UITableView alloc] initWithFrame:CGRectMake(width * i, 0, width, height) style:UITableViewStyleGrouped];

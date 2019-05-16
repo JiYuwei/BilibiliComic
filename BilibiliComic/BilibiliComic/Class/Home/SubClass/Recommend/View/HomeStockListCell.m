@@ -89,7 +89,7 @@ static const CGFloat TAGHeight = 18;
         self.titleLabel.text = _homeStockList.title;
         
         NSString *subTitle = _homeStockList.sub_title;
-        BOOL pureNum = [self isPureInteger:subTitle];
+        BOOL pureNum = [subTitle mj_isPureInt];
         self.subTitleLabel.text = pureNum ? [NSString stringWithFormat:@"第%@话",subTitle] : subTitle;
         
         BOOL style = _homeStockList.styles.count > 0;
@@ -101,13 +101,6 @@ static const CGFloat TAGHeight = 18;
         self.tagLabel.textColor = tagColor;
         self.tagLabel.layer.backgroundColor = [tagColor lightBackColor].CGColor;
     }
-}
-
-- (BOOL)isPureInteger:(NSString *)string
-{
-    NSScanner* scan = [NSScanner scannerWithString:string];
-    NSInteger val;
-    return [scan scanInteger:&val] && [scan isAtEnd];
 }
 
 #pragma mark - LazyLoad

@@ -105,7 +105,9 @@ static const CGFloat SubFont   = 14;
             [types addObject:type.name];
         }
         self.typeLabel.text = [types componentsJoinedByString:@" "];
-        self.updateLabel.text = [NSString stringWithFormat:@"更新至%@",_rankData.last_short_title];
+        NSString *updateStr = _rankData.last_short_title;
+        BOOL pureNum = [updateStr mj_isPureInt];
+        self.updateLabel.text = [NSString stringWithFormat:pureNum?@"更新至%@话":@"更新至%@",_rankData.last_short_title];
     }
 }
 
@@ -137,7 +139,7 @@ static const CGFloat SubFont   = 14;
 {
     if (!_comicView) {
         _comicView = [[UIImageView alloc] init];
-        _comicView.backgroundColor = GRandomColor;
+        _comicView.backgroundColor = DefaultContentBackColor;
         [self.contentView addSubview:_comicView];
     }
     return _comicView;

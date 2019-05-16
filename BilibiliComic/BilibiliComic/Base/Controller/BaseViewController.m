@@ -113,4 +113,13 @@
     return _mainTableView;
 }
 
+#pragma mark - MemoryWarning
+
+-(void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    [[SDWebImageManager sharedManager] cancelAll];
+    [[SDImageCache sharedImageCache] clearMemory];
+}
+
 @end
