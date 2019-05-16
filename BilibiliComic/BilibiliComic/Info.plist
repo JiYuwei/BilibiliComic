@@ -20,6 +20,10 @@
 	<string>1.9.0</string>
 	<key>CFBundleVersion</key>
 	<string>318</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ImpactMTStd.otf</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

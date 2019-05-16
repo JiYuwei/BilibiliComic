@@ -10,6 +10,7 @@
 		09036C0E2286AD520093C18B /* BCRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C0D2286AD520093C18B /* BCRefreshFooter.m */; };
 		09036C112286B4A30093C18B /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C102286B4A30093C18B /* NSString+MD5.m */; };
 		09036C1D228CFA2F0093C18B /* RankListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C1C228CFA2F0093C18B /* RankListViewCell.m */; };
+		09036C1F228D11A80093C18B /* ImpactMTStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09036C1E228D10260093C18B /* ImpactMTStd.otf */; };
 		0941DAC72285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */; };
 		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
 		095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889832282BFBD00A41D02 /* HomeStockModel.m */; };
@@ -1397,6 +1398,7 @@
 		09036C102286B4A30093C18B /* NSString+MD5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		09036C1B228CFA2F0093C18B /* RankListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankListViewCell.h; sourceTree = "<group>"; };
 		09036C1C228CFA2F0093C18B /* RankListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankListViewCell.m; sourceTree = "<group>"; };
+		09036C1E228D10260093C18B /* ImpactMTStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImpactMTStd.otf; sourceTree = "<group>"; };
 		0941DAC52285D18D00A4F6E6 /* UIImageView+SDFadeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDFadeTransition.h"; sourceTree = "<group>"; };
 		0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDFadeTransition.m"; sourceTree = "<group>"; };
 		09588979227EF39700A41D02 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -4504,6 +4506,7 @@
 				09EB8B1E2265B1FC00FCAAE4 /* PlistManager.h */,
 				09EB8B1F2265B1FC00FCAAE4 /* PlistManager.m */,
 				09EB8B1B2265AFE200FCAAE4 /* UIWidthList.plist */,
+				09036C1E228D10260093C18B /* ImpactMTStd.otf */,
 			);
 			path = Plist;
 			sourceTree = "<group>";
@@ -4641,6 +4644,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09036C1F228D11A80093C18B /* ImpactMTStd.otf in Resources */,
 				0998375C2217EFEA006CB358 /* reader_tip_menu_24x24_@3x.png in Resources */,
 				099837AF2217EFEA006CB358 /* comic_tab_bookshelf_n_ico_28x28_@2x.png in Resources */,
 				0998383F2217EFEA006CB358 /* bizui.png in Resources */,

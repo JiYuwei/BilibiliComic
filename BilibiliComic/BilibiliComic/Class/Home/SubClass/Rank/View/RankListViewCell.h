@@ -10,6 +10,8 @@
 
 @interface RankListViewCell : UITableViewCell
 
+@property (nonatomic,assign) NSInteger rank;
+
 @end
 
 
