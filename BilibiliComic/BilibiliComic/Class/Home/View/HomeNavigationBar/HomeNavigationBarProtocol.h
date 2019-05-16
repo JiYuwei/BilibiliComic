@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 typedef NS_ENUM(NSUInteger, HomeNavigationBarStyle) {
     HomeNavigationBarStylePrepared      = -1,
     HomeNavigationBarStyleDefault       = 0,
@@ -21,5 +19,3 @@ typedef NS_ENUM(NSUInteger, HomeNavigationBarStyle) {
 -(void)showNavigationBarStyle:(HomeNavigationBarStyle)style;
 
 @end
-
-NS_ASSUME_NONNULL_END

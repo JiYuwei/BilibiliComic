@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface UIColor (HexColor)
 
 // 颜色转换：iOS中（以#开头）十六进制的颜色转换为UIColor(RGB)
@@ -18,5 +16,3 @@ NS_ASSUME_NONNULL_BEGIN
 - (UIColor *)lightBackColor;
 
 @end
-
-NS_ASSUME_NONNULL_END

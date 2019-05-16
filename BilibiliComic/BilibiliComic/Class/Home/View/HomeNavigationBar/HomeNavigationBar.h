@@ -11,8 +11,6 @@
 #import "PagesTopBar.h"
 #import "HomeSearchBar.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface HomeNavigationBar : UIView
 
 @property (nonatomic,assign) HomeNavigationBarStyle navBarStyle;
@@ -22,5 +20,3 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UIButton         *timeLineBtn;
 
 @end
-
-NS_ASSUME_NONNULL_END

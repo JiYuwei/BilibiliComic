@@ -8,8 +8,6 @@
 
 #import "BaseModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class SearchData;
 
 @interface HomeSearchModel : BaseModel
@@ -35,5 +33,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-NS_ASSUME_NONNULL_END

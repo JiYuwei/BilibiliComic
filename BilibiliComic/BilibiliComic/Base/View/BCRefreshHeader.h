@@ -8,10 +8,7 @@
 
 #import "MJRefreshGifHeader.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface BCRefreshHeader : MJRefreshGifHeader
 
 @end
 
-NS_ASSUME_NONNULL_END

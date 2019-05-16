@@ -9,12 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface PlistManager : NSObject
 
 +(CGFloat)widthWithKey:(NSString *)key;
 
 @end
-
-NS_ASSUME_NONNULL_END

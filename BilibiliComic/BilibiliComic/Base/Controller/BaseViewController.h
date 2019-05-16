@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface BaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UITableView *mainTableView;
@@ -20,4 +18,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END

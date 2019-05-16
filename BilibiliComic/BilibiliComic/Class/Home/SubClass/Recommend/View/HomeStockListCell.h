@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class List;
 
 @interface HomeStockListCell : UITableViewCell
@@ -17,5 +15,3 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) List *homeStockList;
 
 @end
-
-NS_ASSUME_NONNULL_END

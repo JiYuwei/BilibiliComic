@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface AppConfig : NSObject
 
 /**
@@ -28,5 +26,3 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)getAppSign;
 
 @end
-
-NS_ASSUME_NONNULL_END

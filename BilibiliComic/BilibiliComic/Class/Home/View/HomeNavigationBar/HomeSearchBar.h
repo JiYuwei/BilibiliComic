@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "HomeNavigationBarProtocol.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 static const CGFloat TBMargin = 8;
 
 @class SearchData;
@@ -21,5 +19,3 @@ static const CGFloat TBMargin = 8;
 @property (nonatomic,copy) NSArray <SearchData *> *data;
 
 @end
-
-NS_ASSUME_NONNULL_END

@@ -8,8 +8,6 @@
 
 #import "BaseModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @class BannerData;
 
 @interface HomeBannerModel : BaseModel
@@ -33,5 +31,3 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-
-NS_ASSUME_NONNULL_END

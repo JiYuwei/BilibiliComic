@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "HomeNavigationBarProtocol.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface SearchCycleScrollView : UIView
 
 //滚动的时间间隔
@@ -21,5 +19,3 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,assign) HomeNavigationBarStyle cycleStyle;
 
 @end
-
-NS_ASSUME_NONNULL_END
