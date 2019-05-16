@@ -10,8 +10,14 @@
 
 @implementation RankListModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"rankData":@"data",
+             @"fansData":@"data"};
+}
+
 + (NSDictionary *)objectClassInArray {
-    return @{@"data" : [RankData class]};
+    return @{@"rankData" : [RankData class],
+             @"fansData" : [FansData class]};
 }
 
 @end
@@ -20,8 +26,15 @@
 @implementation RankData
 
 + (NSDictionary *)objectClassInArray {
-    return @{@"styles" : [RankStyles class],
-             @"comics" : [RankComics class]};
+    return @{@"styles" : [RankStyles class]};
+}
+
+@end
+
+@implementation FansData
+
++ (NSDictionary *)objectClassInArray {
+    return @{@"comics" : [RankComics class]};
 }
 
 @end

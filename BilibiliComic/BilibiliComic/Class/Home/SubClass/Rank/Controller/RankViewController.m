@@ -15,50 +15,55 @@ static const CGFloat    RankTopBarHeight = 40;
 
 @interface RankViewController ()
 
-@property (nonatomic,strong) RankListModel *rankListModel;
-
 @property (nonatomic,strong) PagesTopBar *rankPagesTopBar;
 
 @property (nonatomic,strong) UIScrollView *rankScrollView;
-@property (nonatomic,strong) NSMutableArray <UITableView *> *rankTableViews;
+@property (nonatomic,strong) NSMutableArray <UITableView *>   *rankTableViews;
+@property (nonatomic,strong) NSMutableArray <RankListModel *> *rankListModels;
 
 @end
 
 @implementation RankViewController
+{
+    NSUInteger Capacity;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    [self retrieveRankData];
+    Capacity = self.rankPagesTopBar.itemTitles.count;
     
     [self initRankPagesTopBar];
     [self initRankTableViews];
+    
+    [self retrieveRankData];
 }
 
 #pragma mark - Data
 
 -(void)retrieveRankData
 {
-    dispatch_apply(self.rankPagesTopBar.itemTitles.count, dispatch_get_global_queue(0, 0), ^(size_t index) {
-        [self retrieveRankDataAtIndex:index allowCache:YES];
-    });
+    for (NSInteger i = 0; i < Capacity; i++) {
+        [self retrieveRankDataAtIndex:i allowCache:YES];
+    }
 }
 
 -(void)retrieveRankDataAtIndex:(NSUInteger)index allowCache:(BOOL)cache
 {
-    NSArray *rankURLs   = @[HOME_HOT,HOME_HOT,HOME_FANS];
-    NSDictionary *parameters = @{@"type":@(index)};
+    BOOL isHot = index < 2;
+    NSString *url = isHot ? HOME_HOT : HOME_FANS;
+    NSDictionary *parameters = isHot ? @{@"type":@(index)} : @{};
     
     [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
         [self.rankTableViews[index].mj_header endRefreshing];
         [self.rankTableViews[index].mj_footer endRefreshingWithNoMoreData];
         [self.rankTableViews[index] reloadData];
-    } needCache:cache requestType:HTTPRequestTypePOST fromURL:rankURLs[index] parameters:parameters success:^(NSDictionary *json) {
-        self.rankListModel = [RankListModel mj_objectWithKeyValues:json];
+    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        self.rankListModels[index] = [RankListModel mj_objectWithKeyValues:json];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         if (needCache) {
-            self.rankListModel = [RankListModel mj_objectWithKeyValues:cachedJson];
+            self.rankListModels[index] = [RankListModel mj_objectWithKeyValues:cachedJson];
         }
     }];
 }
@@ -78,11 +83,10 @@ static const CGFloat    RankTopBarHeight = 40;
 
 -(void)initRankTableViews
 {
-    NSUInteger capacity = self.rankPagesTopBar.itemTitles.count;
     CGFloat    width    = self.rankScrollView.vWidth;
     CGFloat    height   = self.rankScrollView.vHeight;
     
-    for (NSUInteger i = 0; i < capacity; i++) {
+    for (NSUInteger i = 0; i < Capacity; i++) {
         UITableView *rankTableView = [[UITableView alloc] initWithFrame:CGRectMake(width * i, 0, width, height) style:UITableViewStyleGrouped];
         rankTableView.backgroundColor = [UIColor whiteColor];
         rankTableView.dataSource = self;
@@ -114,22 +118,32 @@ static const CGFloat    RankTopBarHeight = 40;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSUInteger index = [self.rankTableViews indexOfObject:tableView];
+
     if (tableView == self.rankTableViews.lastObject) {
-        return self.rankListModel.fansData.comics.count;
+        return self.rankListModels.lastObject.fansData.comics.count;
     }
-    return self.rankListModel.rankData.count;
+    else{
+        return self.rankListModels[index].rankData.count;
+    }
+    
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RankListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RankListViewCell class]) forIndexPath:indexPath];
     cell.rank = indexPath.row + 1;
+    
+    NSUInteger index = [self.rankTableViews indexOfObject:tableView];
+    
     if (tableView == self.rankTableViews.lastObject) {
-        cell.fansComics = self.rankListModel.fansData.comics[indexPath.row];
+        cell.fansComics = self.rankListModels.lastObject.fansData.comics[indexPath.row];
     }
     else{
-        cell.rankData = self.rankListModel.rankData[indexPath.row];
+        cell.rankData = self.rankListModels[index].rankData[indexPath.row];
     }
+    
     return cell;
 }
 
@@ -193,7 +207,7 @@ static const CGFloat    RankTopBarHeight = 40;
 {
     if (!_rankScrollView) {
         _rankScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT + RankTopBarHeight, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_TABBAR_HEIGHT - BC_NAV_HEIGHT - RankTopBarHeight)];
-        _rankScrollView.contentSize = CGSizeMake(BC_SCREEN_WIDTH * self.rankPagesTopBar.itemTitles.count, 0);
+        _rankScrollView.contentSize = CGSizeMake(BC_SCREEN_WIDTH * Capacity, 0);
         _rankScrollView.showsVerticalScrollIndicator = NO;
         _rankScrollView.showsHorizontalScrollIndicator = NO;
         _rankScrollView.pagingEnabled = YES;
@@ -207,9 +221,21 @@ static const CGFloat    RankTopBarHeight = 40;
 -(NSMutableArray<UITableView *> *)rankTableViews
 {
     if (!_rankTableViews) {
-        _rankTableViews = [NSMutableArray array];
+        _rankTableViews = [NSMutableArray arrayWithCapacity:Capacity];
     }
     return _rankTableViews;
+}
+
+-(NSMutableArray<RankListModel *> *)rankListModels
+{
+    if (!_rankListModels) {
+        _rankListModels = [NSMutableArray arrayWithCapacity:Capacity];
+        for (NSInteger i = 0; i < Capacity; i++) {
+            RankListModel *model = [[RankListModel alloc] init];
+            [_rankListModels addObject:model];
+        }
+    }
+    return _rankListModels;
 }
 
 @end

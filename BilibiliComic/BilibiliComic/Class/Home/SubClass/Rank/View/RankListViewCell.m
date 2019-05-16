@@ -55,7 +55,7 @@ static const CGFloat SubFont   = 14;
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.contentView).offset(10);
         make.left.equalTo(self.comicView.mas_right).offset(10);
-        make.right.lessThanOrEqualTo(self.contentView).offset(-10);
+        make.right.equalTo(self.contentView).offset(-10);
     }];
     
     [self.srcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -78,11 +78,6 @@ static const CGFloat SubFont   = 14;
         make.height.mas_equalTo(SubFont + 3);
         make.bottom.equalTo(self.contentView).offset(-10);
     }];
-    
-//    self.titleLabel.text = @"辉夜大小姐想让我告白 ～天才们的恋爱头脑战～";
-//    self.srcLabel.text = @"赤坂名 集英社";
-//    self.typeLabel.text = @"恋爱 搞笑 校园 日常";
-//    self.updateLabel.text = @"更新至148话";
 }
 
 #pragma mark - Setter
@@ -116,7 +111,13 @@ static const CGFloat SubFont   = 14;
 
 -(void)setFansComics:(RankComics *)fansComics
 {
-    
+    if (fansComics && _fansComics != fansComics) {
+        _fansComics = fansComics;
+        
+        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_fansComics.vertical_cover] placeholderImage:UIImage(@"comic_list_placeholder_162x216_")];
+        
+        self.titleLabel.text = _fansComics.title;
+    }
 }
 
 #pragma mark - LazyLoad

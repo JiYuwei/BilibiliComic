@@ -8,12 +8,12 @@
 
 #import "BaseModel.h"
 
-@class RankData,RankComics,Reward_users,RankStyles;
+@class RankData,FansData,RankComics,Reward_users,RankStyles;
 
 @interface RankListModel : BaseModel
 
 @property (nonatomic, strong) NSArray <RankData *> * rankData;
-@property (nonatomic, strong) RankData * fansData;
+@property (nonatomic, strong) FansData * fansData;
 
 @end
 
@@ -29,6 +29,10 @@
 @property (nonatomic, assign) NSInteger  comic_id;
 @property (nonatomic, copy)   NSString * vertical_cover;
 @property (nonatomic, copy)   NSString * last_short_title;
+
+@end
+
+@interface FansData : NSObject
 
 @property (nonatomic, copy)   NSString * next_time;
 @property (nonatomic, strong) NSArray <RankComics *> * comics;
