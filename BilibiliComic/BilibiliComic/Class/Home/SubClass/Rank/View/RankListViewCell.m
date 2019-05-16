@@ -7,6 +7,7 @@
 //
 
 #import "RankListViewCell.h"
+#import "RankListModel.h"
 
 static const CGFloat TitleFont = 17;
 static const CGFloat SubFont   = 14;
@@ -78,11 +79,10 @@ static const CGFloat SubFont   = 14;
         make.bottom.equalTo(self.contentView).offset(-10);
     }];
     
-    
-    self.titleLabel.text = @"辉夜大小姐想让我告白 ～天才们的恋爱头脑战～";
-    self.srcLabel.text = @"赤坂名 集英社";
-    self.typeLabel.text = @"恋爱 搞笑 校园 日常";
-    self.updateLabel.text = @"更新至148话";
+//    self.titleLabel.text = @"辉夜大小姐想让我告白 ～天才们的恋爱头脑战～";
+//    self.srcLabel.text = @"赤坂名 集英社";
+//    self.typeLabel.text = @"恋爱 搞笑 校园 日常";
+//    self.updateLabel.text = @"更新至148话";
 }
 
 #pragma mark - Setter
@@ -93,7 +93,30 @@ static const CGFloat SubFont   = 14;
 //    NSLog(@"%@",[UIFont familyNames]);
     BOOL topRank = (_rank <= 3);
     self.rankLabel.text = [NSString stringWithFormat:topRank?@"%ld":@"%02ld",_rank];
-    self.rankLabel.font = [UIFont fontWithName:@"Impact MT Std" size:topRank?80:35];
+    self.rankLabel.font = [UIFont fontWithName:@"Impact MT Std" size:topRank?70:35];
+}
+
+-(void)setRankData:(RankData *)rankData
+{
+    if (rankData && _rankData != rankData) {
+        _rankData = rankData;
+        
+        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_rankData.vertical_cover] placeholderImage:UIImage(@"comic_list_placeholder_162x216_")];
+        
+        self.titleLabel.text = _rankData.title;
+        self.srcLabel.text = [_rankData.author componentsJoinedByString:@" "];
+        NSMutableArray *types = [NSMutableArray array];
+        for (RankStyles *type in _rankData.styles) {
+            [types addObject:type.name];
+        }
+        self.typeLabel.text = [types componentsJoinedByString:@" "];
+        self.updateLabel.text = [NSString stringWithFormat:@"更新至%@",_rankData.last_short_title];
+    }
+}
+
+-(void)setFansComics:(RankComics *)fansComics
+{
+    
 }
 
 #pragma mark - LazyLoad

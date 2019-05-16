@@ -9,6 +9,7 @@
 #ifndef RequestAPI_h
 #define RequestAPI_h
 
+#define ACCESS_KEY          [APP_KEY md5]
 #define ACTION_KEY          @"appkey"
 #define APP_KEY             @"da44a5d9227fa9ef"
 #define APP_VERSION         [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
@@ -28,6 +29,7 @@
 #define HOME_PAGE       @"HomePage"
 #define HOME_STOCK_URL  @"HomeStock"
 #define HOME_HOT        @"HomeHot"
+#define HOME_FANS       @"HomeFans"
 #define HOME_NEWORDER   @"NewOrder"
 
 #endif /* RequestAPI_h */

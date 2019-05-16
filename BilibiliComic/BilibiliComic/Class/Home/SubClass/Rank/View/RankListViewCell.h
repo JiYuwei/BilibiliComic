@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class RankData,RankComics;
+
 @interface RankListViewCell : UITableViewCell
 
-@property (nonatomic,assign) NSInteger rank;
+@property (nonatomic,assign) NSInteger  rank;
+
+@property (nonatomic,strong) RankData   *rankData;
+@property (nonatomic,strong) RankComics *fansComics;
 
 @end
 

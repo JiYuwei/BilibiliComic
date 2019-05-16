@@ -11,6 +11,7 @@
 		09036C112286B4A30093C18B /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C102286B4A30093C18B /* NSString+MD5.m */; };
 		09036C1D228CFA2F0093C18B /* RankListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C1C228CFA2F0093C18B /* RankListViewCell.m */; };
 		09036C1F228D11A80093C18B /* ImpactMTStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09036C1E228D10260093C18B /* ImpactMTStd.otf */; };
+		09036C22228D30A10093C18B /* RankListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C21228D30A10093C18B /* RankListModel.m */; };
 		0941DAC72285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */; };
 		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
 		095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889832282BFBD00A41D02 /* HomeStockModel.m */; };
@@ -1399,6 +1400,8 @@
 		09036C1B228CFA2F0093C18B /* RankListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankListViewCell.h; sourceTree = "<group>"; };
 		09036C1C228CFA2F0093C18B /* RankListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankListViewCell.m; sourceTree = "<group>"; };
 		09036C1E228D10260093C18B /* ImpactMTStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImpactMTStd.otf; sourceTree = "<group>"; };
+		09036C20228D30A10093C18B /* RankListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankListModel.h; sourceTree = "<group>"; };
+		09036C21228D30A10093C18B /* RankListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankListModel.m; sourceTree = "<group>"; };
 		0941DAC52285D18D00A4F6E6 /* UIImageView+SDFadeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDFadeTransition.h"; sourceTree = "<group>"; };
 		0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDFadeTransition.m"; sourceTree = "<group>"; };
 		09588979227EF39700A41D02 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -2853,6 +2856,8 @@
 		09036C17228C17200093C18B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				09036C20228D30A10093C18B /* RankListModel.h */,
+				09036C21228D30A10093C18B /* RankListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -6070,6 +6075,7 @@
 				096D028E221836210067651A /* HomeViewController.m in Sources */,
 				097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */,
 				095889882282E05F00A41D02 /* AppConfig.m in Sources */,
+				09036C22228D30A10093C18B /* RankListModel.m in Sources */,
 				09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */,
 				09036C112286B4A30093C18B /* NSString+MD5.m in Sources */,
 				0958899222841FB900A41D02 /* UIColor+HexColor.m in Sources */,

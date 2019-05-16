@@ -126,7 +126,8 @@ static BCNetworkRequest *request;
 
 - (NSDictionary *)componentFullParameters:(NSDictionary *)parameters
 {
-    NSMutableDictionary *defParameters = [NSMutableDictionary dictionaryWithDictionary:@{@"actionKey":ACTION_KEY,
+    NSMutableDictionary *defParameters = [NSMutableDictionary dictionaryWithDictionary:@{@"access_key":ACCESS_KEY,
+                                   @"actionKey":ACTION_KEY,
                                    @"appkey":APP_KEY,
                                    @"build":APP_BUILD,
                                    @"device":APP_DEVICE,

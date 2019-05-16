@@ -7,8 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "BCRefreshHeader.h"
-#import "BCRefreshFooter.h"
 
 @interface BaseViewController ()
 

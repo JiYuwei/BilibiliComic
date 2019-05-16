@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BCRefreshHeader.h"
+#import "BCRefreshFooter.h"
 
 @interface BaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 

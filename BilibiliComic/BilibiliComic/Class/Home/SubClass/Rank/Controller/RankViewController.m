@@ -9,10 +9,13 @@
 #import "RankViewController.h"
 #import "PagesTopBar.h"
 #import "RankListViewCell.h"
+#import "RankListModel.h"
 
 static const CGFloat    RankTopBarHeight = 40;
 
 @interface RankViewController ()
+
+@property (nonatomic,strong) RankListModel *rankListModel;
 
 @property (nonatomic,strong) PagesTopBar *rankPagesTopBar;
 
@@ -27,9 +30,40 @@ static const CGFloat    RankTopBarHeight = 40;
 {
     [super viewDidLoad];
     
+    [self retrieveRankData];
+    
     [self initRankPagesTopBar];
     [self initRankTableViews];
 }
+
+#pragma mark - Data
+
+-(void)retrieveRankData
+{
+    dispatch_apply(self.rankPagesTopBar.itemTitles.count, dispatch_get_global_queue(0, 0), ^(size_t index) {
+        [self retrieveRankDataAtIndex:index allowCache:YES];
+    });
+}
+
+-(void)retrieveRankDataAtIndex:(NSUInteger)index allowCache:(BOOL)cache
+{
+    NSArray *rankURLs   = @[HOME_HOT,HOME_HOT,HOME_FANS];
+    NSDictionary *parameters = @{@"type":@(index)};
+    
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
+        [self.rankTableViews[index].mj_header endRefreshing];
+        [self.rankTableViews[index].mj_footer endRefreshingWithNoMoreData];
+        [self.rankTableViews[index] reloadData];
+    } needCache:cache requestType:HTTPRequestTypePOST fromURL:rankURLs[index] parameters:parameters success:^(NSDictionary *json) {
+        self.rankListModel = [RankListModel mj_objectWithKeyValues:json];
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        if (needCache) {
+            self.rankListModel = [RankListModel mj_objectWithKeyValues:cachedJson];
+        }
+    }];
+}
+
+#pragma mark - UI
 
 -(void)initRankPagesTopBar
 {
@@ -56,6 +90,12 @@ static const CGFloat    RankTopBarHeight = 40;
         rankTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         rankTableView.showsHorizontalScrollIndicator = NO;
         rankTableView.showsVerticalScrollIndicator = NO;
+        
+        rankTableView.mj_header = [BCRefreshHeader headerWithRefreshingBlock:^{
+            [self retrieveRankDataAtIndex:i allowCache:NO];
+        }];
+        rankTableView.mj_footer = [BCRefreshFooter footerWithRefreshingBlock:nil];
+        
         if (@available(iOS 11.0, *)) {
             rankTableView.estimatedRowHeight = 0;
             rankTableView.estimatedSectionHeaderHeight = 0;
@@ -74,13 +114,22 @@ static const CGFloat    RankTopBarHeight = 40;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    if (tableView == self.rankTableViews.lastObject) {
+        return self.rankListModel.fansData.comics.count;
+    }
+    return self.rankListModel.rankData.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RankListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RankListViewCell class]) forIndexPath:indexPath];
     cell.rank = indexPath.row + 1;
+    if (tableView == self.rankTableViews.lastObject) {
+        cell.fansComics = self.rankListModel.fansData.comics[indexPath.row];
+    }
+    else{
+        cell.rankData = self.rankListModel.rankData[indexPath.row];
+    }
     return cell;
 }
 
@@ -134,7 +183,7 @@ static const CGFloat    RankTopBarHeight = 40;
     if (!_rankPagesTopBar) {
         _rankPagesTopBar = [[PagesTopBar alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT, BC_SCREEN_WIDTH / 2, RankTopBarHeight)];
         _rankPagesTopBar.topBarType = PagesTopBarTypeRank;
-        _rankPagesTopBar.itemTitles = @[@"人气榜",@"应援榜",@"免费榜"];
+        _rankPagesTopBar.itemTitles = @[@"人气榜",@"免费榜",@"应援榜"];
         [self.view addSubview:_rankPagesTopBar];
     }
     return _rankPagesTopBar;
@@ -144,7 +193,6 @@ static const CGFloat    RankTopBarHeight = 40;
 {
     if (!_rankScrollView) {
         _rankScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT + RankTopBarHeight, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_TABBAR_HEIGHT - BC_NAV_HEIGHT - RankTopBarHeight)];
-        _rankScrollView.backgroundColor = GRandomColor;
         _rankScrollView.contentSize = CGSizeMake(BC_SCREEN_WIDTH * self.rankPagesTopBar.itemTitles.count, 0);
         _rankScrollView.showsVerticalScrollIndicator = NO;
         _rankScrollView.showsHorizontalScrollIndicator = NO;
