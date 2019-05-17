@@ -10,10 +10,13 @@
 
 @implementation UIImage (ReSize)
 
-- (UIImage *)reSizeImage:(CGSize)reSize
+- (UIImage *)reSizeImage:(CGSize)reSize scale:(CGFloat)scale
 {
-    UIGraphicsBeginImageContext(CGSizeMake(reSize.width, reSize.height));
-    [self drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    NSData  *data        = UIImageJPEGRepresentation(self, scale);
+    UIImage *resultImage = [UIImage imageWithData:data];
+    
+    UIGraphicsBeginImageContext(reSize);
+    [resultImage drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
     UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

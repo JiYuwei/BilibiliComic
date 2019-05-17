@@ -11,6 +11,14 @@
 
 @implementation UIImageView (SDFadeTransition)
 
++ (instancetype)fadeImageView
+{
+    UIImageView *imageView = [[UIImageView alloc] init];
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    manager.delegate = imageView;
+    return imageView;
+}
+
 -(void)sd_setFadeImageWithURL:(NSURL *)url
 {
     [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:nil completed:nil];
@@ -47,33 +55,40 @@
     [self sd_setImageWithURL:url placeholderImage:placeholder options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         @strongify(self)
         if (image) {
-            
-            CGFloat width  = self.vWidth;
-            CGFloat height = self.vHeight;
-            CGFloat scale  = BC_SCALE;
-            CGSize  reSize = CGSizeMake(width * scale, height * scale);
-            
-            self.image = nil;
-            
-            dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                UIImage *realImage = [image reSizeImage:reSize];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (cacheType == SDImageCacheTypeMemory) {
-                        self.image = realImage;
-                    }
-                    else {
-                        [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                            self.image = realImage;
-                        } completion:nil];
-                    }
-                });
-            });
+            if (cacheType == SDImageCacheTypeMemory) {
+                self.image = image;
+            }
+            else {
+                [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                    self.image = image;
+                } completion:nil];
+            }
         }
-        
         if (completedBlock) {
             completedBlock(image, error, cacheType, url);
         }
     }];
+}
+
+-(CGSize)realImageSize
+{
+    CGFloat width = self.vWidth;
+    CGFloat height = self.vHeight;
+    CGFloat scale = BC_SCALE;
+    
+    CGSize reSize = CGSizeMake(width * scale, height * scale);
+    
+    return reSize;
+}
+
+#pragma msrk - SDWebImageManagerDelegate
+
+-(UIImage *)imageManager:(SDWebImageManager *)imageManager transformDownloadedImage:(UIImage *)image withURL:(NSURL *)imageURL
+{
+    CGSize  reSize = [self realImageSize];
+    CGFloat scale   = reSize.width / image.size.width;
+    
+    return [image reSizeImage:reSize scale:scale];
 }
 
 @end

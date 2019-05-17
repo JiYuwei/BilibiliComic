@@ -43,7 +43,7 @@
 - (UIImageView *)mainImageView
 {
     if (!_mainImageView) {
-        _mainImageView = [[UIImageView alloc] init];
+        _mainImageView = [UIImageView fadeImageView];
         _mainImageView.userInteractionEnabled = YES;
     }
     return _mainImageView;
