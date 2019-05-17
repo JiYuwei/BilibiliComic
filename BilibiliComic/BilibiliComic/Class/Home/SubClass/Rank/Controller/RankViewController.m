@@ -37,7 +37,7 @@ static const CGFloat    RankTopBarHeight = 40;
     [self initRankPagesTopBar];
     [self initRankTableViews];
     
-    [self retrieveRankData];
+//    [self retrieveRankData];
 }
 
 #pragma mark - Data

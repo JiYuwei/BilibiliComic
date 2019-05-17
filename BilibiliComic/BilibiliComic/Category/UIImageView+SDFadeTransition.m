@@ -7,6 +7,7 @@
 //
 
 #import "UIImageView+SDFadeTransition.h"
+#import "UIImage+ReSize.h"
 
 @implementation UIImageView (SDFadeTransition)
 
@@ -46,15 +47,29 @@
     [self sd_setImageWithURL:url placeholderImage:placeholder options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         @strongify(self)
         if (image) {
-            if (cacheType == SDImageCacheTypeMemory) {
-                self.image = image;
-            }
-            else {
-                [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                    self.image = image;
-                } completion:nil];
-            }
+            
+            CGFloat width  = self.vWidth;
+            CGFloat height = self.vHeight;
+            CGFloat scale  = BC_SCALE;
+            CGSize  reSize = CGSizeMake(width * scale, height * scale);
+            
+            self.image = nil;
+            
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                UIImage *realImage = [image reSizeImage:reSize];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (cacheType == SDImageCacheTypeMemory) {
+                        self.image = realImage;
+                    }
+                    else {
+                        [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+                            self.image = realImage;
+                        } completion:nil];
+                    }
+                });
+            });
         }
+        
         if (completedBlock) {
             completedBlock(image, error, cacheType, url);
         }

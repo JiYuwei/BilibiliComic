@@ -12,6 +12,7 @@
 		09036C1D228CFA2F0093C18B /* RankListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C1C228CFA2F0093C18B /* RankListViewCell.m */; };
 		09036C1F228D11A80093C18B /* ImpactMTStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09036C1E228D10260093C18B /* ImpactMTStd.otf */; };
 		09036C22228D30A10093C18B /* RankListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C21228D30A10093C18B /* RankListModel.m */; };
+		09036C28228E67030093C18B /* UIImage+ReSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 09036C27228E67030093C18B /* UIImage+ReSize.m */; };
 		0941DAC72285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */; };
 		0958897B227EF39700A41D02 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958897A227EF39700A41D02 /* BaseModel.m */; };
 		095889842282BFBD00A41D02 /* HomeStockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 095889832282BFBD00A41D02 /* HomeStockModel.m */; };
@@ -1402,6 +1403,8 @@
 		09036C1E228D10260093C18B /* ImpactMTStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ImpactMTStd.otf; sourceTree = "<group>"; };
 		09036C20228D30A10093C18B /* RankListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankListModel.h; sourceTree = "<group>"; };
 		09036C21228D30A10093C18B /* RankListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankListModel.m; sourceTree = "<group>"; };
+		09036C26228E67030093C18B /* UIImage+ReSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ReSize.h"; sourceTree = "<group>"; };
+		09036C27228E67030093C18B /* UIImage+ReSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ReSize.m"; sourceTree = "<group>"; };
 		0941DAC52285D18D00A4F6E6 /* UIImageView+SDFadeTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+SDFadeTransition.h"; sourceTree = "<group>"; };
 		0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+SDFadeTransition.m"; sourceTree = "<group>"; };
 		09588979227EF39700A41D02 /* BaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -4487,6 +4490,8 @@
 				0958899122841FB900A41D02 /* UIColor+HexColor.m */,
 				0941DAC52285D18D00A4F6E6 /* UIImageView+SDFadeTransition.h */,
 				0941DAC62285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m */,
+				09036C26228E67030093C18B /* UIImage+ReSize.h */,
+				09036C27228E67030093C18B /* UIImage+ReSize.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -6053,6 +6058,7 @@
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* PagesTopBar.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,
+				09036C28228E67030093C18B /* UIImage+ReSize.m in Sources */,
 				0958898B2282F04100A41D02 /* HomeBannerModel.m in Sources */,
 				09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */,
 				096D0287221835420067651A /* BaseTabbarController.m in Sources */,

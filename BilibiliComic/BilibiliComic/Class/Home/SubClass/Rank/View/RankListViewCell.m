@@ -96,7 +96,7 @@ static const CGFloat SubFont   = 14;
     if (rankData && _rankData != rankData) {
         _rankData = rankData;
         
-        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_rankData.vertical_cover] placeholderImage:UIImage(@"comic_list_placeholder_162x216_")];
+        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_rankData.vertical_cover] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
         
         self.titleLabel.text = _rankData.title;
         self.srcLabel.text = [_rankData.author componentsJoinedByString:@" "];
@@ -116,7 +116,7 @@ static const CGFloat SubFont   = 14;
     if (fansComics && _fansComics != fansComics) {
         _fansComics = fansComics;
         
-        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_fansComics.vertical_cover] placeholderImage:UIImage(@"comic_list_placeholder_162x216_")];
+        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_fansComics.vertical_cover] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
         
         self.titleLabel.text = _fansComics.title;
     }
@@ -139,7 +139,7 @@ static const CGFloat SubFont   = 14;
 {
     if (!_comicView) {
         _comicView = [[UIImageView alloc] init];
-        _comicView.backgroundColor = DefaultContentBackColor;
+        _comicView.backgroundColor = DefaultBorderColor;
         [self.contentView addSubview:_comicView];
     }
     return _comicView;

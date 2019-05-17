@@ -85,7 +85,7 @@ static const CGFloat TAGHeight = 18;
     if (homeStockList && _homeStockList != homeStockList) {
         _homeStockList = homeStockList;
         
-        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_homeStockList.img] placeholderImage:PlaceHolderIMG];
+        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_homeStockList.img] placeholderImage:BCImage(@"comic_thumb_placeholder1_ico_343x192_")];
         self.titleLabel.text = _homeStockList.title;
         
         NSString *subTitle = _homeStockList.sub_title;

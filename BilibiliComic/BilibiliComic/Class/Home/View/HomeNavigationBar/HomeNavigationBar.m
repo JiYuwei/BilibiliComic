@@ -68,14 +68,14 @@
         {
             self.backgroundColor = [UIColor whiteColor];
             self.lineView.backgroundColor = DefaultBorderColor;
-            [self.timeLineBtn setImage:UIImage(@"home_gray_calendar_24x24_") forState:UIControlStateNormal];
+            [self.timeLineBtn setImage:BCImage(@"home_gray_calendar_24x24_") forState:UIControlStateNormal];
         }
             break;
         case HomeNavigationBarStyleLightContent:
         {
             self.backgroundColor = [UIColor clearColor];
             self.lineView.backgroundColor = [UIColor clearColor];
-            [self.timeLineBtn setImage:UIImage(@"home_whiter_calendar_24x24_") forState:UIControlStateNormal];
+            [self.timeLineBtn setImage:BCImage(@"home_whiter_calendar_24x24_") forState:UIControlStateNormal];
         }
             break;
             

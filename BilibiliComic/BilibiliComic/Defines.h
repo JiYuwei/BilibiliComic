@@ -18,8 +18,6 @@
 
 static const CGFloat DefaultTimeInterval = 4.0f;
 
-#define PlaceHolderIMG   UIImage(@"comic_thumb_placeholder1_ico_343x192_")
-
 #define HOME_TITLE       @"首页"
 #define HOME_N_ICON      @"comic_tab_home_n_ico_28x28_"
 #define HOME_S_ICON      @"comic_tab_home_s_ico_28x28_"
@@ -40,6 +38,7 @@ static const CGFloat DefaultTimeInterval = 4.0f;
 //获取主屏幕和屏幕宽度与高度
 #define BC_SCREEN_WIDTH         [UIScreen mainScreen].bounds.size.width
 #define BC_SCREEN_HEIGHT        [UIScreen mainScreen].bounds.size.height
+#define BC_SCALE                [UIScreen mainScreen].scale
 
 //安全区域
 #define BC_NAV_HEIGHT          (BC_SCREEN_HEIGHT >= 812 ? 88 : 64)
@@ -70,8 +69,7 @@ static const CGFloat DefaultTimeInterval = 4.0f;
 #define GClearColor [UIColor clearColor]
 
 //获取UIImage
-#define UIImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
-
+#define BCImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
 
 //获取temp
 #define kPathTemp NSTemporaryDirectory()

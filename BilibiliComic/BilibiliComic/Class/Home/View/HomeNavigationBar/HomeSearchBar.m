@@ -56,13 +56,13 @@
         case HomeNavigationBarStyleDefault:
         {
             self.shadowView.layer.backgroundColor = DefaultBorderColor.CGColor;
-            self.searchImageView.image = UIImage(@"nav_search_s_ico");
+            self.searchImageView.image = BCImage(@"nav_search_s_ico");
         }
             break;
         case HomeNavigationBarStyleLightContent:
         {
             self.shadowView.layer.backgroundColor = DefaultContentBackColor.CGColor;
-            self.searchImageView.image = UIImage(@"home_whiteSearch_bar_16x16_");
+            self.searchImageView.image = BCImage(@"home_whiteSearch_bar_16x16_");
         }
             break;
             
@@ -111,7 +111,7 @@
 -(UIImageView *)searchImageView
 {
     if (!_searchImageView) {
-        _searchImageView = [[UIImageView alloc] initWithImage:UIImage(@"common_search_ico_24x24_")];
+        _searchImageView = [[UIImageView alloc] initWithImage:BCImage(@"common_search_ico_24x24_")];
         [self addSubview:_searchImageView];
     }
     return _searchImageView;

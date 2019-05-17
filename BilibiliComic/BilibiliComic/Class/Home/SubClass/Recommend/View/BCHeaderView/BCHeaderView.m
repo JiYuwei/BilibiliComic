@@ -65,7 +65,7 @@
 -(void)setupGradientView
 {
     UIImageView *gradientView = [[UIImageView alloc] initWithFrame:self.frame];
-    gradientView.image = UIImage(@"home_bg_header_1200x800_");
+    gradientView.image = BCImage(@"home_bg_header_1200x800_");
     [self addSubview:gradientView];
 }
 
@@ -101,7 +101,7 @@
     }
     //在这里下载网络图片
     NSString *imgURL = self.homeBannerModel.data[index].img2;
-    [bannerView.mainImageView sd_setFadeImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:PlaceHolderIMG];
+    [bannerView.mainImageView sd_setFadeImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:BCImage(@"comic_thumb_placeholder1_ico_343x192_")];
 
     //加载本地图片
 //    bannerView.mainImageView.image = [UIImage imageNamed:self.advArray[index]];
