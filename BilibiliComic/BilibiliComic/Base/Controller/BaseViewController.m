@@ -7,8 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "UIImage+ReSize.h"
 
-@interface BaseViewController ()
+@interface BaseViewController () <SDWebImageManagerDelegate>
 
 @property (nonatomic,strong) UITableView *tableView;
 
@@ -30,6 +31,14 @@
         [self initMJRefresh];
     }
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [SDWebImageManager sharedManager].delegate = self;
+}
+
+#pragma mark - GeneralUI
 
 -(void)initMainTableView
 {
@@ -67,6 +76,24 @@
     cell.textLabel.text = [NSString stringWithFormat:@"MainLine:%lu",indexPath.row+1];
     
     return cell;
+}
+
+#pragma msrk - SDWebImageManagerDelegate
+
+-(UIImage *)imageManager:(SDWebImageManager *)imageManager transformDownloadedImage:(UIImage *)image withURL:(NSURL *)imageURL
+{
+    CGFloat maxWidth = BC_SCREEN_WIDTH * BC_SCALE;
+    CGFloat imageWidth = image.size.width;
+    
+    if (maxWidth < imageWidth) {
+        CGFloat scale = maxWidth / imageWidth;
+        CGFloat maxHeight = image.size.height * scale;
+        CGSize  reSize = CGSizeMake(maxWidth, maxHeight);
+        
+        return [image reSizeImage:reSize];
+    }
+    
+    return image;
 }
 
 #pragma mark UITableViewDelegate

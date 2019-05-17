@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SDWebImageManager.h"
 
-@interface UIImageView (SDFadeTransition) <SDWebImageManagerDelegate>
-
-+ (instancetype)fadeImageView;
-
+@interface UIImageView (SDFadeTransition)
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url;
 

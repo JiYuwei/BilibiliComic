@@ -154,6 +154,8 @@ static BCNetworkRequest *request;
         prepare();
     }
     
+    NSString *requestKey = [self generateRequestKey:url parameters:parameters];
+    
     url        = [self componentFullURL:url];
     parameters = [self componentFullParameters:parameters];
     
@@ -168,7 +170,6 @@ static BCNetworkRequest *request;
                 BOOL valid = (model.code == 0 && [model.msg isEqualToString:@""]);
                 
                 if (valid && needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonDict:json];
                 }
                 
@@ -193,7 +194,6 @@ static BCNetworkRequest *request;
                 
                 NSDictionary *json = nil;
                 if (needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     json = [[BCRequestCache sharedRequestCache] getFromCache:requestKey];
                 }
                 
@@ -216,7 +216,6 @@ static BCNetworkRequest *request;
                 BOOL valid = (model.code == 0 && [model.msg isEqualToString:@""]);
                 
                 if (valid && needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     [[BCRequestCache sharedRequestCache] putToCache:requestKey jsonData:responseObject];
                 }
                 
@@ -241,7 +240,6 @@ static BCNetworkRequest *request;
                 
                 NSDictionary *json = nil;
                 if (needCache) {
-                    NSString *requestKey = [self generateRequestKey:url parameters:nil];
                     json = [[BCRequestCache sharedRequestCache] getFromCache:requestKey];
                 }
                 

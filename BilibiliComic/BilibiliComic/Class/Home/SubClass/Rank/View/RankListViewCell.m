@@ -138,7 +138,7 @@ static const CGFloat SubFont   = 14;
 -(UIImageView *)comicView
 {
     if (!_comicView) {
-        _comicView = [UIImageView fadeImageView];
+        _comicView = [[UIImageView alloc] init];
         _comicView.backgroundColor = DefaultBorderColor;
         [self.contentView addSubview:_comicView];
     }

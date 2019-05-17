@@ -11,14 +11,6 @@
 
 @implementation UIImageView (SDFadeTransition)
 
-+ (instancetype)fadeImageView
-{
-    UIImageView *imageView = [[UIImageView alloc] init];
-    SDWebImageManager *manager = [SDWebImageManager sharedManager];
-    manager.delegate = imageView;
-    return imageView;
-}
-
 -(void)sd_setFadeImageWithURL:(NSURL *)url
 {
     [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:nil completed:nil];
@@ -70,25 +62,5 @@
     }];
 }
 
--(CGSize)realImageSize
-{
-    CGFloat width = self.vWidth;
-    CGFloat height = self.vHeight;
-    CGFloat scale = BC_SCALE;
-    
-    CGSize reSize = CGSizeMake(width * scale, height * scale);
-    
-    return reSize;
-}
-
-#pragma msrk - SDWebImageManagerDelegate
-
--(UIImage *)imageManager:(SDWebImageManager *)imageManager transformDownloadedImage:(UIImage *)image withURL:(NSURL *)imageURL
-{
-    CGSize  reSize = [self realImageSize];
-    CGFloat scale   = reSize.width / image.size.width;
-    
-    return [image reSizeImage:reSize scale:scale];
-}
 
 @end

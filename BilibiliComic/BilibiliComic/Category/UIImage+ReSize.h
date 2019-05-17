@@ -10,7 +10,7 @@
 
 @interface UIImage (ReSize)
 
-- (UIImage *)reSizeImage:(CGSize)reSize scale:(CGFloat)scale;
+- (UIImage *)reSizeImage:(CGSize)reSize;
 
 @end
 

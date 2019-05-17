@@ -108,7 +108,7 @@ static const CGFloat TAGHeight = 18;
 -(UIImageView *)comicView
 {
     if (!_comicView) {
-        _comicView = [UIImageView fadeImageView];
+        _comicView = [[UIImageView alloc] init];
         _comicView.layer.borderColor = DefaultBorderColor.CGColor;
         _comicView.layer.borderWidth = 0.5f;
         _comicView.layer.cornerRadius = 3.5f;
