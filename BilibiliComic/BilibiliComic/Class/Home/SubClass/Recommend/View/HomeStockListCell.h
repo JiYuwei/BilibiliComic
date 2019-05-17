@@ -10,6 +10,8 @@
 
 @class List;
 
+static const CGFloat Padding = 18;
+
 @interface HomeStockListCell : UITableViewCell
 
 @property (nonatomic,strong) List *homeStockList;

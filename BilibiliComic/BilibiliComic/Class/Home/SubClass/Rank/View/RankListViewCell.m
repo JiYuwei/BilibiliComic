@@ -10,7 +10,7 @@
 #import "RankListModel.h"
 
 static const CGFloat TitleFont = 17;
-static const CGFloat SubFont   = 14;
+static const CGFloat SubFont   = 13;
 
 @interface RankListViewCell ()
 
@@ -42,41 +42,41 @@ static const CGFloat SubFont   = 14;
     }];
     
     [self.rankLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.equalTo(self.contentView).offset(10);
+        make.top.left.equalTo(self.contentView).offset(Padding);
     }];
     
     [self.comicView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(10);
+        make.top.equalTo(self.contentView).offset(Padding);
         make.left.equalTo(self.contentView).offset(50);
-        make.bottom.equalTo(self.contentView).offset(-10);
-        make.width.equalTo(self.comicView.mas_height).multipliedBy(0.75);
+        make.bottom.equalTo(self.contentView).offset(-Padding);
+        make.width.equalTo(self.comicView.mas_height).multipliedBy(Aspect);
     }];
     
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView).offset(10);
-        make.left.equalTo(self.comicView.mas_right).offset(10);
-        make.right.equalTo(self.contentView).offset(-10);
+        make.top.equalTo(self.contentView).offset(Padding);
+        make.left.equalTo(self.comicView.mas_right).offset(Padding);
+        make.right.equalTo(self.contentView).offset(-Padding);
     }];
     
     [self.srcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.comicView.mas_right).offset(10);
-        make.right.lessThanOrEqualTo(self.contentView).offset(-10);
+        make.left.equalTo(self.comicView.mas_right).offset(Padding);
+        make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
         make.height.mas_equalTo(SubFont + 3);
         make.bottom.equalTo(self.typeLabel.mas_top).offset(-8);
     }];
     
     [self.typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.comicView.mas_right).offset(10);
-        make.right.lessThanOrEqualTo(self.contentView).offset(-10);
+        make.left.equalTo(self.comicView.mas_right).offset(Padding);
+        make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
         make.height.mas_equalTo(SubFont + 3);
         make.bottom.equalTo(self.updateLabel.mas_top).offset(-8);
     }];
     
     [self.updateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.comicView.mas_right).offset(10);
-        make.right.lessThanOrEqualTo(self.contentView).offset(-10);
+        make.left.equalTo(self.comicView.mas_right).offset(Padding);
+        make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
         make.height.mas_equalTo(SubFont + 3);
-        make.bottom.equalTo(self.contentView).offset(-10);
+        make.bottom.equalTo(self.contentView).offset(-Padding);
     }];
 }
 

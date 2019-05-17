@@ -12,8 +12,6 @@
 #define DefTitleFont  @"RecomListDefTitleFont"
 #define SubTitleFont  @"RecomListSubTitleFont"
 
-static const CGFloat Padding   = 18;
-
 static const CGFloat TAGWidth  = 32;
 static const CGFloat TAGHeight = 18;
 

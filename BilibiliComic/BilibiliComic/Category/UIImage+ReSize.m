@@ -12,7 +12,7 @@
 
 - (UIImage *)reSizeImage:(CGSize)reSize
 {
-    UIGraphicsBeginImageContext(reSize);
+    UIGraphicsBeginImageContextWithOptions(reSize, NO, BC_SCALE);
     [self drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
     UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

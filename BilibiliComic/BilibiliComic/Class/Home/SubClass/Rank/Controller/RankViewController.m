@@ -11,7 +11,7 @@
 #import "RankListViewCell.h"
 #import "RankListModel.h"
 
-static const CGFloat    RankTopBarHeight = 40;
+static const CGFloat RankTopBarHeight = 40;
 
 @interface RankViewController ()
 
@@ -36,7 +36,11 @@ static const CGFloat    RankTopBarHeight = 40;
     
     [self initRankPagesTopBar];
     [self initRankTableViews];
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     [self retrieveRankData];
 }
 
@@ -151,7 +155,7 @@ static const CGFloat    RankTopBarHeight = 40;
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 155;
+    return CellHeight;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

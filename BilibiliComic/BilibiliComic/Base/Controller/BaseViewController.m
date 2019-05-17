@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "UIImage+ReSize.h"
 
-@interface BaseViewController () <SDWebImageManagerDelegate>
+@interface BaseViewController ()
 
 @property (nonatomic,strong) UITableView *tableView;
 
@@ -82,13 +82,13 @@
 
 -(UIImage *)imageManager:(SDWebImageManager *)imageManager transformDownloadedImage:(UIImage *)image withURL:(NSURL *)imageURL
 {
-    CGFloat maxWidth = BC_SCREEN_WIDTH * BC_SCALE;
+    CGFloat realWidth = BC_SCREEN_WIDTH;
     CGFloat imageWidth = image.size.width;
     
-    if (maxWidth < imageWidth) {
-        CGFloat scale = maxWidth / imageWidth;
+    if (realWidth < imageWidth) {
+        CGFloat scale = realWidth / imageWidth;
         CGFloat maxHeight = image.size.height * scale;
-        CGSize  reSize = CGSizeMake(maxWidth, maxHeight);
+        CGSize  reSize = CGSizeMake(realWidth, maxHeight);
         
         return [image reSizeImage:reSize];
     }

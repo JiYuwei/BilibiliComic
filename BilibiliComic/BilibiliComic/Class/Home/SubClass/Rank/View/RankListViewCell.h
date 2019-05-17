@@ -10,6 +10,10 @@
 
 @class RankData,RankComics;
 
+static const CGFloat CellHeight = 155;
+static const CGFloat Padding    = 10;
+static const CGFloat Aspect     = 0.75;
+
 @interface RankListViewCell : UITableViewCell
 
 @property (nonatomic,assign) NSInteger  rank;
