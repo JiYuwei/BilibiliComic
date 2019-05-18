@@ -111,7 +111,7 @@ static const CGFloat RankTopBarHeight = 40;
             rankTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
         
-        [rankTableView registerClass:[RankListViewCell class] forCellReuseIdentifier:NSStringFromClass([RankListViewCell class])];
+        [rankTableView registerClass:[RankListViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%@%lu",NSStringFromClass([RankListViewCell class]),i]];
         
         [self.rankScrollView addSubview:rankTableView];
         [self.rankTableViews addObject:rankTableView];
@@ -136,7 +136,8 @@ static const CGFloat RankTopBarHeight = 40;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RankListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([RankListViewCell class]) forIndexPath:indexPath];
+    NSUInteger i = [self.rankTableViews indexOfObject:tableView];
+    RankListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"%@%lu",NSStringFromClass([RankListViewCell class]),i] forIndexPath:indexPath];
     cell.rank = indexPath.row + 1;
     
     NSUInteger index = [self.rankTableViews indexOfObject:tableView];

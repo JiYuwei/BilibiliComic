@@ -8,20 +8,25 @@
 
 #import "RankListViewCell.h"
 #import "RankListModel.h"
+#import "RankFansView.h"
 
 static const CGFloat TitleFont = 17;
 static const CGFloat SubFont   = 13;
 
 @interface RankListViewCell ()
 
-@property (nonatomic,strong) UILabel     *rankLabel;
+@property (nonatomic,strong) UILabel      *rankLabel;
 
-@property (nonatomic,strong) UIImageView *comicView;
-@property (nonatomic,strong) UILabel     *titleLabel;
+@property (nonatomic,strong) UIImageView  *comicView;
+@property (nonatomic,strong) UILabel      *titleLabel;
 
-@property (nonatomic,strong) UILabel     *srcLabel;
-@property (nonatomic,strong) UILabel     *typeLabel;
-@property (nonatomic,strong) UILabel     *updateLabel;
+@property (nonatomic,strong) UILabel      *fansSrcLabel;
+@property (nonatomic,strong) UILabel      *fansCountLabel;
+@property (nonatomic,strong) RankFansView *fansView;
+
+@property (nonatomic,strong) UILabel      *srcLabel;
+@property (nonatomic,strong) UILabel      *typeLabel;
+@property (nonatomic,strong) UILabel      *updateLabel;
 
 @end
 
@@ -58,26 +63,52 @@ static const CGFloat SubFont   = 13;
         make.right.equalTo(self.contentView).offset(-Padding);
     }];
     
-    [self.srcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.comicView.mas_right).offset(Padding);
-        make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
-        make.height.mas_equalTo(SubFont + 3);
-        make.bottom.equalTo(self.typeLabel.mas_top).offset(-8);
-    }];
+    NSString *fansCellID = [NSString stringWithFormat:@"%@2",NSStringFromClass([RankListViewCell class])];
     
-    [self.typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.comicView.mas_right).offset(Padding);
-        make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
-        make.height.mas_equalTo(SubFont + 3);
-        make.bottom.equalTo(self.updateLabel.mas_top).offset(-8);
-    }];
-    
-    [self.updateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.comicView.mas_right).offset(Padding);
-        make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
-        make.height.mas_equalTo(SubFont + 3);
-        make.bottom.equalTo(self.contentView).offset(-Padding);
-    }];
+    if ([self.reuseIdentifier isEqualToString:fansCellID]) {
+        [self.fansSrcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.titleLabel.mas_bottom).offset(Padding);
+            make.left.equalTo(self.comicView.mas_right).offset(Padding);
+            make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
+            make.height.mas_equalTo(SubFont + 3);
+        }];
+        
+        [self.fansCountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.fansSrcLabel.mas_bottom).offset(8);
+            make.left.equalTo(self.comicView.mas_right).offset(Padding);
+            make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
+            make.height.mas_equalTo(SubFont + 3);
+        }];
+        
+        [self.fansView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.comicView.mas_right).offset(Padding);
+            make.right.equalTo(self.contentView).offset(-Padding);
+            make.bottom.equalTo(self.contentView).offset(-Padding);
+            make.height.mas_equalTo(FansViewHeight);
+        }];
+    }
+    else {
+        [self.srcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.comicView.mas_right).offset(Padding);
+            make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
+            make.height.mas_equalTo(SubFont + 3);
+            make.bottom.equalTo(self.typeLabel.mas_top).offset(-8);
+        }];
+        
+        [self.typeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.comicView.mas_right).offset(Padding);
+            make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
+            make.height.mas_equalTo(SubFont + 3);
+            make.bottom.equalTo(self.updateLabel.mas_top).offset(-8);
+        }];
+        
+        [self.updateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.comicView.mas_right).offset(Padding);
+            make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
+            make.height.mas_equalTo(SubFont + 3);
+            make.bottom.equalTo(self.contentView).offset(-Padding);
+        }];
+    }
 }
 
 #pragma mark - Setter
@@ -119,6 +150,12 @@ static const CGFloat SubFont   = 13;
         [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_fansComics.vertical_cover] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
         
         self.titleLabel.text = _fansComics.title;
+        self.fansSrcLabel.text = [_fansComics.author componentsJoinedByString:@" "];
+        CGFloat fans = _fansComics.fans.floatValue / 10000;
+        self.fansCountLabel.text = [NSString stringWithFormat:@"%.2fw 粉丝值",fans];
+        
+        self.fansView.users = _fansComics.reward_users;
+        self.fansView.arrowDirection = (self.rank - _fansComics.last_rank);
     }
 }
 
@@ -140,6 +177,8 @@ static const CGFloat SubFont   = 13;
     if (!_comicView) {
         _comicView = [[UIImageView alloc] init];
         _comicView.backgroundColor = DefaultBorderColor;
+        _comicView.layer.borderColor = DefaultBorderColor.CGColor;
+        _comicView.layer.borderWidth = 0.5;
         [self.contentView addSubview:_comicView];
     }
     return _comicView;
@@ -154,6 +193,37 @@ static const CGFloat SubFont   = 13;
         [self.contentView addSubview:_titleLabel];
     }
     return _titleLabel;
+}
+
+-(UILabel *)fansSrcLabel
+{
+    if (!_fansSrcLabel) {
+        _fansSrcLabel = [[UILabel alloc] init];
+        _fansSrcLabel.font = [UIFont systemFontOfSize:SubFont];
+        _fansSrcLabel.textColor = DefaultContentLightColor;
+        [self.contentView addSubview:_fansSrcLabel];
+    }
+    return _fansSrcLabel;
+}
+
+-(UILabel *)fansCountLabel
+{
+    if (!_fansCountLabel) {
+        _fansCountLabel = [[UILabel alloc] init];
+        _fansCountLabel.font = [UIFont systemFontOfSize:SubFont];
+        _fansCountLabel.textColor = DefaultContentLightColor;
+        [self.contentView addSubview:_fansCountLabel];
+    }
+    return _fansCountLabel;
+}
+
+-(RankFansView *)fansView
+{
+    if (!_fansView) {
+        _fansView = [[RankFansView alloc] init];
+        [self.contentView addSubview:_fansView];
+    }
+    return _fansView;
 }
 
 -(UILabel *)srcLabel
