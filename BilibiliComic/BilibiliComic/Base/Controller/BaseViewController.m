@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "UIImage+ReSize.h"
 
 @interface BaseViewController ()
 
@@ -30,12 +29,6 @@
         [self initMainTableView];
         [self initMJRefresh];
     }
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [SDWebImageManager sharedManager].delegate = self;
 }
 
 #pragma mark - GeneralUI
@@ -76,24 +69,6 @@
     cell.textLabel.text = [NSString stringWithFormat:@"MainLine:%lu",indexPath.row+1];
     
     return cell;
-}
-
-#pragma msrk - SDWebImageManagerDelegate
-
--(UIImage *)imageManager:(SDWebImageManager *)imageManager transformDownloadedImage:(UIImage *)image withURL:(NSURL *)imageURL
-{
-    CGFloat realWidth = BC_SCREEN_WIDTH;
-    CGFloat imageWidth = image.size.width;
-    
-    if (realWidth < imageWidth) {
-        CGFloat scale = realWidth / imageWidth;
-        CGFloat maxHeight = image.size.height * scale;
-        CGSize  reSize = CGSizeMake(realWidth, maxHeight);
-        
-        return [image reSizeImage:reSize];
-    }
-    
-    return image;
 }
 
 #pragma mark UITableViewDelegate
@@ -138,6 +113,14 @@
         [self.view addSubview:_mainTableView];
     }
     return _mainTableView;
+}
+
+#pragma mark - MemoryWarning
+
+-(void)didReceiveMemoryWarning
+{
+    [[SDWebImageManager sharedManager] cancelAll];
+    [[SDImageCache sharedImageCache] clearMemory];
 }
 
 @end

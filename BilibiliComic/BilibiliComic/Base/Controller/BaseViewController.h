@@ -10,7 +10,7 @@
 #import "BCRefreshHeader.h"
 #import "BCRefreshFooter.h"
 
-@interface BaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,SDWebImageManagerDelegate>
+@interface BaseViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong) UITableView *mainTableView;
 @property (nonatomic,assign) BOOL mainTableViewEnabled;

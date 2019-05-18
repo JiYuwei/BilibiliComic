@@ -47,13 +47,24 @@
     [self sd_setImageWithURL:url placeholderImage:placeholder options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         @strongify(self)
         if (image) {
-            if (cacheType == SDImageCacheTypeMemory) {
+            if (cacheType == SDImageCacheTypeNone) {
+                CGSize reSize = self.vSize;
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    UIImage *reSizedImage = [image reSizeImage:reSize];
+                    NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
+                    [[SDImageCache sharedImageCache] removeImageForKey:key withCompletion:^{
+                        [[SDWebImageManager sharedManager] saveImageToCache:reSizedImage forURL:url];
+                    }];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self fadeTransWithImage:reSizedImage];
+                    });
+                });
+            }
+            else if (cacheType == SDImageCacheTypeMemory) {
                 self.image = image;
             }
             else {
-                [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-                    self.image = image;
-                } completion:nil];
+                [self fadeTransWithImage:image];
             }
         }
         if (completedBlock) {
@@ -62,5 +73,11 @@
     }];
 }
 
+-(void)fadeTransWithImage:(UIImage *)image
+{
+    [UIView transitionWithView:self duration:0.25f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.image = image;
+    } completion:nil];
+}
 
 @end

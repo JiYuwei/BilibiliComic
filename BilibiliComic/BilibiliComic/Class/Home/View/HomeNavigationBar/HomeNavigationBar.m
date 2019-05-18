@@ -43,8 +43,8 @@
         make.right.equalTo(self.timeLineBtn.mas_left).offset(-10);
         make.top.equalTo(self.contentView).offset(TBMargin);
         make.bottom.equalTo(self.contentView).offset(-TBMargin);
-        make.left.greaterThanOrEqualTo(self.pagesTopBar.mas_right).offset(10);
-        make.width.mas_equalTo(120);
+        make.left.equalTo(self.pagesTopBar.mas_right).offset(15).priorityLow();
+        make.width.mas_lessThanOrEqualTo(150);
     }];
     
     [self.timeLineBtn mas_makeConstraints:^(MASConstraintMaker *make) {
