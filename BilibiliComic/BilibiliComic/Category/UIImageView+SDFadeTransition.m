@@ -13,12 +13,12 @@
 
 -(void)sd_setFadeImageWithURL:(NSURL *)url
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:nil completed:nil];
+    [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage | SDWebImageScaleDownLargeImages progress:nil completed:nil];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:SDWebImageAvoidAutoSetImage progress:nil completed:nil];
+    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:SDWebImageAvoidAutoSetImage | SDWebImageScaleDownLargeImages progress:nil completed:nil];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options
@@ -28,12 +28,12 @@
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url completed:(SDExternalCompletionBlock)completedBlock
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage progress:nil completed:completedBlock];
+    [self sd_setFadeImageWithURL:url placeholderImage:nil options:SDWebImageAvoidAutoSetImage | SDWebImageScaleDownLargeImages progress:nil completed:completedBlock];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder completed:(SDExternalCompletionBlock)completedBlock
 {
-    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:SDWebImageAvoidAutoSetImage progress:nil completed:completedBlock];
+    [self sd_setFadeImageWithURL:url placeholderImage:placeholder options:SDWebImageAvoidAutoSetImage | SDWebImageScaleDownLargeImages progress:nil completed:completedBlock];
 }
 
 - (void)sd_setFadeImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options completed:(SDExternalCompletionBlock)completedBlock
@@ -60,7 +60,8 @@
                     });
                 });
             }
-            else if (cacheType == SDImageCacheTypeMemory) {
+            else
+            if (cacheType == SDImageCacheTypeMemory) {
                 self.image = image;
             }
             else {
