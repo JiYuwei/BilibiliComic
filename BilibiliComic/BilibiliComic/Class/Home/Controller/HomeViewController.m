@@ -97,7 +97,7 @@
     
     [self.childVCArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         BaseViewController *childVC = [[[obj class] alloc] init];
-        childVC.mainTableViewEnabled = ![childVC isKindOfClass:[RankViewController class]];
+        childVC.mainTableViewEnabled = [childVC isKindOfClass:[RecomViewController class]];
         [self addChildViewController:childVC];
         childVC.view.frame = CGRectMake(viewWidth * idx, 0, viewWidth, viewHeight);
         [self.mainScrollView addSubview:childVC.view];

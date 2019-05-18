@@ -7,6 +7,7 @@
 //
 
 #import "NewViewController.h"
+#import "PSCollectionView.h"
 
 @interface NewViewController ()
 
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.mainTableView.frame = CGRectMake(0, BC_NAV_HEIGHT, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_NAV_HEIGHT - BC_TABBAR_HEIGHT);
+    
 }
 
 
