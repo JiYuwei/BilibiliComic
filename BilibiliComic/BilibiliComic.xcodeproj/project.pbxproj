@@ -4455,11 +4455,35 @@
 			path = car_images;
 			sourceTree = "<group>";
 		};
-		09D5422222672E14007681E4 /* New */ = {
+		09CC51DD2292BD8C0009C19E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				09EB8B292265F24F00FCAAE4 /* NewViewController.h */,
 				09EB8B2A2265F24F00FCAAE4 /* NewViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		09CC51DE2292BD8F0009C19E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		09CC51DF2292BD910009C19E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		09D5422222672E14007681E4 /* New */ = {
+			isa = PBXGroup;
+			children = (
+				09CC51DF2292BD910009C19E /* Model */,
+				09CC51DE2292BD8F0009C19E /* View */,
+				09CC51DD2292BD8C0009C19E /* Controller */,
 			);
 			path = New;
 			sourceTree = "<group>";
