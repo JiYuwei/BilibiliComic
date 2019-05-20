@@ -19,6 +19,7 @@
 - (void)placeSubviews
 {
     [super placeSubviews];
+    self.stateLabel.textColor = RGBColor(200, 200, 200);
     [self setTitle:@"" forState:MJRefreshStateIdle];
     [self setTitle:@"" forState:MJRefreshStatePulling];
     [self setTitle:@"" forState:MJRefreshStateWillRefresh];

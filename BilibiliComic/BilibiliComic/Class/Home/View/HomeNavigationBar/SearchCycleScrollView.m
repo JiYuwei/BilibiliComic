@@ -8,6 +8,8 @@
 
 #import "SearchCycleScrollView.h"
 
+#define DefaultLabelColor RGBColor(170, 170, 170)
+
 @interface SearchCycleScrollView () <HomeNavigationBarProtocol>
 
 //定时器，让label动起来
@@ -83,8 +85,8 @@ static NSInteger i = 1;
     switch (style) {
         case HomeNavigationBarStyleDefault:
         {
-            self.firstLabel.textColor = DefaultContentLightColor;
-            self.secondLabel.textColor = DefaultContentLightColor;
+            self.firstLabel.textColor  = DefaultLabelColor;
+            self.secondLabel.textColor = DefaultLabelColor;
         }
             break;
         case HomeNavigationBarStyleLightContent:
