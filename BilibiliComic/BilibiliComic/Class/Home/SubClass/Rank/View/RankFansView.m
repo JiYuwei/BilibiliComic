@@ -131,6 +131,8 @@
             UIImageView *fansAvatar = [[UIImageView alloc] init];
             fansAvatar.layer.cornerRadius = self.realWidth / 2;
             fansAvatar.layer.masksToBounds = YES;
+            fansAvatar.layer.borderColor = DefaultBorderColor.CGColor;
+            fansAvatar.layer.borderWidth = 0.5;
             [self addSubview:fansAvatar];
             [_fansAvatars addObject:fansAvatar];
         }
