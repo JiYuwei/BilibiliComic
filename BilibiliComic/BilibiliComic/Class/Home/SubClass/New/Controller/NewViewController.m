@@ -8,6 +8,7 @@
 
 #import "NewViewController.h"
 #import "PSCollectionView.h"
+#import "NewViewCell.h"
 
 @interface NewViewController () <PSCollectionViewDataSource,PSCollectionViewDelegate>
 
@@ -53,9 +54,9 @@
 
 -(PSCollectionViewCell *)collectionView:(PSCollectionView *)collectionView cellForRowAtIndex:(NSInteger)index
 {
-    PSCollectionViewCell *cell = [collectionView dequeueReusableViewForClass:[PSCollectionViewCell class]];
+    NewViewCell *cell = (NewViewCell *)[collectionView dequeueReusableViewForClass:[NewViewCell class]];
     if (!cell) {
-        cell = [[PSCollectionViewCell alloc] init];
+        cell = [[NewViewCell alloc] init];
     }
     cell.backgroundColor = GRandomColor;
     
@@ -69,6 +70,11 @@
 
 #pragma mark PSCollectionViewDelegate
 
+-(Class)collectionView:(PSCollectionView *)collectionView cellClassForRowAtIndex:(NSInteger)index
+{
+    return [NewViewCell class];
+}
+
 -(void)collectionView:(PSCollectionView *)collectionView didSelectCell:(PSCollectionViewCell *)cell atIndex:(NSInteger)index
 {
     NSLog(@"Select: %ld",index);
@@ -81,7 +87,7 @@
     if (!_newsCollectionView) {
         _newsCollectionView = [[PSCollectionView alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_TABBAR_HEIGHT - BC_NAV_HEIGHT)];
         _newsCollectionView.collectionViewDataSource = self;
-        _newsCollectionView.delegate = self;
+        _newsCollectionView.collectionViewDelegate = self;
         _newsCollectionView.showsVerticalScrollIndicator = NO;
         _newsCollectionView.showsHorizontalScrollIndicator = NO;
         _newsCollectionView.numColsPortrait = 2;
