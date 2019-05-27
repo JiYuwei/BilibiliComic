@@ -37,6 +37,7 @@
 		096D0291221836350067651A /* ClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0290221836350067651A /* ClassifyViewController.m */; };
 		096D02942218364B0067651A /* BookListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D02932218364B0067651A /* BookListViewController.m */; };
 		096D0297221836580067651A /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0296221836580067651A /* MeViewController.m */; };
+		096E5569229BF10900ADB978 /* NewFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 096E5568229BF10900ADB978 /* NewFootView.m */; };
 		097918F6227066B800C243B7 /* BCFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F5227066B800C243B7 /* BCFlowView.m */; };
 		097918F92270687700C243B7 /* BCIndexBannerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F82270687700C243B7 /* BCIndexBannerSubview.m */; };
 		097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918FB22706B1500C243B7 /* BCHeaderView.m */; };
@@ -1456,6 +1457,8 @@
 		096D02932218364B0067651A /* BookListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookListViewController.m; sourceTree = "<group>"; };
 		096D0295221836580067651A /* MeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		096D0296221836580067651A /* MeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		096E5567229BF10900ADB978 /* NewFootView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFootView.h; sourceTree = "<group>"; };
+		096E5568229BF10900ADB978 /* NewFootView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFootView.m; sourceTree = "<group>"; };
 		097918F4227066B800C243B7 /* BCFlowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCFlowView.h; sourceTree = "<group>"; };
 		097918F5227066B800C243B7 /* BCFlowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCFlowView.m; sourceTree = "<group>"; };
 		097918F72270687700C243B7 /* BCIndexBannerSubview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCIndexBannerSubview.h; sourceTree = "<group>"; };
@@ -4472,6 +4475,8 @@
 			children = (
 				091EC7D62293DF2600A214F8 /* NewViewCell.h */,
 				091EC7D72293DF2600A214F8 /* NewViewCell.m */,
+				096E5567229BF10900ADB978 /* NewFootView.h */,
+				096E5568229BF10900ADB978 /* NewFootView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -6132,6 +6137,7 @@
 				096D0283221818970067651A /* BaseViewController.m in Sources */,
 				09982B852217EBE5006CB358 /* main.m in Sources */,
 				09EB8B282265F22900FCAAE4 /* RankViewController.m in Sources */,
+				096E5569229BF10900ADB978 /* NewFootView.m in Sources */,
 				0941DAC72285D18D00A4F6E6 /* UIImageView+SDFadeTransition.m in Sources */,
 				09EB8B1722648CA200FCAAE4 /* HomeSearchBar.m in Sources */,
 				09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */,

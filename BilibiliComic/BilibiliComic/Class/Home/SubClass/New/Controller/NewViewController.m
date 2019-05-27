@@ -9,10 +9,12 @@
 #import "NewViewController.h"
 #import "PSCollectionView.h"
 #import "NewViewCell.h"
+#import "NewFootView.h"
 
 @interface NewViewController () <PSCollectionViewDataSource,PSCollectionViewDelegate>
 
 @property (nonatomic,strong) PSCollectionView *newsCollectionView;
+@property (nonatomic,strong) NewFootView      *footView;
 
 @end
 
@@ -30,7 +32,7 @@
 {
     self.newsCollectionView.mj_header = [BCRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(retrieveNewsData)];
     
-    self.newsCollectionView.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, 300)];
+    self.newsCollectionView.footerView = self.footView;
 }
 
 #pragma mark - Data
@@ -58,14 +60,14 @@
     if (!cell) {
         cell = [[NewViewCell alloc] init];
     }
-    cell.backgroundColor = GRandomColor;
+    [cell collectionView:collectionView fillCellWithObject:nil atIndex:index];
     
     return cell;
 }
 
 -(CGFloat)collectionView:(PSCollectionView *)collectionView heightForRowAtIndex:(NSInteger)index
 {
-    return 300;
+    return [NewViewCell rowHeightForObject:nil inColumnWidth:collectionView.colWidth];
 }
 
 #pragma mark PSCollectionViewDelegate
@@ -94,6 +96,15 @@
         [self.view addSubview:_newsCollectionView];
     }
     return _newsCollectionView;
+}
+
+-(NewFootView *)footView
+{
+    if (!_footView) {
+        _footView = [[NewFootView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, 300)];
+        [self.view addSubview:_footView];
+    }
+    return _footView;
 }
 
 @end
