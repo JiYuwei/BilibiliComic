@@ -101,7 +101,7 @@
 -(NewFootView *)footView
 {
     if (!_footView) {
-        _footView = [[NewFootView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, 300)];
+        _footView = [[NewFootView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, 420)];
         [self.view addSubview:_footView];
     }
     return _footView;
