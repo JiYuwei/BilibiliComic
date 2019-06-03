@@ -11,7 +11,7 @@
 
 #define DefaultOrderBtnColor RGBColor(88, 167, 248)
 
-static const CGFloat BtnHeight = 30;
+static const CGFloat BtnHeight = 25;
 
 @interface NewFootCell ()
 
@@ -51,7 +51,7 @@ static const CGFloat BtnHeight = 30;
     [self.orderBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.dateLabel.mas_bottom).offset(10);
         make.centerX.equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(BtnHeight * 3, BtnHeight));
+        make.size.mas_equalTo(CGSizeMake(BtnHeight * 3.5, BtnHeight));
     }];
     
     
@@ -117,7 +117,7 @@ static const CGFloat BtnHeight = 30;
         _dateLabel = [[UILabel alloc] init];
         _dateLabel.textAlignment = NSTextAlignmentCenter;
         _dateLabel.textColor = DefaultContentLightColor;
-        _dateLabel.font = [UIFont systemFontOfSize:13];
+        _dateLabel.font = [UIFont systemFontOfSize:12];
         [self addSubview:_dateLabel];
     }
     return _dateLabel;
@@ -129,7 +129,7 @@ static const CGFloat BtnHeight = 30;
         _orderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _orderBtn.layer.backgroundColor = DefaultOrderBtnColor.CGColor;
         _orderBtn.layer.cornerRadius = BtnHeight / 2;
-        _orderBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        _orderBtn.titleLabel.font = [UIFont systemFontOfSize:13];
         [_orderBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_orderBtn setTitle:@"预约" forState:UIControlStateNormal];
         [_orderBtn setTitle:@"已预约" forState:UIControlStateDisabled];

@@ -9,8 +9,8 @@
 #import "NewViewCell.h"
 #import "NewListModel.h"
 
-static const CGFloat TitleFont = 17;
-static const CGFloat TypeFont  = 13;
+static const CGFloat TitleFont = 16;
+static const CGFloat TypeFont  = 12;
 
 @interface NewViewCell ()
 
