@@ -105,7 +105,7 @@ static const CGFloat BtnHeight = 30;
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.font = [UIFont systemFontOfSize:15];
+        _titleLabel.font = [UIFont systemFontOfSize:14];
         [self addSubview:_titleLabel];
     }
     return _titleLabel;
@@ -117,7 +117,7 @@ static const CGFloat BtnHeight = 30;
         _dateLabel = [[UILabel alloc] init];
         _dateLabel.textAlignment = NSTextAlignmentCenter;
         _dateLabel.textColor = DefaultContentLightColor;
-        _dateLabel.font = [UIFont systemFontOfSize:14];
+        _dateLabel.font = [UIFont systemFontOfSize:13];
         [self addSubview:_dateLabel];
     }
     return _dateLabel;
