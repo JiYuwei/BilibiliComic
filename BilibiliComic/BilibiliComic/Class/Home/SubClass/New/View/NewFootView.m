@@ -66,6 +66,9 @@ static const CGFloat TitleHeight = 25;
     cell.transform = CGAffineTransformMakeRotation(M_PI_2);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.data = self.data[indexPath.section];
+    [[[cell.orderBtn rac_signalForControlEvents:UIControlEventTouchUpInside] takeUntil:cell.rac_prepareForReuseSignal] subscribeNext:^(__kindof UIControl * _Nullable x) {
+        [self orderBtnClickedAtIndex:indexPath.section];
+    }];
     
     return cell;
 }
@@ -87,6 +90,13 @@ static const CGFloat TitleHeight = 25;
 {
     BOOL isLast = (section == 9);
     return isLast ? 15 : 5;
+}
+
+#pragma mark - Action
+
+-(void)orderBtnClickedAtIndex:(NSInteger)index
+{
+    //Empty RACSignalForSelecter -> NewViewController;
 }
 
 #pragma mark - Setter

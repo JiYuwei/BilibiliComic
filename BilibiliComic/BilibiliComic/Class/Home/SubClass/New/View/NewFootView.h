@@ -15,5 +15,7 @@
 @property (nonatomic,strong) NSArray <NewOrderData *> *data;
 @property (nonatomic,strong) UIButton *loadMoreBtn;
 
+-(void)orderBtnClickedAtIndex:(NSInteger)index;
+
 @end
 

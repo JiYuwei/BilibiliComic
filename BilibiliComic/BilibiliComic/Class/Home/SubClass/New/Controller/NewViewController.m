@@ -42,6 +42,9 @@ static const NSUInteger NewPageCount = 16;
 {
     self.newsCollectionView.mj_header = [BCRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(retrieveNewsData)];
     [self.footView.loadMoreBtn addTarget:self action:@selector(loadMoreNewsData) forControlEvents:UIControlEventTouchUpInside];
+    [[self.footView rac_signalForSelector:@selector(orderBtnClickedAtIndex:)] subscribeNext:^(RACTuple * _Nullable x) {
+        NSLog(@"%@",x.first);
+    }];
     self.newsCollectionView.footerView = self.footView;
 }
 
