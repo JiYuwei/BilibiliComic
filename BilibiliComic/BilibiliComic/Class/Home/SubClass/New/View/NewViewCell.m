@@ -7,6 +7,7 @@
 //
 
 #import "NewViewCell.h"
+#import "NewListModel.h"
 
 static const CGFloat TitleFont = 17;
 static const CGFloat TypeFont  = 15;
@@ -54,8 +55,29 @@ static const CGFloat TypeFont  = 15;
         make.height.mas_equalTo(TypeFont + 3);
     }];
     
-    self.titleLabel.text = @"打工吧，魔王大人！";
-    self.typeLabel.text = @"热血 奇幻";
+   
+}
+
+#pragma mark - Setter
+
+-(void)setData:(NewListData *)data
+{
+    if (data && _data != data) {
+        _data = data;
+        [self buildNewListData];
+    }
+}
+
+-(void)buildNewListData
+{
+    [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:self.data.vertical_cover] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
+    
+    self.titleLabel.text = self.data.title;
+    NSMutableArray *types = [NSMutableArray array];
+    for (NewListStyles *type in self.data.styles) {
+        [types addObject:type.name];
+    }
+    self.typeLabel.text = [types componentsJoinedByString:@" "];
 }
 
 #pragma mark - LazyLoad
@@ -64,9 +86,10 @@ static const CGFloat TypeFont  = 15;
 {
     if (!_comicView) {
         _comicView = [[UIImageView alloc] init];
-        _comicView.backgroundColor = GRandomColor;
         _comicView.layer.cornerRadius = 5;
         _comicView.layer.masksToBounds = YES;
+        _comicView.layer.borderColor = DefaultBorderColor.CGColor;
+        _comicView.layer.borderWidth = 0.5;
         [self addSubview:_comicView];
     }
     return _comicView;

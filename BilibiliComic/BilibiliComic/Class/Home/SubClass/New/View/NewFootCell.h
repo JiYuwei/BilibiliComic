@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class NewOrderData;
+
 @interface NewFootCell : UITableViewCell
 
+@property (nonatomic,strong) NewOrderData *data;
 @property (nonatomic,strong) UIButton *orderBtn;
 
 @end

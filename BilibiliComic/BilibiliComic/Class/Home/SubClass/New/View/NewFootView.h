@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class NewOrderData;
+
 @interface NewFootView : UIView
 
+@property (nonatomic,strong) NSArray <NewOrderData *> *data;
 @property (nonatomic,strong) UIButton *loadMoreBtn;
 
 @end

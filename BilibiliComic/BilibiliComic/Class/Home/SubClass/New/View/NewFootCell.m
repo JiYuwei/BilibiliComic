@@ -7,6 +7,7 @@
 //
 
 #import "NewFootCell.h"
+#import "NewOrderModel.h"
 
 #define DefaultOrderBtnColor RGBColor(88, 167, 248)
 
@@ -53,8 +54,35 @@ static const CGFloat BtnHeight = 30;
         make.size.mas_equalTo(CGSizeMake(BtnHeight * 3, BtnHeight));
     }];
     
-    self.titleLabel.text = @"某科学的一方通行";
-    self.dateLabel.text = @"06月09日";
+    
+}
+
+#pragma mark - Setter
+
+-(void)setData:(NewOrderData *)data
+{
+    if (data && _data != data) {
+        _data = data;
+        [self buildNewOrderData];
+    }
+}
+
+-(void)buildNewOrderData
+{
+    [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:self.data.vertical_cover] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
+    
+    self.titleLabel.text = self.data.title;
+    
+    NSString *dateStr = [self.data.online_time componentsSeparatedByString:@"T"].firstObject;
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [format dateFromString:dateStr];
+    NSDateFormatter *newFormat = [[NSDateFormatter alloc] init];
+    [newFormat setDateFormat:@"MM月dd日"];
+    NSString *formatDate = [newFormat stringFromDate:date];
+    self.dateLabel.text = formatDate;
+    
+    self.orderBtn.enabled = !self.data.is_order;
 }
 
 #pragma mark - LazyLoad
@@ -65,7 +93,8 @@ static const CGFloat BtnHeight = 30;
         _comicView = [[UIImageView alloc] init];
         _comicView.layer.cornerRadius = 5;
         _comicView.layer.masksToBounds = YES;
-        _comicView.backgroundColor = GRandomColor;
+        _comicView.layer.borderColor = DefaultBorderColor.CGColor;
+        _comicView.layer.borderWidth = 0.5;
         [self addSubview:_comicView];
     }
     return _comicView;

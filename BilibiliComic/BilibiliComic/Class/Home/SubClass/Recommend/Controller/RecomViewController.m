@@ -170,7 +170,7 @@ static const NSUInteger PageCount = 10;
 {
     if (!_bannerView) {
         _bannerView = [[BCHeaderView alloc] initWithFrame:CGRectMake(0, 0, BC_SCREEN_WIDTH, HeaderViewHeight)];
-        _bannerView.backgroundColor = GRandomColor;
+        _bannerView.backgroundColor = DefaultBorderColor;
     }
     return _bannerView;
 }

@@ -30,6 +30,7 @@
 #define HOME_STOCK_URL  @"HomeStock"
 #define HOME_HOT        @"HomeHot"
 #define HOME_FANS       @"HomeFans"
+#define HOME_NEW        @"HomeNew"
 #define HOME_NEWORDER   @"NewOrder"
 
 #endif /* RequestAPI_h */

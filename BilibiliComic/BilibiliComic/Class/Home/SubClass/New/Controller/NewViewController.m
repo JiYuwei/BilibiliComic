@@ -10,8 +10,13 @@
 #import "PSCollectionView.h"
 #import "NewViewCell.h"
 #import "NewFootView.h"
+#import "NewListModel.h"
+#import "NewOrderModel.h"
 
 @interface NewViewController () <PSCollectionViewDataSource,PSCollectionViewDelegate>
+
+@property (nonatomic,strong) NewListModel     *newsListModel;
+@property (nonatomic,strong) NewOrderModel    *newsOrderModel;
 
 @property (nonatomic,strong) PSCollectionView *newsCollectionView;
 @property (nonatomic,strong) NewFootView      *footView;
@@ -20,10 +25,13 @@
 
 @implementation NewViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     [self initNewsCollectionView];
+    [self retrieveNewsOrderData];
+    [self retrieveNewsDataAllowCache:YES];
 }
 
 #pragma mark - UI
@@ -36,10 +44,42 @@
 }
 
 #pragma mark - Data
-                                         
+
+-(void)retrieveNewsOrderData
+{
+    NSString *url = HOME_NEWORDER;
+    NSDictionary *parameters = @{};
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
+        self.footView.data = self.newsOrderModel.data;
+    } needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        self.newsOrderModel = [NewOrderModel mj_objectWithKeyValues:json];
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        if (needCache) {
+            self.newsOrderModel = [NewOrderModel mj_objectWithKeyValues:cachedJson];
+        }
+    }];
+}
+
+-(void)retrieveNewsDataAllowCache:(BOOL)cache
+{
+    NSString *url = HOME_NEW;
+    NSDictionary *parameters = @{@"page_num":@1};
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
+        [self.newsCollectionView.mj_header endRefreshing];
+        [self.newsCollectionView reloadData];
+        self.footView.loadMoreBtn.enabled = YES;
+    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        self.newsListModel = [NewListModel mj_objectWithKeyValues:json];
+    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
+        if (needCache) {
+            self.newsListModel = [NewListModel mj_objectWithKeyValues:cachedJson];
+        }
+    }];
+}
+
 -(void)retrieveNewsData
 {
-     
+    [self retrieveNewsDataAllowCache:NO];
 }
 
 -(void)loadMoreNewsData
@@ -51,7 +91,7 @@
 
 -(NSInteger)numberOfRowsInCollectionView:(PSCollectionView *)collectionView
 {
-    return 8;
+    return self.newsListModel.data.count;
 }
 
 -(PSCollectionViewCell *)collectionView:(PSCollectionView *)collectionView cellForRowAtIndex:(NSInteger)index
@@ -61,7 +101,7 @@
         cell = [[NewViewCell alloc] init];
     }
     [cell collectionView:collectionView fillCellWithObject:nil atIndex:index];
-    
+    cell.data = self.newsListModel.data[index];
     return cell;
 }
 

@@ -8,6 +8,7 @@
 
 #import "NewFootView.h"
 #import "NewFootCell.h"
+#import "NewOrderModel.h"
 
 static const CGFloat BtnHeight   = 40;
 static const CGFloat TitleHeight = 25;
@@ -64,6 +65,7 @@ static const CGFloat TitleHeight = 25;
     NewFootCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([NewFootCell class]) forIndexPath:indexPath];
     cell.transform = CGAffineTransformMakeRotation(M_PI_2);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.data = self.data[indexPath.section];
     
     return cell;
 }
@@ -85,6 +87,16 @@ static const CGFloat TitleHeight = 25;
 {
     BOOL isLast = (section == 9);
     return isLast ? 15 : 5;
+}
+
+#pragma mark - Setter
+
+-(void)setData:(NSArray<NewOrderData *> *)data
+{
+    if (data && _data != data) {
+        _data = data;
+        [self.orderTableView reloadData];
+    }
 }
 
 #pragma mark - LazyLoad

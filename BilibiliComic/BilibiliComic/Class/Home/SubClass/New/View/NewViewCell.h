@@ -8,7 +8,11 @@
 
 #import "PSCollectionViewCell.h"
 
+@class NewListData;
+
 @interface NewViewCell : PSCollectionViewCell
+
+@property (nonatomic,strong) NewListData *data;
 
 @end
 
