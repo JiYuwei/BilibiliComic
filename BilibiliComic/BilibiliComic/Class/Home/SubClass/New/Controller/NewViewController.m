@@ -13,6 +13,8 @@
 #import "NewListModel.h"
 #import "NewOrderModel.h"
 
+static const NSUInteger NewPageCount = 16;
+
 @interface NewViewController () <PSCollectionViewDataSource,PSCollectionViewDelegate>
 
 @property (nonatomic,strong) NewListModel     *newsListModel;
@@ -39,7 +41,7 @@
 -(void)initNewsCollectionView
 {
     self.newsCollectionView.mj_header = [BCRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(retrieveNewsData)];
-    
+    [self.footView.loadMoreBtn addTarget:self action:@selector(loadMoreNewsData) forControlEvents:UIControlEventTouchUpInside];
     self.newsCollectionView.footerView = self.footView;
 }
 
@@ -84,9 +86,33 @@
 
 -(void)loadMoreNewsData
 {
-        
+    NSString *url = HOME_NEW;
+    NSUInteger page = (NSUInteger)ceil((double)(self.newsListModel.data.count + 8) / (double)NewPageCount) + 1;
+    NSDictionary *parameters = @{@"page_num":@(page)};
+    
+    [BCNetworkRequest retrieveJsonWithPrepare:^{
+        self.footView.loadMoreBtn.hidden = YES;
+    } finish:^{
+        self.footView.loadMoreBtn.hidden = NO;
+    } needCache:NO requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+        NewListModel *newsListModel = [NewListModel mj_objectWithKeyValues:json];
+        if (newsListModel.data.count == 0) {
+            self.footView.loadMoreBtn.enabled = NO;
+        }
+        else{
+            [self addMoreEntriesWithModel:newsListModel];
+            [self.newsCollectionView reloadData];
+        }
+    } failure:nil];
 }
-                                         
+
+-(void)addMoreEntriesWithModel:(NewListModel *)newsListModel
+{
+    NSMutableArray <NewListData *> *data = [NSMutableArray arrayWithArray:self.newsListModel.data];
+    [data addObjectsFromArray:newsListModel.data];
+    self.newsListModel.data = data;
+}
+
 #pragma mark - PSCollectionViewDataSource
 
 -(NSInteger)numberOfRowsInCollectionView:(PSCollectionView *)collectionView

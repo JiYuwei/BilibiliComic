@@ -47,7 +47,7 @@ static const NSUInteger PageCount = 10;
 
 -(void)loadMoreData
 {
-    [self loadMoreHomeStockDataAllowCache:NO];
+    [self loadMoreHomeStockData];
 }
 
 #pragma mark Private
@@ -87,7 +87,7 @@ static const NSUInteger PageCount = 10;
 }
 
 //上拉加载
--(void)loadMoreHomeStockDataAllowCache:(BOOL)cache
+-(void)loadMoreHomeStockData
 {
     NSString *url = HOME_STOCK_URL;
     StockData *data = self.homeStockModel.data;
@@ -105,15 +105,10 @@ static const NSUInteger PageCount = 10;
             [self.mainTableView.mj_footer endRefreshing];
         }
         [self.mainTableView reloadData];
-    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+    } needCache:NO requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
         HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
         [self addMoreEntriesWithModel:homeStockModel];
-    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        if (needCache) {
-            HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:cachedJson];
-            [self addMoreEntriesWithModel:homeStockModel];
-        }
-    }];
+    } failure:nil];
 }
 
 -(void)addMoreEntriesWithModel:(HomeStockModel *)homeStockModel
