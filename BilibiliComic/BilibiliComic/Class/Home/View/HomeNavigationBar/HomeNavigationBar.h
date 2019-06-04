@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeNavigationBarProtocol.h"
-#import "PagesTopBar.h"
+#import "BCPagesTopBar.h"
 #import "HomeSearchBar.h"
 
 @interface HomeNavigationBar : UIView
 
 @property (nonatomic,assign) HomeNavigationBarStyle navBarStyle;
 
-@property (nonatomic,strong) PagesTopBar      *pagesTopBar;
+@property (nonatomic,strong) BCPagesTopBar      *pagesTopBar;
 @property (nonatomic,strong) HomeSearchBar    *searchBar;
 @property (nonatomic,strong) UIButton         *timeLineBtn;
 

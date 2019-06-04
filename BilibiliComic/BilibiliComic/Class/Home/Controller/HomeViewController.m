@@ -148,7 +148,7 @@
     CGFloat alpha   = (offsetX / BC_SCREEN_WIDTH) < 1 ? (offsetX / BC_SCREEN_WIDTH) : 1;
 //    NSLog(@"%.f",alpha);
     
-    PagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
+    BCPagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
     UIView *slider = pagesTopBar.slider;
     CGFloat place = pagesTopBar.vWidth / pagesTopBar.itemTitles.count / 2;
     CGFloat percent = offsetX / BC_SCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);

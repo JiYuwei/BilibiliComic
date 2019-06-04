@@ -1,12 +1,12 @@
 //
-//  PagesTopBar.m
+//  BCPagesTopBar.m
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/4/15.
 //  Copyright © 2019 jyw. All rights reserved.
 //
 
-#import "PagesTopBar.h"
+#import "BCPagesTopBar.h"
 
 #define WidthKey     @"PagesTopBarItem"
 
@@ -18,13 +18,13 @@
 static const CGFloat ItemScale     = 1.2;
 static const CGFloat AnimDuration  = 0.3;
 
-@interface PagesTopBar () <HomeNavigationBarProtocol>
+@interface BCPagesTopBar () <HomeNavigationBarProtocol>
 
 @property (nonatomic,strong) NSMutableArray <UILabel *> *itemLabels;
 
 @end
 
-@implementation PagesTopBar
+@implementation BCPagesTopBar
 {
     CGFloat _itemWidth;
     CGFloat _itemFont;

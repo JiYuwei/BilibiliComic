@@ -1376,7 +1376,7 @@
 		09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5422922672F80007681E4 /* BCRequestCache.m */; };
 		09D5423122673B25007681E4 /* BCRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D5423022673B25007681E4 /* BCRefreshHeader.m */; };
 		09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E298FD2260A646009F0D4E /* HomeNavigationBar.m */; };
-		09EB8B1122643BE400FCAAE4 /* PagesTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1022643BE400FCAAE4 /* PagesTopBar.m */; };
+		09EB8B1122643BE400FCAAE4 /* BCPagesTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1022643BE400FCAAE4 /* BCPagesTopBar.m */; };
 		09EB8B142264482800FCAAE4 /* NSArray+Sudoku.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */; };
 		09EB8B1722648CA200FCAAE4 /* HomeSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B1622648CA200FCAAE4 /* HomeSearchBar.m */; };
 		09EB8B1A2264990700FCAAE4 /* SearchCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB8B192264990700FCAAE4 /* SearchCycleScrollView.m */; };
@@ -2819,8 +2819,8 @@
 		09E298F222606297009F0D4E /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		09E298FC2260A646009F0D4E /* HomeNavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeNavigationBar.h; sourceTree = "<group>"; };
 		09E298FD2260A646009F0D4E /* HomeNavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeNavigationBar.m; sourceTree = "<group>"; };
-		09EB8B0F22643BE400FCAAE4 /* PagesTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagesTopBar.h; sourceTree = "<group>"; };
-		09EB8B1022643BE400FCAAE4 /* PagesTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagesTopBar.m; sourceTree = "<group>"; };
+		09EB8B0F22643BE400FCAAE4 /* BCPagesTopBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCPagesTopBar.h; sourceTree = "<group>"; };
+		09EB8B1022643BE400FCAAE4 /* BCPagesTopBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCPagesTopBar.m; sourceTree = "<group>"; };
 		09EB8B122264482800FCAAE4 /* NSArray+Sudoku.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sudoku.h"; sourceTree = "<group>"; };
 		09EB8B132264482800FCAAE4 /* NSArray+Sudoku.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sudoku.m"; sourceTree = "<group>"; };
 		09EB8B1522648CA200FCAAE4 /* HomeSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchBar.h; sourceTree = "<group>"; };
@@ -3014,8 +3014,8 @@
 		097918EC2270649F00C243B7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				09EB8B0F22643BE400FCAAE4 /* PagesTopBar.h */,
-				09EB8B1022643BE400FCAAE4 /* PagesTopBar.m */,
+				09EB8B0F22643BE400FCAAE4 /* BCPagesTopBar.h */,
+				09EB8B1022643BE400FCAAE4 /* BCPagesTopBar.m */,
 				09D5422F22673B25007681E4 /* BCRefreshHeader.h */,
 				09D5423022673B25007681E4 /* BCRefreshHeader.m */,
 				09036C0C2286AD520093C18B /* BCRefreshFooter.h */,
@@ -6142,7 +6142,7 @@
 				0958897B227EF39700A41D02 /* BaseModel.m in Sources */,
 				09036C0E2286AD520093C18B /* BCRefreshFooter.m in Sources */,
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
-				09EB8B1122643BE400FCAAE4 /* PagesTopBar.m in Sources */,
+				09EB8B1122643BE400FCAAE4 /* BCPagesTopBar.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,
 				096E558C22A5186300ADB978 /* NewOrderModel.m in Sources */,
 				09036C28228E67030093C18B /* UIImage+ReSize.m in Sources */,

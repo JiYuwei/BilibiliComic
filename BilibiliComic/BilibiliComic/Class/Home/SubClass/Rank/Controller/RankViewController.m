@@ -7,7 +7,7 @@
 //
 
 #import "RankViewController.h"
-#import "PagesTopBar.h"
+#import "BCPagesTopBar.h"
 #import "RankListViewCell.h"
 #import "RankListModel.h"
 
@@ -15,7 +15,7 @@ static const CGFloat RankTopBarHeight = 40;
 
 @interface RankViewController ()
 
-@property (nonatomic,strong) PagesTopBar *rankPagesTopBar;
+@property (nonatomic,strong) BCPagesTopBar *rankPagesTopBar;
 
 @property (nonatomic,strong) UIScrollView *rankScrollView;
 @property (nonatomic,strong) NSMutableArray <UITableView *>   *rankTableViews;
@@ -176,7 +176,7 @@ static const CGFloat RankTopBarHeight = 40;
     if (scrollView == self.rankScrollView) {
         CGFloat offsetX = scrollView.contentOffset.x;
         
-        PagesTopBar *pagesTopBar = self.rankPagesTopBar;
+        BCPagesTopBar *pagesTopBar = self.rankPagesTopBar;
         UIView *slider = pagesTopBar.slider;
         CGFloat place = pagesTopBar.vWidth / pagesTopBar.itemTitles.count / 2;
         CGFloat percent = offsetX / BC_SCREEN_WIDTH * (pagesTopBar.itemTitles.count - 1);
@@ -197,10 +197,10 @@ static const CGFloat RankTopBarHeight = 40;
 
 #pragma mark - LazyLoad
 
--(PagesTopBar *)rankPagesTopBar
+-(BCPagesTopBar *)rankPagesTopBar
 {
     if (!_rankPagesTopBar) {
-        _rankPagesTopBar = [[PagesTopBar alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT, BC_SCREEN_WIDTH / 2, RankTopBarHeight)];
+        _rankPagesTopBar = [[BCPagesTopBar alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT, BC_SCREEN_WIDTH / 2, RankTopBarHeight)];
         _rankPagesTopBar.topBarType = PagesTopBarTypeRank;
         _rankPagesTopBar.itemTitles = @[@"人气榜",@"免费榜",@"应援榜"];
         [self.view addSubview:_rankPagesTopBar];

@@ -1,5 +1,5 @@
 //
-//  PagesTopBar.h
+//  BCPagesTopBar.h
 //  BilibiliComic
 //
 //  Created by 纪宇伟 on 2019/4/15.
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, PagesTopBarType) {
     PagesTopBarTypeRank
 };
 
-@interface PagesTopBar : UIView
+@interface BCPagesTopBar : UIView
 
 @property (nonatomic,assign) PagesTopBarType         topBarType;
 @property (nonatomic,assign) HomeNavigationBarStyle  topBarStyle;
