@@ -15,7 +15,7 @@
 
 @property (nonatomic,assign) HomeNavigationBarStyle navBarStyle;
 
-@property (nonatomic,strong) PagesTopBar  *pagesTopBar;
+@property (nonatomic,strong) PagesTopBar      *pagesTopBar;
 @property (nonatomic,strong) HomeSearchBar    *searchBar;
 @property (nonatomic,strong) UIButton         *timeLineBtn;
 
