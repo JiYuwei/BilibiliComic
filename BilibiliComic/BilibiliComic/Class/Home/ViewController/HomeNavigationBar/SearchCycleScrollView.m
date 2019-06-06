@@ -7,6 +7,7 @@
 //
 
 #import "SearchCycleScrollView.h"
+#import "HomeSearchViewModel.h"
 
 #define DefaultLabelColor RGBColor(170, 170, 170)
 
@@ -18,6 +19,8 @@
 @property (nonatomic,strong) UILabel *firstLabel;
 //第二个label
 @property (nonatomic,strong) UILabel *secondLabel;
+
+@property (nonatomic,strong) HomeSearchViewModel *searchViewModel;
 
 @end
 
@@ -44,11 +47,14 @@
         
         [self addSubview:self.firstLabel];
         [self addSubview:self.secondLabel];
+        
+        self.searchViewModel = [[HomeSearchViewModel alloc] initWithBindingView:self];
     }
     return self;
 }
 
 static NSInteger i = 1;
+
 -(void)scroll
 {
     i++;

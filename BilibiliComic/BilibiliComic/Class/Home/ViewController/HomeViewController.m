@@ -7,11 +7,9 @@
 //
 
 #import "HomeViewController.h"
-#import "HomeNavigationBar.h"
 #import "RecomViewController.h"
 #import "RankViewController.h"
 #import "NewViewController.h"
-#import "HomeSearchModel.h"
 
 @interface HomeViewController () <UIScrollViewDelegate>
 
@@ -41,31 +39,8 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;
     
-    [self retrieveSearchData];
     [self initNavigationBar];
     [self initMainScrollView];
-}
-
-#pragma mark - Data
-
--(void)retrieveSearchData
-{
-    NSString *url = HOME_RECOMMEND;
-    NSDictionary *parameters = @{@"BanID":@0,
-                                 @"JsonData":@"[{\"pool_id\":100006,\"num\":3}]"};
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        [self buildSearchDataWithJson:json];
-    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        if (needCache) {
-            [self buildSearchDataWithJson:cachedJson];
-        }
-    }];
-}
-
--(void)buildSearchDataWithJson:(NSDictionary *)json
-{
-    HomeSearchModel *homeSearchModel = [HomeSearchModel mj_objectWithKeyValues:json];
-    self.homeNavBar.searchBar.data = homeSearchModel.data;
 }
 
 #pragma mark - UI

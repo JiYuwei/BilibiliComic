@@ -41,6 +41,8 @@
 		096E558622A4FDED00ADB978 /* NewFootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 096E558522A4FDED00ADB978 /* NewFootCell.m */; };
 		096E558922A5109E00ADB978 /* NewListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 096E558822A5109E00ADB978 /* NewListModel.m */; };
 		096E558C22A5186300ADB978 /* NewOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 096E558B22A5186300ADB978 /* NewOrderModel.m */; };
+		096E559322A8E58B00ADB978 /* BaseViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 096E559222A8E58B00ADB978 /* BaseViewModel.m */; };
+		096E559622A8F62C00ADB978 /* HomeSearchViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 096E559522A8F62C00ADB978 /* HomeSearchViewModel.m */; };
 		097918F6227066B800C243B7 /* BCFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F5227066B800C243B7 /* BCFlowView.m */; };
 		097918F92270687700C243B7 /* BCIndexBannerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F82270687700C243B7 /* BCIndexBannerSubview.m */; };
 		097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918FB22706B1500C243B7 /* BCHeaderView.m */; };
@@ -1468,6 +1470,10 @@
 		096E558822A5109E00ADB978 /* NewListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NewListModel.m; path = BilibiliComic/Class/Home/SubClass/New/Model/NewListModel.m; sourceTree = SOURCE_ROOT; };
 		096E558A22A5186300ADB978 /* NewOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NewOrderModel.h; path = BilibiliComic/Class/Home/SubClass/New/Model/NewOrderModel.h; sourceTree = SOURCE_ROOT; };
 		096E558B22A5186300ADB978 /* NewOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NewOrderModel.m; path = BilibiliComic/Class/Home/SubClass/New/Model/NewOrderModel.m; sourceTree = SOURCE_ROOT; };
+		096E559122A8E58B00ADB978 /* BaseViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewModel.h; sourceTree = "<group>"; };
+		096E559222A8E58B00ADB978 /* BaseViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewModel.m; sourceTree = "<group>"; };
+		096E559422A8F62C00ADB978 /* HomeSearchViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchViewModel.h; sourceTree = "<group>"; };
+		096E559522A8F62C00ADB978 /* HomeSearchViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSearchViewModel.m; sourceTree = "<group>"; };
 		097918F4227066B800C243B7 /* BCFlowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCFlowView.h; sourceTree = "<group>"; };
 		097918F5227066B800C243B7 /* BCFlowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCFlowView.m; sourceTree = "<group>"; };
 		097918F72270687700C243B7 /* BCIndexBannerSubview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCIndexBannerSubview.h; sourceTree = "<group>"; };
@@ -2934,8 +2940,8 @@
 			isa = PBXGroup;
 			children = (
 				097918EB2270649700C243B7 /* Model */,
-				097918EC2270649F00C243B7 /* View */,
-				097918ED227064A800C243B7 /* Controller */,
+				097918EC2270649F00C243B7 /* ViewModel */,
+				097918ED227064A800C243B7 /* ViewController */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2944,8 +2950,8 @@
 			isa = PBXGroup;
 			children = (
 				0958898C228408EE00A41D02 /* Model */,
-				097918EF2270654300C243B7 /* View */,
-				097918F02270654900C243B7 /* Controller */,
+				097918EF2270654300C243B7 /* ViewModel */,
+				097918F02270654900C243B7 /* ViewController */,
 				09EB8B222265F16A00FCAAE4 /* SubClass */,
 			);
 			path = Home;
@@ -3011,7 +3017,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		097918EC2270649F00C243B7 /* View */ = {
+		097918EC2270649F00C243B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				096E559122A8E58B00ADB978 /* BaseViewModel.h */,
+				096E559222A8E58B00ADB978 /* BaseViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		097918ED227064A800C243B7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				09EB8B0F22643BE400FCAAE4 /* BCPagesTopBar.h */,
@@ -3020,13 +3035,6 @@
 				09D5423022673B25007681E4 /* BCRefreshHeader.m */,
 				09036C0C2286AD520093C18B /* BCRefreshFooter.h */,
 				09036C0D2286AD520093C18B /* BCRefreshFooter.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		097918ED227064A800C243B7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
 				096D0285221835420067651A /* BaseTabbarController.h */,
 				096D0286221835420067651A /* BaseTabbarController.m */,
 				09591285225D860200142DF7 /* BaseNavigationController.h */,
@@ -3034,24 +3042,26 @@
 				096D0281221818970067651A /* BaseViewController.h */,
 				096D0282221818970067651A /* BaseViewController.m */,
 			);
-			path = Controller;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
-		097918EF2270654300C243B7 /* View */ = {
+		097918EF2270654300C243B7 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				096E559422A8F62C00ADB978 /* HomeSearchViewModel.h */,
+				096E559522A8F62C00ADB978 /* HomeSearchViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		097918F02270654900C243B7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				09E298FB2260A614009F0D4E /* HomeNavigationBar */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		097918F02270654900C243B7 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
 				096D028C221836210067651A /* HomeViewController.h */,
 				096D028D221836210067651A /* HomeViewController.m */,
 			);
-			path = Controller;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		097918F22270663E00C243B7 /* Controller */ = {
@@ -6143,6 +6153,7 @@
 				09036C0E2286AD520093C18B /* BCRefreshFooter.m in Sources */,
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* BCPagesTopBar.m in Sources */,
+				096E559322A8E58B00ADB978 /* BaseViewModel.m in Sources */,
 				09D5422B22672F81007681E4 /* BCNetworkRequest.m in Sources */,
 				096E558C22A5186300ADB978 /* NewOrderModel.m in Sources */,
 				09036C28228E67030093C18B /* UIImage+ReSize.m in Sources */,
@@ -6175,6 +6186,7 @@
 				09D5422C22672F81007681E4 /* BCRequestCache.m in Sources */,
 				09036C112286B4A30093C18B /* NSString+MD5.m in Sources */,
 				0958899222841FB900A41D02 /* UIColor+HexColor.m in Sources */,
+				096E559622A8F62C00ADB978 /* HomeSearchViewModel.m in Sources */,
 				096E558922A5109E00ADB978 /* NewListModel.m in Sources */,
 				09EB8B252265F1FC00FCAAE4 /* RecomViewController.m in Sources */,
 				09F62927227AB73000F4638B /* HomeStockListCell.m in Sources */,

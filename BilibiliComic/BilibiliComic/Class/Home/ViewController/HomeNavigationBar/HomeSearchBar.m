@@ -8,7 +8,6 @@
 
 #import "HomeSearchBar.h"
 #import "SearchCycleScrollView.h"
-#import "HomeSearchModel.h"
 
 @interface HomeSearchBar () <HomeNavigationBarProtocol>
 
@@ -80,18 +79,6 @@
         
         self.searchCycleView.cycleStyle = _searchBarStyle;
         [self showNavigationBarStyle:_searchBarStyle];
-    }
-}
-
--(void)setData:(NSArray<SearchData *> *)data
-{
-    if (data && ![_data isEqualToArray:data]) {
-        _data = data;
-        NSMutableArray *titleArray = [NSMutableArray array];
-        for (SearchData *item in _data) {
-            [titleArray addObject:item.title];
-        }
-        self.searchCycleView.placeHolders = titleArray;
     }
 }
 

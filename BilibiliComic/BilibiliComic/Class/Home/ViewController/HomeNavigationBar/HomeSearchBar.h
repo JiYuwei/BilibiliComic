@@ -16,6 +16,5 @@ static const CGFloat TBMargin = 8;
 @interface HomeSearchBar : UIView
 
 @property (nonatomic,assign) HomeNavigationBarStyle searchBarStyle;
-@property (nonatomic,copy) NSArray <SearchData *> *data;
 
 @end
