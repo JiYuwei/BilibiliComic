@@ -8,12 +8,10 @@
 
 #import "BCHeaderView.h"
 #import "BCFlowView.h"
-#import "HomeBannerModel.h"
 
 @interface BCHeaderView () <BCFlowViewDataSource,BCFlowViewDelegate>
 
 @property (nonatomic,strong) BCFlowView *pageFlowView;
-@property (nonatomic,strong) NSMutableArray <UIColor *> *colorBox;
 
 @end
 
@@ -23,18 +21,33 @@
 {
     if (self = [super initWithFrame:frame]) {
         [self setupGradientView];
-        [[self.pageFlowView rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable x) {
-            UIScrollView *scrollView = (UIScrollView *)x.first;
-            [self changeBgColorWithContentOffSet:scrollView.contentOffset.x];
-        }];
+        self.bannerViewModel = [[HomeBannerViewModel alloc] initWithBindingView:self];
     }
     return self;
 }
 
+#pragma mark - Public
+
+-(void)reloadData
+{
+    [self.pageFlowView reloadData];
+}
+
+-(void)startBgColorChanged
+{
+    self.backgroundColor = self.bannerViewModel.colorBox.firstObject;
+    [[self.pageFlowView rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable x) {
+        UIScrollView *scrollView = (UIScrollView *)x.first;
+        [self changeBgColorWithContentOffSet:scrollView.contentOffset.x];
+    }];
+}
+
+#pragma mark -
+
 //轮播图背景色渐变
 - (void)changeBgColorWithContentOffSet:(CGFloat)offset
 {
-    NSArray <UIColor *> *box = [self.colorBox copy];
+    NSArray <UIColor *> *box = self.bannerViewModel.colorBox;
     
     const CGFloat pWidth     = BC_SCREEN_WIDTH - LRPadding * 2;
     const NSUInteger count   = box.count;
@@ -69,27 +82,11 @@
     [self addSubview:gradientView];
 }
 
-#pragma mark - Setter
-
--(void)setHomeBannerModel:(HomeBannerModel *)homeBannerModel
-{
-    if (homeBannerModel && ![_homeBannerModel isEqualToHomeBannerModel:homeBannerModel]) {
-        _homeBannerModel = homeBannerModel;
-        
-        [self.colorBox removeAllObjects];
-        for (BannerData *item in _homeBannerModel.data) {
-            [self.colorBox addObject:[UIColor colorWithHexString:item.bg]];
-        }
-        
-        [self.pageFlowView reloadData];
-    }
-}
-
 #pragma mark - BCFlowViewDatasource
 
 - (NSInteger)numberOfPagesInFlowView:(BCFlowView *)flowView
 {
-    return self.homeBannerModel.data.count;
+    return self.bannerViewModel.imgURLs.count;
 }
 
 - (BCIndexBannerSubview *)flowView:(BCFlowView *)flowView cellForPageAtIndex:(NSInteger)index
@@ -100,7 +97,7 @@
         bannerView.coverView.backgroundColor = [UIColor darkGrayColor];
     }
     //在这里下载网络图片
-    NSString *imgURL = self.homeBannerModel.data[index].img2;
+    NSString *imgURL = self.bannerViewModel.imgURLs[index];
     [bannerView.mainImageView sd_setFadeImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:BCImage(@"comic_thumb_placeholder1_ico_343x192_")];
 
     //加载本地图片
@@ -145,14 +142,6 @@
         [self addSubview:_pageFlowView];
     }
     return _pageFlowView;
-}
-
--(NSMutableArray<UIColor *> *)colorBox
-{
-    if (!_colorBox) {
-        _colorBox = [NSMutableArray array];
-    }
-    return _colorBox;
 }
 
 @end

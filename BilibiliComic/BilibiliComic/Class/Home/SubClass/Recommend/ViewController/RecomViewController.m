@@ -9,7 +9,6 @@
 #import "RecomViewController.h"
 #import "BCHeaderView.h"
 #import "HomeStockListCell.h"
-#import "HomeBannerModel.h"
 #import "HomeStockModel.h"
 
 static const NSUInteger PageCount = 10;
@@ -30,7 +29,6 @@ static const NSUInteger PageCount = 10;
     self.mainTableView.showsVerticalScrollIndicator = NO;
     self.mainTableView.mj_header.frame = CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_NAV_HEIGHT);
     
-    [self retrieveBannerAllowCache:YES];
     [self retrieveHomeStockDataAllowCache:YES];
     
     [self initTableHeaderview];
@@ -41,7 +39,7 @@ static const NSUInteger PageCount = 10;
 
 -(void)retrieveData
 {
-    [self retrieveBannerAllowCache:NO];
+    [self.bannerView.bannerViewModel retrieveBannerAllowCache:NO];
     [self retrieveHomeStockDataAllowCache:NO];
 }
 
@@ -51,18 +49,6 @@ static const NSUInteger PageCount = 10;
 }
 
 #pragma mark Private
-
-//轮播图
--(void)retrieveBannerAllowCache:(BOOL)cache
-{
-    NSString *url = HOME_BANNER;
-    NSDictionary *parameters = @{@"platform":APP_DEVICE};
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:json];
-    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        self.bannerView.homeBannerModel = [HomeBannerModel mj_objectWithKeyValues:cachedJson];
-    }];
-}
 
 //下拉刷新
 -(void)retrieveHomeStockDataAllowCache:(BOOL)cache
