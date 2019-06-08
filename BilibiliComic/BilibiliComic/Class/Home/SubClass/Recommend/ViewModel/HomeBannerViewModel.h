@@ -10,8 +10,8 @@
 
 @interface HomeBannerViewModel : BaseViewModel
 
-@property (nonatomic,copy) NSArray <NSString *>  *imgURLs;
-@property (nonatomic,copy) NSArray <UIColor *>   *colorBox;
+@property (nonatomic,copy,readonly) NSArray <NSString *>  *imgURLs;
+@property (nonatomic,copy,readonly) NSArray <UIColor *>   *colorBox;
 
 -(void)retrieveBannerAllowCache:(BOOL)cache;
 

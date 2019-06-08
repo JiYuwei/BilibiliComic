@@ -12,6 +12,9 @@
 
 @interface HomeBannerViewModel ()
 
+@property (nonatomic,copy,readwrite) NSArray <NSString *>  *imgURLs;
+@property (nonatomic,copy,readwrite) NSArray <UIColor *>   *colorBox;
+
 @property (nonatomic,strong) HomeBannerModel  *model;
 @property (nonatomic,weak)   BCHeaderView     *viewC;
 
