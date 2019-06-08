@@ -12,6 +12,8 @@
 
 @interface HomeSearchViewModel ()
 
+@property (nonatomic,copy,readwrite) NSArray *placeHolders;
+
 @property (nonatomic,strong) HomeSearchModel       *model;
 @property (nonatomic,weak)   SearchCycleScrollView *viewC;
 
