@@ -15,8 +15,6 @@
 @property (nonatomic,strong) HomeSearchModel       *model;
 @property (nonatomic,weak)   SearchCycleScrollView *viewC;
 
-@property (nonatomic,copy)   NSArray               *placeHolders;
-
 @end
 
 @implementation HomeSearchViewModel
@@ -36,7 +34,11 @@
 
 -(void)executeViewModelBinding
 {
-    RAC(self.viewC, placeHolders) = RACObserve(self, placeHolders);
+    @weakify(self)
+    [RACObserve(self, placeHolders) subscribeNext:^(id  _Nullable x) {
+        @strongify(self)
+        [self.viewC openScrollMode];
+    }];
 }
 
 #pragma mark - Data

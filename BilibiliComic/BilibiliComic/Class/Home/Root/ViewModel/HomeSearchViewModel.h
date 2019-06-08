@@ -10,5 +10,7 @@
 
 @interface HomeSearchViewModel : BaseViewModel
 
+@property (nonatomic,copy) NSArray *placeHolders;
+
 @end
 

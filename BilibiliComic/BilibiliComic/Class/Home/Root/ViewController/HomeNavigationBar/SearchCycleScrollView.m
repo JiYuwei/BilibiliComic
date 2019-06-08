@@ -26,8 +26,19 @@
 
 @implementation SearchCycleScrollView
 
+#pragma mark - Public
+
 -(void)openScrollMode
 {
+    if (self.searchViewModel.placeHolders.count < 2) return;
+    
+    NSArray *placeHolders = self.searchViewModel.placeHolders;
+    
+    self.firstLabel.text = placeHolders[0];
+    self.secondLabel.text = placeHolders[1];
+    self.firstLabel.frame = CGRectMake(0, 0, self.vWidth, self.vHeight);
+    self.secondLabel.frame = CGRectMake(0, self.vHeight, self.vWidth, self.vHeight);
+    
     if (self.timer) {
         [self.timer invalidate];
         self.timer = nil;
@@ -35,6 +46,8 @@
     self.timer = [NSTimer timerWithTimeInterval:self.interval target:self selector:@selector(scroll) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
+
+#pragma mark -
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -58,7 +71,10 @@ static NSInteger i = 1;
 -(void)scroll
 {
     i++;
-    i = (i >= self.placeHolders.count) ? 0 : i;
+    
+    NSArray *placeHolders = self.searchViewModel.placeHolders;
+    
+    i = (i >= placeHolders.count) ? 0 : i;
     CGFloat height=self.vHeight;
     CGFloat width=self.vWidth;
     [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -74,12 +90,11 @@ static NSInteger i = 1;
         //重新定位label的位置
         if (self.firstLabel.vOrigin.y <= -height) {
             self.firstLabel.frame = CGRectMake(0, height, width, height);
-            self.firstLabel.text = self.placeHolders[i];
+            self.firstLabel.text = placeHolders[i];
         }
         if (self.secondLabel.frame.origin.y <= -height) {
             self.secondLabel.frame = CGRectMake(0, height, width, height);
-            self.secondLabel.text = self.placeHolders[i];
-            
+            self.secondLabel.text = placeHolders[i];
         }
     }];
 }
@@ -115,21 +130,6 @@ static NSInteger i = 1;
         _cycleStyle = cycleStyle;
         
         [self showNavigationBarStyle:_cycleStyle];
-    }
-}
-
--(void)setPlaceHolders:(NSArray *)placeHolders
-{
-    if (placeHolders && ![_placeHolders isEqualToArray:placeHolders]) {
-        _placeHolders = placeHolders;
-        
-        if (self.placeHolders.count >= 2) {
-            self.firstLabel.text = self.placeHolders[0];
-            self.secondLabel.text = self.placeHolders[1];
-            self.firstLabel.frame = CGRectMake(0, 0, self.vWidth, self.vHeight);
-            self.secondLabel.frame = CGRectMake(0, self.vHeight, self.vWidth, self.vHeight);
-            [self openScrollMode];
-        }
     }
 }
 
