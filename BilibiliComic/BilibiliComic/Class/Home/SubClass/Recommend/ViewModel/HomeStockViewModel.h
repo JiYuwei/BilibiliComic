@@ -8,7 +8,11 @@
 
 #import "BaseViewModel.h"
 
+@class List;
+
 @interface HomeStockViewModel : BaseViewModel
+
+@property (nonatomic, copy) NSArray <List *> * list;
 
 @end
 

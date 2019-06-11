@@ -7,9 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "BCHeaderView.h"
 
 #define DefaultViewHeight   0.7 * BC_SCREEN_WIDTH
 
 @interface RecomViewController : BaseViewController
+
+@property (nonatomic,strong) BCHeaderView *bannerView;
 
 @end

@@ -7,17 +7,12 @@
 //
 
 #import "RecomViewController.h"
-#import "BCHeaderView.h"
 #import "HomeStockListCell.h"
-#import "HomeStockModel.h"
-
-static const NSUInteger PageCount = 10;
+#import "HomeStockViewModel.h"
 
 @interface RecomViewController ()
 
-@property (nonatomic,strong) HomeStockModel  *homeStockModel;
-
-@property (nonatomic,strong) BCHeaderView *bannerView;
+@property (nonatomic,strong) HomeStockViewModel *homeStockViewModel;
 
 @end
 
@@ -29,67 +24,10 @@ static const NSUInteger PageCount = 10;
     self.mainTableView.showsVerticalScrollIndicator = NO;
     self.mainTableView.mj_header.frame = CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_NAV_HEIGHT);
     
-    [self retrieveHomeStockDataAllowCache:YES];
-    
     [self initTableHeaderview];
     [self initRecomListCell];
-}
-
-#pragma mark Private
-
-//下拉刷新
--(void)retrieveHomeStockDataAllowCache:(BOOL)cache
-{
-    NSString *url = HOME_STOCK_URL;
-    NSDictionary *parameters = @{@"omitCards":@2,
-                                 @"page_num":@1,
-                                 @"seed":@0,
-                                 };
-    [BCNetworkRequest retrieveJsonWithPrepare:^{
-        [self.mainTableView.mj_footer resetNoMoreData];
-    } finish:^{
-        [self.mainTableView.mj_header endRefreshing];
-        [self.mainTableView reloadData];
-    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
-    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        if (needCache) {
-            self.homeStockModel = [HomeStockModel mj_objectWithKeyValues:cachedJson];
-        }
-    }];
-}
-
-//上拉加载
--(void)loadMoreHomeStockData
-{
-    NSString *url = HOME_STOCK_URL;
-    StockData *data = self.homeStockModel.data;
-    NSUInteger page = data.list.count / PageCount + 1;
-    NSDictionary *parameters = @{@"omitCards":@2,
-                                 @"page_num":@(page),
-                                 @"seed":@(data.seed.integerValue),
-                                 };
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
-        NSString *seed = self.homeStockModel.data.seed;
-        if (seed && seed.integerValue == 0) {
-            [self.mainTableView.mj_footer endRefreshingWithNoMoreData];
-        }
-        else{
-            [self.mainTableView.mj_footer endRefreshing];
-        }
-        [self.mainTableView reloadData];
-    } needCache:NO requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
-        [self addMoreEntriesWithModel:homeStockModel];
-    } failure:nil];
-}
-
--(void)addMoreEntriesWithModel:(HomeStockModel *)homeStockModel
-{
-    NSMutableArray <List *> *list = [NSMutableArray arrayWithArray:self.homeStockModel.data.list];
-    [list addObjectsFromArray:homeStockModel.data.list];
-    self.homeStockModel.data.list = list;
-    self.homeStockModel.data.seed = homeStockModel.data.seed;
+    
+    self.homeStockViewModel = [[HomeStockViewModel alloc] initWithResponder:self];
 }
 
 #pragma mark - UI
@@ -114,13 +52,13 @@ static const NSUInteger PageCount = 10;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.homeStockModel.data.list.count;
+    return self.homeStockViewModel.list.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeStockListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeStockListCell class]) forIndexPath:indexPath];
-    cell.homeStockList = self.homeStockModel.data.list[indexPath.row];
+    cell.homeStockList = self.homeStockViewModel.list[indexPath.row];
     
     return cell;
 }
