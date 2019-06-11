@@ -7,16 +7,44 @@
 //
 
 #import "HomeStockViewModel.h"
+#import "HomeBannerViewModel.h"
 #import "HomeStockModel.h"
+#import "RecomViewController.h"
+
+@interface HomeStockViewModel ()
+
+@property (nonatomic,strong) HomeStockModel      *model;
+@property (nonatomic,weak)   RecomViewController *recomVC;
+
+@property (nonatomic,weak)   HomeBannerViewModel *bannerViewModel;
+
+@end
 
 @implementation HomeStockViewModel
 
--(instancetype)initWithBindingView:(id)viewC
+-(instancetype)initWithResponder:(UIResponder *)responder
 {
-    if (self = [super initWithBindingView:viewC]) {
+    if (self = [super initWithResponder:responder]) {
         
     }
     return self;
 }
+
+-(void)executeViewModelBinding
+{
+    
+}
+
+//-(void)retrieveData
+//{
+//    [self.bannerView.bannerViewModel retrieveBannerAllowCache:NO];
+//    [self retrieveHomeStockDataAllowCache:NO];
+//}
+//
+//-(void)loadMoreData
+//{
+//    [self loadMoreHomeStockData];
+//}
+
 
 @end

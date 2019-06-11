@@ -16,21 +16,16 @@
 @property (nonatomic,copy,readwrite) NSArray <UIColor *>   *colorBox;
 
 @property (nonatomic,strong) HomeBannerModel  *model;
-@property (nonatomic,weak)   BCHeaderView     *viewC;
+@property (nonatomic,weak)   BCHeaderView     *view;
 
 @end
 
 @implementation HomeBannerViewModel
 
--(instancetype)initWithBindingView:(id)viewC
+-(instancetype)initWithResponder:(UIResponder *)responder
 {
-    if (self = [super initWithBindingView:viewC]) {
-        if ([viewC isKindOfClass:[BCHeaderView class]]) {
-            self.model = [[HomeBannerModel alloc] init];
-            self.viewC = (BCHeaderView *)viewC;
-            [self executeViewModelBinding];
-            [self retrieveBannerAllowCache:YES];
-        }
+    if (self = [super initWithResponder:responder]) {
+        [self retrieveBannerAllowCache:YES];
     }
     return self;
 }
@@ -40,12 +35,44 @@
     @weakify(self)
     [RACObserve(self, imgURLs) subscribeNext:^(id  _Nullable x) {
         @strongify(self)
-        [self.viewC reloadData];
+        [self.view.pageFlowView reloadData];
     }];
     
     [RACObserve(self, colorBox) subscribeNext:^(id  _Nullable x) {
         @strongify(self)
-        [self.viewC startBgColorChanged];
+        
+        NSArray <UIColor *> *box = self.colorBox;
+        self.view.backgroundColor = box.firstObject;
+        
+        @weakify(self)
+        [[self.view.pageFlowView rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable views) {
+            @strongify(self)
+            
+            UIScrollView *scrollView = (UIScrollView *)views.first;
+            CGFloat offset = scrollView.contentOffset.x;
+            
+            const CGFloat pWidth     = BC_SCREEN_WIDTH - LRPadding * 2;
+            const NSUInteger count   = box.count;
+            
+            CGFloat x = offset - pWidth * count;
+            if (x < 0) x = x + pWidth * count;
+            x = x / pWidth;
+            
+            if (count > 0) {
+                NSInteger currentIndex = (NSInteger)floorf(x);
+                NSInteger nextIndex    = currentIndex + 1;
+                if (nextIndex >= count) nextIndex = 0;
+                
+                const CGFloat *CComp = CGColorGetComponents(box[currentIndex].CGColor);
+                const CGFloat *NComp = CGColorGetComponents(box[nextIndex].CGColor);
+                
+                CGFloat R = CComp[0] + (NComp[0] - CComp[0]) * (x - currentIndex);
+                CGFloat G = CComp[1] + (NComp[1] - CComp[1]) * (x - currentIndex);
+                CGFloat B = CComp[2] + (NComp[2] - CComp[2]) * (x - currentIndex);
+                
+                self.view.backgroundColor = [UIColor colorWithRed:R green:G blue:B alpha:1];
+            }
+        }];
     }];
 }
 
@@ -65,10 +92,22 @@
         self.imgURLs  = imgURLs;
         self.colorBox = colorBox;
     } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        [self.model mj_setKeyValues:json];
+        self.model = [HomeBannerModel mj_objectWithKeyValues:json];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        [self.model mj_setKeyValues:cachedJson];
+        self.model = [HomeBannerModel mj_objectWithKeyValues:cachedJson];
     }];
+}
+
+#pragma mark - LazyLoad
+
+-(BCHeaderView *)view
+{
+    if (!_view) {
+        if ([self.responder isKindOfClass:[BCHeaderView class]]) {
+            _view = (BCHeaderView *)self.responder;
+        }
+    }
+    return _view;
 }
 
 @end

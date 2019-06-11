@@ -35,19 +35,6 @@ static const NSUInteger PageCount = 10;
     [self initRecomListCell];
 }
 
-#pragma mark - OverWriteRetrieveData
-
--(void)retrieveData
-{
-    [self.bannerView.bannerViewModel retrieveBannerAllowCache:NO];
-    [self retrieveHomeStockDataAllowCache:NO];
-}
-
--(void)loadMoreData
-{
-    [self loadMoreHomeStockData];
-}
-
 #pragma mark Private
 
 //下拉刷新

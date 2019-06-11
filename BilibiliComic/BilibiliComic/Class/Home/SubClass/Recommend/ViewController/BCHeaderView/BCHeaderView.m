@@ -7,70 +7,16 @@
 //
 
 #import "BCHeaderView.h"
-#import "BCFlowView.h"
 
-@interface BCHeaderView () <BCFlowViewDataSource,BCFlowViewDelegate>
-
-@property (nonatomic,strong) BCFlowView *pageFlowView;
-
-@end
-
-@implementation BCHeaderView
+@implementation BCHeaderView 
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
     if (self = [super initWithFrame:frame]) {
         [self setupGradientView];
-        self.bannerViewModel = [[HomeBannerViewModel alloc] initWithBindingView:self];
+        self.bannerViewModel = [[HomeBannerViewModel alloc] initWithResponder:self];
     }
     return self;
-}
-
-#pragma mark - Public
-
--(void)reloadData
-{
-    [self.pageFlowView reloadData];
-}
-
--(void)startBgColorChanged
-{
-    self.backgroundColor = self.bannerViewModel.colorBox.firstObject;
-    [[self.pageFlowView rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable x) {
-        UIScrollView *scrollView = (UIScrollView *)x.first;
-        [self changeBgColorWithContentOffSet:scrollView.contentOffset.x];
-    }];
-}
-
-#pragma mark -
-
-//轮播图背景色渐变
-- (void)changeBgColorWithContentOffSet:(CGFloat)offset
-{
-    NSArray <UIColor *> *box = self.bannerViewModel.colorBox;
-    
-    const CGFloat pWidth     = BC_SCREEN_WIDTH - LRPadding * 2;
-    const NSUInteger count   = box.count;
-    
-    CGFloat x = offset - pWidth * count;
-    if (x < 0) x = x + pWidth * count;
-    x = x / pWidth;
-    
-    if (count > 0) {
-        NSInteger currentIndex = (NSInteger)floorf(x);
-        NSInteger nextIndex    = currentIndex + 1;
-        if (nextIndex >= count) nextIndex = 0;
-        
-        const CGFloat *CComp = CGColorGetComponents(box[currentIndex].CGColor);
-        const CGFloat *NComp = CGColorGetComponents(box[nextIndex].CGColor);
-        
-        CGFloat R = CComp[0] + (NComp[0] - CComp[0]) * (x - currentIndex);
-        CGFloat G = CComp[1] + (NComp[1] - CComp[1]) * (x - currentIndex);
-        CGFloat B = CComp[2] + (NComp[2] - CComp[2]) * (x - currentIndex);
-       
-//        NSLog(@"%f,%f,%f",R,G,B);
-        self.backgroundColor = [UIColor colorWithRed:R green:G blue:B alpha:1];
-    }
 }
 
 #pragma mark - UI

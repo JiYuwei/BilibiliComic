@@ -40,19 +40,8 @@
 
 -(void)initMJRefresh
 {
-    self.mainTableView.mj_header = [BCRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(retrieveData)];
-    self.mainTableView.mj_footer = [BCRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-}
-
-
--(void)retrieveData
-{
-    [self.mainTableView.mj_header performSelector:@selector(endRefreshing) withObject:nil afterDelay:2];
-}
-
--(void)loadMoreData
-{
-    [self.mainTableView.mj_footer performSelector:@selector(endRefreshingWithNoMoreData) withObject:nil afterDelay:2];
+    self.mainTableView.mj_header = [[BCRefreshHeader alloc] init];
+    self.mainTableView.mj_footer = [[BCRefreshFooter alloc] init];
 }
 
 #pragma mark - UITableViewDataSource

@@ -61,7 +61,7 @@
         [self addSubview:self.firstLabel];
         [self addSubview:self.secondLabel];
         
-        self.searchViewModel = [[HomeSearchViewModel alloc] initWithBindingView:self];
+        self.searchViewModel = [[HomeSearchViewModel alloc] initWithResponder:self];
     }
     return self;
 }

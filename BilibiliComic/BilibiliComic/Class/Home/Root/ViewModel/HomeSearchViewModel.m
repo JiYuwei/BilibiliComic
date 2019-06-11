@@ -15,21 +15,16 @@
 @property (nonatomic,copy,readwrite) NSArray *placeHolders;
 
 @property (nonatomic,strong) HomeSearchModel       *model;
-@property (nonatomic,weak)   SearchCycleScrollView *viewC;
+@property (nonatomic,weak)   SearchCycleScrollView *view;
 
 @end
 
 @implementation HomeSearchViewModel
 
--(instancetype)initWithBindingView:(id)viewC
+-(instancetype)initWithResponder:(UIResponder *)responder
 {
-    if (self = [super initWithBindingView:viewC]) {
-        if ([viewC isKindOfClass:[SearchCycleScrollView class]]) {
-            self.model = [[HomeSearchModel alloc] init];
-            self.viewC = (SearchCycleScrollView *)viewC;
-            [self executeViewModelBinding];
-            [self retrieveSearchData];
-        }
+    if (self = [super initWithResponder:responder]) {
+        [self retrieveSearchData];
     }
     return self;
 }
@@ -39,7 +34,7 @@
     @weakify(self)
     [RACObserve(self, placeHolders) subscribeNext:^(id  _Nullable x) {
         @strongify(self)
-        [self.viewC openScrollMode];
+        [self.view openScrollMode];
     }];
 }
 
@@ -57,12 +52,24 @@
         }
         self.placeHolders = titleArray;
     } needCache:YES requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        [self.model mj_setKeyValues:json];
+        self.model = [HomeSearchModel mj_objectWithKeyValues:json];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         if (needCache) {
-            [self.model mj_setKeyValues:cachedJson];
+            self.model = [HomeSearchModel mj_objectWithKeyValues:cachedJson];
         }
     }];
+}
+
+#pragma mark - LazyLoad
+
+-(SearchCycleScrollView *)view
+{
+    if (!_view) {
+        if ([self.responder isKindOfClass:[SearchCycleScrollView class]]) {
+            _view = (SearchCycleScrollView *)self.responder;
+        }
+    }
+    return _view;
 }
 
 @end

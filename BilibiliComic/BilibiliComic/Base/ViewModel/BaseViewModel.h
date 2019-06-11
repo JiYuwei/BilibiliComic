@@ -10,7 +10,29 @@
 
 @interface BaseViewModel : NSObject
 
--(instancetype)initWithBindingView:(id)viewC;
+@property (nonatomic,weak) UIResponder *responder;
+
+/**
+ 绑定与ViewModel对应的视图
+
+ @param responder 视图
+ @return self
+ */
+-(instancetype)initWithResponder:(UIResponder *)responder;
+
+/**
+ Model与View间的绑定操作
+ */
+-(void)executeViewModelBinding;
+
+/**
+ 下拉刷新
+ */
+-(void)retrieveData;
+/**
+ 上拉加载
+ */
+-(void)loadMoreData;
 
 @end
 

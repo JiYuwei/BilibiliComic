@@ -15,8 +15,5 @@
 @property (nonatomic,strong) UITableView *mainTableView;
 @property (nonatomic,assign) BOOL mainTableViewEnabled;
 
--(void)retrieveData;
--(void)loadMoreData;
-
 @end
 
