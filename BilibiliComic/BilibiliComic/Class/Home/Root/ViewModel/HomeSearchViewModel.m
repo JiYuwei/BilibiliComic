@@ -32,7 +32,7 @@
 -(void)executeViewModelBinding
 {
     @weakify(self)
-    [RACObserve(self, placeHolders) subscribeNext:^(id  _Nullable x) {
+    [[RACObserve(self, placeHolders) skip:1] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
         [self.view openScrollMode];
     }];

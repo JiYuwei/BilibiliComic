@@ -35,7 +35,7 @@ static const NSUInteger PageCount = 10;
     [super executeViewModelBinding];
     
     @weakify(self)
-    [RACObserve(self, list) subscribeNext:^(id  _Nullable x) {
+    [[RACObserve(self, list) skip:1] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
         
         UITableView *mainView = self.recomVC.mainTableView;

@@ -33,21 +33,23 @@
 -(void)executeViewModelBinding
 {
     @weakify(self)
-    [RACObserve(self, imgURLs) subscribeNext:^(id  _Nullable x) {
+    
+    [[RACObserve(self, imgURLs) skip:1] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
         [self.view.pageFlowView reloadData];
     }];
     
-    [RACObserve(self, colorBox) subscribeNext:^(id  _Nullable x) {
+    [[RACObserve(self, colorBox) skip:1] subscribeNext:^(id  _Nullable x) {
+        @strongify(self)
+        self.view.backgroundColor = self.colorBox.firstObject;
+    }];
+    
+    [[self.view.pageFlowView rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable views) {
         @strongify(self)
         
         NSArray <UIColor *> *box = self.colorBox;
-        self.view.backgroundColor = box.firstObject;
         
-        @weakify(self)
-        [[self.view.pageFlowView rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable views) {
-            @strongify(self)
-            
+        if (box.count > 0) {
             UIScrollView *scrollView = (UIScrollView *)views.first;
             CGFloat offset = scrollView.contentOffset.x;
             
@@ -72,7 +74,7 @@
                 
                 self.view.backgroundColor = [UIColor colorWithRed:R green:G blue:B alpha:1];
             }
-        }];
+        }
     }];
 }
 
