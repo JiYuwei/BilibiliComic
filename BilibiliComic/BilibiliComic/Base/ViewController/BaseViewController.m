@@ -8,17 +8,12 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
-
-@property (nonatomic,strong) UITableView *tableView;
-
-@end
-
 @implementation BaseViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = NO;
@@ -26,17 +21,11 @@
     self.automaticallyAdjustsScrollViewInsets=NO;
     
     if (self.mainTableViewEnabled) {
-        [self initMainTableView];
         [self initMJRefresh];
     }
 }
 
 #pragma mark - GeneralUI
-
--(void)initMainTableView
-{
-    [self.mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
-}
 
 -(void)initMJRefresh
 {
@@ -53,8 +42,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class]) forIndexPath:indexPath];
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([UITableViewCell class])];
+    }
     cell.textLabel.text = [NSString stringWithFormat:@"MainLine:%lu",indexPath.row+1];
     
     return cell;

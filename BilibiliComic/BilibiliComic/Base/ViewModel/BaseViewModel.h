@@ -8,7 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BaseViewModel : NSObject
+@protocol BCViewModelDataProtocol <NSObject>
+
+@optional
+-(NSInteger)customNumberOfRowsInSection:(NSInteger)section;
+-(UITableViewCell *)customCellForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+@protocol BCViewModelProtocol <NSObject>
+
+@optional
+-(CGFloat)customHeightForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+@end
+
+
+@interface BaseViewModel : NSObject <BCViewModelDataProtocol,BCViewModelProtocol>
 
 @property (nonatomic,weak) UIResponder *responder;
 
@@ -20,19 +36,18 @@
  */
 -(instancetype)initWithResponder:(UIResponder *)responder;
 
-/**
- Model与View间的绑定操作
- */
--(void)executeViewModelBinding;
+/** Model与View间的绑定操作 */
+-(void)initViewModelBinding;
 
-/**
- 下拉刷新
- */
+/** 注册自定义Cell */
+-(void)registerMainTableViewCell;
+
+/** 下拉刷新 */
 -(void)retrieveData;
-/**
- 上拉加载
- */
+/** 上拉加载 */
 -(void)loadMoreData;
+
+
 
 @end
 

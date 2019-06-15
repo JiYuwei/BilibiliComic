@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@class StockData,List,Styles;
+@class StockData,StockList,StockStyles;
 
 @interface HomeStockModel : BaseModel
 
@@ -19,14 +19,14 @@
 @interface StockData : NSObject
 
 @property (nonatomic, copy)   NSString * seed;
-@property (nonatomic, copy)   NSArray <List *> * list;
+@property (nonatomic, copy)   NSArray <StockList *> * list;
 
 @end
 
-@interface List : NSObject
+@interface StockList : NSObject
 
 @property (nonatomic, copy)   NSString * img;
-@property (nonatomic, copy)   NSArray <Styles *> * styles;
+@property (nonatomic, copy)   NSArray <StockStyles *> * styles;
 @property (nonatomic, copy)   NSString * sub_title;
 @property (nonatomic, copy)   NSString * jump_value;
 @property (nonatomic, assign) NSInteger  comic_id;
@@ -34,7 +34,7 @@
 
 @end
 
-@interface Styles : NSObject
+@interface StockStyles : NSObject
 
 @property (nonatomic, assign) NSInteger  idField;
 @property (nonatomic, copy)   NSString * name;

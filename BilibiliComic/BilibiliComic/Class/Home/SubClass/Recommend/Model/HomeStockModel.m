@@ -20,20 +20,20 @@
 @implementation StockData
 
 + (NSDictionary *)objectClassInArray {
-    return @{@"list" : [List class]};
+    return @{@"list" : [StockList class]};
 }
 
 @end
 
-@implementation List
+@implementation StockList
 
 + (NSDictionary *)objectClassInArray {
-    return @{@"styles" : [Styles class]};
+    return @{@"styles" : [StockStyles class]};
 }
 
 @end
 
-@implementation Styles
+@implementation StockStyles
 
 + (NSDictionary *)mj_replacedKeyFromPropertyName {
     return @{@"idField":@"id",};

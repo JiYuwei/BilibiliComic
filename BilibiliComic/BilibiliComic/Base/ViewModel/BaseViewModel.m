@@ -21,15 +21,21 @@
 {
     if (self = [super init]) {
         self.responder = responder;
-        [self executeViewModelBinding];
+        [self initViewModelBinding];
+        [self registerMainTableViewCell];
     }
     return self;
 }
 
--(void)executeViewModelBinding
+-(void)initViewModelBinding
 {
     [self.baseVC.mainTableView.mj_header setRefreshingTarget:self refreshingAction:@selector(retrieveData)];
     [self.baseVC.mainTableView.mj_footer setRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
+}
+
+-(void)registerMainTableViewCell
+{
+    //Empty
 }
 
 -(void)retrieveData

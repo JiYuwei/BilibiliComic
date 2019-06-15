@@ -7,13 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class List;
+#import "HomeStockCellModel.h"
 
 static const CGFloat Padding = 18;
 
 @interface HomeStockListCell : UITableViewCell
 
-@property (nonatomic,strong) List *homeStockList;
+@property (nonatomic,strong) HomeStockCellModel *cellModel;
+
+@property (nonatomic,strong) UIImageView *comicView;
+//@property (nonatomic,strong) UIImageView *statusView;
+@property (nonatomic,strong) UILabel     *titleLabel;
+@property (nonatomic,strong) UILabel     *subTitleLabel;
+@property (nonatomic,strong) UILabel     *tagLabel;
 
 @end

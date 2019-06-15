@@ -48,6 +48,7 @@
 		097918F6227066B800C243B7 /* BCFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F5227066B800C243B7 /* BCFlowView.m */; };
 		097918F92270687700C243B7 /* BCIndexBannerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F82270687700C243B7 /* BCIndexBannerSubview.m */; };
 		097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918FB22706B1500C243B7 /* BCHeaderView.m */; };
+		0987488E22B3BCB100031CD5 /* HomeStockCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0987488D22B3BCB100031CD5 /* HomeStockCellModel.m */; };
 		09982B772217EBE4006CB358 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B762217EBE4006CB358 /* AppDelegate.m */; };
 		09982B7F2217EBE5006CB358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09982B7E2217EBE5006CB358 /* Assets.xcassets */; };
 		09982B852217EBE5006CB358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B842217EBE5006CB358 /* main.m */; };
@@ -1486,6 +1487,8 @@
 		097918F82270687700C243B7 /* BCIndexBannerSubview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCIndexBannerSubview.m; sourceTree = "<group>"; };
 		097918FA22706B1500C243B7 /* BCHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCHeaderView.h; sourceTree = "<group>"; };
 		097918FB22706B1500C243B7 /* BCHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCHeaderView.m; sourceTree = "<group>"; };
+		0987488C22B3BCB100031CD5 /* HomeStockCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeStockCellModel.h; sourceTree = "<group>"; };
+		0987488D22B3BCB100031CD5 /* HomeStockCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeStockCellModel.m; sourceTree = "<group>"; };
 		09982B722217EBE4006CB358 /* BilibiliComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilibiliComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09982B752217EBE4006CB358 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09982B762217EBE4006CB358 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -3097,6 +3100,8 @@
 				096E55A922A91FDD00ADB978 /* HomeBannerViewModel.m */,
 				096E55AB22A9200500ADB978 /* HomeStockViewModel.h */,
 				096E55AC22A9200500ADB978 /* HomeStockViewModel.m */,
+				0987488C22B3BCB100031CD5 /* HomeStockCellModel.h */,
+				0987488D22B3BCB100031CD5 /* HomeStockCellModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -6168,6 +6173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0958897B227EF39700A41D02 /* BaseModel.m in Sources */,
+				0987488E22B3BCB100031CD5 /* HomeStockCellModel.m in Sources */,
 				09036C0E2286AD520093C18B /* BCRefreshFooter.m in Sources */,
 				096D0291221836350067651A /* ClassifyViewController.m in Sources */,
 				09EB8B1122643BE400FCAAE4 /* BCPagesTopBar.m in Sources */,

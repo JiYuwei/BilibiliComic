@@ -7,7 +7,6 @@
 //
 
 #import "RecomViewController.h"
-#import "HomeStockListCell.h"
 #import "HomeStockViewModel.h"
 
 @interface RecomViewController ()
@@ -25,20 +24,15 @@
     self.mainTableView.mj_header.frame = CGRectMake(0, 0, BC_SCREEN_WIDTH, BC_NAV_HEIGHT);
     
     [self initTableHeaderview];
-    [self initRecomListCell];
     
     self.homeStockViewModel = [[HomeStockViewModel alloc] initWithResponder:self];
 }
 
 #pragma mark - UI
+
 -(void)initTableHeaderview
 {
     self.mainTableView.tableHeaderView = self.bannerView;
-}
-
--(void)initRecomListCell
-{
-    [self.mainTableView registerClass:[HomeStockListCell class] forCellReuseIdentifier:NSStringFromClass([HomeStockListCell class])];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -52,22 +46,19 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.homeStockViewModel.list.count;
+    return [self.homeStockViewModel customNumberOfRowsInSection:section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HomeStockListCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeStockListCell class]) forIndexPath:indexPath];
-    cell.homeStockList = self.homeStockViewModel.list[indexPath.row];
-    
-    return cell;
+    return [self.homeStockViewModel customCellForRowAtIndexPath:indexPath];
 }
 
 #pragma mark UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return DefaultViewHeight;
+    return [self.homeStockViewModel customHeightForRowAtIndexPath:indexPath];
 }
 
 #pragma mark - LazyLoad

@@ -8,8 +8,9 @@
 
 #import "HomeStockViewModel.h"
 #import "HomeBannerViewModel.h"
-#import "HomeStockModel.h"
 #import "RecomViewController.h"
+#import "HomeStockListCell.h"
+#import "HomeStockModel.h"
 
 static const NSUInteger PageCount = 10;
 
@@ -30,12 +31,14 @@ static const NSUInteger PageCount = 10;
     return self;
 }
 
--(void)executeViewModelBinding
+#pragma mark - OverWrite
+
+-(void)initViewModelBinding
 {
-    [super executeViewModelBinding];
+    [super initViewModelBinding];
     
     @weakify(self)
-    [[RACObserve(self, list) skip:1] subscribeNext:^(id  _Nullable x) {
+    [[RACObserve(self, model.data) skip:1] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
         
         UITableView *mainView = self.recomVC.mainTableView;
@@ -58,15 +61,42 @@ static const NSUInteger PageCount = 10;
     }];
 }
 
+-(void)registerMainTableViewCell
+{
+    [self.recomVC.mainTableView registerClass:[HomeStockListCell class] forCellReuseIdentifier:NSStringFromClass([HomeStockListCell class])];
+}
+
 -(void)retrieveData
 {
-//    [self.recomVC.bannerView.bannerViewModel retrieveBannerAllowCache:NO];
+    [self.recomVC.bannerView.bannerViewModel retrieveBannerAllowCache:NO];
     [self retrieveHomeStockDataAllowCache:NO];
 }
 
 -(void)loadMoreData
 {
     [self loadMoreHomeStockData];
+}
+
+#pragma mark - BCViewModelDataProtocol
+
+-(NSInteger)customNumberOfRowsInSection:(NSInteger)section
+{
+    return self.model.data.list.count;
+}
+
+-(UITableViewCell *)customCellForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    HomeStockListCell *cell = [self.recomVC.mainTableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeStockListCell class]) forIndexPath:indexPath];
+    [cell.cellModel fillDataWithStockList:self.model.data.list[indexPath.row]];
+    
+    return cell;
+}
+
+#pragma mark - BCViewModelProtocol
+
+-(CGFloat)customHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return DefaultViewHeight;
 }
 
 #pragma mark - Data
@@ -79,9 +109,7 @@ static const NSUInteger PageCount = 10;
                                  @"page_num":@1,
                                  @"seed":@0,
                                  };
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
-        self.list = self.model.data.list;
-    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
         self.model = [HomeStockModel mj_objectWithKeyValues:json];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         if (needCache) {
@@ -100,9 +128,7 @@ static const NSUInteger PageCount = 10;
                                  @"page_num":@(page),
                                  @"seed":@(data.seed.integerValue),
                                  };
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
-        self.list = self.model.data.list;
-    } needCache:NO requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:NO requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
         HomeStockModel *homeStockModel = [HomeStockModel mj_objectWithKeyValues:json];
         [self addMoreEntriesWithModel:homeStockModel];
     } failure:nil];
@@ -110,10 +136,12 @@ static const NSUInteger PageCount = 10;
 
 -(void)addMoreEntriesWithModel:(HomeStockModel *)homeStockModel
 {
-    NSMutableArray <List *> *list = [NSMutableArray arrayWithArray:self.model.data.list];
+    StockData *data = self.model.data;
+    NSMutableArray <StockList *> *list = [NSMutableArray arrayWithArray:data.list];
     [list addObjectsFromArray:homeStockModel.data.list];
-    self.model.data.list = list;
-    self.model.data.seed = homeStockModel.data.seed;
+    data.list = list;
+    data.seed = homeStockModel.data.seed;
+    self.model.data = data;
 }
 
 #pragma mark - LazyLoad

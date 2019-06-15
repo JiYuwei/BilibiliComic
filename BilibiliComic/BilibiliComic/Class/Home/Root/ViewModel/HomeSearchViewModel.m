@@ -29,7 +29,7 @@
     return self;
 }
 
--(void)executeViewModelBinding
+-(void)initViewModelBinding
 {
     @weakify(self)
     [[RACObserve(self, placeHolders) skip:1] subscribeNext:^(id  _Nullable x) {

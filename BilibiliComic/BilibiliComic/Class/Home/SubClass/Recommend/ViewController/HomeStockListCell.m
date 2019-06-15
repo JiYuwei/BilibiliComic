@@ -7,23 +7,12 @@
 //
 
 #import "HomeStockListCell.h"
-#import "HomeStockModel.h"
 
 #define DefTitleFont  @"RecomListDefTitleFont"
 #define SubTitleFont  @"RecomListSubTitleFont"
 
 static const CGFloat TAGWidth  = 32;
 static const CGFloat TAGHeight = 18;
-
-@interface HomeStockListCell ()
-
-@property (nonatomic,strong) UIImageView *comicView;
-//@property (nonatomic,strong) UIImageView *statusView;
-@property (nonatomic,strong) UILabel     *titleLabel;
-@property (nonatomic,strong) UILabel     *subTitleLabel;
-@property (nonatomic,strong) UILabel     *tagLabel;
-
-@end
 
 @implementation HomeStockListCell
 {
@@ -37,6 +26,7 @@ static const CGFloat TAGHeight = 18;
         _defTitleFont = [PlistManager widthWithKey:DefTitleFont];
         _subTitleFont = [PlistManager widthWithKey:SubTitleFont];
         [self cusLayoutAllSubViews];
+        self.cellModel = [[HomeStockCellModel alloc] initWithResponder:self];
     }
     return self;
 }
@@ -74,31 +64,6 @@ static const CGFloat TAGHeight = 18;
         make.centerY.equalTo(self.titleLabel);
         make.size.mas_equalTo(CGSizeMake(TAGWidth, TAGHeight));
     }];
-}
-
-#pragma mark - Setter
-
--(void)setHomeStockList:(List *)homeStockList
-{
-    if (homeStockList && _homeStockList != homeStockList) {
-        _homeStockList = homeStockList;
-        
-        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_homeStockList.img] placeholderImage:BCImage(@"comic_thumb_placeholder1_ico_343x192_")];
-        self.titleLabel.text = _homeStockList.title;
-        
-        NSString *subTitle = _homeStockList.sub_title;
-        BOOL pureNum = [subTitle mj_isPureInt];
-        self.subTitleLabel.text = pureNum ? [NSString stringWithFormat:@"第%@话",subTitle] : subTitle;
-        
-        BOOL style = _homeStockList.styles.count > 0;
-        self.tagLabel.hidden = !style;
-        self.tagLabel.text = style ? _homeStockList.styles.firstObject.name : nil;
-        NSString *colorID = [NSString stringWithFormat:@"%ld",_homeStockList.styles.firstObject.idField];
-        colorID = [[colorID md5] substringWithRange:NSMakeRange(10, 6)];
-        UIColor *tagColor = [UIColor colorWithHexString:[NSString stringWithFormat:@"#%@",colorID]];
-        self.tagLabel.textColor = tagColor;
-        self.tagLabel.layer.backgroundColor = [tagColor lightBackColor].CGColor;
-    }
 }
 
 #pragma mark - LazyLoad

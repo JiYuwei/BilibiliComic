@@ -30,7 +30,7 @@
     return self;
 }
 
--(void)executeViewModelBinding
+-(void)initViewModelBinding
 {
     @weakify(self)
     
