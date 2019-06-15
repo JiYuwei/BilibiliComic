@@ -12,11 +12,11 @@
 
 @interface HomeBannerViewModel ()
 
-@property (nonatomic,copy,readwrite) NSArray <NSString *>  *imgURLs;
-@property (nonatomic,copy,readwrite) NSArray <UIColor *>   *colorBox;
-
 @property (nonatomic,strong) HomeBannerModel  *model;
 @property (nonatomic,weak)   BCHeaderView     *view;
+
+@property (nonatomic,copy) NSArray <NSString *>  *imgURLs;
+@property (nonatomic,copy) NSArray <UIColor *>   *colorBox;
 
 @end
 
@@ -29,6 +29,8 @@
     }
     return self;
 }
+
+#pragma mark - OverWrite
 
 -(void)initViewModelBinding
 {
@@ -78,7 +80,7 @@
     }];
 }
 
-#pragma mark - Data
+#pragma mark - Public & Data 
 
 -(void)retrieveBannerAllowCache:(BOOL)cache
 {
@@ -98,6 +100,27 @@
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         self.model = [HomeBannerModel mj_objectWithKeyValues:cachedJson];
     }];
+}
+
+#pragma mark - HomeBannerDataProtocol
+
+-(NSInteger)numberOfPages
+{
+    return self.imgURLs.count;
+}
+
+-(BCIndexBannerSubview *)flowView:(BCFlowView *)flowView customCellForPageAtIndex:(NSInteger)index
+{
+    BCIndexBannerSubview *bannerView = (BCIndexBannerSubview *)[flowView dequeueReusableCell];
+    if (!bannerView) {
+        bannerView = [[BCIndexBannerSubview alloc] init];
+        bannerView.coverView.backgroundColor = [UIColor darkGrayColor];
+    }
+    //在这里下载网络图片
+    NSString *imgURL = self.imgURLs[index];
+    [bannerView.mainImageView sd_setFadeImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:BCImage(@"comic_thumb_placeholder1_ico_343x192_")];
+    
+    return bannerView;
 }
 
 #pragma mark - LazyLoad

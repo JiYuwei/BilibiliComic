@@ -8,10 +8,17 @@
 
 #import "BaseViewModel.h"
 
-@interface HomeBannerViewModel : BaseViewModel
+@class BCFlowView,BCIndexBannerSubview;
 
-@property (nonatomic,copy,readonly) NSArray <NSString *>  *imgURLs;
-@property (nonatomic,copy,readonly) NSArray <UIColor *>   *colorBox;
+@protocol HomeBannerDataProtocol <NSObject>
+
+-(NSInteger)numberOfPages;
+-(BCIndexBannerSubview *)flowView:(BCFlowView *)flowView customCellForPageAtIndex:(NSInteger)index;
+
+@end
+
+
+@interface HomeBannerViewModel : BaseViewModel <HomeBannerDataProtocol>
 
 -(void)retrieveBannerAllowCache:(BOOL)cache;
 

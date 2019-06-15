@@ -32,24 +32,12 @@
 
 - (NSInteger)numberOfPagesInFlowView:(BCFlowView *)flowView
 {
-    return self.bannerViewModel.imgURLs.count;
+    return [self.bannerViewModel numberOfPages];
 }
 
 - (BCIndexBannerSubview *)flowView:(BCFlowView *)flowView cellForPageAtIndex:(NSInteger)index
 {
-    BCIndexBannerSubview *bannerView = (BCIndexBannerSubview *)[flowView dequeueReusableCell];
-    if (!bannerView) {
-        bannerView = [[BCIndexBannerSubview alloc] init];
-        bannerView.coverView.backgroundColor = [UIColor darkGrayColor];
-    }
-    //在这里下载网络图片
-    NSString *imgURL = self.bannerViewModel.imgURLs[index];
-    [bannerView.mainImageView sd_setFadeImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:BCImage(@"comic_thumb_placeholder1_ico_343x192_")];
-
-    //加载本地图片
-//    bannerView.mainImageView.image = [UIImage imageNamed:self.advArray[index]];
-//    bannerView.mainImageView.backgroundColor = GRandomColor;
-    return bannerView;
+    return [self.bannerViewModel flowView:flowView customCellForPageAtIndex:index];
 }
 
 #pragma mark BCFlowViewDelegate
@@ -60,14 +48,9 @@
     return CGSizeMake(pageWidth, pageWidth / 2);
 }
 
-//-(void)didScrollToPage:(NSInteger)pageNumber inFlowView:(BCFlowView *)flowView
-//{
-//
-//}
-
 -(void)didSelectCell:(BCIndexBannerSubview *)subView withSubViewIndex:(NSInteger)subIndex
 {
-    
+    //Empty RAC_signalForSelecter -> RecomViewController
 }
 
 #pragma mark - LazyLoad
