@@ -49,6 +49,7 @@
 		097918F92270687700C243B7 /* BCIndexBannerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918F82270687700C243B7 /* BCIndexBannerSubview.m */; };
 		097918FC22706B1500C243B7 /* BCHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 097918FB22706B1500C243B7 /* BCHeaderView.m */; };
 		0987488E22B3BCB100031CD5 /* HomeStockCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0987488D22B3BCB100031CD5 /* HomeStockCellModel.m */; };
+		0987489922B8E88B00031CD5 /* RankListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0987489822B8E88B00031CD5 /* RankListViewModel.m */; };
 		09982B772217EBE4006CB358 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B762217EBE4006CB358 /* AppDelegate.m */; };
 		09982B7F2217EBE5006CB358 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09982B7E2217EBE5006CB358 /* Assets.xcassets */; };
 		09982B852217EBE5006CB358 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09982B842217EBE5006CB358 /* main.m */; };
@@ -1489,6 +1490,8 @@
 		097918FB22706B1500C243B7 /* BCHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCHeaderView.m; sourceTree = "<group>"; };
 		0987488C22B3BCB100031CD5 /* HomeStockCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeStockCellModel.h; sourceTree = "<group>"; };
 		0987488D22B3BCB100031CD5 /* HomeStockCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeStockCellModel.m; sourceTree = "<group>"; };
+		0987489722B8E88B00031CD5 /* RankListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankListViewModel.h; sourceTree = "<group>"; };
+		0987489822B8E88B00031CD5 /* RankListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankListViewModel.m; sourceTree = "<group>"; };
 		09982B722217EBE4006CB358 /* BilibiliComic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BilibiliComic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09982B752217EBE4006CB358 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09982B762217EBE4006CB358 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -2887,24 +2890,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		09036C15228C17180093C18B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
-				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		09036C16228C171E0093C18B /* View */ = {
+		09036C15228C17180093C18B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				09036C1B228CFA2F0093C18B /* RankListViewCell.h */,
 				09036C1C228CFA2F0093C18B /* RankListViewCell.m */,
 				09036C29228FD2270093C18B /* RankFansView.h */,
 				09036C2A228FD2270093C18B /* RankFansView.m */,
+				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
+				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
 			);
-			path = View;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		09036C16228C171E0093C18B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0987489722B8E88B00031CD5 /* RankListViewModel.h */,
+				0987489822B8E88B00031CD5 /* RankListViewModel.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		09036C17228C17200093C18B /* Model */ = {
@@ -4550,8 +4555,8 @@
 			isa = PBXGroup;
 			children = (
 				09036C17228C17200093C18B /* Model */,
-				09036C16228C171E0093C18B /* View */,
-				09036C15228C17180093C18B /* Controller */,
+				09036C16228C171E0093C18B /* ViewModel */,
+				09036C15228C17180093C18B /* ViewController */,
 			);
 			path = Rank;
 			sourceTree = "<group>";
@@ -6220,6 +6225,7 @@
 				09EB8B2B2265F24F00FCAAE4 /* NewViewController.m in Sources */,
 				096D0297221836580067651A /* MeViewController.m in Sources */,
 				09982B772217EBE4006CB358 /* AppDelegate.m in Sources */,
+				0987489922B8E88B00031CD5 /* RankListViewModel.m in Sources */,
 				09036C2B228FD2270093C18B /* RankFansView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
