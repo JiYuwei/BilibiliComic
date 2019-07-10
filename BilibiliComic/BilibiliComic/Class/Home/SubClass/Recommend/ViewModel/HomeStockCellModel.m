@@ -27,10 +27,10 @@
 
 -(void)initViewModelBinding
 {
-    RAC(self.cell.titleLabel, text)       = RACObserve(self, titleText);
-    RAC(self.cell.subTitleLabel, text)    = RACObserve(self, subTitleText);
-    RAC(self.cell.tagLabel, text)         = RACObserve(self, tagLabelText);
-    RAC(self.cell.tagLabel, hidden)       = RACObserve(self, tagHidden);
+    RAC(self.cell.titleLabel, text)    = RACObserve(self, titleText);
+    RAC(self.cell.subTitleLabel, text) = RACObserve(self, subTitleText);
+    RAC(self.cell.tagLabel, text)      = RACObserve(self, tagLabelText);
+    RAC(self.cell.tagLabel, hidden)    = RACObserve(self, tagHidden);
 
     @weakify(self)
     [[RACObserve(self, comicUrl) skip:1] subscribeNext:^(id  _Nullable x) {
