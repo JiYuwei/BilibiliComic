@@ -8,10 +8,6 @@
 
 #import "BaseViewModel.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface RankListViewModel : BaseViewModel
 
 @end
-
-NS_ASSUME_NONNULL_END

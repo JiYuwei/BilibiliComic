@@ -10,4 +10,19 @@
 
 @implementation RankListViewModel
 
+-(instancetype)initWithResponder:(UIResponder *)responder
+{
+    if (self = [super initWithResponder:responder]) {
+        
+    }
+    return self;
+}
+
+#pragma mark - Overwrite
+
+-(void)initViewModelBinding
+{
+    
+}
+
 @end
