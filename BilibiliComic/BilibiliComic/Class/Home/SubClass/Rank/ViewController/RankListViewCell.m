@@ -63,7 +63,7 @@ static const CGFloat SubFont   = 13;
         make.right.equalTo(self.contentView).offset(-Padding);
     }];
     
-    NSString *fansCellID = [NSString stringWithFormat:@"%@2",NSStringFromClass([RankListViewCell class])];
+    NSString *fansCellID = [NSString stringWithFormat:@"%@_2",NSStringFromClass([RankListViewCell class])];
     
     if ([self.reuseIdentifier isEqualToString:fansCellID]) {
         [self.fansSrcLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -10,4 +10,6 @@
 
 @interface RankListViewModel : BaseViewModel
 
+-(instancetype)initWithResponder:(UIResponder *)responder index:(NSUInteger)index tableView:(UITableView *)tableView ;
+
 @end

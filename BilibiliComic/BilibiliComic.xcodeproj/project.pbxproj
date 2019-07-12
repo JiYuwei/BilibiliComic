@@ -2893,12 +2893,12 @@
 		09036C15228C17180093C18B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
+				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
 				09036C1B228CFA2F0093C18B /* RankListViewCell.h */,
 				09036C1C228CFA2F0093C18B /* RankListViewCell.m */,
 				09036C29228FD2270093C18B /* RankFansView.h */,
 				09036C2A228FD2270093C18B /* RankFansView.m */,
-				09EB8B262265F22900FCAAE4 /* RankViewController.h */,
-				09EB8B272265F22900FCAAE4 /* RankViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3051,18 +3051,18 @@
 		097918ED227064A800C243B7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				09EB8B0F22643BE400FCAAE4 /* BCPagesTopBar.h */,
-				09EB8B1022643BE400FCAAE4 /* BCPagesTopBar.m */,
-				09D5422F22673B25007681E4 /* BCRefreshHeader.h */,
-				09D5423022673B25007681E4 /* BCRefreshHeader.m */,
-				09036C0C2286AD520093C18B /* BCRefreshFooter.h */,
-				09036C0D2286AD520093C18B /* BCRefreshFooter.m */,
 				096D0285221835420067651A /* BaseTabbarController.h */,
 				096D0286221835420067651A /* BaseTabbarController.m */,
 				09591285225D860200142DF7 /* BaseNavigationController.h */,
 				09591286225D860200142DF7 /* BaseNavigationController.m */,
 				096D0281221818970067651A /* BaseViewController.h */,
 				096D0282221818970067651A /* BaseViewController.m */,
+				09EB8B0F22643BE400FCAAE4 /* BCPagesTopBar.h */,
+				09EB8B1022643BE400FCAAE4 /* BCPagesTopBar.m */,
+				09D5422F22673B25007681E4 /* BCRefreshHeader.h */,
+				09D5423022673B25007681E4 /* BCRefreshHeader.m */,
+				09036C0C2286AD520093C18B /* BCRefreshFooter.h */,
+				09036C0D2286AD520093C18B /* BCRefreshFooter.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -3090,10 +3090,10 @@
 			isa = PBXGroup;
 			children = (
 				097918EA227063D500C243B7 /* BCHeaderView */,
-				09F62925227AB73000F4638B /* HomeStockListCell.h */,
-				09F62926227AB73000F4638B /* HomeStockListCell.m */,
 				09EB8B232265F1FC00FCAAE4 /* RecomViewController.h */,
 				09EB8B242265F1FC00FCAAE4 /* RecomViewController.m */,
+				09F62925227AB73000F4638B /* HomeStockListCell.h */,
+				09F62926227AB73000F4638B /* HomeStockListCell.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

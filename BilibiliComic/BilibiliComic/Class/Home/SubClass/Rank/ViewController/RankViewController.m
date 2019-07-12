@@ -8,68 +8,30 @@
 
 #import "RankViewController.h"
 #import "BCPagesTopBar.h"
-#import "RankListViewCell.h"
-#import "RankListModel.h"
+#import "RankListViewModel.h"
 
 static const CGFloat RankTopBarHeight = 40;
 
 @interface RankViewController ()
 
+@property (nonatomic,assign) NSUInteger     capacity;
 @property (nonatomic,strong) BCPagesTopBar *rankPagesTopBar;
+@property (nonatomic,strong) UIScrollView  *rankScrollView;
 
-@property (nonatomic,strong) UIScrollView *rankScrollView;
 @property (nonatomic,strong) NSMutableArray <UITableView *>   *rankTableViews;
-@property (nonatomic,strong) NSMutableArray <RankListModel *> *rankListModels;
+@property (nonatomic,strong) NSMutableArray <RankListViewModel *> *rankListViewModels;
 
 @end
 
 @implementation RankViewController
-{
-    NSUInteger Capacity;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    Capacity = self.rankPagesTopBar.itemTitles.count;
-    
     [self initRankPagesTopBar];
     [self initRankTableViews];
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self retrieveRankData];
-}
-
-#pragma mark - Data
-
--(void)retrieveRankData
-{
-    for (NSInteger i = 0; i < Capacity; i++) {
-        [self retrieveRankDataAtIndex:i allowCache:YES];
-    }
-}
-
--(void)retrieveRankDataAtIndex:(NSUInteger)index allowCache:(BOOL)cache
-{
-    BOOL isHot = index < 2;
-    NSString *url = isHot ? HOME_HOT : HOME_FANS;
-    NSDictionary *parameters = isHot ? @{@"type":@(index)} : @{};
-    
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
-        [self.rankTableViews[index].mj_header endRefreshing];
-        [self.rankTableViews[index].mj_footer endRefreshingWithNoMoreData];
-        [self.rankTableViews[index] reloadData];
-    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
-        self.rankListModels[index] = [RankListModel mj_objectWithKeyValues:json];
-    } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
-        if (needCache) {
-            self.rankListModels[index] = [RankListModel mj_objectWithKeyValues:cachedJson];
-        }
-    }];
+    [self initRankListViewModels];
 }
 
 #pragma mark - UI
@@ -90,7 +52,7 @@ static const CGFloat RankTopBarHeight = 40;
     CGFloat width  = self.rankScrollView.vWidth;
     CGFloat height = self.rankScrollView.vHeight;
     
-    for (NSUInteger i = 0; i < Capacity; i++) {
+    for (NSUInteger i = 0; i < self.capacity; i++) {
         UITableView *rankTableView = [[UITableView alloc] initWithFrame:CGRectMake(width * i, 0, width, height) style:UITableViewStyleGrouped];
         rankTableView.backgroundColor = [UIColor whiteColor];
         rankTableView.dataSource = self;
@@ -99,10 +61,8 @@ static const CGFloat RankTopBarHeight = 40;
         rankTableView.showsHorizontalScrollIndicator = NO;
         rankTableView.showsVerticalScrollIndicator = NO;
         
-        rankTableView.mj_header = [BCRefreshHeader headerWithRefreshingBlock:^{
-            [self retrieveRankDataAtIndex:i allowCache:NO];
-        }];
-        rankTableView.mj_footer = [BCRefreshFooter footerWithRefreshingBlock:nil];
+        rankTableView.mj_header = [[BCRefreshHeader alloc] init];
+        rankTableView.mj_footer = [[BCRefreshFooter alloc] init];
         
         if (@available(iOS 11.0, *)) {
             rankTableView.estimatedRowHeight = 0;
@@ -111,10 +71,16 @@ static const CGFloat RankTopBarHeight = 40;
             rankTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
         }
         
-        [rankTableView registerClass:[RankListViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%@%lu",NSStringFromClass([RankListViewCell class]),i]];
-        
         [self.rankScrollView addSubview:rankTableView];
         [self.rankTableViews addObject:rankTableView];
+    }
+}
+
+-(void)initRankListViewModels
+{
+    for (NSInteger i = 0; i < self.capacity; i++) {
+        RankListViewModel *viewModel = [[RankListViewModel alloc] initWithResponder:self index:i tableView:self.rankTableViews[i]];
+        [self.rankListViewModels addObject:viewModel];
     }
 }
 
@@ -122,41 +88,22 @@ static const CGFloat RankTopBarHeight = 40;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSUInteger index = [self.rankTableViews indexOfObject:tableView];
-
-    if (tableView == self.rankTableViews.lastObject) {
-        return self.rankListModels.lastObject.fansData.comics.count;
-    }
-    else{
-        return self.rankListModels[index].rankData.count;
-    }
-    
-    return 0;
+    NSUInteger i = [self.rankTableViews indexOfObject:tableView];
+    return [self.rankListViewModels[i] customNumberOfRowsInSection:section];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSUInteger i = [self.rankTableViews indexOfObject:tableView];
-    RankListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"%@%lu",NSStringFromClass([RankListViewCell class]),i] forIndexPath:indexPath];
-    cell.rank = indexPath.row + 1;
-    
-    NSUInteger index = [self.rankTableViews indexOfObject:tableView];
-    
-    if (tableView == self.rankTableViews.lastObject) {
-        cell.fansComics = self.rankListModels.lastObject.fansData.comics[indexPath.row];
-    }
-    else{
-        cell.rankData = self.rankListModels[index].rankData[indexPath.row];
-    }
-    
-    return cell;
+    return [self.rankListViewModels[i] customCellForRowAtIndexPath:indexPath];
 }
 
 #pragma mark UITableViewDelegate
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CellHeight;
+    NSUInteger i = [self.rankTableViews indexOfObject:tableView];
+    return [self.rankListViewModels[i] customHeightForRowAtIndexPath:indexPath];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -197,6 +144,14 @@ static const CGFloat RankTopBarHeight = 40;
 
 #pragma mark - LazyLoad
 
+-(NSUInteger)capacity
+{
+    if (!_capacity) {
+        _capacity = self.rankPagesTopBar.itemTitles.count;
+    }
+    return _capacity;
+}
+
 -(BCPagesTopBar *)rankPagesTopBar
 {
     if (!_rankPagesTopBar) {
@@ -212,7 +167,7 @@ static const CGFloat RankTopBarHeight = 40;
 {
     if (!_rankScrollView) {
         _rankScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, BC_NAV_HEIGHT + RankTopBarHeight, BC_SCREEN_WIDTH, BC_SCREEN_HEIGHT - BC_TABBAR_HEIGHT - BC_NAV_HEIGHT - RankTopBarHeight)];
-        _rankScrollView.contentSize = CGSizeMake(BC_SCREEN_WIDTH * Capacity, 0);
+        _rankScrollView.contentSize = CGSizeMake(BC_SCREEN_WIDTH * self.capacity, 0);
         _rankScrollView.showsVerticalScrollIndicator = NO;
         _rankScrollView.showsHorizontalScrollIndicator = NO;
         _rankScrollView.pagingEnabled = YES;
@@ -226,21 +181,17 @@ static const CGFloat RankTopBarHeight = 40;
 -(NSMutableArray<UITableView *> *)rankTableViews
 {
     if (!_rankTableViews) {
-        _rankTableViews = [NSMutableArray arrayWithCapacity:Capacity];
+        _rankTableViews = [NSMutableArray arrayWithCapacity:self.capacity];
     }
     return _rankTableViews;
 }
 
--(NSMutableArray<RankListModel *> *)rankListModels
+-(NSMutableArray<RankListViewModel *> *)rankListViewModels
 {
-    if (!_rankListModels) {
-        _rankListModels = [NSMutableArray arrayWithCapacity:Capacity];
-        for (NSInteger i = 0; i < Capacity; i++) {
-            RankListModel *model = [[RankListModel alloc] init];
-            [_rankListModels addObject:model];
-        }
+    if (!_rankListViewModels) {
+        _rankListViewModels = [NSMutableArray arrayWithCapacity:self.capacity];
     }
-    return _rankListModels;
+    return _rankListViewModels;
 }
 
 @end
