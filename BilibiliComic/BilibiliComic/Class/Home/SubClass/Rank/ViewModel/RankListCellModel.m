@@ -22,6 +22,9 @@
 
 @property (nonatomic,strong) NSString *fansSrcText;
 @property (nonatomic,strong) NSString *fansCountText;
+@property (nonatomic,strong) NSArray <Reward_users *> *users;
+@property (nonatomic,assign) NSInteger arrowDirection;
+
 @end
 
 @implementation RankListCellModel
@@ -47,6 +50,31 @@
     [[RACObserve(self, comicUrl) skip:1] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
         [self.cell.comicView sd_setFadeImageWithURL:[NSURL URLWithString:self.comicUrl] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
+    }];
+    
+    [[RACObserve(self, users) skip:1] subscribeNext:^(id  _Nullable x) {
+        @strongify(self)
+        @weakify(self)
+        [self.cell.fansView.fansAvatars enumerateObjectsUsingBlock:^(UIImageView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
+            @strongify(self)
+            if (idx < self->_users.count) {
+                NSString *avatarURL = self->_users[idx].avatar;
+                [view sd_setFadeImageWithURL:[NSURL URLWithString:avatarURL]];
+            }
+        }];
+    }];
+    
+    [[RACObserve(self, arrowDirection) skip:1] subscribeNext:^(id  _Nullable x) {
+        @strongify(self)
+        if (self.arrowDirection < 0) {
+            self.cell.fansView.fansArrow.image = BCImage(@"sort_up_icon_24x24_");
+        }
+        else if (self.arrowDirection == 0) {
+            self.cell.fansView.fansArrow.image = BCImage(@"sort_equal_icon_24x24_");
+        }
+        else if (self.arrowDirection > 0) {
+            self.cell.fansView.fansArrow.image = BCImage(@"sort_down_icon_24x24_");
+        }
     }];
 }
 
@@ -75,8 +103,8 @@
     CGFloat fans = list.fans.floatValue / 10000;
     self.fansCountText = [NSString stringWithFormat:@"%.2fw 粉丝值",fans];
     
-//    self.fansView.users = list.reward_users;
-//    self.fansView.arrowDirection = (self.rank - _fansComics.last_rank);
+    self.users = list.reward_users;
+    self.arrowDirection = (self.rank - list.last_rank);
 }
 
 #pragma mark - LazyLoad

@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class Reward_users;
-
 static const CGFloat FansViewHeight = 30;
 
 @interface RankFansView : UIView
 
-@property (nonatomic,strong) NSArray <Reward_users *> *users;
-@property (nonatomic,assign) NSInteger arrowDirection;
+@property (nonatomic,strong) NSMutableArray <UIImageView *> *fansAvatars;
+@property (nonatomic,strong) UIImageView *fansArrow;
 
 @end
 

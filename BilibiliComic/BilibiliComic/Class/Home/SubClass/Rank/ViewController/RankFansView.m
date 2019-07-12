@@ -7,14 +7,11 @@
 //
 
 #import "RankFansView.h"
-#import "RankListModel.h"
 
 @interface RankFansView ()
 
 @property (nonatomic,strong) UIImageView *fansCrown;
 @property (nonatomic,strong) UILabel     *fansLabel;
-@property (nonatomic,strong) NSMutableArray <UIImageView *> *fansAvatars;
-@property (nonatomic,strong) UIImageView *fansArrow;
 
 @property (nonatomic,assign,readonly) CGFloat realWidth;
 
@@ -63,39 +60,6 @@
         make.right.bottom.equalTo(self);
         make.size.mas_equalTo(CGSizeMake(self.realWidth, self.realWidth));
     }];
-}
-
-#pragma mark - Setter
-
--(void)setUsers:(NSArray<Reward_users *> *)users
-{
-    if (users && _users != users) {
-        _users = users;
-        
-        @weakify(self)
-        [self.fansAvatars enumerateObjectsUsingBlock:^(UIImageView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
-            @strongify(self)
-            if (idx < self->_users.count) {
-                NSString *avatarURL = self->_users[idx].avatar;
-                [view sd_setFadeImageWithURL:[NSURL URLWithString:avatarURL]];
-            }
-        }];
-    }
-}
-
--(void)setArrowDirection:(NSInteger)arrowDirection
-{
-    _arrowDirection = arrowDirection;
-    
-    if (_arrowDirection < 0) {
-        self.fansArrow.image = BCImage(@"sort_up_icon_24x24_");
-    }
-    else if (_arrowDirection == 0) {
-        self.fansArrow.image = BCImage(@"sort_equal_icon_24x24_");
-    }
-    else if (_arrowDirection > 0) {
-        self.fansArrow.image = BCImage(@"sort_down_icon_24x24_");
-    }
 }
 
 #pragma mark - LazyLoad
