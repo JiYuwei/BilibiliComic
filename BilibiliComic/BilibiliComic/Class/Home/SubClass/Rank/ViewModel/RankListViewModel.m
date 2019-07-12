@@ -70,9 +70,7 @@
     NSString *url = isHot ? HOME_HOT : HOME_FANS;
     NSDictionary *parameters = isHot ? @{@"type":@(self.index)} : @{};
     
-    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:^{
-        
-    } needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
+    [BCNetworkRequest retrieveJsonWithPrepare:nil finish:nil needCache:cache requestType:HTTPRequestTypePOST fromURL:url parameters:parameters success:^(NSDictionary *json) {
         self.model = [RankListModel mj_objectWithKeyValues:json];
     } failure:^(NSError *error, BOOL needCache, NSDictionary *cachedJson) {
         if (needCache) {
@@ -98,13 +96,14 @@
 -(UITableViewCell *)customCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RankListViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"%@_%lu",NSStringFromClass([RankListViewCell class]),self.index] forIndexPath:indexPath];
-    cell.rank = indexPath.row + 1;
+    
+    cell.cellModel.rank = indexPath.row + 1;
     
     if (self.index == 2) {
-        cell.fansComics = self.model.fansData.comics[indexPath.row];
+        [cell.cellModel fillDataWithRankComics:self.model.fansData.comics[indexPath.row]];
     }
     else{
-        cell.rankData = self.model.rankData[indexPath.row];
+        [cell.cellModel fillDataWithRankData:self.model.rankData[indexPath.row]];
     }
     
     return cell;

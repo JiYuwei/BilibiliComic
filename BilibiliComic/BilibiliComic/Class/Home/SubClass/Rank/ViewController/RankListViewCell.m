@@ -7,28 +7,9 @@
 //
 
 #import "RankListViewCell.h"
-#import "RankListModel.h"
-#import "RankFansView.h"
 
 static const CGFloat TitleFont = 17;
 static const CGFloat SubFont   = 13;
-
-@interface RankListViewCell ()
-
-@property (nonatomic,strong) UILabel      *rankLabel;
-
-@property (nonatomic,strong) UIImageView  *comicView;
-@property (nonatomic,strong) UILabel      *titleLabel;
-
-@property (nonatomic,strong) UILabel      *fansSrcLabel;
-@property (nonatomic,strong) UILabel      *fansCountLabel;
-@property (nonatomic,strong) RankFansView *fansView;
-
-@property (nonatomic,strong) UILabel      *srcLabel;
-@property (nonatomic,strong) UILabel      *typeLabel;
-@property (nonatomic,strong) UILabel      *updateLabel;
-
-@end
 
 @implementation RankListViewCell
 
@@ -36,6 +17,7 @@ static const CGFloat SubFont   = 13;
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self cusLayoutAllSubViews];
+        self.cellModel = [[RankListCellModel alloc] initWithResponder:self];
     }
     return self;
 }
@@ -108,54 +90,6 @@ static const CGFloat SubFont   = 13;
             make.height.mas_equalTo(SubFont + 3);
             make.bottom.equalTo(self.contentView).offset(-Padding);
         }];
-    }
-}
-
-#pragma mark - Setter
-
--(void)setRank:(NSInteger)rank
-{
-    _rank = rank;
-//    NSLog(@"%@",[UIFont familyNames]);
-    BOOL topRank = (_rank <= 3);
-    self.rankLabel.text = [NSString stringWithFormat:topRank?@"%ld":@"%02ld",_rank];
-    self.rankLabel.font = [UIFont fontWithName:@"Impact MT Std" size:topRank?70:35];
-}
-
--(void)setRankData:(RankData *)rankData
-{
-    if (rankData && _rankData != rankData) {
-        _rankData = rankData;
-        
-        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_rankData.vertical_cover] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
-        
-        self.titleLabel.text = _rankData.title;
-        self.srcLabel.text = [_rankData.author componentsJoinedByString:@" "];
-        NSMutableArray *types = [NSMutableArray array];
-        for (RankStyles *type in _rankData.styles) {
-            [types addObject:type.name];
-        }
-        self.typeLabel.text = [types componentsJoinedByString:@" "];
-        NSString *updateStr = _rankData.last_short_title;
-        BOOL pureNum = [updateStr mj_isPureInt];
-        self.updateLabel.text = [NSString stringWithFormat:pureNum?@"更新至%@话":@"更新至%@",_rankData.last_short_title];
-    }
-}
-
--(void)setFansComics:(RankComics *)fansComics
-{
-    if (fansComics && _fansComics != fansComics) {
-        _fansComics = fansComics;
-        
-        [self.comicView sd_setFadeImageWithURL:[NSURL URLWithString:_fansComics.vertical_cover] placeholderImage:BCImage(@"comic_list_placeholder_162x216_")];
-        
-        self.titleLabel.text = _fansComics.title;
-        self.fansSrcLabel.text = [_fansComics.author componentsJoinedByString:@" "];
-        CGFloat fans = _fansComics.fans.floatValue / 10000;
-        self.fansCountLabel.text = [NSString stringWithFormat:@"%.2fw 粉丝值",fans];
-        
-        self.fansView.users = _fansComics.reward_users;
-        self.fansView.arrowDirection = (self.rank - _fansComics.last_rank);
     }
 }
 

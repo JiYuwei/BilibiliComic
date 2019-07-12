@@ -31,6 +31,7 @@
 		0958898F2284092300A41D02 /* HomeSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958898E2284092300A41D02 /* HomeSearchModel.m */; };
 		0958899222841FB900A41D02 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0958899122841FB900A41D02 /* UIColor+HexColor.m */; };
 		09591287225D860200142DF7 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09591286225D860200142DF7 /* BaseNavigationController.m */; };
+		09624C6622D8968F00E7440C /* RankListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09624C6522D8968F00E7440C /* RankListCellModel.m */; };
 		096D0283221818970067651A /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0282221818970067651A /* BaseViewController.m */; };
 		096D0287221835420067651A /* BaseTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D0286221835420067651A /* BaseTabbarController.m */; };
 		096D028E221836210067651A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 096D028D221836210067651A /* HomeViewController.m */; };
@@ -1453,6 +1454,8 @@
 		0958899122841FB900A41D02 /* UIColor+HexColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		09591285225D860200142DF7 /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		09591286225D860200142DF7 /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
+		09624C6422D8968F00E7440C /* RankListCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankListCellModel.h; sourceTree = "<group>"; };
+		09624C6522D8968F00E7440C /* RankListCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankListCellModel.m; sourceTree = "<group>"; };
 		096D0281221818970067651A /* BaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		096D0282221818970067651A /* BaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		096D028422182FF10067651A /* BasePrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasePrefixHeader.pch; sourceTree = "<group>"; };
@@ -2908,6 +2911,8 @@
 			children = (
 				0987489722B8E88B00031CD5 /* RankListViewModel.h */,
 				0987489822B8E88B00031CD5 /* RankListViewModel.m */,
+				09624C6422D8968F00E7440C /* RankListCellModel.h */,
+				09624C6522D8968F00E7440C /* RankListCellModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -6202,6 +6207,7 @@
 				096D02942218364B0067651A /* BookListViewController.m in Sources */,
 				097918F6227066B800C243B7 /* BCFlowView.m in Sources */,
 				096E558622A4FDED00ADB978 /* NewFootCell.m in Sources */,
+				09624C6622D8968F00E7440C /* RankListCellModel.m in Sources */,
 				09E298FE2260A646009F0D4E /* HomeNavigationBar.m in Sources */,
 				09D5423122673B25007681E4 /* BCRefreshHeader.m in Sources */,
 				091EC7D82293DF2600A214F8 /* NewViewCell.m in Sources */,
