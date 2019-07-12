@@ -140,7 +140,7 @@ static const CGFloat AnimDuration  = 0.3;
     _itemFont = [PlistManager widthWithKey:fontStrArr[_topBarType]];
     NSArray *sWArr = @[@18,@12];
     [self.slider mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake([sWArr[self->_topBarType] floatValue], 3));
+        make.size.mas_equalTo(CGSizeMake([sWArr[self.topBarType] floatValue], 3));
     }];
 }
 

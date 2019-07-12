@@ -57,8 +57,8 @@
         @weakify(self)
         [self.cell.fansView.fansAvatars enumerateObjectsUsingBlock:^(UIImageView * _Nonnull view, NSUInteger idx, BOOL * _Nonnull stop) {
             @strongify(self)
-            if (idx < self->_users.count) {
-                NSString *avatarURL = self->_users[idx].avatar;
+            if (idx < self.users.count) {
+                NSString *avatarURL = self.users[idx].avatar;
                 [view sd_setFadeImageWithURL:[NSURL URLWithString:avatarURL]];
             }
         }];
