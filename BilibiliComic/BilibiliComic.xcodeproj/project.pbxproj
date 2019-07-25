@@ -4681,6 +4681,7 @@
 				09982B6F2217EBE4006CB358 /* Frameworks */,
 				09982B702217EBE4006CB358 /* Resources */,
 				0DC9FCD445584900DFB62F5C /* [CP] Copy Pods Resources */,
+				746167581269FF5FA6BDFF5F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -6151,6 +6152,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		746167581269FF5FA6BDFF5F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic-frameworks.sh",
+				"${PODS_ROOT}/LookinServer/LookinServer.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BilibiliComic/Pods-BilibiliComic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F3984149942685FC7D3C19D6 /* [CP] Check Pods Manifest.lock */ = {

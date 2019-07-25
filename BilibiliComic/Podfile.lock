@@ -23,6 +23,7 @@ PODS:
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - JSONKit (1.5pre)
+  - LookinServer (0.9.3)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
@@ -49,6 +50,7 @@ DEPENDENCIES:
   - FileMD5Hash (~> 2.0.0)
   - FMDB (~> 2.7.5)
   - JSONKit (~> 1.5pre)
+  - LookinServer
   - Mantle (~> 2.1.0)
   - Masonry (~> 1.0.2)
   - Minizip (~> 1.0.0)
@@ -72,6 +74,7 @@ SPEC REPOS:
     - FileMD5Hash
     - FMDB
     - JSONKit
+    - LookinServer
     - Mantle
     - Masonry
     - Minizip
@@ -94,6 +97,7 @@ SPEC CHECKSUMS:
   FileMD5Hash: 3ed69cc19a21ff4d30ae8833fc104275ad2c7de0
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   JSONKit: bae313ce6a6c444f40489a6c0b023f399888871f
+  LookinServer: 44f1b5f32743dc61068a156ff86b5b47d0a82943
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   Minizip: 188cb3e39a1195c283ae03bf673d182596fefd0b
@@ -107,6 +111,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 01dba39f5321d2228ece2da507a1e8881475a7c7
+PODFILE CHECKSUM: 54c338e10a8b2c737faa7b6210db9de2a081cd3a
 
 COCOAPODS: 1.6.0

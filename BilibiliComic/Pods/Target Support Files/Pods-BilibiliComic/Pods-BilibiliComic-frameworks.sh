@@ -153,42 +153,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AMTagListView/AMTagListView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Base64/Base64.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/DAPagesContainer/DAPagesContainer.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FileMD5Hash/FileMD5Hash.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/JSONKit/JSONKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Minizip/Minizip.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NSObject-ObjectMap/NSObject_ObjectMap.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NullSafe/NullSafe.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PSCollectionView/PSCollectionView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/AMTagListView/AMTagListView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Base64/Base64.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/DAPagesContainer/DAPagesContainer.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FileMD5Hash/FileMD5Hash.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/JSONKit/JSONKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Mantle/Mantle.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Minizip/Minizip.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NSObject-ObjectMap/NSObject_ObjectMap.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/NullSafe/NullSafe.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PSCollectionView/PSCollectionView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/ReactiveObjC/ReactiveObjC.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
+  install_framework "${PODS_ROOT}/LookinServer/LookinServer.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
