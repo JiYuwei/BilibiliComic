@@ -51,7 +51,6 @@ static const CGFloat AnimDuration  = 0.3;
         @weakify(self)
         [[tap rac_gestureSignal] subscribeNext:^(__kindof UIGestureRecognizer * _Nullable x){
             @strongify(self)
-            self.currentIndex = idx;
             [self showSelectedIndex:idx];
         }];
         [titleLabel addGestureRecognizer:tap];
@@ -80,13 +79,28 @@ static const CGFloat AnimDuration  = 0.3;
     [self showSelectedIndex:0];
 }
 
+-(void)initSelectedIndex:(NSUInteger)index
+{
+    if (index >= self.itemLabels.count) {
+        return;
+    }
+    
+    [self.slider mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self).offset(-4);
+        make.size.mas_equalTo(CGSizeMake(18, 3));
+        make.centerX.equalTo(self.itemLabels[index]);
+    }];
+    [self showSelectedIndex:index];
+}
+
 -(void)showSelectedIndex:(NSUInteger)index
 {
     if (index >= self.itemLabels.count) {
         return;
     }
     
-    UILabel *label = self.itemLabels[index];
+    self.currentIndex = index;
+    UILabel *label    = self.itemLabels[index];
     BOOL defaultStyle = !self.topBarStyle;
     [self.itemLabels enumerateObjectsUsingBlock:^(UILabel * _Nonnull titleLabel, NSUInteger idx, BOOL * _Nonnull stop) {
         

@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, PagesTopBarType) {
 
 @property (nonatomic,strong) UIView                  *slider;
 
+-(void)initSelectedIndex:(NSUInteger)index;
 -(void)showSelectedIndex:(NSUInteger)index;
 
 @end

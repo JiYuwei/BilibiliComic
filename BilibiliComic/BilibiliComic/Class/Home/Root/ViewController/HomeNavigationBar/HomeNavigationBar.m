@@ -112,7 +112,7 @@
 {
     if (!_pagesTopBar) {
         _pagesTopBar = [[BCPagesTopBar alloc] init];
-        _pagesTopBar.itemTitles = @[@"推荐",@"排行",@"新作"];
+        _pagesTopBar.itemTitles = @[@"更新",@"推荐",@"排行"];
         [self.contentView addSubview:_pagesTopBar];
     }
     return _pagesTopBar;

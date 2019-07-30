@@ -41,14 +41,15 @@
     
     [self initNavigationBar];
     [self initMainScrollView];
+    
+    [self.homeNavBar.pagesTopBar initSelectedIndex:MainIndex];
+    self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
 }
 
 #pragma mark - UI
 
 -(void)initNavigationBar
 {
-    self.homeNavBar.navBarStyle = HomeNavigationBarStyleLightContent;
-    
     @weakify(self)
     [[RACObserve(self.homeNavBar, navBarStyle) distinctUntilChanged] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
@@ -82,7 +83,7 @@
     _currentAlpha = 1;
     _currentStyle = HomeNavigationBarStyleLightContent;
     
-    RecomViewController *recomVC = (RecomViewController *)self.childViewControllers.firstObject;
+    RecomViewController *recomVC = (RecomViewController *)self.childViewControllers[MainIndex];
     [[recomVC rac_signalForSelector:@selector(scrollViewDidScroll:)] subscribeNext:^(RACTuple * _Nullable x) {
         UIScrollView *scrollView = (UIScrollView *)x.first;
         [self recomTableViewDidScroll:scrollView];
@@ -119,9 +120,10 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    CGFloat width   = scrollView.vWidth * MainIndex;
     CGFloat offsetX = scrollView.contentOffset.x;
-    CGFloat alpha   = (offsetX / BC_SCREEN_WIDTH) < 1 ? (offsetX / BC_SCREEN_WIDTH) : 1;
-//    NSLog(@"%.f",alpha);
+    CGFloat alpha   = ((offsetX - width) / BC_SCREEN_WIDTH) < 1 ? ((offsetX - width) / BC_SCREEN_WIDTH) : 1;
+    if (alpha < 0) alpha = -alpha;
     
     BCPagesTopBar *pagesTopBar = self.homeNavBar.pagesTopBar;
     UIView *slider = pagesTopBar.slider;
@@ -180,9 +182,9 @@
 -(NSArray *)childVCArray
 {
     if (!_childVCArray) {
-        _childVCArray = @[[RecomViewController class],
-                          [RankViewController class],
-                          [NewViewController class]];
+        _childVCArray = @[[NewViewController class],
+                          [RecomViewController class],
+                          [RankViewController class]];
     }
     return _childVCArray;
 }

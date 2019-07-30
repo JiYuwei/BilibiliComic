@@ -11,6 +11,8 @@
 #import "BCPagesTopBar.h"
 #import "HomeSearchBar.h"
 
+static const NSUInteger MainIndex = 1;
+
 @interface HomeNavigationBar : UIView
 
 @property (nonatomic,assign) HomeNavigationBarStyle navBarStyle;
