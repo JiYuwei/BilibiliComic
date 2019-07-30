@@ -12,8 +12,9 @@ static const CGFloat FansViewHeight = 30;
 
 @interface RankFansView : UIView
 
+@property (nonatomic,assign,class,readonly) CGFloat realWidth;
+
 @property (nonatomic,strong) NSMutableArray <UIImageView *> *fansAvatars;
-@property (nonatomic,strong) UIImageView *fansArrow;
 
 @end
 

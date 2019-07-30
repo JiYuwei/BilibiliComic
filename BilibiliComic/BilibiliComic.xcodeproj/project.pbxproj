@@ -4645,9 +4645,9 @@
 		09EB8B222265F16A00FCAAE4 /* SubClass */ = {
 			isa = PBXGroup;
 			children = (
+				09D5422222672E14007681E4 /* New */,
 				09D5422422672E1B007681E4 /* Recommend */,
 				09D5422322672E18007681E4 /* Rank */,
-				09D5422222672E14007681E4 /* New */,
 			);
 			path = SubClass;
 			sourceTree = "<group>";

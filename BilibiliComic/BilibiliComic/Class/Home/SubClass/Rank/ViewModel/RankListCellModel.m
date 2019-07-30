@@ -67,13 +67,13 @@
     [[RACObserve(self, arrowDirection) skip:1] subscribeNext:^(id  _Nullable x) {
         @strongify(self)
         if (self.arrowDirection < 0) {
-            self.cell.fansView.fansArrow.image = BCImage(@"sort_up_icon_24x24_");
+            self.cell.rankArrow.image = BCImage(@"sort_up_icon_24x24_");
         }
         else if (self.arrowDirection == 0) {
-            self.cell.fansView.fansArrow.image = BCImage(@"sort_equal_icon_24x24_");
+            self.cell.rankArrow.image = BCImage(@"sort_equal_icon_24x24_");
         }
         else if (self.arrowDirection > 0) {
-            self.cell.fansView.fansArrow.image = BCImage(@"sort_down_icon_24x24_");
+            self.cell.rankArrow.image = BCImage(@"sort_down_icon_24x24_");
         }
     }];
 }
@@ -92,6 +92,7 @@
     NSString *updateStr = list.last_short_title;
     BOOL pureNum = [updateStr mj_isPureInt];
     self.updateText = [NSString stringWithFormat:pureNum?@"更新至%@话":@"更新至%@",list.last_short_title];
+    self.arrowDirection = (self.rank - list.last_rank);
 }
 
 -(void)fillDataWithRankComics:(RankComics *)list

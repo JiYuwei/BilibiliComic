@@ -31,6 +31,8 @@ static const CGFloat Aspect     = 0.75;
 @property (nonatomic,strong) UILabel      *typeLabel;
 @property (nonatomic,strong) UILabel      *updateLabel;
 
+@property (nonatomic,strong) UIImageView  *rankArrow;
+
 @end
 
 

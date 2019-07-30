@@ -13,14 +13,11 @@
 @property (nonatomic,strong) UIImageView *fansCrown;
 @property (nonatomic,strong) UILabel     *fansLabel;
 
-@property (nonatomic,assign,readonly) CGFloat realWidth;
-
 @end
 
+static CGFloat _realWidth = 0;
+
 @implementation RankFansView
-{
-    CGFloat _realWidth;
-}
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -50,15 +47,10 @@
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(lastView ? lastView.mas_right : self.fansLabel.mas_right).offset(lastView ? 3 : 0);
             make.bottom.equalTo(self);
-            make.size.mas_equalTo(CGSizeMake(self.realWidth, self.realWidth));
+            make.size.mas_equalTo(CGSizeMake(RankFansView.realWidth, RankFansView.realWidth));
         }];
         
         lastView = view;
-    }];
-    
-    [self.fansArrow mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.bottom.equalTo(self);
-        make.size.mas_equalTo(CGSizeMake(self.realWidth, self.realWidth));
     }];
 }
 
@@ -93,7 +85,7 @@
         _fansAvatars = [NSMutableArray arrayWithCapacity:capacity];
         for (NSInteger i = 0; i < capacity; i++) {
             UIImageView *fansAvatar = [[UIImageView alloc] init];
-            fansAvatar.layer.cornerRadius = self.realWidth / 2;
+            fansAvatar.layer.cornerRadius = RankFansView.realWidth / 2;
             fansAvatar.layer.masksToBounds = YES;
             fansAvatar.layer.borderColor = DefaultBorderColor.CGColor;
             fansAvatar.layer.borderWidth = 0.5;
@@ -104,16 +96,7 @@
     return _fansAvatars;
 }
 
--(UIImageView *)fansArrow
-{
-    if (!_fansArrow) {
-        _fansArrow = [[UIImageView alloc] init];
-        [self addSubview:_fansArrow];
-    }
-    return _fansArrow;
-}
-
--(CGFloat)realWidth
++(CGFloat)realWidth
 {
     if (_realWidth == 0) {
         _realWidth = (FansViewHeight) * (BC_SCREEN_WIDTH / 414);

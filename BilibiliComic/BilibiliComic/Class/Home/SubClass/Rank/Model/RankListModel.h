@@ -29,6 +29,7 @@
 @property (nonatomic, assign) NSInteger  comic_id;
 @property (nonatomic, copy)   NSString * vertical_cover;
 @property (nonatomic, copy)   NSString * last_short_title;
+@property (nonatomic, assign) NSInteger  last_rank;
 
 @end
 

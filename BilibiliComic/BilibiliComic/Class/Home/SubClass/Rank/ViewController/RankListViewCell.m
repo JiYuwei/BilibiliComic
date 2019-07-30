@@ -68,6 +68,11 @@ static const CGFloat SubFont   = 13;
             make.bottom.equalTo(self.contentView).offset(-Padding);
             make.height.mas_equalTo(FansViewHeight);
         }];
+        
+        [self.rankArrow mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.bottom.equalTo(self).offset(-Padding);
+            make.size.mas_equalTo(CGSizeMake(RankFansView.realWidth, RankFansView.realWidth));
+        }];
     }
     else {
         [self.srcLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -89,6 +94,12 @@ static const CGFloat SubFont   = 13;
             make.right.lessThanOrEqualTo(self.contentView).offset(-Padding);
             make.height.mas_equalTo(SubFont + 3);
             make.bottom.equalTo(self.contentView).offset(-Padding);
+        }];
+        
+        [self.rankArrow mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self).offset(-Padding);
+            make.bottom.equalTo(self).offset(-Padding / 2);
+            make.size.mas_equalTo(CGSizeMake(RankFansView.realWidth, RankFansView.realWidth));
         }];
     }
 }
@@ -191,6 +202,15 @@ static const CGFloat SubFont   = 13;
         [self.contentView addSubview:_updateLabel];
     }
     return _updateLabel;
+}
+
+-(UIImageView *)rankArrow
+{
+    if (!_rankArrow) {
+        _rankArrow = [[UIImageView alloc] init];
+        [self addSubview:_rankArrow];
+    }
+    return _rankArrow;
 }
 
 @end
