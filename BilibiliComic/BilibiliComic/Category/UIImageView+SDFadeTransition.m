@@ -51,13 +51,15 @@
                 CGSize reSize = self.vSize;
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     UIImage *reSizedImage = [image reSizeImage:reSize];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self fadeTransWithImage:reSizedImage];
+                    });
+                    
                     NSString *key = [[SDWebImageManager sharedManager] cacheKeyForURL:url];
                     [[SDImageCache sharedImageCache] removeImageForKey:key withCompletion:^{
                         [[SDWebImageManager sharedManager] saveImageToCache:reSizedImage forURL:url];
                     }];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self fadeTransWithImage:reSizedImage];
-                    });
                 });
             }
             else
