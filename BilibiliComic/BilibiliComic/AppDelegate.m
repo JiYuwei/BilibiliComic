@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AvoidCrash.h"
 #import "BaseTabbarController.h"
 
 @interface AppDelegate ()
@@ -17,6 +18,16 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //常用Fundation框架及未知IMP防崩溃处理
+    [AvoidCrash makeAllEffective];
+    NSArray <NSString *> *iGNores = @[NSStringFromClass([NSNull class]),
+                                      NSStringFromClass([NSString class]),
+                                      NSStringFromClass([NSNumber class]),
+                                      NSStringFromClass([NSArray class]),
+                                      NSStringFromClass([NSDictionary class])];
+    [AvoidCrash setupNoneSelClassStringsArr:iGNores];
+    
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     BaseTabbarController *baseTabC = [[BaseTabbarController alloc] init];

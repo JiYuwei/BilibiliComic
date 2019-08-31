@@ -1,7 +1,10 @@
 platform :ios,'10.0'
 
+inhibit_all_warnings!
+
 target 'BilibiliComic' do
 	pod 'LookinServer', :configurations => ['Debug']
+	pod 'AvoidCrash', '~> 2.5.2'
 	pod 'AMTagListView', '~> 1.5.0'
 	pod 'Base64', '~> 1.1.2'
 	pod 'CocoaAsyncSocket', '~> 7.6.1'

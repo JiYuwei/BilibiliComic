@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AMTagListView (1.5.0)
+  - AvoidCrash (2.5.2)
   - Base64 (1.1.2)
   - CocoaAsyncSocket (7.6.1)
   - DAPagesContainer (1.0.1)
@@ -44,6 +45,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AMTagListView (~> 1.5.0)
+  - AvoidCrash (~> 2.5.2)
   - Base64 (~> 1.1.2)
   - CocoaAsyncSocket (~> 7.6.1)
   - DAPagesContainer (~> 1.0.1)
@@ -68,6 +70,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - AMTagListView
+    - AvoidCrash
     - Base64
     - CocoaAsyncSocket
     - DAPagesContainer
@@ -91,6 +94,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AMTagListView: 08ab67466c67152f6299bc29a13a907783b0046f
+  AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   CocoaAsyncSocket: 7eadd3f59e1a6c84e2aefc93e9ff7b55156fe174
   DAPagesContainer: 96a668c1452aa2b628619e0b1a1c116f187551fd
@@ -111,6 +115,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 54c338e10a8b2c737faa7b6210db9de2a081cd3a
+PODFILE CHECKSUM: 49b61b212a52b10f602d7f6d578930447f5b98e0
 
 COCOAPODS: 1.6.0
